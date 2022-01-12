@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "AgencyDemoNative",
+    "slug": "AgencyDemoNative",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "AgencyDemoNative"
+}
