@@ -3,6 +3,7 @@ import {TouchableOpacity, Button, Text, View, StyleSheet, TextInput, linearGradi
 import { THEME } from "../styles/theme";
 import { login } from "../api/login";
 import { borderBottomColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
+import styles from "../styles/loginScreenStyles"
 
 export const LoginScreen = ({ navigation }) => {
   const [userDetails, setUserDetails] = useState({ login: "", password: "" });
@@ -52,40 +53,40 @@ export const LoginScreen = ({ navigation }) => {
 - no capitalized in title button
 */
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: THEME.BACKGROUND.MAIN,
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    position: "relative",
-  },
-  loginWindow: {
-    backgroundColor: "#fff",
-    width: "80%",
-    height: "50%",
-    paddingTop: "8%",
-    alignItems: "center",
-  },
-  loginWimdow_title: {
-    fontSize: 32,
-    color: THEME.COLOR.LOGIN_TITLE,
-    marginBottom: 20,
-    fontWeight: "bold"
-  },
+// const styles = StyleSheet.create({
+//   container: {
+//     backgroundColor: THEME.BACKGROUND.MAIN,
+//     flex: 1,
+//     justifyContent: "center",
+//     alignItems: "center",
+//     position: "relative",
+//   },
+//   loginWindow: {
+//     backgroundColor: "#fff",
+//     width: "80%",
+//     height: "50%",
+//     paddingTop: "8%",
+//     alignItems: "center",
+//   },
+//   loginWimdow_title: {
+//     fontSize: 32,
+//     color: THEME.COLOR.LOGIN_TITLE,
+//     marginBottom: 20,
+//     fontWeight: "bold"
+//   },
 
-  textInput: {
-    borderWidth: 1,
-    borderColor: THEME.COLOR.INPUT_BORDER,
-    borderRadius: 4,
-    marginBottom: 15,
-    height: 30,
-    paddingLeft: 15,
-    width: "78%",
+//   textInput: {
+//     borderWidth: 1,
+//     borderColor: THEME.COLOR.INPUT_BORDER,
+//     borderRadius: 4,
+//     marginBottom: 15,
+//     height: 30,
+//     paddingLeft: 15,
+//     width: "78%",
     
-  },
+//   },
 
-  wraper_login_button: {
-    width: "78%",
-  },
-});
+//   wraper_login_button: {
+//     width: "78%",
+//   },
+// });
