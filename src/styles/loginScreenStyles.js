@@ -20,7 +20,7 @@ export default StyleSheet.create({
     fontSize: 32,
     color: THEME.COLOR.LOGIN_TITLE,
     marginBottom: 20,
-    fontWeight: "500",
+    fontWeight: "bold",
   },
 
   textInput: {
@@ -34,6 +34,29 @@ export default StyleSheet.create({
   },
 
   wraper_login_button: {
+    backgroundColor: THEME.COLOR.BUTTON_LOGIN_DARK_GRADIENT,
     width: "78%",
   },
+
+  login_button: {
+    alignItems: 'center',
+    backgroundColor: "rgba(0, 0, 0, 0)",
+    padding: 5,
+  },
+
+  login_button_text:{
+    color:THEME.COLOR.LOGIN_BUTTON_TEXT,
+    fontSize:18,
+    fontWeight: "bold"
+
+  },
+
+  linear_background: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    height: "100%",
+  },
+
 });

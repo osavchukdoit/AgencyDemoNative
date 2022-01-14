@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { Button, Text, View, TextInput } from "react-native";
+import { Text, View, TextInput, TouchableOpacity } from "react-native";
 import { login } from "../api/login";
 import styles from "../styles/loginScreenStyles";
-import { LinearGradient } from "react-native-linear-gradient"; 
-
+import { LinearGradient } from "expo-linear-gradient";
 
 export const LoginScreen = ({ navigation }) => {
   const [userDetails, setUserDetails] = useState({ login: "", password: "" });
@@ -31,14 +30,22 @@ export const LoginScreen = ({ navigation }) => {
           autoCapitalize={"none"}
         />
         <View style={styles.wraper_login_button}>
-          <Button
-            title={"Sign in to agencyEZ"}
+          <LinearGradient
+            // Background Linear Gradient
+            colors={["rgba(38, 153, 162, 1);", "transparent"]}
+            start={{ y: 0.0, x: 0.0 }} end={{ y: 0.0, x: 0.5 }}
+            style={styles.linear_background}
+          />
+          <TouchableOpacity
+            style={styles.login_button}
             onPress={() =>
               // navigation.navigate("Employers", { name: "Local User" })
               // login(userDetails)
               console.log(userDetails)
             }
-          />
+          >
+            <Text style={styles.login_button_text}>Sign in to agencyEZ</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>

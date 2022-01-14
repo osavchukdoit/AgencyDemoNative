@@ -4,6 +4,8 @@ export const THEME = {
     INPUT_BORDER: "#429008",
     INPUT_BORDER_HOVER: "#53B50A",
     INPUT_TEXT_COLOR: "#2E2E2E",
+    BUTTON_LOGIN_DARK_GRADIENT:"#112C50",
+    LOGIN_BUTTON_TEXT: "#fff"
   },
   BACKGROUND: {
     MAIN: "#f4efef",
