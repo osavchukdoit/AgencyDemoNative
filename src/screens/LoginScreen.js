@@ -3,6 +3,7 @@ import { Text, View, TextInput, TouchableOpacity } from "react-native";
 import { login } from "../api/login";
 import styles from "../styles/loginScreenStyles";
 import { LinearGradient } from "expo-linear-gradient";
+import { THEME } from "../styles/theme";
 
 export const LoginScreen = ({ navigation }) => {
   const [userDetails, setUserDetails] = useState({ login: "", password: "" });
@@ -32,8 +33,9 @@ export const LoginScreen = ({ navigation }) => {
         <View style={styles.wraper_login_button}>
           <LinearGradient
             // Background Linear Gradient
-            colors={["rgba(38, 153, 162, 1);", "transparent"]}
-            start={{ y: 0.0, x: 0.0 }} end={{ y: 0.0, x: 0.5 }}
+            colors={[THEME.COLOR.BUTTON_LOGIN_LIGHT_GRADIENT, "transparent"]}
+            start={{ y: 0.0, x: 0.0 }}
+            end={{ y: 0.0, x: 0.5 }}
             style={styles.linear_background}
           />
           <TouchableOpacity
@@ -55,6 +57,6 @@ export const LoginScreen = ({ navigation }) => {
 /*
 -вынести цвета в переменые
 -втавить иконки в поля юзернаме и пасворд
--fontweight in title
-- no capitalized in title button
+-fontweight in title --no reaction on number values
+- no capitalized in title button -DONE
 */
