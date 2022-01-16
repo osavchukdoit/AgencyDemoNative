@@ -29,8 +29,19 @@ export default StyleSheet.create({
     borderRadius: 4,
     marginBottom: 15,
     height: 30,
-    paddingLeft: 15,
+    paddingLeft: 30,
+  },
+
+  wraper_login_input: {
+    position: "relative",
     width: "78%",
+  },
+
+  login_input_img: {
+    position: "absolute",
+    marginTop: 7,
+    marginLeft: 8,
+    marginRight: 8,
   },
 
   wraper_login_button: {
@@ -39,16 +50,15 @@ export default StyleSheet.create({
   },
 
   login_button: {
-    alignItems: 'center',
+    alignItems: "center",
     backgroundColor: "rgba(0, 0, 0, 0)",
     padding: 5,
   },
 
-  login_button_text:{
-    color:THEME.COLOR.LOGIN_BUTTON_TEXT,
-    fontSize:18,
-    fontWeight: "bold"
-
+  login_button_text: {
+    color: THEME.COLOR.LOGIN_BUTTON_TEXT,
+    fontSize: 18,
+    fontWeight: "bold",
   },
 
   linear_background: {
@@ -58,5 +68,4 @@ export default StyleSheet.create({
     top: 0,
     height: "100%",
   },
-
 });

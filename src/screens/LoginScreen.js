@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, View, TextInput, TouchableOpacity } from "react-native";
+import { Text, View, TextInput, TouchableOpacity, Image } from "react-native";
 import { login } from "../api/login";
 import styles from "../styles/loginScreenStyles";
 import { LinearGradient } from "expo-linear-gradient";
@@ -18,18 +18,30 @@ export const LoginScreen = ({ navigation }) => {
         <Text style={styles.loginWimdow_title}>
           Please log in to your account:
         </Text>
-        <TextInput
-          style={styles.textInput}
-          onChangeText={(text) => handleInputValue("login", text)}
-          placeholder={"Username"}
-          autoCapitalize={"none"}
-        />
-        <TextInput
-          style={styles.textInput}
-          onChangeText={(text) => handleInputValue("password", text)}
-          placeholder={"Password"}
-          autoCapitalize={"none"}
-        />
+        <View style={styles.wraper_login_input}>
+          <Image
+            style={styles.login_input_img}
+            source={require("../img/user.png")}
+          />
+          <TextInput
+            style={styles.textInput}
+            onChangeText={(text) => handleInputValue("login", text)}
+            placeholder={"Username"}
+            autoCapitalize={"none"}
+          />
+        </View>
+        <View style={styles.wraper_login_input}>
+          <Image
+            style={styles.login_input_img}
+            source={require("../img/pass.png")}
+          />
+          <TextInput
+            style={styles.textInput}
+            onChangeText={(text) => handleInputValue("password", text)}
+            placeholder={"Password"}
+            autoCapitalize={"none"}
+          />
+        </View>
         <View style={styles.wraper_login_button}>
           <LinearGradient
             // Background Linear Gradient
