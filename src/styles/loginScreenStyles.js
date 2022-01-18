@@ -16,7 +16,7 @@ export default StyleSheet.create({
     paddingTop: "8%",
     alignItems: "center",
   },
-  loginWimdow_title: {
+  loginWimdowTitle: {
     fontSize: 32,
     color: THEME.COLOR.LOGIN_TITLE,
     marginBottom: 20,
@@ -32,36 +32,36 @@ export default StyleSheet.create({
     paddingLeft: 30,
   },
 
-  wraper_login_input: {
+  wraperLoginInput: {
     position: "relative",
     width: "78%",
   },
 
-  login_input_img: {
+  loginInputImg: {
     position: "absolute",
     marginTop: 7,
     marginLeft: 8,
     marginRight: 8,
   },
 
-  wraper_login_button: {
+  wraperLoginButton: {
     backgroundColor: THEME.COLOR.BUTTON_LOGIN_DARK_GRADIENT,
     width: "78%",
   },
 
-  login_button: {
+  loginButton: {
     alignItems: "center",
     backgroundColor: "rgba(0, 0, 0, 0)",
     padding: 5,
   },
 
-  login_button_text: {
+  loginButtonText: {
     color: THEME.COLOR.LOGIN_BUTTON_TEXT,
     fontSize: 18,
     fontWeight: "bold",
   },
 
-  linear_background: {
+  linearBackground: {
     position: "absolute",
     left: 0,
     right: 0,

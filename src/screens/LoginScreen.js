@@ -15,12 +15,12 @@ export const LoginScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.loginWindow}>
-        <Text style={styles.loginWimdow_title}>
+        <Text style={styles.loginWimdowTitle}>
           Please log in to your account:
         </Text>
-        <View style={styles.wraper_login_input}>
+        <View style={styles.wraperLoginInput}>
           <Image
-            style={styles.login_input_img}
+            style={styles.loginInputImg}
             source={require("../img/user.png")}
           />
           <TextInput
@@ -30,9 +30,9 @@ export const LoginScreen = ({ navigation }) => {
             autoCapitalize={"none"}
           />
         </View>
-        <View style={styles.wraper_login_input}>
+        <View style={styles.wraperLoginInput}>
           <Image
-            style={styles.login_input_img}
+            style={styles.loginInputImg}
             source={require("../img/pass.png")}
           />
           <TextInput
@@ -42,23 +42,23 @@ export const LoginScreen = ({ navigation }) => {
             autoCapitalize={"none"}
           />
         </View>
-        <View style={styles.wraper_login_button}>
+        <View style={styles.wraperLoginButton}>
           <LinearGradient
             // Background Linear Gradient
             colors={[THEME.COLOR.BUTTON_LOGIN_LIGHT_GRADIENT, "transparent"]}
             start={{ y: 0.0, x: 0.0 }}
             end={{ y: 0.0, x: 0.5 }}
-            style={styles.linear_background}
+            style={styles.linearBackground}
           />
           <TouchableOpacity
-            style={styles.login_button}
+            style={styles.loginButton}
             onPress={() =>
               // navigation.navigate("Employers", { name: "Local User" })
               // login(userDetails)
               console.log(userDetails)
             }
           >
-            <Text style={styles.login_button_text}>Sign in to agencyEZ</Text>
+            <Text style={styles.loginButtonText}>Sign in to agencyEZ</Text>
           </TouchableOpacity>
         </View>
       </View>
