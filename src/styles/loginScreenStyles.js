@@ -32,6 +32,15 @@ export default StyleSheet.create({
     paddingLeft: 30,
   },
 
+  textInputFocus: {
+    borderWidth: 1,
+    borderColor: THEME.COLOR.INPUT_BORDER_HOVER,
+    borderRadius: 4,
+    marginBottom: 15,
+    height: 30,
+    paddingLeft: 30,
+  },
+
   wraperLoginInput: {
     position: "relative",
     width: "78%",

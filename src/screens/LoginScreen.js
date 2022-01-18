@@ -7,6 +7,14 @@ import { THEME } from "../styles/theme";
 
 export const LoginScreen = ({ navigation }) => {
   const [userDetails, setUserDetails] = useState({ login: "", password: "" });
+  const [isFocused, setIsFocused] = useState(false);
+
+  onFocus = () => {
+    setIsFocused(true);
+  };
+  onBlur = () => {
+    setIsFocused(false);
+  };
 
   const handleInputValue = (inputName, inputValue) => {
     setUserDetails({ ...userDetails, [inputName]: inputValue });
@@ -24,7 +32,9 @@ export const LoginScreen = ({ navigation }) => {
             source={require("../img/user.png")}
           />
           <TextInput
-            style={styles.textInput}
+            onFocus={onFocus}
+            onBlur={onBlur}
+            style={isFocused ? styles.textInputFocus : styles.textInput}
             onChangeText={(text) => handleInputValue("login", text)}
             placeholder={"Username"}
             autoCapitalize={"none"}
@@ -36,6 +46,9 @@ export const LoginScreen = ({ navigation }) => {
             source={require("../img/pass.png")}
           />
           <TextInput
+            onFocus={onFocus}
+            onBlur={onBlur}
+            style={isFocused ? styles.textInputFocus : styles.textInput}
             style={styles.textInput}
             onChangeText={(text) => handleInputValue("password", text)}
             placeholder={"Password"}
