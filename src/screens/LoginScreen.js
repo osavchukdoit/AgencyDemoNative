@@ -11,6 +11,7 @@ import { login } from "../api/login";
 import styles from "../styles/loginScreenStyles";
 import { LinearGradient } from "expo-linear-gradient";
 import { THEME } from "../styles/theme";
+import { CONSTS } from "../consts/consts";
 
 export const LoginScreen = ({ navigation }) => {
   const [userDetails, setUserDetails] = useState({ login: "", password: "" });
@@ -19,11 +20,11 @@ export const LoginScreen = ({ navigation }) => {
 
   const onHandleFocus = (value) => {
     switch (value) {
-      case "login":
+      case CONSTS.LOGIN_SCREEN.LOGIN_INPUT:
         setIsFocusedLogin(true);
         break;
 
-      case "password":
+      case CONSTS.LOGIN_SCREEN.PASSWORD_INPUT:
         setIsFocusedPassword(true);
         break;
       default:
@@ -33,10 +34,10 @@ export const LoginScreen = ({ navigation }) => {
 
   const onHandleBlur = (value) => {
     switch (value) {
-      case "login":
+      case CONSTS.LOGIN_SCREEN.LOGIN_INPUT:
         setIsFocusedLogin(false);
         break;
-      case "password":
+      case CONSTS.LOGIN_SCREEN.PASSWORD_INPUT:
         setIsFocusedPassword(false);
         break;
       default:
@@ -63,8 +64,8 @@ export const LoginScreen = ({ navigation }) => {
             source={require("../img/user.png")}
           />
           <TextInput
-            onFocus={() => onHandleFocus("login")}
-            onBlur={() => onHandleBlur("login")}
+            onFocus={() => onHandleFocus(CONSTS.LOGIN_SCREEN.LOGIN_INPUT)}
+            onBlur={() => onHandleBlur(CONSTS.LOGIN_SCREEN.LOGIN_INPUT)}
             style={isFocusedLogin ? styles.textInputFocus : styles.textInput}
             onChangeText={(text) => handleInputValue("login", text)}
             placeholder={"Username"}
@@ -79,8 +80,8 @@ export const LoginScreen = ({ navigation }) => {
           />
 
           <TextInput
-            onFocus={() => onHandleFocus("password")}
-            onBlur={() => onHandleBlur("password")}
+            onFocus={() => onHandleFocus(CONSTS.LOGIN_SCREEN.PASSWORD_INPUT)}
+            onBlur={() => onHandleBlur(CONSTS.LOGIN_SCREEN.PASSWORD_INPUT)}
             style={isFocusedPassword ? styles.textInputFocus : styles.textInput}
             onChangeText={(text) => handleInputValue("password", text)}
             placeholder={"Password"}
