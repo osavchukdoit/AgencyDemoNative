@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Text, View, TextInput, TouchableOpacity, Image } from "react-native";
+import {
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+  Image,
+  KeyboardAvoidingView,
+} from "react-native";
 import { login } from "../api/login";
 import styles from "../styles/loginScreenStyles";
 import { LinearGradient } from "expo-linear-gradient";
@@ -7,13 +14,34 @@ import { THEME } from "../styles/theme";
 
 export const LoginScreen = ({ navigation }) => {
   const [userDetails, setUserDetails] = useState({ login: "", password: "" });
-  const [isFocused, setIsFocused] = useState(false);
+  const [isFocusedLogin, setIsFocusedLogin] = useState(false);
+  const [isFocusedPassword, setIsFocusedPassword] = useState(false);
 
-  onFocus = () => {
-    setIsFocused(true);
+  const onHandleFocus = (value) => {
+    switch (value) {
+      case "login":
+        setIsFocusedLogin(true);
+        break;
+
+      case "password":
+        setIsFocusedPassword(true);
+        break;
+      default:
+        return;
+    }
   };
-  onBlur = () => {
-    setIsFocused(false);
+
+  const onHandleBlur = (value) => {
+    switch (value) {
+      case "login":
+        setIsFocusedLogin(false);
+        break;
+      case "password":
+        setIsFocusedPassword(false);
+        break;
+      default:
+        return;
+    }
   };
 
   const handleInputValue = (inputName, inputValue) => {
@@ -22,7 +50,10 @@ export const LoginScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.loginWindow}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={styles.loginWindow}
+      >
         <Text style={styles.loginWimdowTitle}>
           Please log in to your account:
         </Text>
@@ -32,12 +63,13 @@ export const LoginScreen = ({ navigation }) => {
             source={require("../img/user.png")}
           />
           <TextInput
-            onFocus={onFocus}
-            onBlur={onBlur}
-            style={isFocused ? styles.textInputFocus : styles.textInput}
+            onFocus={() => onHandleFocus("login")}
+            onBlur={() => onHandleBlur("login")}
+            style={isFocusedLogin ? styles.textInputFocus : styles.textInput}
             onChangeText={(text) => handleInputValue("login", text)}
             placeholder={"Username"}
             autoCapitalize={"none"}
+            
           />
         </View>
         <View style={styles.wraperLoginInput}>
@@ -45,11 +77,11 @@ export const LoginScreen = ({ navigation }) => {
             style={styles.loginInputImg}
             source={require("../img/pass.png")}
           />
+
           <TextInput
-            onFocus={onFocus}
-            onBlur={onBlur}
-            style={isFocused ? styles.textInputFocus : styles.textInput}
-            style={styles.textInput}
+            onFocus={() => onHandleFocus("password")}
+            onBlur={() => onHandleBlur("password")}
+            style={isFocusedPassword ? styles.textInputFocus : styles.textInput}
             onChangeText={(text) => handleInputValue("password", text)}
             placeholder={"Password"}
             autoCapitalize={"none"}
@@ -71,17 +103,10 @@ export const LoginScreen = ({ navigation }) => {
               console.log(userDetails)
             }
           >
-            <Text style={styles.loginButtonText}>Sign in to agencyEZ</Text>
+            <Text style={styles.loginButtonText}>Signff in to agencyEz</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </KeyboardAvoidingView>
     </View>
   );
 };
-
-/*
--вынести цвета в переменые
--втавить иконки в поля юзернаме и пасворд
--fontweight in title --no reaction on number values
-- no capitalized in title button -DONE
-*/

@@ -12,6 +12,7 @@ export default StyleSheet.create({
   loginWindow: {
     backgroundColor: "#fff",
     width: "80%",
+    minHeight: 300,
     height: "50%",
     paddingTop: "8%",
     alignItems: "center",
