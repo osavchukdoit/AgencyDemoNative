@@ -11,7 +11,7 @@ import { login } from "../api/login";
 import styles from "../styles/loginScreenStyles";
 import { LinearGradient } from "expo-linear-gradient";
 import { THEME } from "../styles/theme";
-import { CONSTS } from "../consts/consts";
+import { CONSTS } from "../consts";
 
 export const LoginScreen = ({ navigation }) => {
   const [userDetails, setUserDetails] = useState({ login: "", password: "" });
@@ -67,7 +67,7 @@ export const LoginScreen = ({ navigation }) => {
             onFocus={() => onHandleFocus(CONSTS.LOGIN_SCREEN.LOGIN_INPUT)}
             onBlur={() => onHandleBlur(CONSTS.LOGIN_SCREEN.LOGIN_INPUT)}
             style={isFocusedLogin ? styles.textInputFocus : styles.textInput}
-            onChangeText={(text) => handleInputValue("login", text)}
+            onChangeText={(text) => handleInputValue(CONSTS.LOGIN_SCREEN.LOGIN_INPUT, text)}
             placeholder={"Username"}
             autoCapitalize={"none"}
             
@@ -83,7 +83,7 @@ export const LoginScreen = ({ navigation }) => {
             onFocus={() => onHandleFocus(CONSTS.LOGIN_SCREEN.PASSWORD_INPUT)}
             onBlur={() => onHandleBlur(CONSTS.LOGIN_SCREEN.PASSWORD_INPUT)}
             style={isFocusedPassword ? styles.textInputFocus : styles.textInput}
-            onChangeText={(text) => handleInputValue("password", text)}
+            onChangeText={(text) => handleInputValue(CONSTS.LOGIN_SCREEN.PASSWORD_INPUT, text)}
             placeholder={"Password"}
             autoCapitalize={"none"}
           />

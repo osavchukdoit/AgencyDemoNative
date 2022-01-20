@@ -35,7 +35,7 @@ export default StyleSheet.create({
 
   textInputFocus: {
     borderWidth: 1,
-    borderColor: "red",
+    borderColor: THEME.COLOR.INPUT_BORDER_HOVER,
     borderRadius: 4,
     marginBottom: 15,
     height: 30,
