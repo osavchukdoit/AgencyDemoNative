@@ -11,12 +11,12 @@ export const AppStack = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name={"Login"}
+          name="Login"
           component={LoginScreen}
           options={{ title: "Login" }}
         />
         <Stack.Screen
-          name={"Employers"}
+          name="Employers"
           component={EmployersScreen}
           options={{ title: "Employers" }}
         />
