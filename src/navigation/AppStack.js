@@ -10,7 +10,7 @@ export const AppStack = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
+      <Stack.Screen
           name="Login"
           component={LoginScreen}
           options={{ title: "Login" }}

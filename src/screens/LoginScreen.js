@@ -6,12 +6,14 @@ import {
   TouchableOpacity,
   Image,
   KeyboardAvoidingView,
+  Button,
 } from "react-native";
 import { login } from "../api/login";
 import styles from "../styles/loginScreenStyles";
 import { LinearGradient } from "expo-linear-gradient";
 import { THEME } from "../styles/theme";
 import { CONSTS } from "../consts";
+// import { Button } from "react-native-web";
 
 export const LoginScreen = ({ navigation }) => {
   const [userDetails, setUserDetails] = useState({ login: "", password: "" });
@@ -49,6 +51,10 @@ export const LoginScreen = ({ navigation }) => {
     setUserDetails({ ...userDetails, [inputName]: inputValue });
   };
 
+  const loadScene = ()=>{
+    navigation.navigate("Employers")
+  }
+
   return (
     <View style={styles.container}>
       <KeyboardAvoidingView
@@ -67,10 +73,11 @@ export const LoginScreen = ({ navigation }) => {
             onFocus={() => onHandleFocus(CONSTS.LOGIN_SCREEN.LOGIN_INPUT)}
             onBlur={() => onHandleBlur(CONSTS.LOGIN_SCREEN.LOGIN_INPUT)}
             style={isFocusedLogin ? styles.textInputFocus : styles.textInput}
-            onChangeText={(text) => handleInputValue(CONSTS.LOGIN_SCREEN.LOGIN_INPUT, text)}
+            onChangeText={(text) =>
+              handleInputValue(CONSTS.LOGIN_SCREEN.LOGIN_INPUT, text)
+            }
             placeholder={"Username"}
             autoCapitalize={"none"}
-            
           />
         </View>
         <View style={styles.wraperLoginInput}>
@@ -83,7 +90,9 @@ export const LoginScreen = ({ navigation }) => {
             onFocus={() => onHandleFocus(CONSTS.LOGIN_SCREEN.PASSWORD_INPUT)}
             onBlur={() => onHandleBlur(CONSTS.LOGIN_SCREEN.PASSWORD_INPUT)}
             style={isFocusedPassword ? styles.textInputFocus : styles.textInput}
-            onChangeText={(text) => handleInputValue(CONSTS.LOGIN_SCREEN.PASSWORD_INPUT, text)}
+            onChangeText={(text) =>
+              handleInputValue(CONSTS.LOGIN_SCREEN.PASSWORD_INPUT, text)
+            }
             placeholder={"Password"}
             autoCapitalize={"none"}
           />
@@ -108,6 +117,7 @@ export const LoginScreen = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>
+      <Button title="Employers" onPress={loadScene}/>
     </View>
   );
 };
