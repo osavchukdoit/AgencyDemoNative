@@ -15,7 +15,7 @@ import { THEME } from "../styles/theme";
 import { CONSTS } from "../consts";
 // import { Button } from "react-native-web";
 
-export const LoginScreen = ({ navigation }) => {
+export const LoginScreen = ({ navigation, onLogin }) => {
   const [userDetails, setUserDetails] = useState({ login: "", password: "" });
   const [isFocusedLogin, setIsFocusedLogin] = useState(false);
   const [isFocusedPassword, setIsFocusedPassword] = useState(false);
@@ -107,17 +107,17 @@ export const LoginScreen = ({ navigation }) => {
           />
           <TouchableOpacity
             style={styles.loginButton}
-            onPress={() =>
+            onPress={
               // navigation.navigate("Employers", { name: "Local User" })
               // login(userDetails)
-              console.log(userDetails)
+              // console.log(userDetails)
+              onLogin
             }
           >
-            <Text style={styles.loginButtonText}>Signff in to agencyEz</Text>
+            <Text style={styles.loginButtonText}>Sign in to agencyEz</Text>
           </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>
-      <Button title="Employers" onPress={loadScene}/>
     </View>
   );
 };
