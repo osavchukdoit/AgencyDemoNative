@@ -47,10 +47,12 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: "center",
     borderWidth: 1,
+    borderColor: "white"
   },
 
   logoutBittonText: {
     fontSize: 18,
     fontWeight: "700",
+    color: "white"
   },
 });

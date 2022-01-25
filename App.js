@@ -1,21 +1,19 @@
-import { StatusBar } from "expo-status-bar";
-import React, { useState, Fragment } from "react";
-import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
+import { Provider, useDispatch, useSelector } from "react-redux";
+import store from "./src/redux/store";
+import React, { Fragment } from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { AppStack } from "./src/navigation/AppStack";
 import { LoginScreen } from "./src/screens/LoginScreen";
-import { Provider } from "react-redux"
-// import { Fragment } from "react/cjs/react.production.min";
+import { isLogin, isLogout } from "./src/redux/login/loginActions";
 
-export default function App() {
-  const [isLogin, setIsLogin] = useState(false);
+function AppCoveredByProvider() {
+  const value = useSelector((state) => state.login.isLogin);
+  const dispatch = useDispatch();
 
-  const onLogin = () => setIsLogin(true);
-  const onLogout = () => setIsLogin(false);
+  const onLogin = () => dispatch(isLogin());
+  const onLogout = () => dispatch(isLogout());
 
-  
-
-  return isLogin ? (
+  return value ? (
     <Fragment>
       <TouchableOpacity style={styles.logoutButton}>
         <Text>Sign Out</Text>
@@ -25,13 +23,14 @@ export default function App() {
   ) : (
     <LoginScreen onLogin={onLogin} />
   );
+}
 
-  // <NavigationContainer>
-  //   <View style={styles.container}>
-  //     <Text>Open up App.js to start working on your app!</Text>
-  //     <StatusBar style="auto" />
-  //   </View>
-  // </NavigationContainer>
+export default function App() {
+  return (
+    <Provider store={store}>
+      <AppCoveredByProvider />
+    </Provider>
+  );
 }
 
 const styles = StyleSheet.create({
