@@ -4,15 +4,16 @@ import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { AppStack } from "./src/navigation/AppStack";
 import { LoginScreen } from "./src/screens/LoginScreen";
+import { Provider } from "react-redux"
 // import { Fragment } from "react/cjs/react.production.min";
 
 export default function App() {
   const [isLogin, setIsLogin] = useState(false);
 
   const onLogin = () => setIsLogin(true);
-  const onLogout = () => {
-    setIsLogin(false);
-  };
+  const onLogout = () => setIsLogin(false);
+
+  
 
   return isLogin ? (
     <Fragment>
@@ -40,9 +41,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  logoutButton:{
+  logoutButton: {
     position: "absolute",
     backgroundColor: "green",
     marginTop: 40,
-  }
+  },
 });
