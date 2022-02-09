@@ -17,7 +17,7 @@ export default StyleSheet.create({
     paddingTop: "8%",
     alignItems: "center",
   },
-  loginWimdowTitle: {
+  loginWindowTitle: {
     fontSize: 32,
     color: THEME.COLOR.LOGIN_TITLE,
     marginBottom: 20,
@@ -42,7 +42,7 @@ export default StyleSheet.create({
     paddingLeft: 30,
   },
 
-  wraperLoginInput: {
+  wrapperLoginInput: {
     position: "relative",
     width: "78%",
   },
@@ -54,7 +54,7 @@ export default StyleSheet.create({
     marginRight: 8,
   },
 
-  wraperLoginButton: {
+  wrapperLoginButton: {
     backgroundColor: THEME.COLOR.BUTTON_LOGIN_DARK_GRADIENT,
     width: "78%",
   },

@@ -1,11 +1,10 @@
 const SERVER_URL = "https://www.agencyezdev.com";
 const SERVER_API_URL = `${SERVER_URL}/hitf`;
 const GATEWAY_SERVICES_URL = `${SERVER_API_URL}/gateway/services`;
+import { encode as btoa } from "base-64";
 
 export const login = async ({ login, password }) => {
   const base64EncodedAuth = btoa(`${login}:${password}`);
-  console.log(base64EncodedAuth)
-  // const base64EncodedAuth = `${login}:${password}`;
 
   const headers = {
     Authorization: `Basic ${base64EncodedAuth}`,
@@ -19,7 +18,8 @@ export const login = async ({ login, password }) => {
         headers: headers,
       }
     );
-    console.log(response);
+    const result = await response.json();
+    console.log("result=", result);
   } catch (e) {
     console.log("fetch error:", e);
   }

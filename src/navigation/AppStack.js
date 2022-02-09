@@ -6,15 +6,13 @@ import { EmployersScreen } from "../screens/EmployersScreen";
 
 const Stack = createNativeStackNavigator();
 
-export const AppStack = () => {
+export const AppStack = ({ setIsLoading }) => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
-          name="Login"
-          component={LoginScreen}
-          options={{ title: "Login" }}
-        />
+        <Stack.Screen name="Login" options={{ title: "Login" }}>
+          {(props) => <LoginScreen {...props} setIsLoading={setIsLoading} />}
+        </Stack.Screen>
         <Stack.Screen
           name="Employers"
           component={EmployersScreen}
