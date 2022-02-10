@@ -6,7 +6,8 @@ import {
   TouchableOpacity,
   Image,
   KeyboardAvoidingView,
-  Platform,
+  Button,
+  Platform
 } from "react-native";
 import { login } from "../api/login";
 import styles from "../styles/loginScreenStyles";
@@ -14,7 +15,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { THEME } from "../styles/theme";
 import { CONSTANTS } from "../constants";
 
-export const LoginScreen = ({ navigation, setIsLoading }) => {
+export const LoginScreen = ({ navigation, onLogin, setIsLoading }) => {
   const [userDetails, setUserDetails] = useState({ login: "", password: "" });
   const [isFocusedLogin, setIsFocusedLogin] = useState(false);
   const [isFocusedPassword, setIsFocusedPassword] = useState(false);
@@ -49,6 +50,10 @@ export const LoginScreen = ({ navigation, setIsLoading }) => {
   const handleInputValue = (inputName, inputValue) => {
     setUserDetails({ ...userDetails, [inputName]: inputValue });
   };
+
+  const loadScene = ()=>{
+    navigation.navigate("Employers")
+  }
 
   const onUserLogin = () => {
     setIsLoading(true);
