@@ -7,6 +7,7 @@ import {
   Image,
   KeyboardAvoidingView,
   Button,
+  Platform
 } from "react-native";
 import { login } from "../api/login";
 import styles from "../styles/loginScreenStyles";
