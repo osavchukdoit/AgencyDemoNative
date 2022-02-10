@@ -6,9 +6,11 @@ import { AppStack } from "./src/navigation/AppStack";
 import { LoginScreen } from "./src/screens/LoginScreen";
 import { isLogin, isLogout } from "./src/redux/login/loginActions";
 
-function AppCoveredByProvider() {
+function ToCoverAppByProvider() {
   const value = useSelector((state) => state.login.isLogin);
   const dispatch = useDispatch();
+
+  console.log(value);
 
   const onLogin = () => dispatch(isLogin());
   const onLogout = () => dispatch(isLogout());
@@ -28,7 +30,7 @@ function AppCoveredByProvider() {
 export default function App() {
   return (
     <Provider store={store}>
-      <AppCoveredByProvider />
+      <ToCoverAppByProvider />
     </Provider>
   );
 }
