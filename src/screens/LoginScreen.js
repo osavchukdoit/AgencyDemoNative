@@ -13,21 +13,20 @@ import { login } from "../api/login";
 import styles from "../styles/loginScreenStyles";
 import { LinearGradient } from "expo-linear-gradient";
 import { THEME } from "../styles/theme";
-import { CONSTS } from "../consts";
-// import { Button } from "react-native-web";
+import { CONSTANTS } from "../constants";
 
-export const LoginScreen = ({ navigation, onLogin }) => {
+export const LoginScreen = ({ navigation, onLogin, setIsLoading }) => {
   const [userDetails, setUserDetails] = useState({ login: "", password: "" });
   const [isFocusedLogin, setIsFocusedLogin] = useState(false);
   const [isFocusedPassword, setIsFocusedPassword] = useState(false);
 
   const onHandleFocus = (value) => {
     switch (value) {
-      case CONSTS.LOGIN_SCREEN.LOGIN_INPUT:
+      case CONSTANTS.LOGIN_SCREEN.LOGIN_INPUT:
         setIsFocusedLogin(true);
         break;
 
-      case CONSTS.LOGIN_SCREEN.PASSWORD_INPUT:
+      case CONSTANTS.LOGIN_SCREEN.PASSWORD_INPUT:
         setIsFocusedPassword(true);
         break;
       default:
@@ -37,10 +36,10 @@ export const LoginScreen = ({ navigation, onLogin }) => {
 
   const onHandleBlur = (value) => {
     switch (value) {
-      case CONSTS.LOGIN_SCREEN.LOGIN_INPUT:
+      case CONSTANTS.LOGIN_SCREEN.LOGIN_INPUT:
         setIsFocusedLogin(false);
         break;
-      case CONSTS.LOGIN_SCREEN.PASSWORD_INPUT:
+      case CONSTANTS.LOGIN_SCREEN.PASSWORD_INPUT:
         setIsFocusedPassword(false);
         break;
       default:
@@ -56,49 +55,57 @@ export const LoginScreen = ({ navigation, onLogin }) => {
     navigation.navigate("Employers")
   }
 
+  const onUserLogin = () => {
+    setIsLoading(true);
+    login(userDetails).then(() => {
+      setIsLoading(false);
+      navigation.navigate("Employers", { name: "Local User" });
+    });
+  };
+
   return (
     <View style={styles.container}>
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.loginWindow}
       >
-        <Text style={styles.loginWimdowTitle}>
+        <Text style={styles.loginWindowTitle}>
           Please log in to your account:
         </Text>
-        <View style={styles.wraperLoginInput}>
+        <View style={styles.wrapperLoginInput}>
           <Image
             style={styles.loginInputImg}
             source={require("../img/user.png")}
           />
           <TextInput
-            onFocus={() => onHandleFocus(CONSTS.LOGIN_SCREEN.LOGIN_INPUT)}
-            onBlur={() => onHandleBlur(CONSTS.LOGIN_SCREEN.LOGIN_INPUT)}
+            onFocus={() => onHandleFocus(CONSTANTS.LOGIN_SCREEN.LOGIN_INPUT)}
+            onBlur={() => onHandleBlur(CONSTANTS.LOGIN_SCREEN.LOGIN_INPUT)}
             style={isFocusedLogin ? styles.textInputFocus : styles.textInput}
             onChangeText={(text) =>
-              handleInputValue(CONSTS.LOGIN_SCREEN.LOGIN_INPUT, text)
+              handleInputValue(CONSTANTS.LOGIN_SCREEN.LOGIN_INPUT, text)
             }
             placeholder={"Username"}
             autoCapitalize={"none"}
           />
         </View>
-        <View style={styles.wraperLoginInput}>
+        <View style={styles.wrapperLoginInput}>
           <Image
             style={styles.loginInputImg}
             source={require("../img/pass.png")}
           />
 
           <TextInput
-            onFocus={() => onHandleFocus(CONSTS.LOGIN_SCREEN.PASSWORD_INPUT)}
-            onBlur={() => onHandleBlur(CONSTS.LOGIN_SCREEN.PASSWORD_INPUT)}
+            onFocus={() => onHandleFocus(CONSTANTS.LOGIN_SCREEN.PASSWORD_INPUT)}
+            onBlur={() => onHandleBlur(CONSTANTS.LOGIN_SCREEN.PASSWORD_INPUT)}
             style={isFocusedPassword ? styles.textInputFocus : styles.textInput}
             onChangeText={(text) =>
-              handleInputValue(CONSTS.LOGIN_SCREEN.PASSWORD_INPUT, text)
+              handleInputValue(CONSTANTS.LOGIN_SCREEN.PASSWORD_INPUT, text)
             }
             placeholder={"Password"}
             autoCapitalize={"none"}
           />
         </View>
-        <View style={styles.wraperLoginButton}>
+        <View style={styles.wrapperLoginButton}>
           <LinearGradient
             // Background Linear Gradient
             colors={[THEME.COLOR.BUTTON_LOGIN_LIGHT_GRADIENT, "transparent"]}
@@ -106,15 +113,7 @@ export const LoginScreen = ({ navigation, onLogin }) => {
             end={{ y: 0.0, x: 0.5 }}
             style={styles.linearBackground}
           />
-          <TouchableOpacity
-            style={styles.loginButton}
-            onPress={
-              // navigation.navigate("Employers", { name: "Local User" })
-              // login(userDetails)
-              // console.log(userDetails)
-              onLogin
-            }
-          >
+          <TouchableOpacity style={styles.loginButton} onPress={onUserLogin}>
             <Text style={styles.loginButtonText}>Sign in to agencyEz</Text>
           </TouchableOpacity>
         </View>

@@ -5,6 +5,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { AppStack } from "./src/navigation/AppStack";
 import { LoginScreen } from "./src/screens/LoginScreen";
 import { isLogin, isLogout } from "./src/redux/login/loginActions";
+import { Loader } from "./src/components/utils/Loader";
 
 function ToCoverAppByProvider() {
   const value = useSelector((state) => state.login.isLogin);
@@ -28,6 +29,8 @@ function ToCoverAppByProvider() {
 }
 
 export default function App() {
+  const [isLoading, setIsLoading] = useState(false);
+
   return (
     <Provider store={store}>
       <ToCoverAppByProvider />

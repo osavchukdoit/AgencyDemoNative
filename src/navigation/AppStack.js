@@ -9,7 +9,7 @@ import { THEME } from "../styles/theme";
 
 const Stack = createNativeStackNavigator();
 
-export const AppStack = ({ onLogout }) => {
+export const AppStack = ({ setIsLoading, onLogout }) => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
