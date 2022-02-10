@@ -20,6 +20,7 @@ export const login = async ({ login, password }) => {
     );
     const result = await response.json();
     console.log("result=", result);
+    return result;
   } catch (e) {
     console.log("fetch error:", e);
   }

@@ -1,36 +1,39 @@
+import React from "react";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import store from "./src/redux/store";
-import React, { Fragment } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { AppStack } from "./src/navigation/AppStack";
 import { LoginScreen } from "./src/screens/LoginScreen";
-import { isLogin, isLogout } from "./src/redux/login/loginActions";
 import { Loader } from "./src/components/utils/Loader";
+import { setLoggedIn, setLoggedOut } from "./src/redux/actions/actionCreator";
 
 function ToCoverAppByProvider() {
-  const value = useSelector((state) => state.login.isLogin);
+  const { isLogged, user, loaderStatus } = useSelector((state) => state.utils);
+  const { visible: isLoading } = loaderStatus;
   const dispatch = useDispatch();
 
-  console.log(value);
+  console.log(isLogged, user);
 
-  const onLogin = () => dispatch(isLogin());
-  const onLogout = () => dispatch(isLogout());
+  const handleLogin = ({ userName }) => dispatch(setLoggedIn(userName));
+  const handleLogout = () => dispatch(setLoggedOut());
 
-  return value ? (
-    <Fragment>
+  return isLogged ? (
+    <>
       <TouchableOpacity style={styles.logoutButton}>
         <Text>Sign Out</Text>
       </TouchableOpacity>
-      <AppStack onLogout={onLogout} />
-    </Fragment>
+      <AppStack onLogout={handleLogout} />
+      {isLoading && <Loader />}
+    </>
   ) : (
-    <LoginScreen onLogin={onLogin} />
+    <>
+      <LoginScreen onLogin={handleLogin} />
+      {isLoading && <Loader />}
+    </>
   );
 }
 
 export default function App() {
-  const [isLoading, setIsLoading] = useState(false);
-
   return (
     <Provider store={store}>
       <ToCoverAppByProvider />

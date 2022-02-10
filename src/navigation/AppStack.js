@@ -1,15 +1,14 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
-import { LoginScreen } from "../screens/LoginScreen";
 import { EmployersScreen } from "../screens/EmployersScreen";
 import { AboutScreen } from "../screens/AboutScreen";
-import { Button, TouchableOpacity, Text, StyleSheet } from "react-native";
+import { TouchableOpacity, Text, StyleSheet } from "react-native";
 import { THEME } from "../styles/theme";
 
 const Stack = createNativeStackNavigator();
 
-export const AppStack = ({ setIsLoading, onLogout }) => {
+export const AppStack = ({ onLogout }) => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -27,13 +26,13 @@ export const AppStack = ({ setIsLoading, onLogout }) => {
                 style={styles.logoutButtonBg}
                 onPress={onLogout}
               >
-                <Text style={styles.logoutBittonText}>Logout</Text>
+                <Text style={styles.logoutButtonText}>Logout</Text>
               </TouchableOpacity>
             ),
           }}
-        ></Stack.Screen>
+        />
         <Stack.Screen name="Employers" options={{ title: "Employers" }}>
-          {(props) => <EmployersScreen onLogout={onLogout} />}
+          {(props) => <EmployersScreen onLogout={onLogout} {...props} />}
         </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
@@ -47,12 +46,12 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: "center",
     borderWidth: 1,
-    borderColor: "white"
+    borderColor: "white",
   },
 
-  logoutBittonText: {
+  logoutButtonText: {
     fontSize: 18,
     fontWeight: "700",
-    color: "white"
+    color: "white",
   },
 });

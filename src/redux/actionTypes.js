@@ -1,0 +1,13 @@
+export const EDIT_USERS = "EDIT_USERS";
+export const SET_DEFAULT_USERS = "SET_DEFAULT_USERS";
+export const SET_LOGGED_IN = "SET_LOGGED_IN";
+export const SET_LOADER = "SET_LOADER";
+export const SET_TOKEN = "SET_TOKEN";
+export const SET_COMPANY = "SET_COMPANY";
+export const SET_AGENCY = "SET_AGENCY";
+export const SET_STORAGE = "SET_STORAGE";
+export const SHOW_MODAL = "SHOW_MODAL";
+export const SET_LOGGED_OUT = "SET_LOGGED_OUT";
+export const SET_EMPLOYER_ID = "SET_EMPLOYER_ID";
+export const SET_LOGO_IMAGE = "SET_LOGO_IMG";
+export const SET_USER_ID = "SET_USER_ID";

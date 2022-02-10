@@ -6,19 +6,21 @@ import {
   TouchableOpacity,
   Image,
   KeyboardAvoidingView,
-  Button,
-  Platform
+  Platform,
 } from "react-native";
 import { login } from "../api/login";
 import styles from "../styles/loginScreenStyles";
 import { LinearGradient } from "expo-linear-gradient";
 import { THEME } from "../styles/theme";
 import { CONSTANTS } from "../constants";
+import { useDispatch } from "react-redux";
+import { setLoader } from "../redux/actions/actionCreator";
 
-export const LoginScreen = ({ navigation, onLogin, setIsLoading }) => {
+export const LoginScreen = ({ onLogin }) => {
   const [userDetails, setUserDetails] = useState({ login: "", password: "" });
   const [isFocusedLogin, setIsFocusedLogin] = useState(false);
   const [isFocusedPassword, setIsFocusedPassword] = useState(false);
+  const dispatch = useDispatch();
 
   const onHandleFocus = (value) => {
     switch (value) {
@@ -51,15 +53,11 @@ export const LoginScreen = ({ navigation, onLogin, setIsLoading }) => {
     setUserDetails({ ...userDetails, [inputName]: inputValue });
   };
 
-  const loadScene = ()=>{
-    navigation.navigate("Employers")
-  }
-
   const onUserLogin = () => {
-    setIsLoading(true);
-    login(userDetails).then(() => {
-      setIsLoading(false);
-      navigation.navigate("Employers", { name: "Local User" });
+    dispatch(setLoader({ visible: true, text: "Loading..." }));
+    login(userDetails).then((userDetails) => {
+      dispatch(setLoader({ visible: false, text: "" }));
+      onLogin({ userName: userDetails.HitfUser.fullName });
     });
   };
 
