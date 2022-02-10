@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { EmployersScreen } from "../screens/EmployersScreen";
 import { AboutScreen } from "../screens/AboutScreen";
+import { HomeScreen } from "../screens/HomeScreen";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 import { THEME } from "../styles/theme";
 
@@ -12,6 +13,11 @@ export const AppStack = ({ onLogout }) => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen name="HomeScreen" component={HomeScreen}/>
+          
+        {/* <Stack.Screen name="HomePage" options={{ title: "HomePage" }}>
+          {(props) => <HomeScreen onLogout={onLogout} {...props} />}
+        </Stack.Screen> */}
         <Stack.Screen
           name="About"
           component={AboutScreen}

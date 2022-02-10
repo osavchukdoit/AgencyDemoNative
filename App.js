@@ -19,9 +19,9 @@ function ToCoverAppByProvider() {
 
   return isLogged ? (
     <>
-      <TouchableOpacity style={styles.logoutButton}>
+      {/* <TouchableOpacity style={styles.logoutButton}>
         <Text>Sign Out</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <AppStack onLogout={handleLogout} />
       {isLoading && <Loader />}
     </>
