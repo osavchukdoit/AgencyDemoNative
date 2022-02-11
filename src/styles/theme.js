@@ -10,6 +10,15 @@ export const THEME = {
     BUTTON_LOGIN_LIGHT_GRADIENT_HOVER: "#2699A2",
     LOGIN_BUTTON_TEXT: "#fff",
     LOADER: "#fff",
+    BLUE_BRIGHT: "#43BEBB",
+    WHITE: "#FFF",
+    GREY_LIGHT_TEXT: "#707070",
+  },
+  BOX_SHADOW: {
+    COLOR_BLACK: "#000",
+    OPACITY: 0.06,
+    OFFSET: { width: 0, height: 4 },
+    SHADOW_RADIUS: 30,
   },
   BACKGROUND: {
     MAIN: "#f4efef",
