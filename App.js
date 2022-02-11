@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import store from "./src/redux/store";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
@@ -6,6 +6,7 @@ import { AppStack } from "./src/navigation/AppStack";
 import { LoginScreen } from "./src/screens/LoginScreen";
 import { Loader } from "./src/components/utils/Loader";
 import { setLoggedIn, setLoggedOut } from "./src/redux/actions/actionCreator";
+import * as Font from "expo-font";
 
 function ToCoverAppByProvider() {
   const { isLogged, user, loaderStatus } = useSelector((state) => state.utils);
@@ -34,11 +35,31 @@ function ToCoverAppByProvider() {
 }
 
 export default function App() {
-  return (
-    <Provider store={store}>
-      <ToCoverAppByProvider />
-    </Provider>
-  );
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+
+  async function loadFonts() {
+    await Font.loadAsync({
+      AvenirBook: require("./src/assets/fonts/Avenir_Book.ttf"),
+      AvenirHeavy: require("./src/assets/fonts/Avenir_Heavy.ttf"),
+      AvenirLight: require("./src/assets/fonts/Avenir_Light.ttf"),
+      AvenirMedium: require("./src/assets/fonts/Avenir_Medium.ttf"),
+      AvenirRoman: require("./src/assets/fonts/Avenir_Roman.ttf"),
+    });
+    setFontsLoaded(true);
+  }
+
+  useEffect(() => {
+    loadFonts();
+  }, []);
+
+  if (fontsLoaded) {
+    return (
+      <Provider store={store}>
+        <ToCoverAppByProvider />
+      </Provider>
+    );
+  }
+  return null;
 }
 
 const styles = StyleSheet.create({
