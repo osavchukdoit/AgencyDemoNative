@@ -10,6 +10,8 @@ export const THEME = {
     BUTTON_LOGIN_LIGHT_GRADIENT_HOVER: "#2699A2",
     LOGIN_BUTTON_TEXT: "#fff",
     LOADER: "#fff",
+    HEADER_TINT: "#fff",
+    MENU: "#fff",
     BLUE_BRIGHT: "#43BEBB",
     WHITE: "#FFF",
     GREY_LIGHT_TEXT: "#707070",
@@ -23,5 +25,7 @@ export const THEME = {
   BACKGROUND: {
     MAIN: "#f4efef",
     LOADER: "rgba(0,0,0,.5)",
+    HEADER: "#1A3C5A",
+    MENU: "#002D4F",
   },
 };
