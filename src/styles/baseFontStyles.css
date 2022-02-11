@@ -1,7 +1,0 @@
-@font-face {
-  font-family: "Avenir";
-  font-style: normal;
-  src: local("Avenir"), local("AvenirLTStd-Roman"),
-    url("../assets/fonts/AvenirLTStd-Roman.ttf") format("woff2"),
-    url("../assets/fonts/AvenirLTStd-Roman.ttf") format("woff");
-}

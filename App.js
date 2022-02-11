@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import store from "./src/redux/store";
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { AppStack } from "./src/navigation/AppStack";
 import { LoginScreen } from "./src/screens/LoginScreen";
 import { Loader } from "./src/components/utils/Loader";
@@ -20,9 +19,6 @@ function ToCoverAppByProvider() {
 
   return isLogged ? (
     <>
-      {/* <TouchableOpacity style={styles.logoutButton}>
-        <Text>Sign Out</Text>
-      </TouchableOpacity> */}
       <AppStack onLogout={handleLogout} />
       {isLoading && <Loader />}
     </>
@@ -61,17 +57,3 @@ export default function App() {
   }
   return null;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  logoutButton: {
-    position: "absolute",
-    backgroundColor: "green",
-    marginTop: 40,
-  },
-});
