@@ -5,6 +5,7 @@ import { AppStack } from "./src/navigation/AppStack";
 import { LoginScreen } from "./src/screens/LoginScreen";
 import { Loader } from "./src/components/utils/Loader";
 import { setLoggedIn, setLoggedOut } from "./src/redux/actions/actionCreator";
+import { StatusBar } from "react-native";
 import * as Font from "expo-font";
 
 function ToCoverAppByProvider() {
@@ -19,6 +20,7 @@ function ToCoverAppByProvider() {
 
   return isLogged ? (
     <>
+      <StatusBar barStyle={"light-content"} />
       <AppStack onLogout={handleLogout} />
       {isLoading && <Loader />}
     </>
