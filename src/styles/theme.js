@@ -15,6 +15,7 @@ export const THEME = {
     BLUE_BRIGHT: "#43BEBB",
     WHITE: "#FFF",
     GREY_LIGHT_TEXT: "#707070",
+    GREY_DARK_TEXT: "#1D252B",
   },
   BOX_SHADOW: {
     COLOR_BLACK: "#000",
