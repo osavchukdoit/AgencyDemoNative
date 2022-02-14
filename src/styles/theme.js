@@ -16,6 +16,7 @@ export const THEME = {
     WHITE: "#FFF",
     GREY_LIGHT_TEXT: "#707070",
     GREY_DARK_TEXT: "#1D252B",
+    BUTTON_SHOW_HIDE_BG: "rgba(67, 190, 187, 0.1)",
   },
   BOX_SHADOW: {
     COLOR_BLACK: "#000",
@@ -28,5 +29,7 @@ export const THEME = {
     LOADER: "rgba(0,0,0,.5)",
     HEADER: "#1A3C5A",
     MENU: "#002D4F",
+    BUTTON_SHOW_HIDE_BG: "rgba(67, 190, 187, 0.1)",
+    LIGHT_BLUE: "#F6FCFC",
   },
 };

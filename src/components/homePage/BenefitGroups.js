@@ -5,6 +5,7 @@ import { AppText } from "../utils/AppText";
 import ShowHideIconSvg from "../../assets/icons/arrowUp.svg";
 import { LinearGradient } from "expo-linear-gradient";
 import { useState } from "react";
+import { VoluntarySTD } from "./VoluntarySTD";
 
 export const BenefitGroups = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -55,6 +56,7 @@ export const BenefitGroups = () => {
             Benefits designed to protect your income for a set period of time
             when you are unable to work due to an unexpected illness or injury
           </Text>
+          <VoluntarySTD />
         </View>
       </View>
     </View>
@@ -71,10 +73,7 @@ const styles = StyleSheet.create({
     paddingTop: 12,
     paddingBottom: 14,
     paddingHorizontal: 15,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
+    borderRadius: 20,
   },
   shadowProp: {
     shadowColor: THEME.BOX_SHADOW.COLOR_BLACK,
@@ -94,7 +93,7 @@ const styles = StyleSheet.create({
   containetButtoShowHide: {
     width: 24,
     height: 24,
-    backgroundColor: "rgba(67, 190, 187, 0.1)",
+    backgroundColor: THEME.BACKGROUND.BUTTON_SHOW_HIDE_BG,
     borderRadius: 4,
   },
   buttonShowHide: {
@@ -123,6 +122,7 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.AVENIR.MEDIUM,
     fontSize: 12,
     lineHeight: 16,
+    marginBottom: 11,
   },
 
   rotateArrow: {
