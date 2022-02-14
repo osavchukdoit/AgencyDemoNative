@@ -4,8 +4,17 @@ import { THEME } from "../../styles/theme";
 import { AppText } from "../utils/AppText";
 import ShowHideIconSvg from "../../assets/icons/arrowUp.svg";
 import { LinearGradient } from "expo-linear-gradient";
+import { useState } from "react";
 
 export const BenefitGroups = () => {
+  const [isVisible, setIsVisible] = useState(true);
+
+  const onHandlePress = () => {
+    setIsVisible((prev) => {
+      return !prev;
+    });
+  };
+
   return (
     <View style={styles.wrapper}>
       <View style={styles.benefitWrapper}>
@@ -15,30 +24,38 @@ export const BenefitGroups = () => {
           </AppText>
           <View style={styles.containetButtoShowHide}>
             <TouchableOpacity
-              style={styles.buttonShowHide}
-              onPress={() => console.log("Press")}
+              style={
+                isVisible
+                  ? { ...styles.buttonShowHide }
+                  : {
+                      ...styles.buttonShowHide,
+                      transform: [{ rotate: "180deg" }],
+                    }
+              }
+              onPress={onHandlePress}
             >
               <Text>{<ShowHideIconSvg />}</Text>
             </TouchableOpacity>
           </View>
         </View>
-        <View style={styles.gradientWrapper}>
-          <LinearGradient
-            // colors={['#4c669f', '#3b5998', '#192f6a']}
-            colors={[
-              "rgba(76, 102, 159, 0)",
-              "rgba(76, 102, 159, 0.5)",
-              "rgba(76, 102, 159, 0)",
-            ]}
-            start={{ y: 0, x: 1 }}
-            end={{ y: 0, x: 0 }}
-            style={styles.linearBackground}
-          />
+        <View style={isVisible ? { display: "flex" } : { display: "none" }}>
+          <View style={styles.gradientWrapper}>
+            <LinearGradient
+              colors={[
+                "rgba(76, 102, 159, 0)",
+                "rgba(76, 102, 159, 0.5)",
+                "rgba(76, 102, 159, 0)",
+              ]}
+              start={{ y: 0, x: 1 }}
+              end={{ y: 0, x: 0 }}
+              style={styles.linearBackground}
+            />
+          </View>
+          <Text style={styles.benefitText}>
+            Benefits designed to protect your income for a set period of time
+            when you are unable to work due to an unexpected illness or injury
+          </Text>
         </View>
-        <Text style={styles.benefitText}>
-          Benefits designed to protect your income for a set period of time when
-          you are unable to work due to an unexpected illness or injury
-        </Text>
       </View>
     </View>
   );
@@ -106,5 +123,9 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.AVENIR.MEDIUM,
     fontSize: 12,
     lineHeight: 16,
+  },
+
+  rotateArrow: {
+    transform: [{ rotate: "180deg" }],
   },
 });
