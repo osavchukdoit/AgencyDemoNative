@@ -1,33 +1,36 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 import { THEME } from "../../styles/theme";
-import { FONTS } from "../../styles/fonts";
+import { AppText } from "../utils/AppText";
 
 export const HomePageTop = () => {
   return (
-    <View style={[styles.wraper, styles.shadowProp]}>
+    <View style={[styles.wrapper, styles.shadowProp]}>
       <View>
         <Image
           style={styles.image}
           source={require("../../assets/topComponent/cute-family-playing-summer-field.png")}
         />
       </View>
-      <Text style={styles.text}>
+      <AppText color={THEME.COLOR.GREY_LIGHT_TEXT} style={styles.text}>
         Lockheed 2 Industries Inc working with Brown Agencies Inc has created a
         best-in-class benefits program to meet your benefit needs. Below are the
         benefits offered in this enrollment.
-      </Text>
-      <View style={styles.pseudoelement}></View>
-      <Text style={[styles.text, styles.lastTextEl]}>
+      </AppText>
+      <View style={styles.pseudoElement} />
+      <AppText
+        color={THEME.COLOR.GREY_LIGHT_TEXT}
+        style={{ ...styles.text, ...styles.lastTextEl }}
+      >
         View details by clicking on each and select which one you would like to
         enroll to
-      </Text>
+      </AppText>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  wraper: {
+  wrapper: {
     paddingHorizontal: 18,
     backgroundColor: THEME.COLOR.WHITE,
     paddingTop: 12,
@@ -44,11 +47,9 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     fontSize: 12,
     lineHeight: 16,
-    fontFamily: FONTS.AVENIR.ROMAN,
     marginBottom: 9,
-    color: THEME.COLOR.GREY_LIGHT_TEXT,
   },
-  pseudoelement: {
+  pseudoElement: {
     width: 21,
     height: 4,
     backgroundColor: THEME.COLOR.BLUE_BRIGHT,
