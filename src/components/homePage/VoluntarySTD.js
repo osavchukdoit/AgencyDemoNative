@@ -2,6 +2,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
 import CrutchesSvg from "../../assets/icons/crutches.svg";
+import { CostOverview } from "./CostOverview";
 
 export const VoluntarySTD = () => {
   return (
@@ -17,6 +18,7 @@ export const VoluntarySTD = () => {
           </Text>
         </View>
       </View>
+      <CostOverview />
     </View>
   );
 };
@@ -31,6 +33,7 @@ const styles = StyleSheet.create({
   },
   svgAndTitleWrapper: {
     flexDirection: "row",
+    marginBottom: 11,
   },
   svgContainer: {
     width: 48,

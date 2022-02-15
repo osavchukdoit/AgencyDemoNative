@@ -8,7 +8,7 @@ import { useState } from "react";
 import { VoluntarySTD } from "./VoluntarySTD";
 
 export const BenefitGroups = () => {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
 
   const onHandlePress = () => {
     setIsVisible((prev) => {
@@ -17,13 +17,13 @@ export const BenefitGroups = () => {
   };
 
   return (
-    <View style={styles.wrapper}>
+    <View style={[styles.wrapper, styles.shadowProp]}>
       <View style={styles.benefitWrapper}>
         <View style={styles.benefitTitleWrapper}>
           <AppText fontFamily={FONTS.AVENIR.HEAVY} style={styles.benefitTitle}>
             Income Protection
           </AppText>
-          <View style={styles.containetButtoShowHide}>
+          <View style={styles.containerButtonShowHide}>
             <TouchableOpacity
               style={
                 isVisible
@@ -33,6 +33,7 @@ export const BenefitGroups = () => {
                       transform: [{ rotate: "180deg" }],
                     }
               }
+              ///немного переписать как сказал Сашко
               onPress={onHandlePress}
             >
               <Text>{<ShowHideIconSvg />}</Text>
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
   },
   benefitWrapper: {
     backgroundColor: THEME.COLOR.WHITE,
-    paddingTop: 12,
+    paddingTop: 14,
     paddingBottom: 14,
     paddingHorizontal: 15,
     borderRadius: 20,
@@ -90,7 +91,7 @@ const styles = StyleSheet.create({
     lineHeight: 21.8,
     color: THEME.COLOR.GREY_DARK_TEXT,
   },
-  containetButtoShowHide: {
+  containerButtonShowHide: {
     width: 24,
     height: 24,
     backgroundColor: THEME.BACKGROUND.BUTTON_SHOW_HIDE_BG,
