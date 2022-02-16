@@ -12,7 +12,7 @@ export const HomePageTop = () => {
           source={require("../../assets/topComponent/cute-family-playing-summer-field.png")}
         />
       </View>
-      <AppText color={THEME.COLOR.GREY_LIGHT_TEXT} style={styles.text}>
+      <AppText style={styles.text}>
         Lockheed 2 Industries Inc working with Brown Agencies Inc has created a
         best-in-class benefits program to meet your benefit needs. Below are the
         benefits offered in this enrollment.
@@ -37,18 +37,23 @@ const styles = StyleSheet.create({
     paddingBottom: 14,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
+    marginBottom: 22,
   },
+
   image: {
     width: "100%",
     height: 88,
     marginBottom: 9,
   },
+
   text: {
     fontWeight: "400",
     fontSize: 12,
     lineHeight: 16,
     marginBottom: 9,
+    color: THEME.COLOR.GREY_LIGHT_TEXT,
   },
+
   pseudoElement: {
     width: 21,
     height: 4,
@@ -56,12 +61,14 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 9,
   },
+
   shadowProp: {
     shadowColor: THEME.BOX_SHADOW.COLOR_BLACK,
     shadowOffset: THEME.BOX_SHADOW.OFFSET,
     shadowOpacity: THEME.BOX_SHADOW.OPACITY,
     shadowRadius: THEME.BOX_SHADOW.SHADOW_RADIUS,
   },
+
   lastTextEl: {
     marginBottom: 0,
   },

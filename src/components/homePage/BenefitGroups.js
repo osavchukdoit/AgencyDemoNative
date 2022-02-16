@@ -33,7 +33,6 @@ export const BenefitGroups = () => {
                       transform: [{ rotate: "180deg" }],
                     }
               }
-              ///немного переписать как сказал Сашко
               onPress={onHandlePress}
             >
               <Text>{<ShowHideIconSvg />}</Text>
@@ -66,9 +65,10 @@ export const BenefitGroups = () => {
 
 const styles = StyleSheet.create({
   wrapper: {
-    paddingVertical: 22,
+    paddingBottom: 20,
     paddingHorizontal: 20,
   },
+
   benefitWrapper: {
     backgroundColor: THEME.COLOR.WHITE,
     paddingTop: 14,
@@ -76,27 +76,32 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     borderRadius: 20,
   },
+
   shadowProp: {
     shadowColor: THEME.BOX_SHADOW.COLOR_BLACK,
     shadowOffset: THEME.BOX_SHADOW.OFFSET,
     shadowOpacity: THEME.BOX_SHADOW.OPACITY,
     shadowRadius: THEME.BOX_SHADOW.SHADOW_RADIUS,
   },
+
   benefitTitleWrapper: {
     flexDirection: "row",
     justifyContent: "space-between",
   },
+
   benefitTitle: {
     fontSize: 16,
     lineHeight: 21.8,
     color: THEME.COLOR.GREY_DARK_TEXT,
   },
+
   containerButtonShowHide: {
     width: 24,
     height: 24,
     backgroundColor: THEME.BACKGROUND.BUTTON_SHOW_HIDE_BG,
     borderRadius: 4,
   },
+
   buttonShowHide: {
     width: "100%",
     height: "100%",
@@ -110,6 +115,7 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: "rgba(76, 102, 159, 0.5)",
   },
+
   linearBackground: {
     position: "absolute",
     left: 0,

@@ -107,8 +107,9 @@ export const CostOverview = () => {
 const styles = StyleSheet.create({
   costOverviewWrapper: {
     backgroundColor: THEME.COLOR.WHITE,
-    shadowColor: THEME.BOX_SHADOW.COLOR_BLACK,
     shadowOffset: THEME.BOX_SHADOW.OFFSET,
+    shadowRadius: 40,
+    shadowColor: THEME.BOX_SHADOW.COLOR_BLACK,
     shadowOpacity: 0.05,
     borderRadius: 8,
     paddingTop: 11,

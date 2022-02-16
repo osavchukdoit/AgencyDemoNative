@@ -17,7 +17,10 @@ export const ButtonEnrollment = () => {
 const styles = StyleSheet.create({
   wrapper: {
     paddingHorizontal: 20,
-    paddingBottom: 26,
+    paddingBottom: 10,
+    position: "absolute",
+   bottom:0,
+   width:"100%"
   },
 
   buttonWrapper: {

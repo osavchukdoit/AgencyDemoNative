@@ -11,7 +11,7 @@ export const VoluntarySTD = () => {
         <View style={styles.svgContainer}>
           <CrutchesSvg />
         </View>
-        <View style={{ width: 256 }}>
+        <View style={styles.textWrapper}>
           <Text style={styles.titleSTD}>Voluntary STD</Text>
           <Text style={styles.textSTD}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -46,6 +46,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+
+  textWrapper: {
+    width: 256,
+  },
+
   titleSTD: {
     fontFamily: FONTS.AVENIR.HEAVY,
     fontSize: 14,
