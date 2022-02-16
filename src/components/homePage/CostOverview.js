@@ -51,52 +51,44 @@ export const CostOverview = () => {
         </View>
         <View style={styles.coverageTierWrapper}>
           <View style={styles.titlesItemsWrapper}>
-            <Text style={[styles.titleItems, { width: "50%" }]}>
+            <Text style={[styles.titleItems, styles.coverageWidth]}>
               Coverage Tier
             </Text>
-            <Text style={[styles.titleItems, { width: "30%" }]}>Weekly</Text>
-            <Text style={[styles.titleItems, { width: "20%" }]}>Monthly</Text>
+            <Text style={[styles.titleItems, styles.weeklyWidth]}>Weekly</Text>
+            <Text style={[styles.titleItems, styles.monthlyWidth]}>
+              Monthly
+            </Text>
           </View>
-          <View
-            style={[
-              styles.textItemsWrapper,
-              { backgroundColor: "rgba(67, 190, 187, 0.05)" },
-            ]}
-          >
-            <Text style={[styles.textItems, { width: "50%" }]}>
+          <View style={[styles.textItemsWrapper, styles.itemsBackgroundColor]}>
+            <Text style={[styles.textItems, styles.coverageWidth]}>
               Employee Only
             </Text>
-            <Text style={[styles.numbetItems, { width: "30%" }]}>$4.16</Text>
-            <Text style={[styles.numbetItems, { width: "20%" }]}>$5K</Text>
+            <Text style={[styles.numberItems, styles.weeklyWidth]}>$4.16</Text>
+            <Text style={[styles.numberItems, styles.monthlyWidth]}>$5K</Text>
           </View>
 
           <View style={[styles.textItemsWrapper]}>
-            <Text style={[styles.textItems, { width: "50%" }]}>
+            <Text style={[styles.textItems, styles.coverageWidth]}>
               Employee and Spouse
             </Text>
-            <Text style={[styles.numbetItems, { width: "30%" }]}>$8.58</Text>
-            <Text style={[styles.numbetItems, { width: "20%" }]}>$6K</Text>
+            <Text style={[styles.numberItems, styles.weeklyWidth]}>$8.58</Text>
+            <Text style={[styles.numberItems, styles.monthlyWidth]}>$6K</Text>
           </View>
 
-          <View
-            style={[
-              styles.textItemsWrapper,
-              { backgroundColor: "rgba(67, 190, 187, 0.05)" },
-            ]}
-          >
-            <Text style={[styles.textItems, { width: "50%" }]}>
+          <View style={[styles.textItemsWrapper, styles.itemsBackgroundColor]}>
+            <Text style={[styles.textItems, styles.coverageWidth]}>
               Employee and Children
             </Text>
-            <Text style={[styles.numbetItems, { width: "30%" }]}>$4.16</Text>
-            <Text style={[styles.numbetItems, { width: "20%" }]}>$15K</Text>
+            <Text style={[styles.numberItems, styles.weeklyWidth]}>$4.16</Text>
+            <Text style={[styles.numberItems, styles.monthlyWidth]}>$15K</Text>
           </View>
 
           <View style={[styles.textItemsWrapper]}>
-            <Text style={[styles.textItems, { width: "50%" }]}>
+            <Text style={[styles.textItems, styles.coverageWidth]}>
               Employee and Family
             </Text>
-            <Text style={[styles.numbetItems, { width: "30%" }]}>$8.58</Text>
-            <Text style={[styles.numbetItems, { width: "20%" }]}>$30K</Text>
+            <Text style={[styles.numberItems, styles.weeklyWidth]}>$8.58</Text>
+            <Text style={[styles.numberItems, styles.monthlyWidth]}>$30K</Text>
           </View>
         </View>
       </View>
@@ -115,6 +107,7 @@ const styles = StyleSheet.create({
     paddingTop: 11,
     paddingBottom: 9,
   },
+
   costOverwieTitleWrapper: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -147,7 +140,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 7,
     height: 1,
-    backgroundColor: "rgba(76, 102, 159, 0.5)",
+    backgroundColor: THEME.BLUE_BRIGHT,
+    opacity: 0.5,
     marginBottom: 5,
   },
 
@@ -159,12 +153,26 @@ const styles = StyleSheet.create({
     height: "100%",
   },
 
-  coverageTierWrapper: {},
-
   titlesItemsWrapper: {
     flexDirection: "row",
     paddingLeft: 18,
     marginBottom: 7,
+  },
+
+  itemsBackgroundColor: {
+    backgroundColor: THEME.BACKGROUND.OVERVIEW_ITEMS_ROW,
+  },
+
+  coverageWidth: {
+    width: "50%",
+  },
+
+  monthlyWidth: {
+    width: "20%",
+  },
+
+  weeklyWidth: {
+    width: "30%",
   },
 
   titleItems: {
@@ -191,7 +199,7 @@ const styles = StyleSheet.create({
     opacity: 0.45,
   },
 
-  numbetItems: {
+  numberItems: {
     fontFamily: FONTS.AVENIR.BOOK,
     fontSize: 12,
     lineHeight: 16,

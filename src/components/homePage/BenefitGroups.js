@@ -43,12 +43,10 @@ export const BenefitGroups = () => {
           <View style={styles.gradientWrapper}>
             <LinearGradient
               colors={[
-                "rgba(76, 102, 159, 0)",
-                "rgba(76, 102, 159, 0.5)",
-                "rgba(76, 102, 159, 0)",
+                "rgba(26, 60, 90, 0)",
+                "rgba(26, 60, 90, 0.5)",
+                "rgba(26, 60, 90, 0)",
               ]}
-              start={{ y: 0, x: 1 }}
-              end={{ y: 0, x: 0 }}
               style={styles.linearBackground}
             />
           </View>
@@ -113,7 +111,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 7,
     height: 1,
-    backgroundColor: "rgba(76, 102, 159, 0.5)",
   },
 
   linearBackground: {
@@ -130,9 +127,5 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 16,
     marginBottom: 11,
-  },
-
-  rotateArrow: {
-    transform: [{ rotate: "180deg" }],
   },
 });
