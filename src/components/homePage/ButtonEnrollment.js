@@ -17,6 +17,7 @@ export const ButtonEnrollment = () => {
 const styles = StyleSheet.create({
   wrapper: {
     paddingHorizontal: 20,
+    paddingBottom: 26,
   },
 
   buttonWrapper: {
