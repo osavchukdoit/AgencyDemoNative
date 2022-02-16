@@ -15,12 +15,14 @@ import { THEME } from "../styles/theme";
 import { CONSTANTS } from "../constants";
 import { useDispatch } from "react-redux";
 import { setLoader } from "../redux/actions/actionCreator";
+import { useLoginUser } from "../api/useLoginUser";
 
 export const LoginScreen = ({ onLogin }) => {
   const [userDetails, setUserDetails] = useState({ login: "", password: "" });
   const [isFocusedLogin, setIsFocusedLogin] = useState(false);
   const [isFocusedPassword, setIsFocusedPassword] = useState(false);
   const dispatch = useDispatch();
+  const loginUser = useLoginUser();
 
   const onHandleFocus = (value) => {
     switch (value) {
@@ -56,6 +58,7 @@ export const LoginScreen = ({ onLogin }) => {
   const onUserLogin = () => {
     dispatch(setLoader({ visible: true, text: "Loading..." }));
     login(userDetails).then((userDetails) => {
+      loginUser(userDetails);
       dispatch(setLoader({ visible: false, text: "" }));
       onLogin({ userName: userDetails.HitfUser.fullName });
     });
@@ -91,7 +94,6 @@ export const LoginScreen = ({ onLogin }) => {
             style={styles.loginInputImg}
             source={require("../img/pass.png")}
           />
-
           <TextInput
             onFocus={() => onHandleFocus(CONSTANTS.LOGIN_SCREEN.PASSWORD_INPUT)}
             onBlur={() => onHandleBlur(CONSTANTS.LOGIN_SCREEN.PASSWORD_INPUT)}
@@ -101,6 +103,7 @@ export const LoginScreen = ({ onLogin }) => {
             }
             placeholder={"Password"}
             autoCapitalize={"none"}
+            secureTextEntry={true}
           />
         </View>
         <View style={styles.wrapperLoginButton}>

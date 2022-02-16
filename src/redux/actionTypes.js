@@ -11,3 +11,5 @@ export const SET_LOGGED_OUT = "SET_LOGGED_OUT";
 export const SET_EMPLOYER_ID = "SET_EMPLOYER_ID";
 export const SET_LOGO_IMAGE = "SET_LOGO_IMG";
 export const SET_USER_ID = "SET_USER_ID";
+export const SET_PAGE_DESC = "SET_PAGE_DESC";
+export const CLEAR_PAGE_DESC = "CLEAR_PAGE_DESC";
