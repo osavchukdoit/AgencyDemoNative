@@ -4,3 +4,7 @@ export const CONSTANTS = {
     PASSWORD_INPUT: "password",
   },
 };
+
+export const SERVER_URL = "https://www.agencyezdev.com";
+export const SERVER_API_URL = `${SERVER_URL}/hitf`;
+export const GATEWAY_SERVICES_URL = `${SERVER_API_URL}/gateway/services`;

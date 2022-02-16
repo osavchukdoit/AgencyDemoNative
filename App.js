@@ -9,11 +9,9 @@ import { StatusBar } from "react-native";
 import * as Font from "expo-font";
 
 function ToCoverAppByProvider() {
-  const { isLogged, user, loaderStatus } = useSelector((state) => state.utils);
+  const { isLogged, loaderStatus } = useSelector((state) => state.utils);
   const { visible: isLoading } = loaderStatus;
   const dispatch = useDispatch();
-
-  console.log(isLogged, user);
 
   const handleLogin = ({ userName }) => dispatch(setLoggedIn(userName));
   const handleLogout = () => dispatch(setLoggedOut());
