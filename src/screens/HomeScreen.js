@@ -1,11 +1,29 @@
 import React from "react";
-import { View } from "react-native";
-import { HomePageTop } from "../components/homePageTop/HomePageTop";
+import { ScrollView, View, StyleSheet } from "react-native";
+import { BenefitGroups } from "../components/homePage/BenefitGroups";
+import { HomePageTop } from "../components/homePage/HomePageTop";
+import { ButtonEnrollment } from "../components/homePage/ButtonEnrollment";
 
 export const HomeScreen = () => {
   return (
-    <View>
-      <HomePageTop />
+    <View style={styles.wrapper}>
+      <ScrollView stickyHeaderIndices={[0]}>
+        <HomePageTop />
+        <View>
+          <BenefitGroups />
+          <BenefitGroups />
+          <BenefitGroups />
+          <BenefitGroups />
+        </View>
+      </ScrollView>
+      <ButtonEnrollment />
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  wrapper: {
+    height: "100%",
+    position: "relative",
+  },
+});
