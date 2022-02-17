@@ -10,7 +10,7 @@ import {
   Image,
   Platform,
 } from "react-native";
-import { HomeScreen } from "../screens/HomeScreen";
+// import { HomeScreen } from "../screens/HomeScreen";
 import { FamilyInfoOverviewScreen } from "../screens/FamilyInfoOverviewScreen";
 import { THEME } from "../styles/theme";
 import {
