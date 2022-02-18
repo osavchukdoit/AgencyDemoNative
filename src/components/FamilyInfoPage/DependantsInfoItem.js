@@ -1,6 +1,6 @@
 import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
 import PersonIconSvg from "../../assets/icons/familyInfoIcons/person.svg";
-import ArrowRoghtSvg from "../../assets/icons/familyInfoIcons/vectorRight.svg";
+import ArrowRightSvg from "../../assets/icons/familyInfoIcons/vectorRight.svg";
 import mainStyles from "./stylesFamilyInfoItem";
 import TrashBasketSvg from "../../assets/icons/familyInfoIcons/trashBasket.svg";
 import { THEME } from "../../styles/theme";
@@ -30,7 +30,7 @@ export const DependantsInfoItem = () => {
             <Text style={mainStyles.baseText}>Spouse</Text>
           </View>
           <TouchableOpacity style={mainStyles.arrowButtom}>
-            <ArrowRoghtSvg />
+            <ArrowRightSvg />
           </TouchableOpacity>
         </View>
       </View>
@@ -54,7 +54,7 @@ export const DependantsInfoItem = () => {
             <Text style={mainStyles.baseText}>Child</Text>
           </View>
           <TouchableOpacity style={mainStyles.arrowButtom}>
-            <ArrowRoghtSvg />
+            <ArrowRightSvg />
           </TouchableOpacity>
         </View>
       </View>

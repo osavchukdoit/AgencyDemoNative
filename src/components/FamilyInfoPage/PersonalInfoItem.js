@@ -1,7 +1,7 @@
 import { Text, View, TouchableOpacity } from "react-native";
 import InfoCircleSvg from "../../assets/icons/familyInfoIcons/infoCircle.svg";
 import CalendarIconSvg from "../../assets/icons/familyInfoIcons/calendar.svg";
-import ArrowRoghtSvg from "../../assets/icons/familyInfoIcons/vectorRight.svg";
+import ArrowRightSvg from "../../assets/icons/familyInfoIcons/vectorRight.svg";
 import { useState } from "react";
 import mainStyles from "./stylesFamilyInfoItem";
 
@@ -40,7 +40,7 @@ export const PersonalInfoItem = () => {
             onPress={onHandleWarning}
             style={mainStyles.arrowButtom}
           >
-            <ArrowRoghtSvg />
+            <ArrowRightSvg />
           </TouchableOpacity>
         </View>
       </View>
