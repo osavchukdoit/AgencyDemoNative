@@ -10,7 +10,8 @@ import {
   Image,
   Platform,
 } from "react-native";
-import { HomeScreen } from "../screens/HomeScreen";
+// import { HomeScreen } from "../screens/HomeScreen";
+import { FamilyInfoOverviewScreen } from "../screens/FamilyInfoOverviewScreen";
 import { THEME } from "../styles/theme";
 import {
   createDrawerNavigator,
@@ -99,7 +100,11 @@ export const AppStack = ({ onLogout }) => {
           },
         })}
       >
-        <Drawer.Screen name={"Home"} component={HomeScreen} />
+        <Drawer.Screen
+          name={"FamilyInfoOverviewScreen"}
+          component={FamilyInfoOverviewScreen}
+        />
+        {/* <Drawer.Screen name={"Home"} component={HomeScreen} /> */}
         <Drawer.Screen
           name="About"
           component={AboutScreen}

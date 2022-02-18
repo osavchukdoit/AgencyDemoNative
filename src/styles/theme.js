@@ -16,6 +16,9 @@ export const THEME = {
     WHITE: "#FFF",
     GREY_LIGHT_TEXT: "#707070",
     GREY_DARK_TEXT: "#1D252B",
+    GREY_MEDIUM_TEXT: "#414040",
+    DARK_BLUE_TEXT: "#1A3C5A",
+    WARNING_TEXT: "#E95C5C",
   },
   BOX_SHADOW: {
     COLOR_BLACK: "#000",
