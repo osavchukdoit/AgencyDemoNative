@@ -17,7 +17,7 @@ const initialState = {
     visible: false,
     text: "",
   },
-  isLogged: true,
+  isLogged: false,
   user: "",
   agency: "",
   jwt: "",
@@ -49,6 +49,8 @@ export const utilityReducers = (state = initialState, { type, payload }) => {
     case SET_LOGGED_OUT:
       return {
         ...state,
+        user: "",
+        jwt: "",
         isLogged: false,
       };
     case SET_TOKEN:
