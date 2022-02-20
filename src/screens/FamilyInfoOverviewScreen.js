@@ -1,5 +1,5 @@
 import { View, StyleSheet, ScrollView } from "react-native";
-import { FamilyInfoTop } from "../components/familyInfoPage/FamilyInfoTop";
+import { FamilyInfoTop } from "../components/familyInfoPage/FamilyInfoTop"
 import { PersonalInfoItem } from "../components/familyInfoPage/PersonalInfoItem";
 import { EmploymentInfoItem } from "../components/familyInfoPage/EmploymentInfoItem";
 import { DependantsInfoItem } from "../components/familyInfoPage/DependantsInfoItem";
