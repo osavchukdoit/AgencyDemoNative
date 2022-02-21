@@ -77,7 +77,7 @@ export default StyleSheet.create({
     fontFamily: FONTS.AVENIR.HEAVY,
   },
 
-  arrowButtom: {
+  arrowButton: {
     height: 11,
     width: 6,
     alignItems: "center",

@@ -10,8 +10,16 @@ export const AppText = ({
   style,
   ...props
 }) => {
+  const defaultText = {
+    fontWeight: "normal",
+    fontStyle: "normal",
+  };
+
   return (
-    <Text style={{ color: color, fontFamily, ...style }} {...props}>
+    <Text
+      style={{ color: color, fontFamily, ...defaultText, ...style }}
+      {...props}
+    >
       {children}
     </Text>
   );

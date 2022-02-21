@@ -18,7 +18,10 @@ import { setLoader } from "../redux/actions/actionCreator";
 import { useLoginUser } from "../api/useLoginUser";
 
 export const LoginScreen = ({ onLogin }) => {
-  const [userDetails, setUserDetails] = useState({ login: "", password: "" });
+  const [userDetails, setUserDetails] = useState({
+    login: "mattEnroller",
+    password: "mattEnroller1$",
+  });
   const [isFocusedLogin, setIsFocusedLogin] = useState(false);
   const [isFocusedPassword, setIsFocusedPassword] = useState(false);
   const dispatch = useDispatch();
@@ -108,7 +111,6 @@ export const LoginScreen = ({ onLogin }) => {
         </View>
         <View style={styles.wrapperLoginButton}>
           <LinearGradient
-            // Background Linear Gradient
             colors={[THEME.COLOR.BUTTON_LOGIN_LIGHT_GRADIENT, "transparent"]}
             start={{ y: 0.0, x: 0.0 }}
             end={{ y: 0.0, x: 0.5 }}
