@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     borderRadius: 15,
     position: "absolute",
-    bottom: 154,
+    bottom: 25,
     right: 20,
   },
 

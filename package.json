@@ -1,6 +1,6 @@
 {
   "name": "agencydemonative",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "main": "index.js",
   "scripts": {
     "start": "expo start --dev-client",
@@ -9,6 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-navigation/bottom-tabs": "^6.2.0",
     "@react-navigation/drawer": "^6.3.1",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
