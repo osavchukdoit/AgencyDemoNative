@@ -16,9 +16,9 @@ export const CostOverview = () => {
 
   return (
     <View style={styles.costOverviewWrapper}>
-      <View style={styles.costOverwieTitleWrapper}>
+      <View style={styles.costOverviewTitleWrapper}>
         <Text>Cost Overview</Text>
-        <View style={styles.containerButtoShowHide}>
+        <View style={styles.containerButtonShowHide}>
           <TouchableOpacity
             style={
               isVisible
@@ -49,7 +49,7 @@ export const CostOverview = () => {
             style={styles.linearBackground}
           />
         </View>
-        <View style={styles.coverageTierWrapper}>
+        <View>
           <View style={styles.titlesItemsWrapper}>
             <Text style={[styles.titleItems, styles.coverageWidth]}>
               Coverage Tier
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     paddingBottom: 9,
   },
 
-  costOverwieTitleWrapper: {
+  costOverviewTitleWrapper: {
     flexDirection: "row",
     justifyContent: "space-between",
     paddingLeft: 18,
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     letterSpacing: -0.28,
   },
 
-  containerButtoShowHide: {
+  containerButtonShowHide: {
     width: 24,
     height: 24,
     backgroundColor: THEME.BACKGROUND.BUTTON_SHOW_HIDE_BG,

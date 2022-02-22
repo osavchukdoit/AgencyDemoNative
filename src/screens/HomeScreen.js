@@ -4,7 +4,7 @@ import { BenefitGroups } from "../components/homePage/BenefitGroups";
 import { HomePageTop } from "../components/homePage/HomePageTop";
 import { ButtonEnrollment } from "../components/homePage/ButtonEnrollment";
 
-export const HomeScreen = () => {
+export const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.wrapper}>
       <ScrollView stickyHeaderIndices={[0]}>
@@ -16,7 +16,11 @@ export const HomeScreen = () => {
           <BenefitGroups />
         </View>
       </ScrollView>
-      <ButtonEnrollment />
+      <ButtonEnrollment
+        handleStartEnrollment={() =>
+          navigation.navigate("EnrollmentNavigation")
+        }
+      />
     </View>
   );
 };

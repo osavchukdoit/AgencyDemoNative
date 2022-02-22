@@ -25,11 +25,11 @@ export const DependantsInfoItem = () => {
             </View>
             <Text style={mainStyles.subTitle}>Mary Smith</Text>
             <View style={localStyles.pointWrapper}>
-              <View style={localStyles.point}></View>
+              <View style={localStyles.point} />
             </View>
             <Text style={mainStyles.baseText}>Spouse</Text>
           </View>
-          <TouchableOpacity style={mainStyles.arrowButtom}>
+          <TouchableOpacity style={mainStyles.arrowButton}>
             <ArrowRightSvg />
           </TouchableOpacity>
         </View>
@@ -49,11 +49,11 @@ export const DependantsInfoItem = () => {
             </View>
             <Text style={mainStyles.subTitle}>Josh Doe</Text>
             <View style={localStyles.pointWrapper}>
-              <View style={localStyles.point}></View>
+              <View style={localStyles.point} />
             </View>
             <Text style={mainStyles.baseText}>Child</Text>
           </View>
-          <TouchableOpacity style={mainStyles.arrowButtom}>
+          <TouchableOpacity style={mainStyles.arrowButton}>
             <ArrowRightSvg />
           </TouchableOpacity>
         </View>
@@ -102,7 +102,7 @@ const localStyles = StyleSheet.create({
     paddingRight: 13,
     paddingBottom: 10,
     paddingLeft: 17,
-    marginBottom: 159,
+    marginBottom: 25,
   },
 
   addButtonText: {

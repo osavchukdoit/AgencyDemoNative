@@ -26,6 +26,7 @@ import LogoutIconSvg from "../assets/icons/logout.svg";
 import CallIconSvg from "../assets/icons/call.svg";
 import ArrowRightSvg from "../assets/icons/arrowRight.svg";
 import { AppText } from "../components/utils/AppText";
+import { EnrollmentNavigation } from "./EnrollmentNavigation";
 
 const isWebOs = Platform.OS === "web";
 
@@ -101,15 +102,18 @@ export const AppStack = ({ onLogout }) => {
           },
         })}
       >
+        <Drawer.Screen name={"Home"} component={HomeScreen} />
         <Drawer.Screen
           name={"PersonalInfoDetailsScreen"}
           component={PersonalInfoDetailsScreen}
         />
-        {/* <Drawer.Screen
+        <Drawer.Screen
           name={"FamilyInfoOverviewScreen"}
           component={FamilyInfoOverviewScreen}
+          name={"EnrollmentNavigation"}
+          component={EnrollmentNavigation}
         />
-        <Drawer.Screen name={"Home"} component={HomeScreen} /> */}
+        <Drawer.Screen name={"Home"} component={HomeScreen} />
         <Drawer.Screen
           name="About"
           component={AboutScreen}

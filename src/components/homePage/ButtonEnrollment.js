@@ -2,11 +2,14 @@ import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import { FONTS } from "../../styles/fonts";
 import { THEME } from "../../styles/theme";
 
-export const ButtonEnrollment = () => {
+export const ButtonEnrollment = ({ handleStartEnrollment }) => {
   return (
     <View style={styles.wrapper}>
       <View style={styles.buttonWrapper}>
-        <TouchableOpacity style={styles.touchableButton}>
+        <TouchableOpacity
+          style={styles.touchableButton}
+          onPress={handleStartEnrollment}
+        >
           <Text style={styles.touchableButtonText}>Start Enrollment Now</Text>
         </TouchableOpacity>
       </View>
@@ -17,10 +20,10 @@ export const ButtonEnrollment = () => {
 const styles = StyleSheet.create({
   wrapper: {
     paddingHorizontal: 20,
-    paddingBottom: 10,
+    paddingBottom: 28,
     position: "absolute",
-   bottom:0,
-   width:"100%"
+    bottom: 0,
+    width: "100%",
   },
 
   buttonWrapper: {

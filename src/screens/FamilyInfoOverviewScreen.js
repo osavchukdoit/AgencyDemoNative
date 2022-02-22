@@ -1,3 +1,4 @@
+import React from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import { FamilyInfoTop } from "../components/familyInfoPage/FamilyInfoTop"
 import { PersonalInfoItem } from "../components/familyInfoPage/PersonalInfoItem";
@@ -14,7 +15,7 @@ export const FamilyInfoOverviewScreen = () => {
         <EmploymentInfoItem />
         <DependantsInfoItem />
       </ScrollView>
-      <ButtonBenefitsCart/>
+      <ButtonBenefitsCart />
     </View>
   );
 };

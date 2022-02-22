@@ -8,7 +8,7 @@ export const FamilyInfoTop = () => {
       <Text style={styles.title}>
         Below is an overview of the info that has been entered
       </Text>
-      <View style={styles.pseudoElement}></View>
+      <View style={styles.pseudoElement} />
       <Text style={styles.text}>
         Please review any outstanding items and make sure everything is correct
       </Text>
