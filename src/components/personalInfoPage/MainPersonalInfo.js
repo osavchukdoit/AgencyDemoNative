@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -16,23 +17,29 @@ import MobileIconSvg from "../../assets/icons/personInfoIcons/mobile.svg";
 import GpsMarkIconSvg from "../../assets/icons/personInfoIcons/gpsMark.svg";
 
 export const MainPersonalInfo = () => {
+  const [isSmoke, setIsSmoke] = useState(true);
+
+  const onHandleSmoke = () => setIsSmoke(true);
+
+  const onHandleNoSmoke = () => setIsSmoke(false);
+
   return (
     <View style={styles.wrapper}>
       <View style={styles.infoWrapper}>
         <View style={styles.twoRowElements}>
-          <View style={styles.nameWrapperr}>
+          <View style={styles.nameWrapper}>
             <Text style={styles.titleInfo}>First Name</Text>
             <PersonIconSvg style={styles.inputIcon} />
             <TextInput style={styles.textInput}>John</TextInput>
           </View>
-          <View style={styles.nameWrapperr}>
+          <View style={styles.nameWrapper}>
             <Text style={styles.titleInfo}>Last Name</Text>
             <PersonIconSvg style={styles.inputIcon} />
             <TextInput style={styles.textInput}>Doe</TextInput>
           </View>
         </View>
 
-        <View style={styles.titleAndInpitWrapper}>
+        <View style={styles.titleAndInputWrapper}>
           <Text style={styles.titleInfo}>Date of Birth*</Text>
           <CalendarIconSvg style={styles.inputIcon} />
           <TextInput style={styles.textInput}>09/09/1990</TextInput>
@@ -55,7 +62,7 @@ export const MainPersonalInfo = () => {
           </View>
         </View>
 
-        <View style={styles.titleAndInpitWrapper}>
+        <View style={styles.titleAndInputWrapper}>
           <Text style={styles.titleInfo}>Email</Text>
           <EnvelopeIconSvg style={styles.inputIcon} />
           <TextInput
@@ -64,13 +71,13 @@ export const MainPersonalInfo = () => {
           ></TextInput>
         </View>
 
-        <View style={styles.titleAndInpitWrapper}>
+        <View style={styles.titleAndInputWrapper}>
           <Text style={styles.titleInfo}>SSN</Text>
           <ShieldIconSvg style={styles.inputIcon} />
           <TextInput style={styles.textInput}>XXX-XXX-XXXX</TextInput>
         </View>
 
-        <View style={styles.titleAndInpitWrapper}>
+        <View style={styles.titleAndInputWrapper}>
           <Text style={styles.titleInfo}>Work Phone</Text>
           <PhoneIconSvg style={styles.inputIcon} />
           <TextInput
@@ -79,7 +86,7 @@ export const MainPersonalInfo = () => {
           ></TextInput>
         </View>
 
-        <View style={styles.titleAndInpitWrapper}>
+        <View style={styles.titleAndInputWrapper}>
           <Text style={styles.titleInfo}>Mobile Phone</Text>
           <MobileIconSvg style={styles.inputIcon} />
           <TextInput
@@ -88,7 +95,7 @@ export const MainPersonalInfo = () => {
           ></TextInput>
         </View>
 
-        <View style={[styles.titleAndInpitWrapper, { marginBottom: 27 }]}>
+        <View style={[styles.titleAndInputWrapper, { marginBottom: 27 }]}>
           <Text style={[styles.titleInfo, { marginBottom: 2 }]}>Address*</Text>
           <Text style={styles.subText}>
             Must be selected from the google list that will populate once you
@@ -97,7 +104,9 @@ export const MainPersonalInfo = () => {
             the city (for example: Apt 310, Any City)
           </Text>
           <GpsMarkIconSvg style={styles.inputIcon} />
-          <TextInput style={styles.textInputBorderFocus}>
+          <TextInput
+            style={[styles.textInputBorderFocus, styles.textInputBorderBlur]}
+          >
             12-3 Bayard, LL2394 St Staten Island
           </TextInput>
         </View>
@@ -108,7 +117,38 @@ export const MainPersonalInfo = () => {
             sniff, dip, chew or pipe) or any nicotine delivery system in the
             past 12 months?*
           </Text>
+
+          <View style={styles.radioButonsWrapper}>
+            <TouchableOpacity
+              style={styles.radioButtonContainer}
+              onPress={onHandleSmoke}
+            >
+              <View
+                style={
+                  isSmoke ? { ...styles.radioCheckPoint } : { display: "none" }
+                }
+              ></View>
+            </TouchableOpacity>
+            <Text style={styles.radioButtonLabel}>Yes</Text>
+
+            <TouchableOpacity
+              style={styles.radioButtonContainer}
+              onPress={onHandleNoSmoke}
+            >
+              <View
+                style={
+                  isSmoke ? { display: "none" } : { ...styles.radioCheckPoint }
+                }
+              ></View>
+            </TouchableOpacity>
+            <Text style={styles.radioButtonLabel}>No</Text>
+          </View>
         </View>
+      </View>
+      <View style={styles.saveButtonWrapper}>
+        <TouchableOpacity style={styles.saveButton}>
+          <Text style={styles.saveButtonText}>Save</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -138,7 +178,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
 
-  nameWrapperr: {
+  nameWrapper: {
     width: "48%",
     position: "relative",
   },
@@ -198,7 +238,7 @@ const styles = StyleSheet.create({
     borderColor: THEME.COLOR.LIGHT_BORDER,
   },
 
-  titleAndInpitWrapper: {
+  titleAndInputWrapper: {
     position: "relative",
     marginBottom: 16,
   },
@@ -246,5 +286,62 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 20,
     color: THEME.COLOR.GREY_DARK_TEXT,
+    marginBottom: 20,
+  },
+
+  radioButonsWrapper: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+
+  radioButtonContainer: {
+    width: 16,
+    height: 16,
+    borderColor: THEME.COLOR.BLUE_BRIGHT,
+    borderWidth: 1,
+    borderRadius: 53,
+    marginRight: 15,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  radioCheckPoint: {
+    width: 8,
+    height: 8,
+    backgroundColor: THEME.COLOR.BLUE_BRIGHT,
+    borderRadius: 53,
+  },
+
+  radioButtonLabel: {
+    marginRight: 35,
+    color: THEME.COLOR.GREY_DARK_TEXT,
+    fontFamily: FONTS.AVENIR.BOOK,
+    fontSize: 12,
+    lineHeight: 16,
+  },
+
+  saveButton: {
+    width: 160,
+    height: 49,
+    borderRadius: 10,
+    backgroundColor: THEME.COLOR.BLUE_BRIGHT,
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 22,
+    shadowColor: THEME.COLOR.GREY_LIGHT_TEXT,
+    shadowOpacity: 0.05,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 1 },
+  },
+
+  saveButtonText: {
+    fontFamily: FONTS.AVENIR.HEAVY,
+    fontSize: 16,
+    lineHeight: 22,
+    color: THEME.COLOR.WHITE,
+  },
+
+  saveButtonWrapper: {
+    alignItems: "center",
   },
 });
