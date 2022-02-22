@@ -102,7 +102,6 @@ export const AppStack = ({ onLogout }) => {
           },
         })}
       >
-        <Drawer.Screen name={"Home"} component={HomeScreen} />
         <Drawer.Screen
           name={"PersonalInfoDetailsScreen"}
           component={PersonalInfoDetailsScreen}
