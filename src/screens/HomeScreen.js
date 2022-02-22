@@ -1,12 +1,12 @@
 import React from "react";
-import { ScrollView, View, StyleSheet } from "react-native";
+import { ScrollView, View } from "react-native";
 import { BenefitGroups } from "../components/homePage/BenefitGroups";
 import { HomePageTop } from "../components/homePage/HomePageTop";
 import { ButtonEnrollment } from "../components/homePage/ButtonEnrollment";
 
 export const HomeScreen = ({ navigation }) => {
   return (
-    <View style={styles.wrapper}>
+    <View>
       <ScrollView stickyHeaderIndices={[0]}>
         <HomePageTop />
         <View>
@@ -24,10 +24,3 @@ export const HomeScreen = ({ navigation }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  wrapper: {
-    height: "100%",
-    position: "relative",
-  },
-});
