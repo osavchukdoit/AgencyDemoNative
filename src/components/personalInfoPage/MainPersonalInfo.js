@@ -15,13 +15,10 @@ import ShieldIconSvg from "../../assets/icons/personInfoIcons/shield.svg";
 import PhoneIconSvg from "../../assets/icons/personInfoIcons/phone.svg";
 import MobileIconSvg from "../../assets/icons/personInfoIcons/mobile.svg";
 import GpsMarkIconSvg from "../../assets/icons/personInfoIcons/gpsMark.svg";
+import { useRadioButton } from "./customHooks/useRadioButton";
 
 export const MainPersonalInfo = () => {
-  const [isSmoke, setIsSmoke] = useState(true);
-
-  const onHandleSmoke = () => setIsSmoke(true);
-
-  const onHandleNoSmoke = () => setIsSmoke(false);
+  const [isSmoke, setIsSmoke] = useRadioButton(null);
 
   return (
     <View style={styles.wrapper}>
@@ -121,24 +118,26 @@ export const MainPersonalInfo = () => {
           <View style={styles.radioButonsWrapper}>
             <TouchableOpacity
               style={styles.radioButtonContainer}
-              onPress={onHandleSmoke}
+              onPress={() => setIsSmoke(true)}
             >
               <View
-                style={
-                  isSmoke ? { ...styles.radioCheckPoint } : { display: "none" }
-                }
+                style={[
+                  { display: "none" },
+                  isSmoke === true && styles.radioCheckPoint,
+                ]}
               ></View>
             </TouchableOpacity>
             <Text style={styles.radioButtonLabel}>Yes</Text>
 
             <TouchableOpacity
               style={styles.radioButtonContainer}
-              onPress={onHandleNoSmoke}
+              onPress={() => setIsSmoke(false)}
             >
               <View
-                style={
-                  isSmoke ? { display: "none" } : { ...styles.radioCheckPoint }
-                }
+                style={[
+                  { display: "none" },
+                  isSmoke === false && styles.radioCheckPoint,
+                ]}
               ></View>
             </TouchableOpacity>
             <Text style={styles.radioButtonLabel}>No</Text>
@@ -310,6 +309,7 @@ const styles = StyleSheet.create({
     height: 8,
     backgroundColor: THEME.COLOR.BLUE_BRIGHT,
     borderRadius: 53,
+    display: "flex",
   },
 
   radioButtonLabel: {

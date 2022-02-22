@@ -138,9 +138,8 @@ const styles = StyleSheet.create({
 
   gradientWrapper: {
     marginTop: 10,
-    marginBottom: 7,
     height: 1,
-    backgroundColor: THEME.BLUE_BRIGHT,
+    backgroundColor: THEME.COLOR.BLUE_BRIGHT,
     opacity: 0.5,
     marginBottom: 5,
   },
