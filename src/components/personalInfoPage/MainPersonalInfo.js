@@ -101,7 +101,11 @@ export const MainPersonalInfo = () => {
           </Text>
           <GpsMarkIconSvg style={styles.inputIcon} />
           <TextInput
-            style={[styles.textInputBorderFocus, styles.textInputBorderBlur]}
+            style={[
+              styles.textInputBorderFocus,
+              styles.textInputBorderBlur,
+              styles.textInputLessSize,
+            ]}
           >
             12-3 Bayard, LL2394 St Staten Island
           </TextInput>

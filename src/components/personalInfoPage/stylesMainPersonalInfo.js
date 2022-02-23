@@ -70,11 +70,23 @@ export default StyleSheet.create({
     paddingLeft: 51,
   },
 
+  textInputLessSize: {
+    fontSize: 14,
+    lineHeight: 20,
+    fontFamily: FONTS.AVENIR.HEAVY,
+  },
+
+  textInputMediumSize: {
+    fontSize: 16,
+    lineHeight: 22,
+    fontFamily: FONTS.AVENIR.HEAVY,
+  },
+
   textInputBorderFocus: {
     height: 49,
     fontFamily: FONTS.AVENIR.MEDIUM,
-    fontSize: 16,
-    lineHeight: 22,
+    fontSize: 14,
+    lineHeight: 20,
     color: THEME.COLOR.DARK_BLUE_TEXT,
     borderRadius: 10,
     paddingLeft: 51,

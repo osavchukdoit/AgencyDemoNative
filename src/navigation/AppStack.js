@@ -10,6 +10,7 @@ import {
   Image,
   Platform,
 } from "react-native";
+import { EmploymentInfoDetailsScreen } from "../screens/EmploymentInfoDetailsScreen";
 import { PersonalInfoDetailsScreen } from "../screens/PersonalInfoDetailsScreen";
 import { HomeScreen } from "../screens/HomeScreen";
 import { FamilyInfoOverviewScreen } from "../screens/FamilyInfoOverviewScreen";
@@ -102,6 +103,10 @@ export const AppStack = ({ onLogout }) => {
           },
         })}
       >
+        <Drawer.Screen
+          name={"EmploymentInfoDetailsScreen"}
+          component={EmploymentInfoDetailsScreen}
+        />
         <Drawer.Screen
           name={"PersonalInfoDetailsScreen"}
           component={PersonalInfoDetailsScreen}
