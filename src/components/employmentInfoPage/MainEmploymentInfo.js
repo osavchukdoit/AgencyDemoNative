@@ -73,6 +73,7 @@ export const MainEmploymentInfo = () => {
           <TextInput style={styles.textInput}>40</TextInput>
         </View>
       </View>
+
       <View style={styles.saveButtonWrapper}>
         <TouchableOpacity style={styles.saveButton}>
           <Text style={styles.saveButtonText}>Save</Text>

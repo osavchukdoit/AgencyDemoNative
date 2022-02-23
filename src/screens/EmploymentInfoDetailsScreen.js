@@ -1,4 +1,4 @@
-import { View, ScrollView, Text } from "react-native";
+import { View, ScrollView } from "react-native";
 import { MainEmploymentInfo } from "../components/employmentInfoPage/MainEmploymentInfo";
 import { TopPersonalInfo } from "../components/personalInfoPage/TopPersonalInfo";
 

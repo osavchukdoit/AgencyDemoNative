@@ -5,7 +5,6 @@ import { FONTS } from "../../styles/fonts";
 export default StyleSheet.create({
   wrapper: {
     paddingHorizontal: 20,
-    backgroundColor: THEME.BACKGROUND.MAIN_WRAPPER,
   },
 
   infoWrapper: {
@@ -74,6 +73,7 @@ export default StyleSheet.create({
   textInputLessSize: {
     fontSize: 14,
     lineHeight: 20,
+    fontFamily: FONTS.AVENIR.HEAVY,
   },
 
   textInputMediumSize: {
@@ -85,8 +85,8 @@ export default StyleSheet.create({
   textInputBorderFocus: {
     height: 49,
     fontFamily: FONTS.AVENIR.MEDIUM,
-    fontSize: 16,
-    lineHeight: 22,
+    fontSize: 14,
+    lineHeight: 20,
     color: THEME.COLOR.DARK_BLUE_TEXT,
     borderRadius: 10,
     paddingLeft: 51,

@@ -64,7 +64,7 @@ export const AppStack = ({ onLogout }) => {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName={"EmploymentInfoDetailsScreen"} //here was Home
+        initialRouteName={"Home"}
         drawerContent={(props) => <DrawerContent {...props} />}
         screenOptions={({ navigation }) => ({
           drawerStyle: {
@@ -86,7 +86,7 @@ export const AppStack = ({ onLogout }) => {
             <View style={styles.headerButtonsWrapper}>
               <TouchableOpacity
                 onPress={() => {
-                  navigation.navigate("EmploymentInfoDetailsScreen"); //here was Home
+                  navigation.navigate("Home");
                 }}
               >
                 {!isWebOs ? <HomeIconSvg /> : <Text>HomeIconSvg</Text>}

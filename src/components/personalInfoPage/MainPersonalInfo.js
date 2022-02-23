@@ -21,7 +21,9 @@ export const MainPersonalInfo = () => {
               First Name<Text style={styles.notifyStar}>*</Text>
             </Text>
             <PersonIconSvg style={styles.inputIcon} />
-            <TextInput style={styles.textInput}>John</TextInput>
+            <TextInput style={[styles.textInput, styles.textInputMediumSize]}>
+              John
+            </TextInput>
           </View>
           <View style={styles.nameWrapper}>
             <Text style={styles.titleInfo}>
@@ -101,7 +103,11 @@ export const MainPersonalInfo = () => {
           </Text>
           <GpsMarkIconSvg style={styles.inputIcon} />
           <TextInput
-            style={[styles.textInputBorderFocus, styles.textInputBorderBlur, styles.textInputLessSize]}
+            style={[
+              styles.textInputBorderFocus,
+              styles.textInputBorderBlur,
+              styles.textInputLessSize,
+            ]}
           >
             12-3 Bayard, LL2394 St Staten Island
           </TextInput>

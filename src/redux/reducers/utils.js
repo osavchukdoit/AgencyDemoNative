@@ -17,7 +17,7 @@ const initialState = {
     visible: false,
     text: "",
   },
-  isLogged: true, //here
+  isLogged: false,
   user: "",
   agency: "",
   jwt: "",
