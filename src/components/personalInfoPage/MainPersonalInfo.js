@@ -21,9 +21,7 @@ export const MainPersonalInfo = () => {
               First Name<Text style={styles.notifyStar}>*</Text>
             </Text>
             <PersonIconSvg style={styles.inputIcon} />
-            <TextInput style={[styles.textInput, styles.textInputMediumSize]}>
-              John
-            </TextInput>
+            <TextInput style={styles.textInput}>John</TextInput>
           </View>
           <View style={styles.nameWrapper}>
             <Text style={styles.titleInfo}>
