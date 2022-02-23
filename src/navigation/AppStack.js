@@ -10,6 +10,7 @@ import {
   Image,
   Platform,
 } from "react-native";
+import { EmploymentInfoDetailsScreen } from "../screens/EmploymentInfoDetailsScreen";
 import { PersonalInfoDetailsScreen } from "../screens/PersonalInfoDetailsScreen";
 import { HomeScreen } from "../screens/HomeScreen";
 import { FamilyInfoOverviewScreen } from "../screens/FamilyInfoOverviewScreen";
@@ -63,7 +64,7 @@ export const AppStack = ({ onLogout }) => {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName={"Home"}
+        initialRouteName={"EmploymentInfoDetailsScreen"} //here was Home
         drawerContent={(props) => <DrawerContent {...props} />}
         screenOptions={({ navigation }) => ({
           drawerStyle: {
@@ -85,7 +86,7 @@ export const AppStack = ({ onLogout }) => {
             <View style={styles.headerButtonsWrapper}>
               <TouchableOpacity
                 onPress={() => {
-                  navigation.navigate("Home");
+                  navigation.navigate("EmploymentInfoDetailsScreen"); //here was Home
                 }}
               >
                 {!isWebOs ? <HomeIconSvg /> : <Text>HomeIconSvg</Text>}
@@ -102,6 +103,10 @@ export const AppStack = ({ onLogout }) => {
           },
         })}
       >
+        <Drawer.Screen
+          name={"EmploymentInfoDetailsScreen"}
+          component={EmploymentInfoDetailsScreen}
+        />
         <Drawer.Screen
           name={"PersonalInfoDetailsScreen"}
           component={PersonalInfoDetailsScreen}
