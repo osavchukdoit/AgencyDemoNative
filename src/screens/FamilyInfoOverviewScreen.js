@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, ScrollView } from "react-native";
+import { View, ScrollView } from "react-native";
 import { FamilyInfoTop } from "../components/familyInfoPage/FamilyInfoTop";
 import { PersonalInfoItem } from "../components/familyInfoPage/PersonalInfoItem";
 import { EmploymentInfoItem } from "../components/familyInfoPage/EmploymentInfoItem";
@@ -8,7 +8,7 @@ import { ButtonBenefitsCart } from "../components/familyInfoPage/ButtonBenefitsC
 
 export const FamilyInfoOverviewScreen = () => {
   return (
-    <View style={styles.wrapper}>
+    <View>
       <ScrollView stickyHeaderIndices={[0]}>
         <FamilyInfoTop />
         <PersonalInfoItem />
@@ -19,10 +19,3 @@ export const FamilyInfoOverviewScreen = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  wrapper: {
-    height: "100%",
-    position: "relative",
-  },
-});
