@@ -44,9 +44,8 @@ export const CostOverview = () => {
               "rgba(67, 190, 187, 0.5)",
               "rgba(67, 190, 187, 0)",
             ]}
-            start={{ y: 0, x: 1 }}
-            end={{ y: 0, x: 0 }}
             style={styles.linearBackground}
+            start={[1, 1]}
           />
         </View>
         <View>
@@ -139,8 +138,6 @@ const styles = StyleSheet.create({
   gradientWrapper: {
     marginTop: 10,
     height: 1,
-    backgroundColor: THEME.COLOR.BLUE_BRIGHT,
-    opacity: 0.5,
     marginBottom: 5,
   },
 
@@ -148,7 +145,6 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: 0,
     right: 0,
-    top: 0,
     height: "100%",
   },
 

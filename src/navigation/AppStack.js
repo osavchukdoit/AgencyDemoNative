@@ -10,6 +10,7 @@ import {
   Image,
   Platform,
 } from "react-native";
+import { DependantsInfoDetailsScreen } from "../screens/DependantsInfoDetailsScreen";
 import { EmploymentInfoDetailsScreen } from "../screens/EmploymentInfoDetailsScreen";
 import { PersonalInfoDetailsScreen } from "../screens/PersonalInfoDetailsScreen";
 import { HomeScreen } from "../screens/HomeScreen";
@@ -86,7 +87,7 @@ export const AppStack = ({ onLogout }) => {
             <View style={styles.headerButtonsWrapper}>
               <TouchableOpacity
                 onPress={() => {
-                  navigation.navigate("Home");
+                  navigation.navigate("DependantsInfoDetailsScreen"); //here Home
                 }}
               >
                 {!isWebOs ? <HomeIconSvg /> : <Text>HomeIconSvg</Text>}
@@ -103,6 +104,10 @@ export const AppStack = ({ onLogout }) => {
           },
         })}
       >
+        <Drawer.Screen
+          name={"DependantsInfoDetailsScreen"}
+          component={DependantsInfoDetailsScreen}
+        />
         <Drawer.Screen
           name={"EmploymentInfoDetailsScreen"}
           component={EmploymentInfoDetailsScreen}

@@ -76,6 +76,12 @@ export default StyleSheet.create({
     fontFamily: FONTS.AVENIR.HEAVY,
   },
 
+  textInputLessGreySize: {
+    fontFamily: FONTS.AVENIR.ROMAN,
+    fontSize: 14,
+    lineHeight: 20,
+  },
+
   textInputMediumSize: {
     fontSize: 16,
     lineHeight: 22,
