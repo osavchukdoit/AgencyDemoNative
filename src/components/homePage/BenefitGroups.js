@@ -48,6 +48,7 @@ export const BenefitGroups = () => {
                 "rgba(26, 60, 90, 0)",
               ]}
               style={styles.linearBackground}
+              start={[1, 1]}
             />
           </View>
           <Text style={styles.benefitText}>
