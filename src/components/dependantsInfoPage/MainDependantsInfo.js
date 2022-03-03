@@ -253,8 +253,7 @@ const localStyles = StyleSheet.create({
   },
 
   gradientWrapper: {
-    marginTop: 10,
-    marginBottom: 10,
+    marginBottom: 12,
     height: 1,
   },
 
