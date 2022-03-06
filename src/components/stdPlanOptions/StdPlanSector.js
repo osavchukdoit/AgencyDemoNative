@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import CrutchesSvg from "../../assets/icons/stdPlanOptions/crutches.svg";
-import { PseudoElement } from "./pseudoElement";
+import { PseudoElement } from "./PseudoElement";
 import ShowHideIconSvg from "../../assets/icons/arrowUp.svg";
 import { useState } from "react";
 import EyeSvg from "../../assets/icons/stdPlanOptions/eyeIcon.svg";

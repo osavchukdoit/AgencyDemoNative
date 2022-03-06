@@ -19,7 +19,6 @@ export const PseudoElement = () => {
 
 const styles = StyleSheet.create({
   gradientWrapper: {
-    marginTop: 10,
     marginBottom: 10,
     height: 1,
   },
