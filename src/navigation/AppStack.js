@@ -124,6 +124,8 @@ export const AppStack = ({ onLogout }) => {
         <Drawer.Screen
           name={"FamilyInfoOverviewScreen"}
           component={FamilyInfoOverviewScreen}
+        />
+        <Drawer.Screen
           name={"EnrollmentNavigation"}
           component={EnrollmentNavigation}
         />

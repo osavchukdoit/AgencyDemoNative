@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import CrutchesSvg from "../../assets/icons/stdPlanOptions/crutches.svg";
-import { PseudoElement } from "./pseudoElement";
+import { PseudoElement } from "./PseudoElement";
 import ShowHideIconSvg from "../../assets/icons/arrowUp.svg";
 import { useState } from "react";
 import EyeSvg from "../../assets/icons/stdPlanOptions/eyeIcon.svg";
@@ -21,6 +21,7 @@ export const StdPlanSector = () => {
           <View style={styles.iconWrapper}>
             <CrutchesSvg />
           </View>
+
           <Text style={styles.sectorTitle}>Short Time Disability 7-7-25</Text>
         </View>
 

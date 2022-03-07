@@ -16,6 +16,7 @@ export const THEME = {
     WHITE: "#FFF",
     GREY_LIGHT_TEXT: "#707070",
     GREY_LIGHT_TEXT_V2: "#7C7C7C",
+    GREY_LIGHT_TEXT_V3: "#A5A5A5",
     GREY_DARK_TEXT: "#1D252B",
     GREY_MEDIUM_TEXT: "#414040",
     GREY_LIGHT_RGBA: "rgba(29, 37, 43, 0.38)",
