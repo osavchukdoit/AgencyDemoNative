@@ -7,8 +7,16 @@ import EyeSvg from "../../assets/icons/stdPlanOptions/eyeIcon.svg";
 import DownloadSvg from "../../assets/icons/stdPlanOptions/downloadIcon.svg";
 import styles from "./stdPlanSectorStyles";
 
-export const StdPlanSector = () => {
+export const StdPlanSector = ({ isRadioButton = false }) => {
   const [isVisible, setIsVisible] = useState(true);
+  const [isSelected, setIsSelected] = useState(true);
+
+  const onHandleSelected = () => {
+    setIsSelected((prev) => {
+      return !prev;
+    });
+  };
+
   const onHandlePress = () => {
     setIsVisible((prev) => {
       return !prev;
@@ -16,13 +24,37 @@ export const StdPlanSector = () => {
   };
   return (
     <View style={styles.wrapper}>
-      <View style={styles.planSectorWrapper}>
+      <View
+        style={
+          isRadioButton
+            ? [styles.planSectorWrapper, styles.focusPlanSectorBorder]
+            : styles.planSectorWrapper
+        }
+      >
         <View style={styles.iconAndTitleWrapper}>
           <View style={styles.iconWrapper}>
             <CrutchesSvg />
           </View>
-
-          <Text style={styles.sectorTitle}>Short Time Disability 7-7-25</Text>
+          <View>
+            <Text style={styles.sectorTitle}>Short Time Disability 7-7-25</Text>
+            {isRadioButton && (
+              <View style={styles.selectedButtonAndTextWrapper}>
+                <TouchableOpacity
+                  onPress={onHandleSelected}
+                  style={styles.selectedRaioButton}
+                >
+                  <View
+                    style={
+                      isSelected ? styles.radioButtonPoint : styles.displayNone
+                    }
+                  ></View>
+                </TouchableOpacity>
+                <Text style={styles.selectedRadioButtonText}>
+                  Selected Plan
+                </Text>
+              </View>
+            )}
+          </View>
         </View>
 
         <PseudoElement />
