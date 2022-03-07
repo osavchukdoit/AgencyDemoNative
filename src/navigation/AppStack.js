@@ -30,29 +30,52 @@ import CallIconSvg from "../assets/icons/call.svg";
 import ArrowRightSvg from "../assets/icons/arrowRight.svg";
 import { AppText } from "../components/utils/AppText";
 import { EnrollmentNavigation } from "./EnrollmentNavigation";
+import { FONTS } from "../styles/fonts";
+import { LinearGradient } from "expo-linear-gradient";
 
 const isWebOs = Platform.OS === "web";
+const isIos = Platform.OS === "ios";
 
 const Drawer = createDrawerNavigator();
 
 const DrawerContent = (props) => (
   <DrawerContentScrollView {...props}>
     <View style={styles.drawerHeader}>
-      <AppText color={THEME.COLOR.MENU}>Menu</AppText>
+      <AppText color={THEME.COLOR.MENU} fontFamily={FONTS.AVENIR.HEAVY}>
+        Menu
+      </AppText>
+      <View style={styles.linearGradientWrapper}>
+        <LinearGradient
+          colors={[
+            "rgba(256, 256, 256, 0)",
+            "rgba(256, 256, 256, 0.5)",
+            "rgba(256, 256, 256, 0)",
+          ]}
+          style={styles.linearGradient}
+          start={[0, 0]}
+        />
+      </View>
     </View>
     <DrawerItem
       label={() => (
         <View style={styles.drawerItemWrapper}>
           <View style={styles.labelWrapper}>
-            <View>{!isWebOs ? <CallIconSvg /> : <Text>Icon</Text>}</View>
-            <AppText color={THEME.COLOR.MENU}>Benefit Contacts</AppText>
+            <View style={styles.labelIconLeft}>
+              {!isWebOs ? <CallIconSvg /> : <Text>Icon</Text>}
+            </View>
+            <AppText
+              color={THEME.COLOR.MENU}
+              fontFamily={FONTS.AVENIR.MEDIUM}
+              style={styles.labelText}
+            >
+              Benefit Contacts
+            </AppText>
           </View>
-          <View>
-            <Text>{!isWebOs ? <ArrowRightSvg /> : <Text>arrow</Text>}</Text>
+          <View style={styles.labelIconRight}>
+            {!isWebOs ? <ArrowRightSvg /> : <Text>arrow</Text>}
           </View>
         </View>
       )}
-      inactiveTintColor={THEME.COLOR.MENU}
       onPress={() => props.navigation.navigate("Benefit Contacts")}
     />
     <DrawerItem
@@ -75,7 +98,7 @@ export const AppStack = ({ onLogout }) => {
           },
           headerStyle: {
             backgroundColor: THEME.BACKGROUND.HEADER,
-            height: 102,
+            height: isIos ? 102 : 52,
           },
           headerTintColor: THEME.COLOR.HEADER_TINT,
           headerTitle: () => (
@@ -87,22 +110,18 @@ export const AppStack = ({ onLogout }) => {
           headerRight: (props) => (
             <View style={styles.headerButtonsWrapper}>
               <TouchableOpacity
+                style={styles.headerButton}
                 onPress={() => {
                   navigation.navigate("Home");
                 }}
               >
                 {!isWebOs ? <HomeIconSvg /> : <Text>HomeIconSvg</Text>}
               </TouchableOpacity>
-              <TouchableOpacity onPress={onLogout}>
+              <TouchableOpacity style={styles.headerButton} onPress={onLogout}>
                 {!isWebOs ? <LogoutIconSvg /> : <Text>LogoutIconSvg</Text>}
               </TouchableOpacity>
             </View>
           ),
-          contentOptions: {
-            labelStyle: {
-              color: "#fff",
-            },
-          },
         })}
       >
         <Drawer.Screen
@@ -152,7 +171,12 @@ export const AppStack = ({ onLogout }) => {
 const styles = StyleSheet.create({
   drawerHeader: {
     padding: 20,
-    paddingTop: 0,
+    paddingTop: 10,
+  },
+  drawerHeaderText: {
+    fontSize: 16,
+    lineHeight: 22,
+    letterSpacing: -0.28,
   },
   drawerItemWrapper: {
     flexDirection: "row",
@@ -162,11 +186,38 @@ const styles = StyleSheet.create({
   labelWrapper: {
     flexDirection: "row",
   },
+  labelIconLeft: {
+    marginRight: 10,
+  },
+  labelIconRight: {
+    position: "relative",
+    right: -30,
+  },
+  labelText: {
+    fontSize: 14,
+    lineHeight: 19,
+    letterSpacing: -0.28,
+  },
   headerLogo: {
     width: 64,
     height: 47,
   },
   headerButtonsWrapper: {
     flexDirection: "row",
+    marginRight: 13,
+  },
+  headerButton: {
+    padding: 7,
+  },
+  linearGradientWrapper: {
+    height: 1,
+    position: "relative",
+  },
+  linearGradient: {
+    width: 265,
+    position: "absolute",
+    left: -20,
+    bottom: -20,
+    height: "100%",
   },
 });
