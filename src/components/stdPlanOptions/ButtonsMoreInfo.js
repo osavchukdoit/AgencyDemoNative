@@ -12,47 +12,67 @@ import FaqIconSvg from "../../assets/icons/stdPlanOptions/faqIcon.svg";
 export const ButtonsMoreInfo = () => {
   return (
     <View style={styles.wrapper}>
-      <TouchableOpacity style={[styles.button, styles.buttonActive]}>
-        <DescriptionSvg />
-        <Text style={[styles.buttonText, styles.buttonTextActive]}>
-          Description
-        </Text>
-      </TouchableOpacity>
+      <View style={styles.buttonsRowWrapper}>
+        <TouchableOpacity style={styles.additionalMarginBottom}>
+          <View style={[styles.button, styles.buttonActive]}>
+            <DescriptionSvg />
+          </View>
+          <Text style={[styles.buttonText, styles.buttonTextActive]}>
+            Description
+          </Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button}>
-        <CompareSvg />
-        <Text style={styles.buttonText}>Compare</Text>
-      </TouchableOpacity>
+        <TouchableOpacity style={styles.additionalMarginBottom}>
+          <View style={styles.button}>
+            <CompareSvg />
+          </View>
+          <Text style={styles.buttonText}>Compare</Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button}>
-        <CompareSvg />
-        <Text style={styles.buttonText}>Eligibility</Text>
-      </TouchableOpacity>
+        <TouchableOpacity style={styles.additionalMarginBottom}>
+          <View style={styles.button}>
+            <CompareSvg />
+          </View>
+          <Text style={styles.buttonText}>Eligibility</Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity style={[styles.button, styles.additionalMarginRight]}>
-        <WarningIconSvg />
-        <Text style={styles.buttonText}>Limitations</Text>
-      </TouchableOpacity>
+        <TouchableOpacity style={styles.additionalMarginBottom}>
+          <View style={styles.button}>
+            <WarningIconSvg />
+          </View>
+          <Text style={styles.buttonText}>Limitations</Text>
+        </TouchableOpacity>
+      </View>
 
-      <TouchableOpacity style={styles.button}>
-        <VideoIconSvg />
-        <Text style={styles.buttonText}>Video</Text>
-      </TouchableOpacity>
+      <View style={styles.buttonsRowWrapper}>
+        <TouchableOpacity style={styles.additionalMarginBottom}>
+          <View style={styles.button}>
+            <VideoIconSvg />
+          </View>
+          <Text style={styles.buttonText}>Video</Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button}>
-        <CalculatorIconSvg />
-        <Text style={styles.buttonText}>Calculator</Text>
-      </TouchableOpacity>
+        <TouchableOpacity style={styles.additionalMarginBottom}>
+          <View style={styles.button}>
+            <CalculatorIconSvg />
+          </View>
+          <Text style={styles.buttonText}>Calculator</Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button}>
-        <BotIconSvg />
-        <Text style={styles.buttonText}>STD bottom</Text>
-      </TouchableOpacity>
+        <TouchableOpacity style={styles.additionalMarginBottom}>
+          <View style={styles.button}>
+            <BotIconSvg />
+          </View>
+          <Text style={styles.buttonText}>STD bottom</Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity style={[styles.button, styles.additionalMarginRight]}>
-        <FaqIconSvg />
-        <Text style={styles.buttonText}>FAQ</Text>
-      </TouchableOpacity>
+        <TouchableOpacity style={styles.additionalMarginBottom}>
+          <View style={styles.button}>
+            <FaqIconSvg />
+          </View>
+          <Text style={styles.buttonText}>FAQ</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -60,10 +80,11 @@ export const ButtonsMoreInfo = () => {
 const styles = StyleSheet.create({
   wrapper: {
     paddingHorizontal: 20,
-    marginBottom: 3,
-    flexWrap: "wrap",
-    justifyContent: "space-between",
+  },
+
+  buttonsRowWrapper: {
     flexDirection: "row",
+    justifyContent: "space-between",
   },
 
   button: {
@@ -73,13 +94,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 10,
     backgroundColor: THEME.BACKGROUND.BUTTON_SHOW_HIDE_BG,
-    marginRight: 36,
-    marginBottom: 29,
-    position: "relative",
+    marginBottom: 3,
   },
 
-  additionalMarginRight: {
-    marginRight: 0,
+  additionalMarginBottom: {
+    marginBottom: 13,
+    alignItems: "center",
   },
 
   buttonActive: {
@@ -87,8 +107,6 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
-    position: "absolute",
-    bottom: -16,
     fontFamily: FONTS.AVENIR.MEDIUM,
     fontSize: 10,
     lineHeight: 14,

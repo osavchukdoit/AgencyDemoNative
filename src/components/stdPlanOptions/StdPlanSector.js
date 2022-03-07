@@ -21,6 +21,7 @@ export const StdPlanSector = () => {
           <View style={styles.iconWrapper}>
             <CrutchesSvg />
           </View>
+
           <Text style={styles.sectorTitle}>Short Time Disability 7-7-25</Text>
         </View>
 

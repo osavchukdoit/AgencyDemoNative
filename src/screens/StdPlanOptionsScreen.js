@@ -13,7 +13,7 @@ export const StdPlanOptionsScreen = () => {
         <StdPlanOptionsTop />
         <ButtonsPlanAndMoreInfo />
         <ButtonsMoreInfo />
-        <StdInfoSectorProductDescription/>
+        <StdInfoSectorProductDescription />
         <StdPlanSector />
         <StdPlanSector />
       </ScrollView>

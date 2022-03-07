@@ -88,7 +88,7 @@ export const AppStack = ({ onLogout }) => {
             <View style={styles.headerButtonsWrapper}>
               <TouchableOpacity
                 onPress={() => {
-                  navigation.navigate("StdPlanOptionsScreen");
+                  navigation.navigate("Home");
                 }}
               >
                 {!isWebOs ? <HomeIconSvg /> : <Text>HomeIconSvg</Text>}
@@ -124,6 +124,8 @@ export const AppStack = ({ onLogout }) => {
         <Drawer.Screen
           name={"FamilyInfoOverviewScreen"}
           component={FamilyInfoOverviewScreen}
+        />
+        <Drawer.Screen
           name={"EnrollmentNavigation"}
           component={EnrollmentNavigation}
         />
