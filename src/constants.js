@@ -3,6 +3,11 @@ export const CONSTANTS = {
     LOGIN_INPUT: "login",
     PASSWORD_INPUT: "password",
   },
+  OS: {
+    ios: "ios",
+    web: "web",
+    android: "android",
+  }
 };
 
 export const SERVER_URL = "https://www.agencyezdev.com";

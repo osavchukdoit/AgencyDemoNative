@@ -1,6 +1,6 @@
 {
   "name": "agencydemonative",
-  "version": "0.2.10",
+  "version": "0.2.11",
   "main": "index.js",
   "scripts": {
     "start": "expo start --dev-client",
