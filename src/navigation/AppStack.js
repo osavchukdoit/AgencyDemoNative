@@ -32,9 +32,10 @@ import { AppText } from "../components/utils/AppText";
 import { EnrollmentNavigation } from "./EnrollmentNavigation";
 import { FONTS } from "../styles/fonts";
 import { LinearGradient } from "expo-linear-gradient";
+import { CONSTANTS } from "../constants";
 
-const isWebOs = Platform.OS === "web";
-const isIos = Platform.OS === "ios";
+const isWebOs = Platform.OS === CONSTANTS.OS.web;
+const isIos = Platform.OS === CONSTANTS.OS.ios;
 
 const Drawer = createDrawerNavigator();
 

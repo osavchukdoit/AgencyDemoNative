@@ -70,7 +70,7 @@ export const LoginScreen = ({ onLogin }) => {
   return (
     <View style={styles.container}>
       <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        behavior={Platform.OS === CONSTANTS.OS.ios ? "padding" : "height"}
         style={styles.loginWindow}
       >
         <Text style={styles.loginWindowTitle}>
