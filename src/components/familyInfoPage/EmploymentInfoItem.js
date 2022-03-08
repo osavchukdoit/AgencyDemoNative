@@ -3,7 +3,7 @@ import InfoCircleSvg from "../../assets/icons/familyInfoIcons/infoCircle.svg";
 import BagIconSvg from "../../assets/icons/familyInfoIcons/bag.svg";
 import ArrowRightSvg from "../../assets/icons/familyInfoIcons/vectorRight.svg";
 import { useState } from "react";
-import mainStyles from "./stylesFamilyInfoItem";
+import mainStyles from "./FamilyInfoItemStyles";
 
 export const EmploymentInfoItem = () => {
   const [isWarning, setIsWarning] = useState(false);

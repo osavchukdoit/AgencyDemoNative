@@ -3,7 +3,7 @@ import InfoCircleSvg from "../../assets/icons/familyInfoIcons/infoCircle.svg";
 import CalendarIconSvg from "../../assets/icons/familyInfoIcons/calendar.svg";
 import ArrowRightSvg from "../../assets/icons/familyInfoIcons/vectorRight.svg";
 import { useState } from "react";
-import mainStyles from "./stylesFamilyInfoItem";
+import mainStyles from "./FamilyInfoItemStyles";
 
 export const PersonalInfoItem = () => {
   const [isWarning, setIsWarning] = useState(true);

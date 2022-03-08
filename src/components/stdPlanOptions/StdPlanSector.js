@@ -12,24 +12,20 @@ export const StdPlanSector = ({ isRadioButton = false }) => {
   const [isSelected, setIsSelected] = useState(true);
 
   const onHandleSelected = () => {
-    setIsSelected((prev) => {
-      return !prev;
-    });
+    setIsSelected((prev) => !prev);
   };
 
   const onHandlePress = () => {
-    setIsVisible((prev) => {
-      return !prev;
-    });
+    setIsVisible((prev) => !prev);
   };
+
   return (
     <View style={styles.wrapper}>
       <View
-        style={
-          isRadioButton
-            ? [styles.planSectorWrapper, styles.focusPlanSectorBorder]
-            : styles.planSectorWrapper
-        }
+        style={[
+          styles.planSectorWrapper,
+          isRadioButton && styles.focusPlanSectorBorder,
+        ]}
       >
         <View style={styles.iconAndTitleWrapper}>
           <View style={styles.iconWrapper}>

@@ -89,7 +89,7 @@ export const AppStack = ({ onLogout }) => {
             <View style={styles.headerButtonsWrapper}>
               <TouchableOpacity
                 onPress={() => {
-                  navigation.navigate("StdSelectPlanScreen"); //here
+                  navigation.navigate("Home");
                 }}
               >
                 {!isWebOs ? <HomeIconSvg /> : <Text>HomeIconSvg</Text>}
