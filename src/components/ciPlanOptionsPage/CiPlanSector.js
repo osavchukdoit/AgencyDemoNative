@@ -31,14 +31,10 @@ export const CiPlanSector = () => {
         <View style={styles.subTitleAndButtonWrapper}>
           <Text style={styles.subTitle}>Plan Summary</Text>
           <TouchableOpacity
-            style={
-              isVisible
-                ? { ...styles.buttonShowHide }
-                : {
-                    ...styles.buttonShowHide,
-                    transform: [{ rotate: "180deg" }],
-                  }
-            }
+            style={[
+              styles.buttonShowHide,
+              isVisible && { transform: [{ rotate: "180deg" }] },
+            ]}
             onPress={onHandlePress}
           >
             <Text>
@@ -99,7 +95,9 @@ export const CiPlanSector = () => {
         <View style={styles.listWrapper}>
           <View style={styles.costListWrapper}>
             <View style={styles.titlesItemsWrapper}>
-              <Text style={styles.titleItems}>Coverage Tier</Text>
+              <Text style={[styles.titleItems, styles.additionalWidth]}>
+                Coverage Tier
+              </Text>
               <Text style={styles.titleItems}>Bi-Weekly Cost</Text>
             </View>
             <View

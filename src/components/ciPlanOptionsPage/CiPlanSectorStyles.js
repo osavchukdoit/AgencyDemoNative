@@ -153,13 +153,16 @@ export default StyleSheet.create({
     backgroundColor: THEME.BACKGROUND.VERY_LIGHT_BLUE_V2,
   },
 
-
   titleItems: {
     fontFamily: FONTS.AVENIR.MEDIUM,
     fontSize: 13,
     lineHeight: 17.76,
     letterSpacing: -0.28,
     color: THEME.COLOR.BLUE_BRIGHT,
+  },
+
+  additionalWidth: {
+    width: "65%",
   },
 
   textItemsWrapper: {
