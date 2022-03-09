@@ -49,6 +49,8 @@ export const THEME = {
     LIGHT_BLUE: "#F6FCFC",
     VERY_LIGHT_GREY: "#F6F7F8",
     VERY_LIGHT_BLUE: "#f0fafa",
+    VERY_LIGHT_BLUE_V1: "#43bebb14",
+    VERY_LIGHT_BLUE_V2: "#E3F5F5",
     DARK_BLUE: "#1A3C5A",
     OVERVIEW_ITEMS_ROW: "rgba(67, 190, 187, 0.05)",
     TAB_NAVIGATION: "#fff",
