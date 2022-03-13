@@ -7,7 +7,7 @@ import DownloadSvg from "../../assets/icons/stdPlanOptions/downloadIcon.svg";
 import ThermometerIconSvg from "../../assets/icons/ciPlanOptions/thermometerIcon.svg";
 import styles from "./CiPlanSectorStyles";
 
-export const CiPlanSector = () => {
+export const CiPlanSector = ({ isSelectVisible = false }) => {
   const [isVisible, setIsVisible] = useState(true);
 
   const onHandlePress = () => {
@@ -73,19 +73,20 @@ export const CiPlanSector = () => {
             </View>
             <Text style={[styles.itemTitle, styles.darkTextColor]}>$5,000</Text>
           </View>
+
+          <View style={styles.linksWrapper}>
+            <TouchableOpacity style={styles.iconAndLinkWrapper}>
+              <EyeSvg style={styles.linkIcon} />
+              <Text style={styles.linkText}>View Benefit Details</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.iconAndLinkWrapper}>
+              <DownloadSvg style={styles.linkIcon} />
+              <Text style={styles.linkText}>Download Benefit Details</Text>
+            </TouchableOpacity>
+          </View>
         </View>
 
-        <View style={styles.linksWrapper}>
-          <TouchableOpacity style={styles.iconAndLinkWrapper}>
-            <EyeSvg style={styles.linkIcon} />
-            <Text style={styles.linkText}>View Benefit Details</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.iconAndLinkWrapper}>
-            <DownloadSvg style={styles.linkIcon} />
-            <Text style={styles.linkText}>Download Benefit Details</Text>
-          </TouchableOpacity>
-        </View>
         <PseudoElement />
 
         <View style={styles.subTitleWrapper}>

@@ -49,11 +49,13 @@ export default StyleSheet.create({
     paddingRight: 6,
     justifyContent: "space-between",
     marginBottom: 9,
+    marginTop: 12,
   },
 
   subTitleWrapper: {
     paddingLeft: 4,
     marginBottom: 9,
+    marginTop: 12,
   },
 
   subTitle: {
@@ -109,7 +111,7 @@ export default StyleSheet.create({
   },
 
   additionalItemBottomMargin: {
-    marginBottom: 16,
+    marginBottom: 13,
   },
 
   linksWrapper: {
