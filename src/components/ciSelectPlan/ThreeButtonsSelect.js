@@ -7,7 +7,7 @@ import SelectedIconSvg from "../../assets/icons/ciSelectPlan/selectedIcon.svg";
 export const ThreeButtonsSelect = () => {
   return (
     <View style={styles.wrapper}>
-      <View style={styles.sectorWrappe}>
+      <View style={styles.sectorWrapper}>
         <Text style={styles.questionTitle}>Are you actively at work?</Text>
         <PseudoElement />
         <View style={styles.radioButtonsWrapper}>
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
 
-  sectorWrappe: {
+  sectorWrapper: {
     backgroundColor: THEME.COLOR.WHITE,
     shadowColor: THEME.BOX_SHADOW.COLOR_BLACK,
     shadowOffset: THEME.BOX_SHADOW.OFFSET,
