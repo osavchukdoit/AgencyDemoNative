@@ -17,11 +17,12 @@ export default StyleSheet.create({
     shadowOpacity: THEME.BOX_SHADOW.OPACITY,
     shadowRadius: THEME.BOX_SHADOW.SHADOW_RADIUS,
     borderRadius: 20,
+    borderWidth: 1,
+    borderColor: THEME.COLOR.WHITE,
   },
 
   focusPlanSectorBorder: {
-    borderWidth:1,
-    borderColor: THEME.BACKGROUND.MENU
+    borderColor: THEME.BACKGROUND.MENU,
   },
 
   iconAndTitleWrapper: {
