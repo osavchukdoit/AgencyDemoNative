@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
 
   imageTopWrapper: {
     position: "relative",
-    marginBottom: 19,
+    marginBottom: 10,
   },
 
   imageTop: {

@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { EmployersScreen } from "../screens/EmployersScreen";
 import { AboutScreen } from "../screens/AboutScreen";
 import { TouchableOpacity, Text, View, Image, Platform } from "react-native";
+import { CiSelectPlanScreen } from "../screens/CiSelectPlanScreen";
 import { CiPlanOptionsScreen } from "../screens/CiPlanOptionsScreen";
 import { StdSelectPlanScreen } from "../screens/StdSelectPlanScreen";
 import { StdPlanOptionsScreen } from "../screens/StdPlanOptionsScreen";
@@ -121,6 +122,10 @@ export const AppStack = ({ onLogout }) => {
           ),
         })}
       >
+        <Drawer.Screen
+          name={"CiSelectPlanScreen"}
+          component={CiSelectPlanScreen}
+        />
         <Drawer.Screen
           name={"CiPlanOptionsScreen"}
           component={CiPlanOptionsScreen}

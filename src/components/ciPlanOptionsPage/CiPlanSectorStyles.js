@@ -17,6 +17,12 @@ export default StyleSheet.create({
     shadowOpacity: THEME.BOX_SHADOW.OPACITY,
     shadowRadius: THEME.BOX_SHADOW.SHADOW_RADIUS,
     borderRadius: 20,
+    borderWidth: 1,
+    borderColor: THEME.COLOR.WHITE,
+  },
+
+  focusPlanSectorBorder: {
+    borderColor: THEME.BACKGROUND.MENU,
   },
 
   iconAndTitleWrapper: {
@@ -43,17 +49,54 @@ export default StyleSheet.create({
     letterSpacing: -0.28,
   },
 
+  selectedButtonAndTextWrapper: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+
+  selectedRaioButton: {
+    height: 13,
+    width: 13,
+    borderWidth: 1,
+    borderColor: THEME.COLOR.DARK_BLUE_TEXT,
+    borderRadius: 8,
+    justifyContent: "center",
+    alignItems: "center",
+    marginRight: 8,
+  },
+
+  radioButtonPoint: {
+    width: 7,
+    height: 7,
+    borderRadius: 8,
+    backgroundColor: THEME.COLOR.DARK_BLUE_TEXT,
+  },
+
+  displayNone: {
+    display: "none",
+  },
+
+  selectedRadioButtonText: {
+    fontFamily: FONTS.AVENIR.ROMAN,
+    fontSize: 14,
+    lineHeight: 19,
+    letterSpacing: -0.28,
+    color: THEME.COLOR.BLACK,
+  },
+
   subTitleAndButtonWrapper: {
     flexDirection: "row",
     paddingLeft: 4,
     paddingRight: 6,
     justifyContent: "space-between",
     marginBottom: 9,
+    marginTop: 12,
   },
 
   subTitleWrapper: {
     paddingLeft: 4,
     marginBottom: 9,
+    marginTop: 12,
   },
 
   subTitle: {
@@ -109,7 +152,7 @@ export default StyleSheet.create({
   },
 
   additionalItemBottomMargin: {
-    marginBottom: 16,
+    marginBottom: 13,
   },
 
   linksWrapper: {

@@ -7,8 +7,13 @@ import DownloadSvg from "../../assets/icons/stdPlanOptions/downloadIcon.svg";
 import ThermometerIconSvg from "../../assets/icons/ciPlanOptions/thermometerIcon.svg";
 import styles from "./CiPlanSectorStyles";
 
-export const CiPlanSector = () => {
+export const CiPlanSector = ({ isRadioButton = false }) => {
   const [isVisible, setIsVisible] = useState(true);
+  const [isSelected, setIsSelected] = useState(true);
+
+  const onHandleSelected = () => {
+    setIsSelected((prev) => !prev);
+  };
 
   const onHandlePress = () => {
     setIsVisible((prev) => !prev);
@@ -16,13 +21,35 @@ export const CiPlanSector = () => {
 
   return (
     <View style={styles.wrapper}>
-      <View style={styles.planSectorWrapper}>
+      <View
+        style={[
+          styles.planSectorWrapper,
+          isSelected && styles.focusPlanSectorBorder,
+        ]}
+      >
         <View style={styles.iconAndTitleWrapper}>
           <View style={styles.iconWrapper}>
             <ThermometerIconSvg />
           </View>
           <View>
             <Text style={styles.sectorTitle}>Critical Illness $10,000</Text>
+            {isRadioButton && (
+              <View style={styles.selectedButtonAndTextWrapper}>
+                <TouchableOpacity
+                  onPress={onHandleSelected}
+                  style={styles.selectedRaioButton}
+                >
+                  <View
+                    style={
+                      isSelected ? styles.radioButtonPoint : styles.displayNone
+                    }
+                  ></View>
+                </TouchableOpacity>
+                <Text style={styles.selectedRadioButtonText}>
+                  Selected Plan
+                </Text>
+              </View>
+            )}
           </View>
         </View>
 
@@ -73,19 +100,20 @@ export const CiPlanSector = () => {
             </View>
             <Text style={[styles.itemTitle, styles.darkTextColor]}>$5,000</Text>
           </View>
+
+          <View style={styles.linksWrapper}>
+            <TouchableOpacity style={styles.iconAndLinkWrapper}>
+              <EyeSvg style={styles.linkIcon} />
+              <Text style={styles.linkText}>View Benefit Details</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.iconAndLinkWrapper}>
+              <DownloadSvg style={styles.linkIcon} />
+              <Text style={styles.linkText}>Download Benefit Details</Text>
+            </TouchableOpacity>
+          </View>
         </View>
 
-        <View style={styles.linksWrapper}>
-          <TouchableOpacity style={styles.iconAndLinkWrapper}>
-            <EyeSvg style={styles.linkIcon} />
-            <Text style={styles.linkText}>View Benefit Details</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.iconAndLinkWrapper}>
-            <DownloadSvg style={styles.linkIcon} />
-            <Text style={styles.linkText}>Download Benefit Details</Text>
-          </TouchableOpacity>
-        </View>
         <PseudoElement />
 
         <View style={styles.subTitleWrapper}>
