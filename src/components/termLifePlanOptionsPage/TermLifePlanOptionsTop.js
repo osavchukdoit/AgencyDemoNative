@@ -2,20 +2,20 @@ import { View, Text, StyleSheet, Image } from "react-native";
 import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
 
-export const CiPlanOptionsTop = () => {
+export const TermLifePlanOptionsTop = () => {
   return (
     <View style={styles.wrapper}>
       <View style={styles.imageTopWrapper}>
         <Image
           style={styles.imageTop}
-          source={require("../../assets/topComponent/ciPlanOptionTopPic.png")}
+          source={require("../../assets/topComponent/termLifePlanOptionsTopPage.png")}
         />
         <View style={styles.imageTopTextWrapper}>
           <Text style={styles.imageTopTextUp}>
-            Quality of Life Protection for the Unexpected!
+            Financial Protection for the Unexpected!
           </Text>
           <Text style={[styles.imageTopTextUp, styles.imageTopTextDown]}>
-            Select Critical Illness Plans
+            Select Term Life Plans
           </Text>
         </View>
       </View>
@@ -26,9 +26,8 @@ export const CiPlanOptionsTop = () => {
         />
         <View style={styles.subTextTopWrapper}>
           <Text style={styles.subTextTop}>
-            Critical illness insurance can help you protect your finances if you
-            are diagnosed with a covered serious condition. The plan pays
-            benefits to you.
+            Term Life insurance peovides cash benefits to help your family pay
+            for expances such as funeral expances, incom replacement, mortgage.
           </Text>
         </View>
       </View>
