@@ -139,8 +139,8 @@ const styles = StyleSheet.create({
   },
 
   radioButton: {
-    width: 12,
-    height: 12,
+    width: 13,
+    height: 13,
     borderWidth: 1,
     borderColor: THEME.COLOR.DARK_BLUE_TEXT,
     borderRadius: 8,
