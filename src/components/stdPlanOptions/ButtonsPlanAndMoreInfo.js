@@ -4,25 +4,18 @@ import { FONTS } from "../../styles/fonts";
 
 export const ButtonsPlanAndMoreInfo = () => {
   return (
-    <View style={styles.buttonsWrapper}>
-      <View style={styles.buttonsContainer}>
-        <TouchableOpacity style={[styles.button, styles.additionalButtonColor]}>
-          <Text style={styles.checkedButtonText}>Plan Options</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>More Info</Text>
-        </TouchableOpacity>
-      </View>
+    <View style={styles.buttonsContainer}>
+      <TouchableOpacity style={[styles.button, styles.additionalButtonColor]}>
+        <Text style={styles.checkedButtonText}>Plan Options</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText}>More Info</Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  buttonsWrapper: {
-    paddingHorizontal: 20,
-    marginBottom: 12,
-  },
-
   buttonsContainer: {
     flexDirection: "row",
     borderTopLeftRadius: 10,
@@ -31,6 +24,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 10,
     padding: 4,
     backgroundColor: "#1a3c5a0f",
+    marginBottom: 12,
   },
 
   button: {
