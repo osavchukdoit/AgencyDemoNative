@@ -6,61 +6,54 @@ import { FONTS } from "../../styles/fonts";
 
 export const StdInfoSectorProductDescription = () => {
   return (
-    <View style={styles.wrapper}>
-      <View style={styles.infoSectorWrapper}>
-        <View style={styles.iconAndTitleWrapper}>
-          <View style={styles.iconWrapper}>
-            <CrutchesSvg />
-          </View>
-          <Text style={styles.sectorTitle}>Product Description</Text>
+    <View style={styles.infoSectorWrapper}>
+      <View style={styles.iconAndTitleWrapper}>
+        <View style={styles.iconWrapper}>
+          <CrutchesSvg />
         </View>
-        <PseudoElement />
-        <Text style={styles.subTitleMedium}>
-          Short Term Disability Insurance can pay you a weekly benefit if you
-          have a covered disability that keeps you from working.
-        </Text>
+        <Text style={styles.sectorTitle}>Product Description</Text>
+      </View>
+      <PseudoElement />
+      <Text style={styles.subTitleMedium}>
+        Short Term Disability Insurance can pay you a weekly benefit if you have
+        a covered disability that keeps you from working.
+      </Text>
 
-        <Text style={styles.subTextNormal}>Disability Definition: </Text>
-        <Text style={styles.subTextNormal}>
-          You are disabled when Unum determines that due to your sickness or
-          injury
-        </Text>
+      <Text style={styles.subTextNormal}>Disability Definition: </Text>
+      <Text style={styles.subTextNormal}>
+        You are disabled when Unum determines that due to your sickness or
+        injury
+      </Text>
 
-        <View style={styles.pointAndTitleWrapper}>
-          <View style={styles.point}></View>
-          <Text style={styles.itemTitle}>
-            You are unable to perform the material and substantial duties of
-            your regular occupation; and
-          </Text>
-        </View>
-
-        <View style={styles.pointAndTitleWrapper}>
-          <View style={styles.point}></View>
-          <Text style={styles.itemTitle}>
-            You are not working in any occupation.
-          </Text>
-        </View>
-
-        <Text style={styles.subTextNormal}>
-          You must be under the regular case of a physician in order to be
-          considered disabled.
-        </Text>
-
-        <Text style={styles.subTextNormal}>
-          The loss of a professional or occupational license or certification
-          does not, in itself, constitute disability.
+      <View style={styles.pointAndTitleWrapper}>
+        <View style={styles.point}></View>
+        <Text style={styles.itemTitle}>
+          You are unable to perform the material and substantial duties of your
+          regular occupation; and
         </Text>
       </View>
+
+      <View style={styles.pointAndTitleWrapper}>
+        <View style={styles.point}></View>
+        <Text style={styles.itemTitle}>
+          You are not working in any occupation.
+        </Text>
+      </View>
+
+      <Text style={styles.subTextNormal}>
+        You must be under the regular case of a physician in order to be
+        considered disabled.
+      </Text>
+
+      <Text style={styles.subTextNormal}>
+        The loss of a professional or occupational license or certification does
+        not, in itself, constitute disability.
+      </Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  wrapper: {
-    paddingHorizontal: 20,
-    marginBottom: 16,
-  },
-
   infoSectorWrapper: {
     paddingTop: 11,
     paddingBottom: 14,
@@ -71,6 +64,7 @@ const styles = StyleSheet.create({
     shadowOpacity: THEME.BOX_SHADOW.OPACITY,
     shadowRadius: THEME.BOX_SHADOW.SHADOW_RADIUS,
     borderRadius: 20,
+    marginBottom: 16,
   },
 
   iconAndTitleWrapper: {
@@ -103,6 +97,7 @@ const styles = StyleSheet.create({
     lineHeight: 16,
     letterSpacing: -0.28,
     marginBottom: 16,
+    marginTop: 16,
     color: THEME.COLOR.GREY_DARK_TEXT,
   },
 

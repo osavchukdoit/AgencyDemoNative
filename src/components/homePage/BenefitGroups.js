@@ -17,63 +17,57 @@ export const BenefitGroups = () => {
   };
 
   return (
-    <View style={[styles.wrapper, styles.shadowProp]}>
-      <View style={styles.benefitWrapper}>
-        <View style={styles.benefitTitleWrapper}>
-          <AppText fontFamily={FONTS.AVENIR.HEAVY} style={styles.benefitTitle}>
-            Income Protection
-          </AppText>
-          <View style={styles.containerButtonShowHide}>
-            <TouchableOpacity
-              style={
-                isVisible
-                  ? { ...styles.buttonShowHide }
-                  : {
-                      ...styles.buttonShowHide,
-                      transform: [{ rotate: "180deg" }],
-                    }
-              }
-              onPress={onHandlePress}
-            >
-              <Text>{<ShowHideIconSvg />}</Text>
-            </TouchableOpacity>
-          </View>
+    <View style={[styles.benefitWrapper, styles.shadowProp]}>
+      <View style={styles.benefitTitleWrapper}>
+        <AppText fontFamily={FONTS.AVENIR.HEAVY} style={styles.benefitTitle}>
+          Income Protection
+        </AppText>
+        <View style={styles.containerButtonShowHide}>
+          <TouchableOpacity
+            style={
+              isVisible
+                ? { ...styles.buttonShowHide }
+                : {
+                    ...styles.buttonShowHide,
+                    transform: [{ rotate: "180deg" }],
+                  }
+            }
+            onPress={onHandlePress}
+          >
+            <Text>{<ShowHideIconSvg />}</Text>
+          </TouchableOpacity>
         </View>
-        <View style={isVisible ? { display: "flex" } : { display: "none" }}>
-          <View style={styles.gradientWrapper}>
-            <LinearGradient
-              colors={[
-                "rgba(26, 60, 90, 0)",
-                "rgba(26, 60, 90, 0.5)",
-                "rgba(26, 60, 90, 0)",
-              ]}
-              style={styles.linearBackground}
-              start={[1, 1]}
-            />
-          </View>
-          <Text style={styles.benefitText}>
-            Benefits designed to protect your income for a set period of time
-            when you are unable to work due to an unexpected illness or injury
-          </Text>
-          <VoluntarySTD />
+      </View>
+      <View style={isVisible ? { display: "flex" } : { display: "none" }}>
+        <View style={styles.gradientWrapper}>
+          <LinearGradient
+            colors={[
+              "rgba(26, 60, 90, 0)",
+              "rgba(26, 60, 90, 0.5)",
+              "rgba(26, 60, 90, 0)",
+            ]}
+            style={styles.linearBackground}
+            start={[1, 1]}
+          />
         </View>
+        <Text style={styles.benefitText}>
+          Benefits designed to protect your income for a set period of time when
+          you are unable to work due to an unexpected illness or injury
+        </Text>
+        <VoluntarySTD />
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  wrapper: {
-    paddingBottom: 20,
-    paddingHorizontal: 20,
-  },
-
   benefitWrapper: {
     backgroundColor: THEME.COLOR.WHITE,
     paddingTop: 14,
     paddingBottom: 14,
     paddingHorizontal: 15,
     borderRadius: 20,
+    marginBottom: 20,
   },
 
   shadowProp: {

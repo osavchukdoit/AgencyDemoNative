@@ -13,7 +13,6 @@ export const TitleOfSelectedPlan = () => {
 
 const styles = StyleSheet.create({
   wrapper: {
-    paddingHorizontal: 20,
     marginBottom: 12,
   },
 

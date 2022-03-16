@@ -5,44 +5,37 @@ import { PseudoElement } from "../stdPlanOptions/PseudoElement";
 import ThermometerSvg from "../../assets/icons/ciPlanOptions/thermometerIcon.svg";
 export const CiInfoProductDescription = () => {
   return (
-    <View style={styles.wrapper}>
-      <View style={styles.infoSectorWrapper}>
-        <View style={styles.iconAndTitleWrapper}>
-          <View style={styles.iconWrapper}>
-            <ThermometerSvg />
-          </View>
-          <Text style={styles.sectorTitle}>Product Description</Text>
+    <View style={styles.infoSectorWrapper}>
+      <View style={styles.iconAndTitleWrapper}>
+        <View style={styles.iconWrapper}>
+          <ThermometerSvg />
         </View>
-        <PseudoElement />
-        <Text style={[styles.subTitleMedium, styles.additionalMarginTop]}>
-          The Athena Critical Illness Plan can help you protect your finances if
-          you are diagnosed with a covered serious condition. The plan pays cash
-          benefits to you if you are diagnosed with a heart attack, stroke, end
-          stage renal failure, cancer and more. You can use the money to help
-          cover your deductible or for everyday expenses like utility bills,
-          mortage payments and groceries. It’s up to you.
-        </Text>
-
-        <Text style={styles.subTextNormal}>
-          Your plan also includes a health screening benefit for a covered
-          preventive test.
-        </Text>
-
-        <Text style={styles.subTextNormal}>
-          See the attached benefit summary for details of coverage, including
-          limitations and exclusions.
-        </Text>
+        <Text style={styles.sectorTitle}>Product Description</Text>
       </View>
+      <PseudoElement />
+      <Text style={styles.subTitleMedium}>
+        The Athena Critical Illness Plan can help you protect your finances if
+        you are diagnosed with a covered serious condition. The plan pays cash
+        benefits to you if you are diagnosed with a heart attack, stroke, end
+        stage renal failure, cancer and more. You can use the money to help
+        cover your deductible or for everyday expenses like utility bills,
+        mortage payments and groceries. It’s up to you.
+      </Text>
+
+      <Text style={styles.subTextNormal}>
+        Your plan also includes a health screening benefit for a covered
+        preventive test.
+      </Text>
+
+      <Text style={styles.subTextNormal}>
+        See the attached benefit summary for details of coverage, including
+        limitations and exclusions.
+      </Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  wrapper: {
-    paddingHorizontal: 20,
-    marginBottom: 16,
-  },
-
   infoSectorWrapper: {
     paddingTop: 11,
     paddingBottom: 5,
@@ -53,6 +46,7 @@ const styles = StyleSheet.create({
     shadowOpacity: THEME.BOX_SHADOW.OPACITY,
     shadowRadius: THEME.BOX_SHADOW.SHADOW_RADIUS,
     borderRadius: 20,
+    marginBottom: 16,
   },
 
   iconAndTitleWrapper: {
@@ -79,10 +73,6 @@ const styles = StyleSheet.create({
     letterSpacing: -0.28,
   },
 
-  additionalMarginTop: {
-    marginTop: 6,
-  },
-
   subTitleMedium: {
     fontFamily: FONTS.AVENIR.MEDIUM,
     fontSize: 12,
@@ -90,6 +80,7 @@ const styles = StyleSheet.create({
     letterSpacing: -0.28,
     marginBottom: 11,
     color: THEME.COLOR.GREY_DARK_TEXT,
+    marginTop: 16,
   },
 
   subTextNormal: {

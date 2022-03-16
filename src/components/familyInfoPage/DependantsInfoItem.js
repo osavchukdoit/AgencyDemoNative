@@ -9,7 +9,7 @@ import { FONTS } from "../../styles/fonts";
 
 export const DependantsInfoItem = () => {
   return (
-    <View style={mainStyles.wrapper}>
+    <>
       <Text style={mainStyles.infoTitle}>Dependants</Text>
       <View style={mainStyles.infoWrapper}>
         <View style={mainStyles.subTitleContainer}>
@@ -62,7 +62,7 @@ export const DependantsInfoItem = () => {
         <CrossSvg />
         <Text style={localStyles.addButtonText}>Add Dependent</Text>
       </TouchableOpacity>
-    </View>
+    </>
   );
 };
 

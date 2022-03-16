@@ -7,7 +7,7 @@ import { ButtonBenefitsCart } from "../components/familyInfoPage/ButtonBenefitsC
 
 export const TermLifePlanOptionsScreen = () => {
   return (
-    <View>
+    <>
       <ScrollView>
         <TermLifePlanOptionsTop />
         <View style={styles.wrapper}>
@@ -17,7 +17,7 @@ export const TermLifePlanOptionsScreen = () => {
         </View>
       </ScrollView>
       <ButtonBenefitsCart />
-    </View>
+    </>
   );
 };
 

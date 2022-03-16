@@ -3,11 +3,6 @@ import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
 
 export default StyleSheet.create({
-  wrapper: {
-    paddingHorizontal: 20,
-    marginBottom: 16,
-  },
-
   planSectorWrapper: {
     padding: 11,
     backgroundColor: THEME.COLOR.WHITE,
@@ -16,11 +11,13 @@ export default StyleSheet.create({
     shadowOpacity: THEME.BOX_SHADOW.OPACITY,
     shadowRadius: THEME.BOX_SHADOW.SHADOW_RADIUS,
     borderRadius: 20,
+    marginBottom: 16,
+    borderWidth: 1,
+    borderColor: THEME.COLOR.WHITE,
   },
 
   focusPlanSectorBorder: {
-    borderWidth:1,
-    borderColor: THEME.BACKGROUND.MENU
+    borderColor: THEME.BACKGROUND.MENU,
   },
 
   iconAndTitleWrapper: {
@@ -88,6 +85,7 @@ export default StyleSheet.create({
     paddingRight: 6,
     justifyContent: "space-between",
     marginBottom: 7,
+    marginTop: 12,
   },
 
   subTitle: {

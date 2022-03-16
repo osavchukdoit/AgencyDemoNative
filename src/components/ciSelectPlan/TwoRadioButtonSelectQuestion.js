@@ -5,23 +5,21 @@ import { FONTS } from "../../styles/fonts";
 
 export const TwoRadioButtonSelectQuestion = () => {
   return (
-    <View style={styles.wrapper}>
-      <View style={styles.sectorWrappe}>
-        <Text style={styles.questionTitle}>Are you actively at work?</Text>
-        <PseudoElement />
-        <View style={styles.radioButtonsWrapper}>
-          <View style={styles.radioButtonAndTextWrapper}>
-            <TouchableOpacity style={styles.radioButton}>
-              <View style={[styles.point, styles.displayNone]}></View>
-            </TouchableOpacity>
-            <Text style={styles.buttonText}>Yes</Text>
-          </View>
-          <View style={styles.radioButtonAndTextWrapper}>
-            <TouchableOpacity style={styles.radioButton}>
-              <View style={[styles.point, styles.displayNone]}></View>
-            </TouchableOpacity>
-            <Text style={styles.buttonText}>Yes</Text>
-          </View>
+    <View style={styles.sectorWrappe}>
+      <Text style={styles.questionTitle}>Are you actively at work?</Text>
+      <PseudoElement />
+      <View style={styles.radioButtonsWrapper}>
+        <View style={styles.radioButtonAndTextWrapper}>
+          <TouchableOpacity style={styles.radioButton}>
+            <View style={[styles.point, styles.displayNone]}></View>
+          </TouchableOpacity>
+          <Text style={styles.buttonText}>Yes</Text>
+        </View>
+        <View style={styles.radioButtonAndTextWrapper}>
+          <TouchableOpacity style={styles.radioButton}>
+            <View style={[styles.point, styles.displayNone]}></View>
+          </TouchableOpacity>
+          <Text style={styles.buttonText}>Yes</Text>
         </View>
       </View>
     </View>
@@ -29,11 +27,6 @@ export const TwoRadioButtonSelectQuestion = () => {
 };
 
 const styles = StyleSheet.create({
-  wrapper: {
-    paddingHorizontal: 20,
-    marginBottom: 20,
-  },
-
   sectorWrappe: {
     backgroundColor: THEME.COLOR.WHITE,
     shadowColor: THEME.BOX_SHADOW.COLOR_BLACK,
@@ -44,6 +37,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingTop: 19,
     paddingBottom: 22,
+    marginBottom: 20,
   },
 
   questionTitle: {

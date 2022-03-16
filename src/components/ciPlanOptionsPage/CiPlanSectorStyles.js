@@ -3,11 +3,6 @@ import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
 
 export default StyleSheet.create({
-  wrapper: {
-    paddingHorizontal: 20,
-    marginBottom: 15,
-  },
-
   planSectorWrapper: {
     padding: 11,
     paddingBottom: 17,
@@ -19,6 +14,7 @@ export default StyleSheet.create({
     borderRadius: 20,
     borderWidth: 1,
     borderColor: THEME.COLOR.WHITE,
+    marginBottom: 15,
   },
 
   focusPlanSectorBorder: {
