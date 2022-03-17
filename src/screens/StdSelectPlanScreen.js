@@ -1,4 +1,4 @@
-import { View, ScrollView } from "react-native";
+import { View, ScrollView, StyleSheet } from "react-native";
 import { ButtonBenefitsCart } from "../components/familyInfoPage/ButtonBenefitsCart";
 import { StdPlanOptionsTop } from "../components/stdPlanOptions/StdPlanOptionsTop";
 import { StdPlanSector } from "../components/stdPlanOptions/StdPlanSector";
@@ -7,15 +7,23 @@ import { TitleOfSelectedPlan } from "../components/stdSelectPlan/TitleOfSelected
 
 export const StdSelectPlanScreen = () => {
   return (
-    <View>
+    <>
       <ScrollView>
         <StdPlanOptionsTop />
-        <TitleOfSelectedPlan />
-        <StdPlanSector isRadioButton={true} />
-        <StdPlanSector />
-        <ConfirmReadSelectedPlan />
+        <View style={styles.wrapper}>
+          <TitleOfSelectedPlan />
+          <StdPlanSector isRadioButton={true} />
+          <StdPlanSector />
+          <ConfirmReadSelectedPlan />
+        </View>
       </ScrollView>
       <ButtonBenefitsCart />
-    </View>
+    </>
   );
 };
+
+const styles = StyleSheet.create({
+  wrapper: {
+    paddingHorizontal: 20,
+  },
+});

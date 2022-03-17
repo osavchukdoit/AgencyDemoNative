@@ -19,12 +19,7 @@ export const TermPlanSector = ({ isRadioButton = false }) => {
     setIsVisible((prev) => !prev);
   };
 
-  const PlanSector = ({
-    logo,
-    title,
-    children,
-    onHandleSelected,
-  }) => {
+  const PlanSector = ({ logo, title, children, onHandleSelected }) => {
     return (
       <View
         style={[

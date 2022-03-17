@@ -5,28 +5,21 @@ import { FONTS } from "../../styles/fonts";
 
 export const ConfirmReadSelectedPlan = () => {
   return (
-    <View style={styles.wrapper}>
-      <View style={styles.buttonAndTextWrapper}>
-        <TouchableOpacity style={styles.confirmButton}>
-          <ConfirmIconSvg />
-        </TouchableOpacity>
-        <Text style={styles.confirmText}>
-          I acknowledge that I have read the Pre-Existing Document
-        </Text>
-      </View>
+    <View style={styles.buttonAndTextWrapper}>
+      <TouchableOpacity style={styles.confirmButton}>
+        <ConfirmIconSvg />
+      </TouchableOpacity>
+      <Text style={styles.confirmText}>
+        I acknowledge that I have read the Pre-Existing Document
+      </Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  wrapper: {
-    paddingHorizontal: 20,
-    paddingBottom: 20,
-    flexDirection: "row",
-  },
-
   buttonAndTextWrapper: {
     flexDirection: "row",
+    marginBottom: 20,
   },
 
   confirmButton: {

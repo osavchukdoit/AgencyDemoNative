@@ -1,14 +1,20 @@
-import { View, ScrollView } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { MainPersonalInfo } from "../components/personalInfoPage/MainPersonalInfo";
 import { TopPersonalInfo } from "../components/personalInfoPage/TopPersonalInfo";
 
 export const PersonalInfoDetailsScreen = () => {
   return (
-    <View>
-      <ScrollView stickyHeaderIndices={[0]}>
-        <TopPersonalInfo />
+    <ScrollView stickyHeaderIndices={[0]}>
+      <TopPersonalInfo />
+      <View style={styles.wrapper}>
         <MainPersonalInfo />
-      </ScrollView>
-    </View>
+      </View>
+    </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  wrapper: {
+    paddingHorizontal: 20,
+  },
+});

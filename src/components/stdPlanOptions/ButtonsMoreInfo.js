@@ -11,7 +11,7 @@ import FaqIconSvg from "../../assets/icons/stdPlanOptions/faqIcon.svg";
 
 export const ButtonsMoreInfo = () => {
   return (
-    <View style={styles.wrapper}>
+    <>
       <View style={styles.buttonsRowWrapper}>
         <TouchableOpacity style={styles.additionalMarginBottom}>
           <View style={[styles.button, styles.buttonActive]}>
@@ -73,15 +73,11 @@ export const ButtonsMoreInfo = () => {
           <Text style={styles.buttonText}>FAQ</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
-  wrapper: {
-    paddingHorizontal: 20,
-  },
-
   buttonsRowWrapper: {
     flexDirection: "row",
     justifyContent: "space-between",

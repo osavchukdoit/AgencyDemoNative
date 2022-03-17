@@ -6,33 +6,31 @@ import SelectedIconSvg from "../../assets/icons/ciSelectPlan/selectedIcon.svg";
 
 export const ThreeButtonsSelect = () => {
   return (
-    <View style={styles.wrapper}>
-      <View style={styles.sectorWrapper}>
-        <Text style={styles.questionTitle}>Are you actively at work?</Text>
-        <PseudoElement />
-        <View style={styles.radioButtonsWrapper}>
-          <View style={styles.radioButtonAndTextWrapper}>
-            <TouchableOpacity style={styles.radioButton}>
-              <SelectedIconSvg />
-            </TouchableOpacity>
-            <Text style={styles.buttonText}>Brock Eggleston</Text>
-          </View>
-          <View style={styles.radioButtonAndTextWrapper}>
-            <TouchableOpacity style={styles.radioButton}>
-              <SelectedIconSvg />
-            </TouchableOpacity>
-            <Text style={styles.buttonText}>Spouse</Text>
-            <View style={styles.bluePoint}></View>
-            <Text style={styles.buttonText}>Marry Eggleston</Text>
-          </View>
-          <View style={styles.radioButtonAndTextWrapper}>
-            <TouchableOpacity style={styles.radioButton}>
-              <SelectedIconSvg />
-            </TouchableOpacity>
-            <Text style={styles.buttonText}>Child</Text>
-            <View style={styles.bluePoint}></View>
-            <Text style={styles.buttonText}>Sarah Eggleston</Text>
-          </View>
+    <View style={styles.sectorWrapper}>
+      <Text style={styles.questionTitle}>Are you actively at work?</Text>
+      <PseudoElement />
+      <View style={styles.radioButtonsWrapper}>
+        <View style={styles.radioButtonAndTextWrapper}>
+          <TouchableOpacity style={styles.radioButton}>
+            <SelectedIconSvg />
+          </TouchableOpacity>
+          <Text style={styles.buttonText}>Brock Eggleston</Text>
+        </View>
+        <View style={styles.radioButtonAndTextWrapper}>
+          <TouchableOpacity style={styles.radioButton}>
+            <SelectedIconSvg />
+          </TouchableOpacity>
+          <Text style={styles.buttonText}>Spouse</Text>
+          <View style={styles.bluePoint}></View>
+          <Text style={styles.buttonText}>Marry Eggleston</Text>
+        </View>
+        <View style={styles.radioButtonAndTextWrapper}>
+          <TouchableOpacity style={styles.radioButton}>
+            <SelectedIconSvg />
+          </TouchableOpacity>
+          <Text style={styles.buttonText}>Child</Text>
+          <View style={styles.bluePoint}></View>
+          <Text style={styles.buttonText}>Sarah Eggleston</Text>
         </View>
       </View>
     </View>
@@ -40,11 +38,6 @@ export const ThreeButtonsSelect = () => {
 };
 
 const styles = StyleSheet.create({
-  wrapper: {
-    paddingHorizontal: 20,
-    marginBottom: 20,
-  },
-
   sectorWrapper: {
     backgroundColor: THEME.COLOR.WHITE,
     shadowColor: THEME.BOX_SHADOW.COLOR_BLACK,
@@ -55,6 +48,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingTop: 19,
     paddingBottom: 5,
+    marginBottom: 20,
   },
 
   questionTitle: {

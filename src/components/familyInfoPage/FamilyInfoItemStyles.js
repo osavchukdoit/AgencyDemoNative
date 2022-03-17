@@ -3,10 +3,6 @@ import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
 
 export default StyleSheet.create({
-  wrapper: {
-    paddingHorizontal: 20,
-  },
-
   infoTitle: {
     fontFamily: FONTS.AVENIR.HEAVY,
     fontSize: 16,
@@ -56,6 +52,7 @@ export default StyleSheet.create({
   subInfoWrapper: {
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
   },
 
   subTextAndIconsContainer: {

@@ -4,29 +4,22 @@ import { FONTS } from "../../styles/fonts";
 
 export const CiSelectPlanTextAndSelect = () => {
   return (
-    <View style={styles.wrapper}>
-      <View style={styles.sectorWrapper}>
-        <Text style={styles.sectorText}>
-          By submitting my election for coverage, I am attesting that I have
-          read and agree to the posted Conditions of Enrollment document:
+    <View style={styles.sectorWrapper}>
+      <Text style={styles.sectorText}>
+        By submitting my election for coverage, I am attesting that I have read
+        and agree to the posted Conditions of Enrollment document:
+      </Text>
+      <View style={styles.linkTextWrapper}>
+        <Text style={styles.sectorText}>Review the </Text>
+        <Text style={[styles.sectorText, styles.linkText]}>
+          terms and conditions.
         </Text>
-        <View style={styles.linkTextWrapper}>
-          <Text style={styles.sectorText}>Review the </Text>
-          <Text style={[styles.sectorText, styles.linkText]}>
-            terms and conditions.
-          </Text>
-        </View>
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  wrapper: {
-    paddingHorizontal: 20,
-    marginBottom: 15,
-  },
-
   sectorWrapper: {
     backgroundColor: THEME.COLOR.WHITE,
     shadowColor: THEME.BOX_SHADOW.COLOR_BLACK,
@@ -38,6 +31,7 @@ const styles = StyleSheet.create({
     paddingRight: 15,
     paddingTop: 20,
     paddingBottom: 10,
+    marginBottom: 15,
   },
 
   sectorText: {

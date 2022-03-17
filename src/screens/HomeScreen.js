@@ -6,10 +6,10 @@ import { ButtonEnrollment } from "../components/homePage/ButtonEnrollment";
 
 export const HomeScreen = ({ navigation }) => {
   return (
-    <View style={styles.wrapper}>
+    <View style={styles.scrollWrapper}>
       <ScrollView stickyHeaderIndices={[0]} style={styles.scrollContainer}>
         <HomePageTop />
-        <View>
+        <View style={styles.wrapper}>
           <BenefitGroups />
           <BenefitGroups />
           <BenefitGroups />
@@ -26,10 +26,13 @@ export const HomeScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  wrapper: {
+  scrollWrapper: {
     height: "100%",
   },
   scrollContainer: {
     marginBottom: 70,
+  },
+  wrapper: {
+    paddingHorizontal: 20,
   },
 });

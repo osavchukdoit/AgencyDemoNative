@@ -15,7 +15,7 @@ export const EmploymentInfoItem = () => {
   };
 
   return (
-    <View style={mainStyles.wrapper}>
+    <>
       <Text style={mainStyles.infoTitle}>Employment Info</Text>
       <View style={mainStyles.infoWrapper}>
         <View style={mainStyles.subTitleContainer}>
@@ -36,14 +36,11 @@ export const EmploymentInfoItem = () => {
             </View>
             <Text style={mainStyles.subTitle}>Professor</Text>
           </View>
-          <TouchableOpacity
-            onPress={onHandleWarning}
-            style={mainStyles.arrowButtom}
-          >
+          <TouchableOpacity onPress={onHandleWarning}>
             <ArrowRightSvg />
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </>
   );
 };

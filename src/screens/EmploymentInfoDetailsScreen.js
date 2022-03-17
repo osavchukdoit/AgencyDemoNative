@@ -1,14 +1,20 @@
-import { View, ScrollView } from "react-native";
+import { View, ScrollView, StyleSheet } from "react-native";
 import { MainEmploymentInfo } from "../components/employmentInfoPage/MainEmploymentInfo";
 import { TopPersonalInfo } from "../components/personalInfoPage/TopPersonalInfo";
 
 export const EmploymentInfoDetailsScreen = () => {
   return (
-    <View>
-      <ScrollView stickyHeaderIndices={[0]}>
-        <TopPersonalInfo />
+    <ScrollView stickyHeaderIndices={[0]}>
+      <TopPersonalInfo />
+      <View style={styles.wrapper}>
         <MainEmploymentInfo />
-      </ScrollView>
-    </View>
+      </View>
+    </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  wrapper: {
+    paddingHorizontal: 20,
+  },
+});
