@@ -5,7 +5,7 @@ import { FONTS } from "../../styles/fonts";
 
 export const TwoRadioButtonSelectQuestion = () => {
   return (
-    <View style={styles.sectorWrappe}>
+    <View style={styles.sectorWrapper}>
       <Text style={styles.questionTitle}>Are you actively at work?</Text>
       <PseudoElement />
       <View style={styles.radioButtonsWrapper}>
@@ -27,7 +27,7 @@ export const TwoRadioButtonSelectQuestion = () => {
 };
 
 const styles = StyleSheet.create({
-  sectorWrappe: {
+  sectorWrapper: {
     backgroundColor: THEME.COLOR.WHITE,
     shadowColor: THEME.BOX_SHADOW.COLOR_BLACK,
     shadowOffset: THEME.BOX_SHADOW.OFFSET,

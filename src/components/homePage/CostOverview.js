@@ -2,8 +2,8 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { FONTS } from "../../styles/fonts";
 import { THEME } from "../../styles/theme";
 import { useState } from "react";
-import { LinearGradient } from "expo-linear-gradient";
 import ShowHideIconSvg from "../../assets/icons/arrowUp.svg";
+import { PseudoElement } from "../stdPlanOptions/PseudoElement";
 
 export const CostOverview = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -18,37 +18,16 @@ export const CostOverview = () => {
     <View style={styles.costOverviewWrapper}>
       <View style={styles.costOverviewTitleWrapper}>
         <Text>Cost Overview</Text>
-        <View style={styles.containerButtonShowHide}>
-          <TouchableOpacity
-            style={
-              isVisible
-                ? { ...styles.buttonShowHide }
-                : {
-                    ...styles.buttonShowHide,
-                    transform: [{ rotate: "180deg" }],
-                  }
-            }
-            onPress={onHandlePress}
-          >
-            <Text>
-              <ShowHideIconSvg />
-            </Text>
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity
+          style={[styles.buttonShowHide, isVisible && styles.rotate]}
+          onPress={onHandlePress}
+        >
+          <ShowHideIconSvg />
+        </TouchableOpacity>
       </View>
       <View style={isVisible ? { display: "flex" } : { display: "none" }}>
-        <View style={styles.gradientWrapper}>
-          <LinearGradient
-            colors={[
-              "rgba(67, 190, 187, 0)",
-              "rgba(67, 190, 187, 0.5)",
-              "rgba(67, 190, 187, 0)",
-            ]}
-            style={styles.linearBackground}
-            start={[1, 1]}
-          />
-        </View>
-        <View>
+        <PseudoElement />
+        <View style={styles.costListWrapper}>
           <View style={styles.titlesItemsWrapper}>
             <Text style={[styles.titleItems, styles.coverageWidth]}>
               Coverage Tier
@@ -112,6 +91,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingLeft: 18,
     paddingRight: 10,
+    marginBottom: 9,
   },
 
   costOverviewTitle: {
@@ -121,31 +101,21 @@ const styles = StyleSheet.create({
     letterSpacing: -0.28,
   },
 
-  containerButtonShowHide: {
+  buttonShowHide: {
     width: 24,
     height: 24,
     backgroundColor: THEME.BACKGROUND.BUTTON_SHOW_HIDE_BG,
     borderRadius: 4,
-  },
-
-  buttonShowHide: {
-    width: "100%",
-    height: "100%",
     justifyContent: "center",
     alignItems: "center",
   },
 
-  gradientWrapper: {
-    marginTop: 10,
-    height: 1,
-    marginBottom: 5,
+  rotate: {
+    transform: [{ rotate: "180deg" }],
   },
 
-  linearBackground: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    height: "100%",
+  costListWrapper: {
+    marginTop: 5,
   },
 
   titlesItemsWrapper: {
