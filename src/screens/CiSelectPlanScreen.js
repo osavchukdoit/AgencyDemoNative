@@ -17,37 +17,42 @@ import { ButtonBenefitsCart } from "../components/familyInfoPage/ButtonBenefitsC
 
 export const CiSelectPlanScreen = () => {
   return (
-    <View>
+    <>
       <ScrollView>
         <CiPlanOptionsTop />
-        <Text style={styles.planTitle}>Enroll in Critical Illness Plan</Text>
-        <TwoRadioButtonSelectQuestion />
-        <ThreeButtonsSelect />
-        <Text style={styles.subText}>Select a plan below</Text>
-        <CiPlanSector isRadioButton={true} />
-        <CiPlanSector isRadioButton={true} />
-        <CiSelectPlanTextAndSelect />
+        <View style={styles.wrapper}>
+          <Text style={styles.planTitle}>Enroll in Critical Illness Plan</Text>
+          <TwoRadioButtonSelectQuestion />
+          <ThreeButtonsSelect />
+          <Text style={styles.subText}>Select a plan below</Text>
+          <CiPlanSector isRadioButton={true} />
+          <CiPlanSector isRadioButton={true} />
+          <CiSelectPlanTextAndSelect />
 
-        <View style={styles.radioButtonAndTextWrapper}>
-          <TouchableOpacity style={styles.radioButton}>
-            <SelectedIconSvg />
-          </TouchableOpacity>
-          <Text style={styles.buttonText}>Yes, I Accept</Text>
+          <View style={styles.radioButtonAndTextWrapper}>
+            <TouchableOpacity style={styles.radioButton}>
+              <SelectedIconSvg />
+            </TouchableOpacity>
+            <Text style={styles.buttonText}>Yes, I Accept</Text>
+          </View>
         </View>
       </ScrollView>
       <ButtonBenefitsCart />
-    </View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
+  wrapper: {
+    paddingHorizontal: 20,
+  },
+
   planTitle: {
     fontFamily: FONTS.AVENIR.HEAVY,
     fontSize: 16,
     lineHeight: 22,
     letterSpacing: -0.28,
     color: THEME.COLOR.GREY_DARK_TEXT,
-    marginLeft: 20,
     marginBottom: 10,
   },
 
@@ -56,7 +61,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 16,
     color: THEME.COLOR.GREY_LIGHT_TEXT,
-    marginLeft: 21,
     marginBottom: 10,
   },
 
@@ -64,7 +68,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginBottom: 18,
-    marginLeft: 20,
   },
 
   radioButton: {

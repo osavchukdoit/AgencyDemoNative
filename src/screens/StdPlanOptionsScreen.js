@@ -1,4 +1,4 @@
-import { View, ScrollView } from "react-native";
+import { View, ScrollView, StyleSheet } from "react-native";
 import { ButtonBenefitsCart } from "../components/familyInfoPage/ButtonBenefitsCart";
 import { ButtonsMoreInfo } from "../components/stdPlanOptions/ButtonsMoreInfo";
 import { ButtonsPlanAndMoreInfo } from "../components/stdPlanOptions/ButtonsPlanAndMoreInfo";
@@ -8,16 +8,24 @@ import { StdPlanSector } from "../components/stdPlanOptions/StdPlanSector";
 
 export const StdPlanOptionsScreen = () => {
   return (
-    <View>
+    <>
       <ScrollView>
         <StdPlanOptionsTop />
-        <ButtonsPlanAndMoreInfo />
-        <ButtonsMoreInfo />
-        <StdInfoSectorProductDescription />
-        <StdPlanSector />
-        <StdPlanSector />
+        <View style={styles.wrapper}>
+          <ButtonsPlanAndMoreInfo />
+          <ButtonsMoreInfo />
+          <StdInfoSectorProductDescription />
+          <StdPlanSector />
+          <StdPlanSector />
+        </View>
       </ScrollView>
       <ButtonBenefitsCart />
-    </View>
+    </>
   );
 };
+
+const styles = StyleSheet.create({
+  wrapper: {
+    paddingHorizontal: 20,
+  },
+});

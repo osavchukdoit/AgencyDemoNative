@@ -3,10 +3,6 @@ import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
 
 export default StyleSheet.create({
-  wrapper: {
-    paddingHorizontal: 20,
-  },
-
   infoWrapper: {
     backgroundColor: THEME.COLOR.WHITE,
     shadowColor: THEME.BOX_SHADOW.COLOR_BLACK,

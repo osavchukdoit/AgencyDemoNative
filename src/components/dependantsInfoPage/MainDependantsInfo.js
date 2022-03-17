@@ -20,7 +20,7 @@ import { useRadioButton } from "../personalInfoPage/customHooks/useRadioButton";
 export const MainDependantsInfo = () => {
   const [isChild, setIsChild] = useRadioButton(null);
   return (
-    <View style={styles.wrapper}>
+    <View>
       <View style={styles.infoWrapper}>
         <View>
           <TouchableOpacity style={localStyles.deleteButton}>
