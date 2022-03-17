@@ -16,7 +16,12 @@ export const CostOverview = () => {
 
   return (
     <View style={styles.costOverviewWrapper}>
-      <View style={styles.costOverviewTitleWrapper}>
+      <View
+        style={[
+          styles.costOverviewTitleWrapper,
+          !isVisible && styles.additionalMarginBottom,
+        ]}
+      >
         <Text>Cost Overview</Text>
         <TouchableOpacity
           style={[styles.buttonShowHide, isVisible && styles.rotate]}
@@ -92,6 +97,10 @@ const styles = StyleSheet.create({
     paddingLeft: 18,
     paddingRight: 10,
     marginBottom: 9,
+  },
+
+  additionalMarginBottom: {
+    marginBottom: 0,
   },
 
   costOverviewTitle: {

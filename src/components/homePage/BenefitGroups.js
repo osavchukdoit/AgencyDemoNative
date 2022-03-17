@@ -18,7 +18,12 @@ export const BenefitGroups = () => {
 
   return (
     <View style={[styles.benefitWrapper, styles.shadowProp]}>
-      <View style={styles.benefitTitleWrapper}>
+      <View
+        style={[
+          styles.benefitTitleWrapper,
+          !isVisible && styles.additionalMarginBottom,
+        ]}
+      >
         <AppText fontFamily={FONTS.AVENIR.HEAVY} style={styles.benefitTitle}>
           Income Protection
         </AppText>
@@ -63,6 +68,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     marginBottom: 10,
     alignItems: "center",
+  },
+
+  additionalMarginBottom: {
+    marginBottom: 0,
   },
 
   benefitTitle: {

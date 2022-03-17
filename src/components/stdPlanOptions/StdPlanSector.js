@@ -55,14 +55,7 @@ export const StdPlanSector = ({ isRadioButton = false }) => {
       <View style={styles.subTitleAndButtonWrapper}>
         <Text style={styles.subTitle}>Plan Summary</Text>
         <TouchableOpacity
-          style={
-            isVisible
-              ? { ...styles.buttonShowHide }
-              : {
-                  ...styles.buttonShowHide,
-                  transform: [{ rotate: "180deg" }],
-                }
-          }
+          style={[styles.buttonShowHide, isVisible && styles.rotate]}
           onPress={onHandlePress}
         >
           <Text>
