@@ -4,7 +4,7 @@ import { FamilyInfoOverviewScreen } from "../screens/FamilyInfoOverviewScreen";
 import { BenefitsScreen } from "../screens/BenefitsScreen";
 import { PaymentScreen } from "../screens/PaymentScreen";
 import { SubmitScreen } from "../screens/SubmitScreen";
-import { EnrollmentTapBar } from "./EnrollmentTapBar";
+import { EnrollmentTabBar } from "./EnrollmentTabBar";
 
 const Tab = createBottomTabNavigator();
 
@@ -30,7 +30,7 @@ export const EnrollmentNavigation = () => {
   return (
     <Tab.Navigator
       tabBar={(props) => (
-        <EnrollmentTapBar
+        <EnrollmentTabBar
           options={enrollmentNavigationOptions}
           setOptions={setEnrollmentNavigationOptions}
           {...props}

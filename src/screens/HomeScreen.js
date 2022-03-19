@@ -6,8 +6,8 @@ import { ButtonEnrollment } from "../components/homePage/ButtonEnrollment";
 
 export const HomeScreen = ({ navigation }) => {
   return (
-    <>
-      <ScrollView stickyHeaderIndices={[0]}>
+    <View style={styles.scrollWrapper}>
+      <ScrollView stickyHeaderIndices={[0]} style={styles.scrollContainer}>
         <HomePageTop />
         <View style={styles.wrapper}>
           <BenefitGroups />
@@ -21,11 +21,17 @@ export const HomeScreen = ({ navigation }) => {
           navigation.navigate("EnrollmentNavigation")
         }
       />
-    </>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  scrollWrapper: {
+    height: "100%",
+  },
+  scrollContainer: {
+    marginBottom: 70,
+  },
   wrapper: {
     paddingHorizontal: 20,
   },
