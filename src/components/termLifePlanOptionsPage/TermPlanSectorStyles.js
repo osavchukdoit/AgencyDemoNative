@@ -110,6 +110,10 @@ export default StyleSheet.create({
     borderRadius: 4,
   },
 
+  rotate: {
+    transform: [{ rotate: "180deg" }],
+  },
+
   listWrapper: {
     paddingHorizontal: 2,
   },

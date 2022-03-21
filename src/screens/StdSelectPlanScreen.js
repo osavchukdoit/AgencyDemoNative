@@ -1,15 +1,23 @@
 import { View, ScrollView, StyleSheet } from "react-native";
 import { ButtonBenefitsCart } from "../components/familyInfoPage/ButtonBenefitsCart";
-import { StdPlanOptionsTop } from "../components/stdPlanOptions/StdPlanOptionsTop";
 import { StdPlanSector } from "../components/stdPlanOptions/StdPlanSector";
 import { ConfirmReadSelectedPlan } from "../components/stdSelectPlan/ConfirmReadSelectedPlan";
 import { TitleOfSelectedPlan } from "../components/stdSelectPlan/TitleOfSelectedPlan";
+import { TopComponentPlanOptions } from "../components/utils/topComponents/TopComponentPlanOptions";
 
 export const StdSelectPlanScreen = () => {
   return (
     <>
       <ScrollView>
-        <StdPlanOptionsTop />
+        <TopComponentPlanOptions
+          imgMain={require("../assets/topComponent/stdPlanOptionTopPic.png")}
+          textnormal={"Income Protection for the Unexpected!"}
+          textBold={"Select Short Term Disability Plan"}
+          imgSecondary={require("../assets/topComponent/stdGlobePic.png")}
+          textDown={
+            "Short term disability insurance can pay you a weekly benefit if you have a covered disability that keeps you from working."
+          }
+        />
         <View style={styles.wrapper}>
           <TitleOfSelectedPlan />
           <StdPlanSector isRadioButton={true} />

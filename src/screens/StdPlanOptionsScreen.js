@@ -3,14 +3,22 @@ import { ButtonBenefitsCart } from "../components/familyInfoPage/ButtonBenefitsC
 import { ButtonsMoreInfo } from "../components/stdPlanOptions/ButtonsMoreInfo";
 import { ButtonsPlanAndMoreInfo } from "../components/stdPlanOptions/ButtonsPlanAndMoreInfo";
 import { StdInfoSectorProductDescription } from "../components/stdPlanOptions/StdInfoSectorProductDescription";
-import { StdPlanOptionsTop } from "../components/stdPlanOptions/StdPlanOptionsTop";
 import { StdPlanSector } from "../components/stdPlanOptions/StdPlanSector";
+import { TopComponentPlanOptions } from "../components/utils/topComponents/TopComponentPlanOptions";
 
 export const StdPlanOptionsScreen = () => {
   return (
     <>
       <ScrollView>
-        <StdPlanOptionsTop />
+        <TopComponentPlanOptions
+          imgMain={require("../assets/topComponent/stdPlanOptionTopPic.png")}
+          textnormal={"Income Protection for the Unexpected!"}
+          textBold={"Select Short Term Disability Plan"}
+          imgSecondary={require("../assets/topComponent/stdGlobePic.png")}
+          textDown={
+            "Short term disability insurance can pay you a weekly benefit if you have a covered disability that keeps you from working."
+          }
+        />
         <View style={styles.wrapper}>
           <ButtonsPlanAndMoreInfo />
           <ButtonsMoreInfo />
