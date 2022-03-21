@@ -5,7 +5,6 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import { CiPlanOptionsTop } from "../components/ciPlanOptionsPage/CiPlanOptionsTop";
 import { THEME } from "../styles/theme";
 import { FONTS } from "../styles/fonts";
 import { TwoRadioButtonSelectQuestion } from "../components/ciSelectPlan/TwoRadioButtonSelectQuestion";
@@ -14,12 +13,21 @@ import { CiPlanSector } from "../components/ciPlanOptionsPage/CiPlanSector";
 import { CiSelectPlanTextAndSelect } from "../components/ciSelectPlan/CiSelectPlanTextAndSelect";
 import SelectedIconSvg from "../assets/icons/ciSelectPlan/selectedIcon.svg";
 import { ButtonBenefitsCart } from "../components/familyInfoPage/ButtonBenefitsCart";
+import { TopComponentPlanOptions } from "../components/utils/topComponents/TopComponentPlanOptions";
 
 export const CiSelectPlanScreen = () => {
   return (
     <>
       <ScrollView>
-        <CiPlanOptionsTop />
+        <TopComponentPlanOptions
+          imgMain={require("../assets/topComponent/ciPlanOptionTopPic.png")}
+          textnormal={"Quality of Life Protection for the Unexpected!"}
+          textBold={"Select Critical Illness Plans"}
+          imgSecondary={require("../assets/topComponent/stdGlobePic.png")}
+          textDown={
+            "Critical illness insurance can help you protect your finances if you are diagnosed with a covered serious condition. The plan pays benefits to you."
+          }
+        />
         <View style={styles.wrapper}>
           <Text style={styles.planTitle}>Enroll in Critical Illness Plan</Text>
           <TwoRadioButtonSelectQuestion />

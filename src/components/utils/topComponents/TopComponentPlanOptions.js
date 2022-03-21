@@ -1,34 +1,28 @@
-import { View, Text, StyleSheet, Image } from "react-native";
-import { THEME } from "../../styles/theme";
-import { FONTS } from "../../styles/fonts";
+import { View, Text, StyleSheet, Image, ImageBackground } from "react-native";
+import { THEME } from "../../../styles/theme";
+import { FONTS } from "../../../styles/fonts";
 
-export const TermLifePlanOptionsTop = () => {
+export const TopComponentPlanOptions = ({
+  imgMain,
+  textnormal,
+  textBold,
+  imgSecondary,
+  textDown,
+}) => {
   return (
     <View style={styles.wrapper}>
-      <View style={styles.imageTopWrapper}>
-        <Image
-          style={styles.imageTop}
-          source={require("../../assets/topComponent/termLifePlanOptionsTopPage.png")}
-        />
+      <ImageBackground source={imgMain} style={styles.imageTop}>
         <View style={styles.imageTopTextWrapper}>
-          <Text style={styles.imageTopTextUp}>
-            Financial Protection for the Unexpected!
-          </Text>
+          <Text style={styles.imageTopTextUp}>{textnormal}</Text>
           <Text style={[styles.imageTopTextUp, styles.imageTopTextDown]}>
-            Select Term Life Plans
+            {textBold}
           </Text>
         </View>
-      </View>
+      </ImageBackground>
       <View style={styles.subImageAndTextWrapper}>
-        <Image
-          style={styles.subImageTop}
-          source={require("../../assets/topComponent/stdGlobePic.png")}
-        />
+        <Image style={styles.subImageTop} source={imgSecondary} />
         <View style={styles.subTextTopWrapper}>
-          <Text style={styles.subTextTop}>
-            Term Life insurance peovides cash benefits to help your family pay
-            for expances such as funeral expances, incom replacement, mortgage.
-          </Text>
+          <Text style={styles.subTextTop}>{textDown}</Text>
         </View>
       </View>
     </View>
@@ -50,20 +44,18 @@ const styles = StyleSheet.create({
     shadowRadius: THEME.BOX_SHADOW.SHADOW_RADIUS,
   },
 
-  imageTopWrapper: {
-    position: "relative",
-    marginBottom: 10,
-  },
-
   imageTop: {
+    resizeMode: "cover",
     width: "100%",
+    height: 141,
     borderRadius: 10,
+    marginBottom: 19,
+    flexDirection: "column-reverse",
   },
 
   imageTopTextWrapper: {
-    position: "absolute",
-    left: 9,
-    bottom: 3,
+    marginLeft: 9,
+    marginBottom: 3,
   },
 
   imageTopTextUp: {
