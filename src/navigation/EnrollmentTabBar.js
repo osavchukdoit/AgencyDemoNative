@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { TouchableOpacity, View } from "react-native";
 import { THEME } from "../styles/theme";
 import { AppText } from "../components/utils/AppText";
@@ -6,9 +6,9 @@ import ArrowLeftActive from "../assets/icons/enrollmentNavigation/arrowLeftActiv
 import ArrowLeftInactive from "../assets/icons/enrollmentNavigation/arrowLeftInactive.svg";
 import CheckedIcon from "../assets/icons/enrollmentNavigation/checked.svg";
 import { FONTS } from "../styles/fonts";
-import styles from "./EnrollmentTapBarStyles";
+import styles from "./EnrollmentTabBarStyles";
 
-export const EnrollmentTapBar = ({
+export const EnrollmentTabBar = ({
   state,
   navigation,
   options,
@@ -19,6 +19,7 @@ export const EnrollmentTapBar = ({
     () => state.index + 1 <= options.length - 1,
     [state.index, options]
   );
+  const [progressBarWidth, setProgressBarWidth] = useState(0);
 
   const onOptionPressed = (path) => {
     navigation.navigate(path);
@@ -52,45 +53,46 @@ export const EnrollmentTapBar = ({
     setOptions(updatedOptions);
   };
 
+  const progressBarActiveWidth = useMemo(
+    () => (progressBarWidth / (options.length - 1)) * state.index,
+    [progressBarWidth, options, state.index]
+  );
+
   return (
-    <View style={styles.tapBarWrapper}>
+    <View style={styles.tabBarWrapper}>
+      {/* Progress bar navigation */}
       <View style={[styles.buttonsWrapper, styles.progressWrapper]}>
         {options.map((route, index) => {
           const { label, path, isChecked } = route;
           const isFocused = state.index === index;
+
           return (
+            //  Touchable button contains progress circles and text
             <TouchableOpacity
               onPress={() => onOptionPressed(path)}
               key={label}
               style={styles.buttonTouchable}
             >
-              <View style={styles.progressItem}>
+              {/* Button circle */}
+              <View
+                style={[
+                  styles.optionProgress,
+                  isFocused && styles.optionProgressActive,
+                  isChecked && styles.optionProgressChecked,
+                ]}
+              >
+                {/* Filled inner circle for checked item */}
                 <View
-                  style={[
-                    styles.optionProgress,
-                    isFocused && styles.optionProgressActive,
-                    isChecked && styles.optionProgressChecked,
-                  ]}
+                  style={
+                    isChecked
+                      ? styles.optionProgressInnerChecked
+                      : styles.optionProgressInner
+                  }
                 >
-                  <View
-                    style={
-                      isChecked
-                        ? styles.optionProgressInnerChecked
-                        : styles.optionProgressInner
-                    }
-                  >
-                    <CheckedIcon />
-                  </View>
+                  <CheckedIcon />
                 </View>
-                <View
-                  style={[
-                    styles.progressBar,
-                    isFocused && styles.progressBarActive,
-                    isChecked && styles.progressBarActive,
-                    index === 0 && styles.progressBarFirstElement,
-                  ]}
-                />
               </View>
+              {/* Button text */}
               <AppText
                 color={
                   isFocused || isChecked
@@ -109,8 +111,26 @@ export const EnrollmentTapBar = ({
             </TouchableOpacity>
           );
         })}
+        {/* Background progress bar, always visible */}
+        <View
+          style={styles.progressBar}
+          onLayout={(event) => {
+            const { width } = event.nativeEvent.layout;
+            setProgressBarWidth(width);
+          }}
+        />
+        {/* "Active" progress bar, the width depends on the state.index */}
+        <View
+          style={[
+            styles.progressBar,
+            styles.progressBarActive,
+            { width: progressBarActiveWidth },
+          ]}
+        />
       </View>
+      {/* Back/Next buttons */}
       <View style={[styles.buttonsWrapper, styles.backNextWrapper]}>
+        {/* Back button */}
         <TouchableOpacity
           onPress={onBackPressed}
           style={[
@@ -137,6 +157,7 @@ export const EnrollmentTapBar = ({
             Back
           </AppText>
         </TouchableOpacity>
+        {/* Next button */}
         <TouchableOpacity
           onPress={onNextPressed}
           style={[

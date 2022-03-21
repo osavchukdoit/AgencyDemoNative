@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import { THEME } from "../styles/theme";
 
 export default StyleSheet.create({
-  tapBarWrapper: {
+  tabBarWrapper: {
     paddingVertical: 11,
     paddingHorizontal: 7,
     marginHorizontal: 20,
@@ -18,14 +18,10 @@ export default StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
   },
-  progressItem: {
-    justifyContent: "center",
-    flexDirection: "row",
-    position: "relative",
-  },
   buttonTouchable: {
     width: 60,
     alignItems: "center",
+    zIndex: 1,
   },
   optionProgress: {
     width: 30,
@@ -33,8 +29,8 @@ export default StyleSheet.create({
     borderRadius: 15,
     borderWidth: 2,
     borderStyle: "solid",
-    borderColor: THEME.COLOR.ENROLLMENT_NAVIGATION_TAP_BAR,
-    backgroundColor: THEME.BACKGROUND.ENROLLMENT_NAVIGATION_TAP_BAR,
+    borderColor: THEME.COLOR.ENROLLMENT_NAVIGATION_TAB_BAR,
+    backgroundColor: THEME.BACKGROUND.ENROLLMENT_NAVIGATION_TAB_BAR,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -42,7 +38,7 @@ export default StyleSheet.create({
     display: "none",
   },
   optionProgressInnerChecked: {
-    backgroundColor: THEME.COLOR.ENROLLMENT_NAVIGATION_TAP_BAR_ACTIVE,
+    backgroundColor: THEME.COLOR.ENROLLMENT_NAVIGATION_TAB_BAR_ACTIVE,
     width: 20,
     height: 20,
     borderRadius: 10,
@@ -50,27 +46,24 @@ export default StyleSheet.create({
     alignItems: "center",
   },
   optionProgressActive: {
-    borderColor: THEME.COLOR.ENROLLMENT_NAVIGATION_TAP_BAR_ACTIVE,
+    borderColor: THEME.COLOR.ENROLLMENT_NAVIGATION_TAB_BAR_ACTIVE,
   },
   optionProgressChecked: {
-    borderColor: THEME.COLOR.ENROLLMENT_NAVIGATION_TAP_BAR_ACTIVE,
+    borderColor: THEME.COLOR.ENROLLMENT_NAVIGATION_TAB_BAR_ACTIVE,
     borderWidth: 3,
   },
   progressBar: {
     position: "absolute",
-    width: 64,
     top: 13,
-    right: "50%",
-    backgroundColor: THEME.BACKGROUND.ENROLLMENT_NAVIGATION_TAP_BAR_PROGRESS,
     height: 5,
+    left: 30,
+    right: 30,
+    backgroundColor: THEME.BACKGROUND.ENROLLMENT_NAVIGATION_TAB_BAR_PROGRESS,
   },
   progressBarActive: {
+    right: "auto",
     backgroundColor:
-      THEME.BACKGROUND.ENROLLMENT_NAVIGATION_TAP_BAR_PROGRESS_ACTIVE,
-  },
-  progressBarFirstElement: {
-    display: "none",
-    backgroundColor: "transparent",
+      THEME.BACKGROUND.ENROLLMENT_NAVIGATION_TAB_BAR_PROGRESS_ACTIVE,
   },
   optionLabel: {
     fontSize: 11,
@@ -79,6 +72,7 @@ export default StyleSheet.create({
   },
   progressWrapper: {
     marginBottom: 6,
+    position: "relative",
   },
   backNextWrapper: {
     paddingHorizontal: 9,
