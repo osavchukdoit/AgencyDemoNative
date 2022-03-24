@@ -26,7 +26,7 @@ export const StdInfoSectorProductDescription = () => {
       </Text>
 
       <View style={styles.pointAndTitleWrapper}>
-        <View style={styles.point}></View>
+        <View style={styles.point} />
         <Text style={styles.itemTitle}>
           You are unable to perform the material and substantial duties of your
           regular occupation; and
@@ -34,7 +34,7 @@ export const StdInfoSectorProductDescription = () => {
       </View>
 
       <View style={styles.pointAndTitleWrapper}>
-        <View style={styles.point}></View>
+        <View style={styles.point} />
         <Text style={styles.itemTitle}>
           You are not working in any occupation.
         </Text>
@@ -106,7 +106,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 16,
     letterSpacing: -0.28,
-    marginBottom: 16,
     color: THEME.COLOR.GREY_DARK_TEXT,
     marginBottom: 7,
   },
