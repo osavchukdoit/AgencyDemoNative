@@ -1,11 +1,11 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import UmbrelaSvg from "../../assets/icons/termLifePlanOptions/umbrelaIconSvg.svg";
-import { PseudoElement } from "../stdPlanOptions/PseudoElement";
 import ShowHideIconSvg from "../../assets/icons/arrowUp.svg";
 import { useState } from "react";
 import EyeSvg from "../../assets/icons/stdPlanOptions/eyeIcon.svg";
 import DownloadSvg from "../../assets/icons/stdPlanOptions/downloadIcon.svg";
 import styles from "./TermPlanSectorStyles";
+import { PlanSector } from "../utils/PlanSector";
 
 export const TermPlanSector = ({ isRadioButton = false }) => {
   const [isVisible, setIsVisible] = useState(true);
@@ -19,48 +19,13 @@ export const TermPlanSector = ({ isRadioButton = false }) => {
     setIsVisible((prev) => !prev);
   };
 
-  const PlanSector = ({ logo, title, children, onHandleSelected }) => {
-    return (
-      <View
-        style={[
-          styles.planSectorWrapper,
-          isRadioButton && styles.focusPlanSectorBorder,
-        ]}
-      >
-        <View style={styles.iconAndTitleWrapper}>
-          <View style={styles.iconWrapper}>{logo}</View>
-          <View>
-            <Text style={styles.sectorTitle}>{title}</Text>
-            {isRadioButton && (
-              <View style={styles.selectedButtonAndTextWrapper}>
-                <TouchableOpacity
-                  onPress={onHandleSelected}
-                  style={styles.selectedRaioButton}
-                >
-                  <View
-                    style={
-                      isSelected ? styles.radioButtonPoint : styles.displayNone
-                    }
-                  ></View>
-                </TouchableOpacity>
-                <Text style={styles.selectedRadioButtonText}>
-                  Selected Plan
-                </Text>
-              </View>
-            )}
-          </View>
-        </View>
-        <PseudoElement />
-        {children}
-      </View>
-    );
-  };
-
   return (
     <PlanSector
       logo={<UmbrelaSvg />}
       title={"Group Voluntary Term Life"}
       onHandleSelected={onHandleSelected}
+      isSelected={isSelected}
+      isRadioButton={isRadioButton}
     >
       <View style={styles.subTitleAndButtonWrapper}>
         <Text style={styles.subTitle}>Plan Summary</Text>

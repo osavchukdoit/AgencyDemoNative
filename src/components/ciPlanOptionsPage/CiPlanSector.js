@@ -6,8 +6,9 @@ import EyeSvg from "../../assets/icons/stdPlanOptions/eyeIcon.svg";
 import DownloadSvg from "../../assets/icons/stdPlanOptions/downloadIcon.svg";
 import ThermometerIconSvg from "../../assets/icons/ciPlanOptions/thermometerIcon.svg";
 import styles from "./CiPlanSectorStyles";
+import { PlanSector } from "../utils/PlanSector";
 
-export const CiPlanSector = ({ isRadioButton = false }) => {
+export const CiPlanSector = ({ isRadioButton = true }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [isSelected, setIsSelected] = useState(true);
 
@@ -20,38 +21,13 @@ export const CiPlanSector = ({ isRadioButton = false }) => {
   };
 
   return (
-    <View
-      style={[
-        styles.planSectorWrapper,
-        isSelected && styles.focusPlanSectorBorder,
-      ]}
+    <PlanSector
+      logo={<ThermometerIconSvg />}
+      title={"Critical Illness $10,000"}
+      onHandleSelected={onHandleSelected}
+      isSelected={isSelected}
+      isRadioButton={isRadioButton}
     >
-      <View style={styles.iconAndTitleWrapper}>
-        <View style={styles.iconWrapper}>
-          <ThermometerIconSvg />
-        </View>
-        <View>
-          <Text style={styles.sectorTitle}>Critical Illness $10,000</Text>
-          {isRadioButton && (
-            <View style={styles.selectedButtonAndTextWrapper}>
-              <TouchableOpacity
-                onPress={onHandleSelected}
-                style={styles.selectedRaioButton}
-              >
-                <View
-                  style={
-                    isSelected ? styles.radioButtonPoint : styles.displayNone
-                  }
-                ></View>
-              </TouchableOpacity>
-              <Text style={styles.selectedRadioButtonText}>Selected Plan</Text>
-            </View>
-          )}
-        </View>
-      </View>
-
-      <PseudoElement />
-
       <View style={styles.subTitleAndButtonWrapper}>
         <Text style={styles.subTitle}>Plan Summary</Text>
         <TouchableOpacity
@@ -140,6 +116,6 @@ export const CiPlanSector = ({ isRadioButton = false }) => {
           </View>
         </View>
       </View>
-    </View>
+    </PlanSector>
   );
 };
