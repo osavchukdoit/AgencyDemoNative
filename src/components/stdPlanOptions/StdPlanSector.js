@@ -1,13 +1,13 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import CrutchesSvg from "../../assets/icons/stdPlanOptions/crutches.svg";
-import { PseudoElement } from "./PseudoElement";
 import ShowHideIconSvg from "../../assets/icons/arrowUp.svg";
 import { useState } from "react";
 import EyeSvg from "../../assets/icons/stdPlanOptions/eyeIcon.svg";
 import DownloadSvg from "../../assets/icons/stdPlanOptions/downloadIcon.svg";
 import styles from "./stdPlanSectorStyles";
+import { PlanSector } from "../utils/PlanSector";
 
-export const StdPlanSector = ({ isRadioButton = false }) => {
+export const StdPlanSector = ({ isRadioButton = true }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [isSelected, setIsSelected] = useState(true);
 
@@ -20,38 +20,13 @@ export const StdPlanSector = ({ isRadioButton = false }) => {
   };
 
   return (
-    <View
-      style={[
-        styles.planSectorWrapper,
-        isRadioButton && styles.focusPlanSectorBorder,
-      ]}
+    <PlanSector
+      logo={<CrutchesSvg />}
+      title={"Short Time Disability 7-7-25"}
+      onHandleSelected={onHandleSelected}
+      isSelected={isSelected}
+      isRadioButton={isRadioButton}
     >
-      <View style={styles.iconAndTitleWrapper}>
-        <View style={styles.iconWrapper}>
-          <CrutchesSvg />
-        </View>
-        <View>
-          <Text style={styles.sectorTitle}>Short Time Disability 7-7-25</Text>
-          {isRadioButton && (
-            <View style={styles.selectedButtonAndTextWrapper}>
-              <TouchableOpacity
-                onPress={onHandleSelected}
-                style={styles.selectedRaioButton}
-              >
-                <View
-                  style={
-                    isSelected ? styles.radioButtonPoint : styles.displayNone
-                  }
-                ></View>
-              </TouchableOpacity>
-              <Text style={styles.selectedRadioButtonText}>Selected Plan</Text>
-            </View>
-          )}
-        </View>
-      </View>
-
-      <PseudoElement />
-
       <View style={styles.subTitleAndButtonWrapper}>
         <Text style={styles.subTitle}>Plan Summary</Text>
         <TouchableOpacity
@@ -117,6 +92,6 @@ export const StdPlanSector = ({ isRadioButton = false }) => {
           <Text style={styles.linkText}>Download Benefit Details</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </PlanSector>
   );
 };
