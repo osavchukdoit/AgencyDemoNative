@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
 
+// TODO: extract to the external folder
 export const ButtonsPlanAndMoreInfo = () => {
   return (
     <View style={styles.buttonsContainer}>

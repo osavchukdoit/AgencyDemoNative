@@ -53,6 +53,7 @@ export const StdInfoSectorProductDescription = () => {
   );
 };
 
+// TODO: extract
 const styles = StyleSheet.create({
   infoSectorWrapper: {
     paddingTop: 11,
