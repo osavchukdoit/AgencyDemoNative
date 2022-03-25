@@ -1,12 +1,23 @@
 import { View, ScrollView, StyleSheet } from "react-native";
 import { ButtonBenefitsCart } from "../components/familyInfoPage/ButtonBenefitsCart";
 import { ButtonsMoreInfo } from "../components/stdPlanOptions/ButtonsMoreInfo";
-import { ButtonsPlanAndMoreInfo } from "../components/stdPlanOptions/ButtonsPlanAndMoreInfo";
+import { ButtonsPlanAndMoreInfo } from "../components/utils/ButtonsPlanAndMoreInfo";
 import { StdInfoSectorProductDescription } from "../components/stdPlanOptions/StdInfoSectorProductDescription";
 import { StdPlanSector } from "../components/stdPlanOptions/StdPlanSector";
 import { TopComponentPlanOptions } from "../components/utils/topComponents/TopComponentPlanOptions";
+import { useState } from "react";
 
 export const StdPlanOptionsScreen = () => {
+  const [isPlanOptions, setIsPlanOptions] = useState(true);
+
+  const showPlanOptions = () => {
+    return setIsPlanOptions(true);
+  };
+
+  const showMoreInfo = () => {
+    return setIsPlanOptions(false);
+  };
+
   return (
     <>
       <ScrollView>
@@ -20,11 +31,24 @@ export const StdPlanOptionsScreen = () => {
           }
         />
         <View style={styles.wrapper}>
-          <ButtonsPlanAndMoreInfo />
-          <ButtonsMoreInfo />
-          <StdInfoSectorProductDescription />
-          <StdPlanSector />
-          <StdPlanSector />
+          <ButtonsPlanAndMoreInfo
+            handlePressOptions={showPlanOptions}
+            handlePressInfo={showMoreInfo}
+            isPlanOptionActive={isPlanOptions}
+          />
+          {!isPlanOptions && (
+            <>
+              <ButtonsMoreInfo />
+              <StdInfoSectorProductDescription />
+            </>
+          )}
+
+          {isPlanOptions && (
+            <>
+              <StdPlanSector />
+              <StdPlanSector />
+            </>
+          )}
         </View>
       </ScrollView>
       <ButtonBenefitsCart />

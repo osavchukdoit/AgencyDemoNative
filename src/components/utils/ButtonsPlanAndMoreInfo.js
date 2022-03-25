@@ -2,15 +2,44 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
 
-// TODO: extract to the external folder
-export const ButtonsPlanAndMoreInfo = () => {
+export const ButtonsPlanAndMoreInfo = ({
+  handlePressOptions,
+  handlePressInfo,
+  isPlanOptionActive,
+}) => {
   return (
     <View style={styles.buttonsContainer}>
-      <TouchableOpacity style={[styles.button, styles.additionalButtonColor]}>
-        <Text style={styles.checkedButtonText}>Plan Options</Text>
+      <TouchableOpacity
+        onPress={handlePressOptions}
+        style={[
+          styles.button,
+          isPlanOptionActive && styles.additionalButtonColor,
+        ]}
+      >
+        <Text
+          style={[
+            styles.buttonText,
+            isPlanOptionActive && styles.checkedButtonText,
+          ]}
+        >
+          Plan Options
+        </Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>More Info</Text>
+      <TouchableOpacity
+        onPress={handlePressInfo}
+        style={[
+          styles.button,
+          !isPlanOptionActive && styles.additionalButtonColor,
+        ]}
+      >
+        <Text
+          style={[
+            styles.buttonText,
+            !isPlanOptionActive && styles.checkedButtonText,
+          ]}
+        >
+          More Info
+        </Text>
       </TouchableOpacity>
     </View>
   );
@@ -49,10 +78,6 @@ const styles = StyleSheet.create({
   },
 
   checkedButtonText: {
-    fontFamily: FONTS.AVENIR.HEAVY,
-    fontSize: 14,
-    lineHeight: 19,
     color: THEME.COLOR.WHITE,
-    letterSpacing: -0.28,
   },
 });

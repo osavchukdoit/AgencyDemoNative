@@ -1,5 +1,5 @@
 import { View, ScrollView, StyleSheet } from "react-native";
-import { ButtonsPlanAndMoreInfo } from "../components/stdPlanOptions/ButtonsPlanAndMoreInfo";
+import { ButtonsPlanAndMoreInfo } from "../components/utils/ButtonsPlanAndMoreInfo";
 import { CiPlanSector } from "../components/ciPlanOptionsPage/CiPlanSector";
 import { ButtonsMoreInfo } from "../components/stdPlanOptions/ButtonsMoreInfo";
 import { CiInfoProductDescription } from "../components/ciPlanOptionsPage/CiInfoProductDescription";
