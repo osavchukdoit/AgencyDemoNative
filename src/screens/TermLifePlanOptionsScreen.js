@@ -4,8 +4,20 @@ import { TermPlanSector } from "../components/termLifePlanOptionsPage/TermPlanSe
 import { TermPlanBiWeekly } from "../components/termLifePlanOptionsPage/TermPlanBiWeekly";
 import { ButtonBenefitsCart } from "../components/familyInfoPage/ButtonBenefitsCart";
 import { TopComponentPlanOptions } from "../components/utils/topComponents/TopComponentPlanOptions";
+import { useState } from "react";
+import { ButtonsMoreInfo } from "../components/stdPlanOptions/ButtonsMoreInfo";
+import { TermInfoProductDescription } from "../components/termLifePlanOptionsPage/TermInfoProductDescription";
 
 export const TermLifePlanOptionsScreen = () => {
+  const [isPlanOptions, setIsPlanOptions] = useState(true);
+
+  const showPlanOptions = () => {
+    return setIsPlanOptions(true);
+  };
+
+  const showMoreInfo = () => {
+    return setIsPlanOptions(false);
+  };
   return (
     <>
       <ScrollView>
@@ -19,9 +31,22 @@ export const TermLifePlanOptionsScreen = () => {
           }
         />
         <View style={styles.wrapper}>
-          <ButtonsPlanAndMoreInfo />
-          <TermPlanSector />
-          <TermPlanBiWeekly />
+          <ButtonsPlanAndMoreInfo
+            handlePressOptions={showPlanOptions}
+            handlePressInfo={showMoreInfo}
+            isPlanOptionActive={isPlanOptions}
+          />
+          {isPlanOptions ? (
+            <>
+              <TermPlanSector />
+              <TermPlanBiWeekly />
+            </>
+          ) : (
+            <>
+              <ButtonsMoreInfo />
+              <TermInfoProductDescription />
+            </>
+          )}
         </View>
       </ScrollView>
       <ButtonBenefitsCart />

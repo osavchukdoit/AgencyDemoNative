@@ -5,8 +5,18 @@ import { ButtonsMoreInfo } from "../components/stdPlanOptions/ButtonsMoreInfo";
 import { CiInfoProductDescription } from "../components/ciPlanOptionsPage/CiInfoProductDescription";
 import { ButtonBenefitsCart } from "../components/familyInfoPage/ButtonBenefitsCart";
 import { TopComponentPlanOptions } from "../components/utils/topComponents/TopComponentPlanOptions";
+import { useState } from "react";
 
 export const CiPlanOptionsScreen = () => {
+  const [isPlanOptions, setIsPlanOptions] = useState(true);
+
+  const showPlanOptions = () => {
+    return setIsPlanOptions(true);
+  };
+
+  const showMoreInfo = () => {
+    return setIsPlanOptions(false);
+  };
   return (
     <>
       <ScrollView>
@@ -20,11 +30,22 @@ export const CiPlanOptionsScreen = () => {
           }
         />
         <View style={styles.wrapper}>
-          <ButtonsPlanAndMoreInfo />
-          <ButtonsMoreInfo />
-          <CiInfoProductDescription />
-          <CiPlanSector />
-          <CiPlanSector />
+          <ButtonsPlanAndMoreInfo
+            handlePressOptions={showPlanOptions}
+            handlePressInfo={showMoreInfo}
+            isPlanOptionActive={isPlanOptions}
+          />
+          {isPlanOptions ? (
+            <>
+              <CiPlanSector />
+              <CiPlanSector />
+            </>
+          ) : (
+            <>
+              <ButtonsMoreInfo />
+              <CiInfoProductDescription />
+            </>
+          )}
         </View>
       </ScrollView>
       <ButtonBenefitsCart />

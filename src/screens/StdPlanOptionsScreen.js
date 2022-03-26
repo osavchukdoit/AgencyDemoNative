@@ -36,17 +36,15 @@ export const StdPlanOptionsScreen = () => {
             handlePressInfo={showMoreInfo}
             isPlanOptionActive={isPlanOptions}
           />
-          {!isPlanOptions && (
+          {isPlanOptions ? (
+            <>
+              <StdPlanSector />
+              <StdPlanSector />
+            </>
+          ) : (
             <>
               <ButtonsMoreInfo />
               <StdInfoSectorProductDescription />
-            </>
-          )}
-
-          {isPlanOptions && (
-            <>
-              <StdPlanSector />
-              <StdPlanSector />
             </>
           )}
         </View>
