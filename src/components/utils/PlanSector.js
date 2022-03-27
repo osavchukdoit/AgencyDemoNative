@@ -7,8 +7,8 @@ export const PlanSector = ({
   title,
   children,
   onHandleSelected,
-  isSelected,
-  isRadioButton,
+  isSelected = false,
+  isRadioButton = false,
 }) => {
   return (
     <View
@@ -31,7 +31,7 @@ export const PlanSector = ({
                   style={
                     isSelected ? styles.radioButtonPoint : styles.displayNone
                   }
-                ></View>
+                />
               </TouchableOpacity>
               <Text style={styles.selectedRadioButtonText}>Selected Plan</Text>
             </View>

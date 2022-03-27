@@ -1,18 +1,12 @@
-import { View, Text, StyleSheet } from "react-native";
+import { Text, StyleSheet } from "react-native";
 import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
-import { PseudoElement } from "../stdPlanOptions/PseudoElement";
 import ThermometerSvg from "../../assets/icons/ciPlanOptions/thermometerIcon.svg";
+import { PlanSector } from "../utils/PlanSector";
+
 export const CiInfoProductDescription = () => {
   return (
-    <View style={styles.infoSectorWrapper}>
-      <View style={styles.iconAndTitleWrapper}>
-        <View style={styles.iconWrapper}>
-          <ThermometerSvg />
-        </View>
-        <Text style={styles.sectorTitle}>Product Description</Text>
-      </View>
-      <PseudoElement />
+    <PlanSector logo={<ThermometerSvg />} title={"Product Description"}>
       <Text style={styles.subTitleMedium}>
         The Athena Critical Illness Plan can help you protect your finances if
         you are diagnosed with a covered serious condition. The plan pays cash
@@ -31,7 +25,7 @@ export const CiInfoProductDescription = () => {
         See the attached benefit summary for details of coverage, including
         limitations and exclusions.
       </Text>
-    </View>
+    </PlanSector>
   );
 };
 
