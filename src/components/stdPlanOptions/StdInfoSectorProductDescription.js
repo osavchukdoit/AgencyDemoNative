@@ -3,10 +3,12 @@ import CrutchesSvg from "../../assets/icons/stdPlanOptions/crutches.svg";
 import { PseudoElement } from "./PseudoElement";
 import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
+import {shadowStyles} from "../../styles/shadowStyles";
 
 export const StdInfoSectorProductDescription = () => {
   return (
-    <View style={styles.infoSectorWrapper}>
+    // TODO: use external shadow styles
+    <View style={[styles.infoSectorWrapper, shadowStyles.boxShadow]}>
       <View style={styles.iconAndTitleWrapper}>
         <View style={styles.iconWrapper}>
           <CrutchesSvg />
@@ -54,16 +56,17 @@ export const StdInfoSectorProductDescription = () => {
 };
 
 // TODO: extract
+// TODO: use external shadow styles
 const styles = StyleSheet.create({
   infoSectorWrapper: {
     paddingTop: 11,
     paddingBottom: 14,
     paddingHorizontal: 15,
     backgroundColor: THEME.COLOR.WHITE,
-    shadowColor: THEME.BOX_SHADOW.COLOR_BLACK,
-    shadowOffset: THEME.BOX_SHADOW.OFFSET,
-    shadowOpacity: THEME.BOX_SHADOW.OPACITY,
-    shadowRadius: THEME.BOX_SHADOW.SHADOW_RADIUS,
+    // shadowColor: THEME.BOX_SHADOW.COLOR_BLACK,
+    // shadowOffset: THEME.BOX_SHADOW.OFFSET,
+    // shadowOpacity: THEME.BOX_SHADOW.OPACITY,
+    // shadowRadius: THEME.BOX_SHADOW.SHADOW_RADIUS,
     borderRadius: 20,
     marginBottom: 16,
   },

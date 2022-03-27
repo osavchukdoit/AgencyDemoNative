@@ -2,10 +2,12 @@ import React from "react";
 import { View, StyleSheet, Image } from "react-native";
 import { THEME } from "../../styles/theme";
 import { AppText } from "../utils/AppText";
+import { shadowStyles } from "../../styles/shadowStyles";
 
 export const HomePageTop = () => {
   return (
-    <View style={[styles.wrapper, styles.shadowProp]}>
+    // TODO: implement external shadow styles
+    <View style={[styles.wrapper, shadowStyles.boxShadow]}>
       <View>
         <Image
           style={styles.image}
@@ -61,13 +63,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 9,
   },
-
-  shadowProp: {
-    shadowColor: THEME.BOX_SHADOW.COLOR_BLACK,
-    shadowOffset: THEME.BOX_SHADOW.OFFSET,
-    shadowOpacity: THEME.BOX_SHADOW.OPACITY,
-    shadowRadius: THEME.BOX_SHADOW.SHADOW_RADIUS,
-  },
+// TODO: implement external shadow styles
+  // shadowProp: {
+  //   shadowColor: THEME.BOX_SHADOW.COLOR_BLACK,
+  //   shadowOffset: THEME.BOX_SHADOW.OFFSET,
+  //   shadowOpacity: THEME.BOX_SHADOW.OPACITY,
+  //   shadowRadius: THEME.BOX_SHADOW.SHADOW_RADIUS,
+  // },
 
   lastTextEl: {
     marginBottom: 0,
