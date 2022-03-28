@@ -1,10 +1,11 @@
 import { View, Text, StyleSheet } from "react-native";
 import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
+import { shadowStyles } from "../../styles/shadowStyles";
 
 export const CiSelectPlanTextAndSelect = () => {
   return (
-    <View style={styles.sectorWrapper}>
+    <View style={[styles.sectorWrapper, shadowStyles.boxShadow]}>
       <Text style={styles.sectorText}>
         By submitting my election for coverage, I am attesting that I have read
         and agree to the posted Conditions of Enrollment document:
@@ -22,10 +23,6 @@ export const CiSelectPlanTextAndSelect = () => {
 const styles = StyleSheet.create({
   sectorWrapper: {
     backgroundColor: THEME.COLOR.WHITE,
-    shadowColor: THEME.BOX_SHADOW.COLOR_BLACK,
-    shadowOffset: THEME.BOX_SHADOW.OFFSET,
-    shadowOpacity: THEME.BOX_SHADOW.OPACITY,
-    shadowRadius: THEME.BOX_SHADOW.SHADOW_RADIUS,
     borderRadius: 20,
     paddingLeft: 15,
     paddingRight: 15,

@@ -2,10 +2,11 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { THEME } from "../../styles/theme.js";
 import { FONTS } from "../../styles/fonts.js";
 import { PseudoElement } from "../stdPlanOptions/PseudoElement.js";
+import { shadowStyles } from "../../styles/shadowStyles.js";
 
 export const TermPlanBiWeekly = () => {
   return (
-    <View style={styles.planBiWeeklyWrapper}>
+    <View style={[styles.planBiWeeklyWrapper, shadowStyles.boxShadow]}>
       <Text style={styles.sectorTitle}>
         Bi-Weekly costs for available Policies
       </Text>
@@ -107,10 +108,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingBottom: 5,
     backgroundColor: THEME.COLOR.WHITE,
-    shadowColor: THEME.BOX_SHADOW.COLOR_BLACK,
-    shadowOffset: THEME.BOX_SHADOW.OFFSET,
-    shadowOpacity: THEME.BOX_SHADOW.OPACITY,
-    shadowRadius: THEME.BOX_SHADOW.SHADOW_RADIUS,
     borderRadius: 20,
     marginBottom: 20,
   },

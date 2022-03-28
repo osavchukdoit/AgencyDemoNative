@@ -1,7 +1,7 @@
 import { View, ScrollView, StyleSheet } from "react-native";
 import { ButtonsPlanAndMoreInfo } from "../components/utils/ButtonsPlanAndMoreInfo";
 import { CiPlanSector } from "../components/ciPlanOptionsPage/CiPlanSector";
-import { ButtonsMoreInfo } from "../components/stdPlanOptions/ButtonsMoreInfo";
+import { ButtonsMoreInfo } from "../components/utils/ButtonsMoreInfo";
 import { CiInfoProductDescription } from "../components/ciPlanOptionsPage/CiInfoProductDescription";
 import { ButtonBenefitsCart } from "../components/familyInfoPage/ButtonBenefitsCart";
 import { TopComponentPlanOptions } from "../components/utils/topComponents/TopComponentPlanOptions";

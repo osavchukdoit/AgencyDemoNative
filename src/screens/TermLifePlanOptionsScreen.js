@@ -5,7 +5,7 @@ import { TermPlanBiWeekly } from "../components/termLifePlanOptionsPage/TermPlan
 import { ButtonBenefitsCart } from "../components/familyInfoPage/ButtonBenefitsCart";
 import { TopComponentPlanOptions } from "../components/utils/topComponents/TopComponentPlanOptions";
 import { useState } from "react";
-import { ButtonsMoreInfo } from "../components/stdPlanOptions/ButtonsMoreInfo";
+import { ButtonsMoreInfo } from "../components/utils/ButtonsMoreInfo";
 import { TermInfoProductDescription } from "../components/termLifePlanOptionsPage/TermInfoProductDescription";
 
 export const TermLifePlanOptionsScreen = () => {

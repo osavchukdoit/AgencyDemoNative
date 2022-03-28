@@ -13,11 +13,12 @@ import CalendarWhiteSvg from "../../assets/icons/employmentInfoIcons/calendarWhi
 import TimerSvg from "../../assets/icons/employmentInfoIcons/timerIcon.svg";
 import ClockSvg from "../../assets/icons/employmentInfoIcons/clockIcon.svg";
 import { THEME } from "../../styles/theme";
+import { shadowStyles } from "../../styles/shadowStyles";
 
 export const MainEmploymentInfo = () => {
   return (
     <View style={styles.wrapper}>
-      <View style={styles.infoWrapper}>
+      <View style={[styles.infoWrapper, shadowStyles.boxShadow]}>
         <View style={styles.titleAndInputWrapper}>
           <Text style={styles.titleInfo}>Employee ID/Code</Text>
           <PersonWithTieSvg style={styles.inputIcon} />

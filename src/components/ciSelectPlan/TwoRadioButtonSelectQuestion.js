@@ -2,10 +2,11 @@ import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
 import { PseudoElement } from "../stdPlanOptions/PseudoElement";
 import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
+import { shadowStyles } from "../../styles/shadowStyles";
 
 export const TwoRadioButtonSelectQuestion = () => {
   return (
-    <View style={styles.sectorWrapper}>
+    <View style={[styles.sectorWrapper, shadowStyles.boxShadow]}>
       <Text style={styles.questionTitle}>Are you actively at work?</Text>
       <PseudoElement />
       <View style={styles.radioButtonsWrapper}>
@@ -29,10 +30,6 @@ export const TwoRadioButtonSelectQuestion = () => {
 const styles = StyleSheet.create({
   sectorWrapper: {
     backgroundColor: THEME.COLOR.WHITE,
-    shadowColor: THEME.BOX_SHADOW.COLOR_BLACK,
-    shadowOffset: THEME.BOX_SHADOW.OFFSET,
-    shadowOpacity: THEME.BOX_SHADOW.OPACITY,
-    shadowRadius: THEME.BOX_SHADOW.SHADOW_RADIUS,
     borderRadius: 20,
     paddingHorizontal: 15,
     paddingTop: 19,

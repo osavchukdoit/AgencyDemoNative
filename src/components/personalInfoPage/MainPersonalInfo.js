@@ -8,13 +8,14 @@ import MobileIconSvg from "../../assets/icons/personInfoIcons/mobile.svg";
 import GpsMarkIconSvg from "../../assets/icons/personInfoIcons/gpsMark.svg";
 import { useRadioButton } from "./customHooks/useRadioButton";
 import styles from "./stylesMainPersonalInfo";
+import { shadowStyles } from "../../styles/shadowStyles";
 
 export const MainPersonalInfo = () => {
   const [isSmoke, setIsSmoke] = useRadioButton(null);
 
   return (
     <View style={styles.wrapper}>
-      <View style={styles.infoWrapper}>
+      <View style={[styles.infoWrapper, shadowStyles.boxShadow]}>
         <View style={styles.twoRowElements}>
           <View style={styles.nameWrapper}>
             <Text style={styles.titleInfo}>

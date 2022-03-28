@@ -1,6 +1,7 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import { PseudoElement } from "../stdPlanOptions/PseudoElement";
 import styles from "./PlanSectorStyles";
+import { shadowStyles } from "../../styles/shadowStyles";
 
 export const PlanSector = ({
   logo,
@@ -13,7 +14,7 @@ export const PlanSector = ({
   return (
     <View
       style={[
-        styles.planSectorWrapper,
+        styles.planSectorWrapper, shadowStyles.boxShadow,
         isSelected && isRadioButton && styles.focusPlanSectorBorder,
       ]}
     >

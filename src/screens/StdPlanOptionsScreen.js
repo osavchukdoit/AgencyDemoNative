@@ -1,6 +1,6 @@
 import { View, ScrollView, StyleSheet } from "react-native";
 import { ButtonBenefitsCart } from "../components/familyInfoPage/ButtonBenefitsCart";
-import { ButtonsMoreInfo } from "../components/stdPlanOptions/ButtonsMoreInfo";
+import { ButtonsMoreInfo } from "../components/utils/ButtonsMoreInfo";
 import { ButtonsPlanAndMoreInfo } from "../components/utils/ButtonsPlanAndMoreInfo";
 import { StdInfoSectorProductDescription } from "../components/stdPlanOptions/StdInfoSectorProductDescription";
 import { StdPlanSector } from "../components/stdPlanOptions/StdPlanSector";

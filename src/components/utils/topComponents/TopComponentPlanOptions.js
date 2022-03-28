@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet, Image, ImageBackground } from "react-native";
 import { THEME } from "../../../styles/theme";
 import { FONTS } from "../../../styles/fonts";
+import { shadowStyles } from "../../../styles/shadowStyles";
 
 export const TopComponentPlanOptions = ({
   imgMain,
@@ -10,7 +11,7 @@ export const TopComponentPlanOptions = ({
   textDown,
 }) => {
   return (
-    <View style={styles.wrapper}>
+    <View style={[styles.wrapper, shadowStyles.boxShadow]}>
       <ImageBackground source={imgMain} style={styles.imageTop}>
         <View style={styles.imageTopTextWrapper}>
           <Text style={styles.imageTopTextUp}>{textnormal}</Text>
@@ -38,10 +39,6 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
     marginBottom: 14,
-    shadowColor: THEME.BOX_SHADOW.COLOR_BLACK,
-    shadowOffset: THEME.BOX_SHADOW.OFFSET,
-    shadowOpacity: THEME.BOX_SHADOW.OPACITY,
-    shadowRadius: THEME.BOX_SHADOW.SHADOW_RADIUS,
   },
 
   imageTop: {

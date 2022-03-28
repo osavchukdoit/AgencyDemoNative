@@ -1,19 +1,12 @@
-import { View, Text, StyleSheet } from "react-native";
+import { Text, StyleSheet } from "react-native";
 import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
-import { PseudoElement } from "../stdPlanOptions/PseudoElement";
 import UmbrelaSvg from "../../assets/icons/termLifePlanOptions/umbrelaIconSvg.svg";
+import { PlanSector } from "../utils/PlanSector";
 
 export const TermInfoProductDescription = () => {
   return (
-    <View style={styles.infoSectorWrapper}>
-      <View style={styles.iconAndTitleWrapper}>
-        <View style={styles.iconWrapper}>
-          <UmbrelaSvg />
-        </View>
-        <Text style={styles.sectorTitle}>Product Description</Text>
-      </View>
-      <PseudoElement />
+    <PlanSector logo={<UmbrelaSvg />} title={"Product Description"}>
       <Text style={styles.subTitleMedium}>
         The BML Voluntary Term Life and AD&D plan can help you protect your
         fiancee if you are diagnosed with a covered serious condition. The plan
@@ -32,7 +25,7 @@ export const TermInfoProductDescription = () => {
         See the attached benefit summary for details of coverage, including
         limitations and exclusions.
       </Text>
-    </View>
+    </PlanSector>
   );
 };
 
@@ -42,10 +35,6 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
     paddingHorizontal: 15,
     backgroundColor: THEME.COLOR.WHITE,
-    shadowColor: THEME.BOX_SHADOW.COLOR_BLACK,
-    shadowOffset: THEME.BOX_SHADOW.OFFSET,
-    shadowOpacity: THEME.BOX_SHADOW.OPACITY,
-    shadowRadius: THEME.BOX_SHADOW.SHADOW_RADIUS,
     borderRadius: 20,
     marginBottom: 16,
   },

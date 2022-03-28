@@ -30,19 +30,6 @@ export const CiInfoProductDescription = () => {
 };
 
 const styles = StyleSheet.create({
-  infoSectorWrapper: {
-    paddingTop: 11,
-    paddingBottom: 5,
-    paddingHorizontal: 15,
-    backgroundColor: THEME.COLOR.WHITE,
-    shadowColor: THEME.BOX_SHADOW.COLOR_BLACK,
-    shadowOffset: THEME.BOX_SHADOW.OFFSET,
-    shadowOpacity: THEME.BOX_SHADOW.OPACITY,
-    shadowRadius: THEME.BOX_SHADOW.SHADOW_RADIUS,
-    borderRadius: 20,
-    marginBottom: 16,
-  },
-
   iconAndTitleWrapper: {
     flexDirection: "row",
     alignItems: "center",
