@@ -4,6 +4,7 @@ import CalendarIconSvg from "../../assets/icons/familyInfoIcons/calendar.svg";
 import ArrowRightSvg from "../../assets/icons/familyInfoIcons/vectorRight.svg";
 import { useState } from "react";
 import mainStyles from "./FamilyInfoItemStyles";
+import { shadowStyles } from "../../styles/shadowStyles";
 
 export const PersonalInfoItem = () => {
   const [isWarning, setIsWarning] = useState(true);
@@ -17,7 +18,7 @@ export const PersonalInfoItem = () => {
   return (
     <>
       <Text style={mainStyles.infoTitle}>Personal Info</Text>
-      <View style={mainStyles.infoWrapper}>
+      <View style={[mainStyles.infoWrapper, shadowStyles.boxShadow]}>
         <View style={mainStyles.subTitleContainer}>
           <Text style={mainStyles.subTitle}>John Doe</Text>
           {isWarning && (

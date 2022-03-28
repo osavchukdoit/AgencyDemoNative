@@ -8,7 +8,7 @@ import ThermometerIconSvg from "../../assets/icons/ciPlanOptions/thermometerIcon
 import styles from "./CiPlanSectorStyles";
 import { PlanSector } from "../utils/PlanSector";
 
-export const CiPlanSector = ({ isRadioButton = true }) => {
+export const CiPlanSector = ({ isRadioButton = false }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [isSelected, setIsSelected] = useState(true);
 

@@ -1,19 +1,20 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import { PseudoElement } from "../stdPlanOptions/PseudoElement";
 import styles from "./PlanSectorStyles";
+import { shadowStyles } from "../../styles/shadowStyles";
 
 export const PlanSector = ({
   logo,
   title,
   children,
   onHandleSelected,
-  isSelected,
-  isRadioButton,
+  isSelected = false,
+  isRadioButton = false,
 }) => {
   return (
     <View
       style={[
-        styles.planSectorWrapper,
+        styles.planSectorWrapper, shadowStyles.boxShadow,
         isSelected && isRadioButton && styles.focusPlanSectorBorder,
       ]}
     >
@@ -31,7 +32,7 @@ export const PlanSector = ({
                   style={
                     isSelected ? styles.radioButtonPoint : styles.displayNone
                   }
-                ></View>
+                />
               </TouchableOpacity>
               <Text style={styles.selectedRadioButtonText}>Selected Plan</Text>
             </View>

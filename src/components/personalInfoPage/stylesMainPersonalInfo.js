@@ -5,10 +5,6 @@ import { FONTS } from "../../styles/fonts";
 export default StyleSheet.create({
   infoWrapper: {
     backgroundColor: THEME.COLOR.WHITE,
-    shadowColor: THEME.BOX_SHADOW.COLOR_BLACK,
-    shadowOpacity: THEME.BOX_SHADOW.OPACITY,
-    shadowOffset: THEME.BOX_SHADOW.OFFSET,
-    shadowRadius: 30,
     borderRadius: 20,
     paddingHorizontal: 15,
     paddingTop: 24,

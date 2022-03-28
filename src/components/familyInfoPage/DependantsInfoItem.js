@@ -6,12 +6,13 @@ import TrashBasketSvg from "../../assets/icons/familyInfoIcons/trashBasket.svg";
 import { THEME } from "../../styles/theme";
 import CrossSvg from "../../assets/icons/familyInfoIcons/cross.svg";
 import { FONTS } from "../../styles/fonts";
+import { shadowStyles } from "../../styles/shadowStyles";
 
 export const DependantsInfoItem = () => {
   return (
     <>
       <Text style={mainStyles.infoTitle}>Dependants</Text>
-      <View style={mainStyles.infoWrapper}>
+      <View style={[mainStyles.infoWrapper, shadowStyles.boxShadow]}>
         <View style={mainStyles.subTitleContainer}>
           <Text style={mainStyles.baseText}>Dependant #1</Text>
           <TouchableOpacity style={localStyles.trashButton}>

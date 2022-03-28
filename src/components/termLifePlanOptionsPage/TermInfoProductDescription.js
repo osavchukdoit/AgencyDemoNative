@@ -1,19 +1,19 @@
 import { Text, StyleSheet } from "react-native";
 import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
-import ThermometerSvg from "../../assets/icons/ciPlanOptions/thermometerIcon.svg";
+import UmbrelaSvg from "../../assets/icons/termLifePlanOptions/umbrelaIconSvg.svg";
 import { PlanSector } from "../utils/PlanSector";
 
-export const CiInfoProductDescription = () => {
+export const TermInfoProductDescription = () => {
   return (
-    <PlanSector logo={<ThermometerSvg />} title={"Product Description"}>
+    <PlanSector logo={<UmbrelaSvg />} title={"Product Description"}>
       <Text style={styles.subTitleMedium}>
-        The Athena Critical Illness Plan can help you protect your finances if
-        you are diagnosed with a covered serious condition. The plan pays cash
-        benefits to you if you are diagnosed with a heart attack, stroke, end
-        stage renal failure, cancer and more. You can use the money to help
-        cover your deductible or for everyday expenses like utility bills,
-        mortage payments and groceries. It’s up to you.
+        The BML Voluntary Term Life and AD&D plan can help you protect your
+        fiancee if you are diagnosed with a covered serious condition. The plan
+        pays cash benefits to you if you are diagnosed with a heart attack,
+        stroke, end stage renal failure, cancer and more. You can use the money
+        to help cover your deductible or for everyday expenses like utility
+        bills, mortgage payment and groceries. It’s up to you.
       </Text>
 
       <Text style={styles.subTextNormal}>
@@ -30,6 +30,15 @@ export const CiInfoProductDescription = () => {
 };
 
 const styles = StyleSheet.create({
+  infoSectorWrapper: {
+    paddingTop: 11,
+    paddingBottom: 5,
+    paddingHorizontal: 15,
+    backgroundColor: THEME.COLOR.WHITE,
+    borderRadius: 20,
+    marginBottom: 16,
+  },
+
   iconAndTitleWrapper: {
     flexDirection: "row",
     alignItems: "center",

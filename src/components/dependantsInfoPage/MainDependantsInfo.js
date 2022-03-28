@@ -16,12 +16,13 @@ import CalendarSvg from "../../assets/icons/familyInfoIcons/calendar.svg";
 import { GendersContainer } from "../personalInfoPage/GendersContainer";
 import ShieldSvg from "../../assets/icons/personInfoIcons/shield.svg";
 import { useRadioButton } from "../personalInfoPage/customHooks/useRadioButton";
+import { shadowStyles } from "../../styles/shadowStyles.js";
 
 export const MainDependantsInfo = () => {
   const [isChild, setIsChild] = useRadioButton(null);
   return (
     <View>
-      <View style={styles.infoWrapper}>
+      <View style={[styles.infoWrapper, shadowStyles.boxShadow]}>
         <View>
           <TouchableOpacity style={localStyles.deleteButton}>
             <TrushSvg />

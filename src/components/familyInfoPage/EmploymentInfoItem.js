@@ -4,6 +4,7 @@ import BagIconSvg from "../../assets/icons/familyInfoIcons/bag.svg";
 import ArrowRightSvg from "../../assets/icons/familyInfoIcons/vectorRight.svg";
 import { useState } from "react";
 import mainStyles from "./FamilyInfoItemStyles";
+import { shadowStyles } from "../../styles/shadowStyles";
 
 export const EmploymentInfoItem = () => {
   const [isWarning, setIsWarning] = useState(false);
@@ -17,7 +18,7 @@ export const EmploymentInfoItem = () => {
   return (
     <>
       <Text style={mainStyles.infoTitle}>Employment Info</Text>
-      <View style={mainStyles.infoWrapper}>
+      <View style={[mainStyles.infoWrapper, shadowStyles.boxShadow]}>
         <View style={mainStyles.subTitleContainer}>
           <Text style={mainStyles.baseText}>
             Emploee ID: <Text style={mainStyles.boldText}>1234</Text>

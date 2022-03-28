@@ -7,7 +7,7 @@ import DownloadSvg from "../../assets/icons/stdPlanOptions/downloadIcon.svg";
 import styles from "./stdPlanSectorStyles";
 import { PlanSector } from "../utils/PlanSector";
 
-export const StdPlanSector = ({ isRadioButton = true }) => {
+export const StdPlanSector = ({ isRadioButton = false }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [isSelected, setIsSelected] = useState(true);
 

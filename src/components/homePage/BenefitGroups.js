@@ -6,6 +6,7 @@ import ShowHideIconSvg from "../../assets/icons/arrowUp.svg";
 import { useState } from "react";
 import { VoluntarySTD } from "./VoluntarySTD";
 import { PseudoElement } from "../stdPlanOptions/PseudoElement";
+import { shadowStyles } from "../../styles/shadowStyles";
 
 export const BenefitGroups = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -17,7 +18,7 @@ export const BenefitGroups = () => {
   };
 
   return (
-    <View style={[styles.benefitWrapper, styles.shadowProp]}>
+    <View style={[styles.benefitWrapper, shadowStyles.boxShadow]}>
       <View
         style={[
           styles.benefitTitleWrapper,
@@ -54,13 +55,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     borderRadius: 20,
     marginBottom: 20,
-  },
-
-  shadowProp: {
-    shadowColor: THEME.BOX_SHADOW.COLOR_BLACK,
-    shadowOffset: THEME.BOX_SHADOW.OFFSET,
-    shadowOpacity: THEME.BOX_SHADOW.OPACITY,
-    shadowRadius: THEME.BOX_SHADOW.SHADOW_RADIUS,
   },
 
   benefitTitleWrapper: {
