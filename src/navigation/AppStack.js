@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { EmployersScreen } from "../screens/EmployersScreen";
 import { AboutScreen } from "../screens/AboutScreen";
 import { TouchableOpacity, Text, View, Image, Platform } from "react-native";
+import { TermLifeEnrollScreen } from "../screens/TermLifeEnrollScreen";
 import { TermLifePlanOptionsScreen } from "../screens/TermLifePlanOptionsScreen";
 import { CiSelectPlanScreen } from "../screens/CiSelectPlanScreen";
 import { CiPlanOptionsScreen } from "../screens/CiPlanOptionsScreen";
@@ -111,7 +112,7 @@ export const AppStack = ({ onLogout }) => {
               <TouchableOpacity
                 style={styles.headerButton}
                 onPress={() => {
-                  navigation.navigate("Home");
+                  navigation.navigate("TermLifeEnrollScreen"); //here
                 }}
               >
                 {!isWebOs ? <HomeIconSvg /> : <Text>HomeIconSvg</Text>}
@@ -123,6 +124,10 @@ export const AppStack = ({ onLogout }) => {
           ),
         })}
       >
+        <Drawer.Screen
+          name={"TermLifeEnrollScreen"}
+          component={TermLifeEnrollScreen}
+        />
         <Drawer.Screen
           name={"TermLifePlanOptionsScreen"}
           component={TermLifePlanOptionsScreen}

@@ -16,6 +16,10 @@ export default StyleSheet.create({
     marginTop: 9,
   },
 
+  zeroMarginBottom: {
+    marginBottom: 0,
+  },
+
   subTitle: {
     fontFamily: FONTS.AVENIR.MEDIUM,
     fontSize: 13,

@@ -7,11 +7,12 @@ import { THEME } from "../../styles/theme";
 import CrossSvg from "../../assets/icons/familyInfoIcons/cross.svg";
 import { FONTS } from "../../styles/fonts";
 import { shadowStyles } from "../../styles/shadowStyles";
+import { commonPlanStyles } from "../../styles/commonPlanStyles";
 
 export const DependantsInfoItem = () => {
   return (
     <>
-      <Text style={mainStyles.infoTitle}>Dependants</Text>
+      <Text style={commonPlanStyles.planSectorHeader}>Dependants</Text>
       <View style={[mainStyles.infoWrapper, shadowStyles.boxShadow]}>
         <View style={mainStyles.subTitleContainer}>
           <Text style={mainStyles.baseText}>Dependant #1</Text>

@@ -27,7 +27,12 @@ export const TermPlanSector = ({ isRadioButton = false }) => {
       isSelected={isSelected}
       isRadioButton={isRadioButton}
     >
-      <View style={styles.subTitleAndButtonWrapper}>
+      <View
+        style={[
+          styles.subTitleAndButtonWrapper,
+          !isVisible && styles.zeroMarginBottom,
+        ]}
+      >
         <Text style={styles.subTitle}>Plan Summary</Text>
         <TouchableOpacity
           style={[styles.buttonShowHide, isVisible && styles.rotate]}
@@ -79,18 +84,18 @@ export const TermPlanSector = ({ isRadioButton = false }) => {
             Upto $10k
           </Text>
         </View>
-      </View>
 
-      <View style={styles.linksWrapper}>
-        <TouchableOpacity style={styles.iconAndLinkWrapper}>
-          <EyeSvg style={styles.linkIcon} />
-          <Text style={styles.linkText}>View Benefit Details</Text>
-        </TouchableOpacity>
+        <View style={styles.linksWrapper}>
+          <TouchableOpacity style={styles.iconAndLinkWrapper}>
+            <EyeSvg style={styles.linkIcon} />
+            <Text style={styles.linkText}>View Benefit Details</Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity style={styles.iconAndLinkWrapper}>
-          <DownloadSvg style={styles.linkIcon} />
-          <Text style={styles.linkText}>Download Benefit Details</Text>
-        </TouchableOpacity>
+          <TouchableOpacity style={styles.iconAndLinkWrapper}>
+            <DownloadSvg style={styles.linkIcon} />
+            <Text style={styles.linkText}>Download Benefit Details</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </PlanSector>
   );
