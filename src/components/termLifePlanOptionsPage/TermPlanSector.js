@@ -1,14 +1,14 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import UmbrelaSvg from "../../assets/icons/termLifePlanOptions/umbrelaIconSvg.svg";
-import ShowHideIconSvg from "../../assets/icons/arrowUp.svg";
 import { useState } from "react";
 import EyeSvg from "../../assets/icons/stdPlanOptions/eyeIcon.svg";
 import DownloadSvg from "../../assets/icons/stdPlanOptions/downloadIcon.svg";
 import styles from "./TermPlanSectorStyles";
 import { PlanSector } from "../utils/PlanSector";
+import { ShowHideButtonAndText } from "../utils/ShowHideButtonAndText";
 
 export const TermPlanSector = ({ isRadioButton = false }) => {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
   const [isSelected, setIsSelected] = useState(true);
 
   const onHandleSelected = () => {
@@ -27,22 +27,11 @@ export const TermPlanSector = ({ isRadioButton = false }) => {
       isSelected={isSelected}
       isRadioButton={isRadioButton}
     >
-      <View
-        style={[
-          styles.subTitleAndButtonWrapper,
-          !isVisible && styles.zeroMarginBottom,
-        ]}
-      >
-        <Text style={styles.subTitle}>Plan Summary</Text>
-        <TouchableOpacity
-          style={[styles.buttonShowHide, isVisible && styles.rotate]}
-          onPress={onHandlePress}
-        >
-          <Text>
-            <ShowHideIconSvg />
-          </Text>
-        </TouchableOpacity>
-      </View>
+      <ShowHideButtonAndText
+        isVisible={isVisible}
+        onHandlePress={onHandlePress}
+        subTitle={"Plan Summary"}
+      />
 
       <View style={isVisible ? { ...styles.listWrapper } : { display: "none" }}>
         <View style={styles.listItem}>

@@ -1,20 +1,21 @@
-import {
-  View,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-} from "react-native";
+import { View, ScrollView, StyleSheet, Text } from "react-native";
 import { TermPlanBiWeekly } from "../components/termLifePlanOptionsPage/TermPlanBiWeekly";
 import { TermPlanSector } from "../components/termLifePlanOptionsPage/TermPlanSector";
 import { TopComponentPlanOptions } from "../components/utils/topComponents/TopComponentPlanOptions";
 import { commonPlanStyles } from "../styles/commonPlanStyles";
-import { THEME } from "../styles/theme";
-import { FONTS } from "../styles/fonts";
-import SelectedIconSvg from "../assets/icons/ciSelectPlan/selectedIcon.svg";
 import { AgreementText } from "../components/termLifeEnroll/AgreementText";
+import { CheckboxAndText } from "../components/utils/CheckboxAndText";
+import { useState } from "react";
+import { FONTS } from "../styles/fonts";
+import { THEME } from "../styles/theme";
 
 export const TermLifeEnrollScreen = () => {
+  const [isChecked, setIsChecked] = useState(false);
+
+  const onHandleCheck = () => {
+    setIsChecked((prev) => !prev);
+  };
+
   return (
     <>
       <ScrollView>
@@ -35,12 +36,9 @@ export const TermLifeEnrollScreen = () => {
           <TermPlanBiWeekly />
           <AgreementText />
 
-          <View style={styles.radioButtonAndTextWrapper}>
-            <TouchableOpacity style={styles.radioButton}>
-              <SelectedIconSvg />
-            </TouchableOpacity>
-            <Text style={styles.buttonText}>Yes, I Accept</Text>
-          </View>
+          <CheckboxAndText isChecked={isChecked} onHandleCheck={onHandleCheck}>
+            <Text style={styles.checkboxText}>Yes, I Accept</Text>
+          </CheckboxAndText>
         </View>
       </ScrollView>
     </>
@@ -52,24 +50,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
 
-  radioButtonAndTextWrapper: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 18,
-  },
-
-  radioButton: {
-    width: 15,
-    height: 15,
-    borderWidth: 1,
-    borderRadius: 3,
-    borderColor: THEME.BACKGROUND.MENU,
-    marginRight: 9,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  buttonText: {
+  checkboxText: {
     fontFamily: FONTS.AVENIR.ROMAN,
     fontSize: 12,
     lineHeight: 16,
