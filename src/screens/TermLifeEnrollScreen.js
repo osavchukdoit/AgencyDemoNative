@@ -12,16 +12,12 @@ import { THEME } from "../styles/theme";
 export const TermLifeEnrollScreen = () => {
   const [isChecked, setIsChecked] = useState(false);
 
-  const onHandleCheck = () => {
-    setIsChecked((prev) => !prev);
-  };
-
   return (
     <>
       <ScrollView>
         <TopComponentPlanOptions
           imgMain={require("../assets/topComponent/termLifePlanOptionsTopPage.png")}
-          textnormal={"Financial Protection for the Unexpected!"}
+          textNormal={"Financial Protection for the Unexpected!"}
           textBold={"Select Term Life Plans"}
           imgSecondary={require("../assets/topComponent/stdGlobePic.png")}
           textDown={
@@ -36,7 +32,7 @@ export const TermLifeEnrollScreen = () => {
           <TermPlanBiWeekly />
           <AgreementText />
 
-          <CheckboxAndText isChecked={isChecked} onHandleCheck={onHandleCheck}>
+          <CheckboxAndText isChecked={isChecked} handleCheck={setIsChecked}>
             <Text style={styles.checkboxText}>Yes, I Accept</Text>
           </CheckboxAndText>
         </View>

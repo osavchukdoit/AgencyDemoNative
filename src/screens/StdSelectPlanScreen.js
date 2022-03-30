@@ -11,7 +11,7 @@ export const StdSelectPlanScreen = () => {
       <ScrollView>
         <TopComponentPlanOptions
           imgMain={require("../assets/topComponent/stdPlanOptionTopPic.png")}
-          textnormal={"Income Protection for the Unexpected!"}
+          textNormal={"Income Protection for the Unexpected!"}
           textBold={"Select Short Term Disability Plan"}
           imgSecondary={require("../assets/topComponent/stdGlobePic.png")}
           textDown={

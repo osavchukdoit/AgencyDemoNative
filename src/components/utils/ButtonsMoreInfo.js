@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 10,
-    backgroundColor: THEME.BACKGROUND.BUTTON_SHOW_HIDE_BG,
+    backgroundColor: THEME.BACKGROUND.BUTTON_SHOW_HIDE,
     marginBottom: 3,
   },
 

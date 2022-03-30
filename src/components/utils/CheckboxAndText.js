@@ -2,10 +2,10 @@ import { View, TouchableOpacity, StyleSheet } from "react-native";
 import { THEME } from "../../styles/theme";
 import SelectedIconSvg from "../../assets/icons/ciSelectPlan/selectedIcon.svg";
 
-export const CheckboxAndText = ({ isChecked, onHandleCheck, children }) => {
+export const CheckboxAndText = ({ isChecked, handleCheck, children }) => {
   return (
     <TouchableOpacity
-      onPress={onHandleCheck}
+      onPress={() => handleCheck(!isChecked)}
       style={styles.checkboxAndTextWrapper}
     >
       <View style={styles.checkbox}>{isChecked && <SelectedIconSvg />}</View>

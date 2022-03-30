@@ -3,22 +3,18 @@ import ShowHideIconSvg from "../../assets/icons/arrowUp.svg";
 import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
 
-export const ShowHideButtonAndText = ({
-  isVisible,
-  onHandlePress,
-  subTitle,
-}) => {
+export const ShowHideButtonAndText = ({ isVisible, handlePress, title }) => {
   return (
     <View
       style={[
-        styles.subTitleAndButtonWrapper,
+        styles.titleAndButtonWrapper,
         !isVisible && styles.zeroMarginBottom,
       ]}
     >
-      <Text style={styles.subTitle}>{subTitle}</Text>
+      <Text style={styles.title}>{title}</Text>
       <TouchableOpacity
         style={[styles.buttonShowHide, isVisible && styles.rotate]}
-        onPress={onHandlePress}
+        onPress={handlePress}
       >
         <ShowHideIconSvg />
       </TouchableOpacity>
@@ -27,7 +23,7 @@ export const ShowHideButtonAndText = ({
 };
 
 const styles = StyleSheet.create({
-  subTitleAndButtonWrapper: {
+  titleAndButtonWrapper: {
     flexDirection: "row",
     paddingLeft: 4,
     paddingRight: 6,
@@ -40,7 +36,7 @@ const styles = StyleSheet.create({
     marginBottom: 0,
   },
 
-  subTitle: {
+  title: {
     fontFamily: FONTS.AVENIR.MEDIUM,
     fontSize: 13,
     lineHeight: 18,
@@ -53,7 +49,7 @@ const styles = StyleSheet.create({
     height: 24,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: THEME.BACKGROUND.BUTTON_SHOW_HIDE_BG,
+    backgroundColor: THEME.BACKGROUND.BUTTON_SHOW_HIDE,
     borderRadius: 4,
   },
 

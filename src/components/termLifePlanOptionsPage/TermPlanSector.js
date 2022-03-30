@@ -11,11 +11,11 @@ export const TermPlanSector = ({ isRadioButton = false }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isSelected, setIsSelected] = useState(true);
 
-  const onHandleSelected = () => {
+  const handleSelect = () => {
     setIsSelected((prev) => !prev);
   };
 
-  const onHandlePress = () => {
+  const handlePress = () => {
     setIsVisible((prev) => !prev);
   };
 
@@ -23,14 +23,14 @@ export const TermPlanSector = ({ isRadioButton = false }) => {
     <PlanSector
       logo={<UmbrelaSvg />}
       title={"Group Voluntary Term Life"}
-      onHandleSelected={onHandleSelected}
+      handleSelect={handleSelect}
       isSelected={isSelected}
       isRadioButton={isRadioButton}
     >
       <ShowHideButtonAndText
         isVisible={isVisible}
-        onHandlePress={onHandlePress}
-        subTitle={"Plan Summary"}
+        handlePress={handlePress}
+        title={"Plan Summary"}
       />
 
       <View style={isVisible ? { ...styles.listWrapper } : { display: "none" }}>

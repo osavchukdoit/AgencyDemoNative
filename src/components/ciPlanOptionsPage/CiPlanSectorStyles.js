@@ -35,7 +35,7 @@ export default StyleSheet.create({
     height: 24,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: THEME.BACKGROUND.BUTTON_SHOW_HIDE_BG,
+    backgroundColor: THEME.BACKGROUND.BUTTON_SHOW_HIDE,
     borderRadius: 4,
   },
 

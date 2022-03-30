@@ -5,7 +5,7 @@ import { shadowStyles } from "../../../styles/shadowStyles";
 
 export const TopComponentPlanOptions = ({
   imgMain,
-  textnormal,
+  textNormal,
   textBold,
   imgSecondary,
   textDown,
@@ -14,7 +14,7 @@ export const TopComponentPlanOptions = ({
     <View style={[styles.wrapper, shadowStyles.boxShadow]}>
       <ImageBackground source={imgMain} style={styles.imageTop}>
         <View style={styles.imageTopTextWrapper}>
-          <Text style={styles.imageTopTextUp}>{textnormal}</Text>
+          <Text style={styles.imageTopTextUp}>{textNormal}</Text>
           <Text style={[styles.imageTopTextUp, styles.imageTopTextDown]}>
             {textBold}
           </Text>

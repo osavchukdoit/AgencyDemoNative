@@ -11,11 +11,11 @@ export const StdPlanSector = ({ isRadioButton = false }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [isSelected, setIsSelected] = useState(true);
 
-  const onHandleSelected = () => {
+  const handleSelect = () => {
     setIsSelected((prev) => !prev);
   };
 
-  const onHandlePress = () => {
+  const handlePress = () => {
     setIsVisible((prev) => !prev);
   };
 
@@ -23,7 +23,7 @@ export const StdPlanSector = ({ isRadioButton = false }) => {
     <PlanSector
       logo={<CrutchesSvg />}
       title={"Short Time Disability 7-7-25"}
-      onHandleSelected={onHandleSelected}
+      handleSelect={handleSelect}
       isSelected={isSelected}
       isRadioButton={isRadioButton}
     >
@@ -31,7 +31,7 @@ export const StdPlanSector = ({ isRadioButton = false }) => {
         <Text style={styles.subTitle}>Plan Summary</Text>
         <TouchableOpacity
           style={[styles.buttonShowHide, isVisible && styles.rotate]}
-          onPress={onHandlePress}
+          onPress={handlePress}
         >
           <Text>
             <ShowHideIconSvg />
