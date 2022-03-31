@@ -1,21 +1,21 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import UmbrelaSvg from "../../assets/icons/termLifePlanOptions/umbrelaIconSvg.svg";
-import ShowHideIconSvg from "../../assets/icons/arrowUp.svg";
 import { useState } from "react";
 import EyeSvg from "../../assets/icons/stdPlanOptions/eyeIcon.svg";
 import DownloadSvg from "../../assets/icons/stdPlanOptions/downloadIcon.svg";
 import styles from "./TermPlanSectorStyles";
 import { PlanSector } from "../utils/PlanSector";
+import { ShowHideButtonAndText } from "../utils/ShowHideButtonAndText";
 
 export const TermPlanSector = ({ isRadioButton = false }) => {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
   const [isSelected, setIsSelected] = useState(true);
 
-  const onHandleSelected = () => {
+  const handleSelect = () => {
     setIsSelected((prev) => !prev);
   };
 
-  const onHandlePress = () => {
+  const handlePress = () => {
     setIsVisible((prev) => !prev);
   };
 
@@ -23,21 +23,15 @@ export const TermPlanSector = ({ isRadioButton = false }) => {
     <PlanSector
       logo={<UmbrelaSvg />}
       title={"Group Voluntary Term Life"}
-      onHandleSelected={onHandleSelected}
+      handleSelect={handleSelect}
       isSelected={isSelected}
       isRadioButton={isRadioButton}
     >
-      <View style={styles.subTitleAndButtonWrapper}>
-        <Text style={styles.subTitle}>Plan Summary</Text>
-        <TouchableOpacity
-          style={[styles.buttonShowHide, isVisible && styles.rotate]}
-          onPress={onHandlePress}
-        >
-          <Text>
-            <ShowHideIconSvg />
-          </Text>
-        </TouchableOpacity>
-      </View>
+      <ShowHideButtonAndText
+        isVisible={isVisible}
+        handlePress={handlePress}
+        title={"Plan Summary"}
+      />
 
       <View style={isVisible ? { ...styles.listWrapper } : { display: "none" }}>
         <View style={styles.listItem}>
@@ -79,18 +73,18 @@ export const TermPlanSector = ({ isRadioButton = false }) => {
             Upto $10k
           </Text>
         </View>
-      </View>
 
-      <View style={styles.linksWrapper}>
-        <TouchableOpacity style={styles.iconAndLinkWrapper}>
-          <EyeSvg style={styles.linkIcon} />
-          <Text style={styles.linkText}>View Benefit Details</Text>
-        </TouchableOpacity>
+        <View style={styles.linksWrapper}>
+          <TouchableOpacity style={styles.iconAndLinkWrapper}>
+            <EyeSvg style={styles.linkIcon} />
+            <Text style={styles.linkText}>View Benefit Details</Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity style={styles.iconAndLinkWrapper}>
-          <DownloadSvg style={styles.linkIcon} />
-          <Text style={styles.linkText}>Download Benefit Details</Text>
-        </TouchableOpacity>
+          <TouchableOpacity style={styles.iconAndLinkWrapper}>
+            <DownloadSvg style={styles.linkIcon} />
+            <Text style={styles.linkText}>Download Benefit Details</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </PlanSector>
   );

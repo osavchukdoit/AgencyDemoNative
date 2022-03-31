@@ -21,7 +21,7 @@ export const CiSelectPlanScreen = () => {
       <ScrollView>
         <TopComponentPlanOptions
           imgMain={require("../assets/topComponent/ciPlanOptionTopPic.png")}
-          textnormal={"Quality of Life Protection for the Unexpected!"}
+          textNormal={"Quality of Life Protection for the Unexpected!"}
           textBold={"Select Critical Illness Plans"}
           imgSecondary={require("../assets/topComponent/stdGlobePic.png")}
           textDown={

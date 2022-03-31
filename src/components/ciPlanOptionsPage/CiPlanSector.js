@@ -12,11 +12,11 @@ export const CiPlanSector = ({ isRadioButton = false }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [isSelected, setIsSelected] = useState(true);
 
-  const onHandleSelected = () => {
+  const handleSelect = () => {
     setIsSelected((prev) => !prev);
   };
 
-  const onHandlePress = () => {
+  const handlePress = () => {
     setIsVisible((prev) => !prev);
   };
 
@@ -24,7 +24,7 @@ export const CiPlanSector = ({ isRadioButton = false }) => {
     <PlanSector
       logo={<ThermometerIconSvg />}
       title={"Critical Illness $10,000"}
-      onHandleSelected={onHandleSelected}
+      handleSelect={handleSelect}
       isSelected={isSelected}
       isRadioButton={isRadioButton}
     >
@@ -35,7 +35,7 @@ export const CiPlanSector = ({ isRadioButton = false }) => {
             styles.buttonShowHide,
             isVisible && { transform: [{ rotate: "180deg" }] },
           ]}
-          onPress={onHandlePress}
+          onPress={handlePress}
         >
           <Text>
             <ShowHideIconSvg />

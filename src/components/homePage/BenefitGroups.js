@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   buttonShowHide: {
     width: 24,
     height: 24,
-    backgroundColor: THEME.BACKGROUND.BUTTON_SHOW_HIDE_BG,
+    backgroundColor: THEME.BACKGROUND.BUTTON_SHOW_HIDE,
     borderRadius: 4,
     justifyContent: "center",
     alignItems: "center",

@@ -5,6 +5,7 @@ import ArrowRightSvg from "../../assets/icons/familyInfoIcons/vectorRight.svg";
 import { useState } from "react";
 import mainStyles from "./FamilyInfoItemStyles";
 import { shadowStyles } from "../../styles/shadowStyles";
+import { commonPlanStyles } from "../../styles/commonPlanStyles";
 
 export const PersonalInfoItem = () => {
   const [isWarning, setIsWarning] = useState(true);
@@ -17,7 +18,7 @@ export const PersonalInfoItem = () => {
 
   return (
     <>
-      <Text style={mainStyles.infoTitle}>Personal Info</Text>
+      <Text style={commonPlanStyles.planSectorHeader}>Personal Info</Text>
       <View style={[mainStyles.infoWrapper, shadowStyles.boxShadow]}>
         <View style={mainStyles.subTitleContainer}>
           <Text style={mainStyles.subTitle}>John Doe</Text>

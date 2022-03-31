@@ -3,14 +3,6 @@ import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
 
 export default StyleSheet.create({
-  infoTitle: {
-    fontFamily: FONTS.AVENIR.HEAVY,
-    fontSize: 16,
-    lineHeight: 21,
-    letterSpacing: -0.28,
-    marginBottom: 10,
-  },
-
   infoWrapper: {
     backgroundColor: THEME.COLOR.WHITE,
     borderRadius: 20,

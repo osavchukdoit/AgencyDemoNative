@@ -23,7 +23,7 @@ export const TermLifePlanOptionsScreen = () => {
       <ScrollView>
         <TopComponentPlanOptions
           imgMain={require("../assets/topComponent/termLifePlanOptionsTopPage.png")}
-          textnormal={"Financial Protection for the Unexpected!"}
+          textNormal={"Financial Protection for the Unexpected!"}
           textBold={"Select Term Life Plans"}
           imgSecondary={require("../assets/topComponent/stdGlobePic.png")}
           textDown={

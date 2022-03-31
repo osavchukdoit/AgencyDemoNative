@@ -7,7 +7,7 @@ export const PlanSector = ({
   logo,
   title,
   children,
-  onHandleSelected,
+  handleSelect,
   isSelected = false,
   isRadioButton = false,
 }) => {
@@ -25,7 +25,7 @@ export const PlanSector = ({
           {isRadioButton && (
             <View style={styles.selectedButtonAndTextWrapper}>
               <TouchableOpacity
-                onPress={onHandleSelected}
+                onPress={handleSelect}
                 style={styles.selectedRaioButton}
               >
                 <View
