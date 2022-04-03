@@ -1,3 +1,4 @@
+import React from "react";
 import { View, ScrollView, StyleSheet } from "react-native";
 import { ButtonsPlanAndMoreInfo } from "../components/utils/ButtonsPlanAndMoreInfo";
 import { CiPlanSector } from "../components/ciPlanOptionsPage/CiPlanSector";
@@ -37,8 +38,8 @@ export const CiPlanOptionsScreen = () => {
           />
           {isPlanOptions ? (
             <>
-              <CiPlanSector />
-              <CiPlanSector />
+              <CiPlanSector header={"Critical Illness $10,000"} />
+              <CiPlanSector header={"Critical Illness $20,000"} />
             </>
           ) : (
             <>

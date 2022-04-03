@@ -20,7 +20,7 @@ export default StyleSheet.create({
   iconAndTitleWrapper: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 6,
+    marginBottom: 10,
   },
 
   iconWrapper: {

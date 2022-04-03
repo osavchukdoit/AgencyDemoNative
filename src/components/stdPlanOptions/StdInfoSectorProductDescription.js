@@ -1,5 +1,5 @@
 import { View, Text } from "react-native";
-import CrutchesSvg from "../../assets/icons/stdPlanOptions/crutches.svg";
+import CrutchesSvg from "../../assets/icons/plans/std.svg";
 import { PlanSector } from "../utils/PlanSector";
 import styles from "./StdInfoSectorProductDescriptionStyles";
 

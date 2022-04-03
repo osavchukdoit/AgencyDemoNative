@@ -1,35 +1,36 @@
 import { View, Text, StyleSheet } from "react-native";
 import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
-import CrutchesSvg from "../../assets/icons/crutches.svg";
-import { CostOverview } from "./CostOverview";
 
-export const VoluntarySTD = () => {
+export const BenefitSubSector = ({
+  logoSubSector,
+  titleSubSector,
+  children,
+}) => {
   return (
-    <View style={styles.voluntaryStdWrapper}>
+    <View style={styles.subSectorWrapper}>
       <View style={styles.svgAndTitleWrapper}>
-        <View style={styles.svgContainer}>
-          <CrutchesSvg />
-        </View>
+        <View style={styles.svgContainer}>{logoSubSector}</View>
         <View style={styles.textWrapper}>
-          <Text style={styles.titleSTD}>Voluntary STD</Text>
-          <Text style={styles.textSTD}>
+          <Text style={styles.title}>{titleSubSector}</Text>
+          <Text style={styles.text}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
           </Text>
         </View>
       </View>
-      <CostOverview />
+      {children}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  voluntaryStdWrapper: {
+  subSectorWrapper: {
     backgroundColor: THEME.BACKGROUND.LIGHT_BLUE,
     borderRadius: 10,
     paddingTop: 8,
     paddingHorizontal: 10,
     paddingBottom: 16,
+    marginBottom: 15,
   },
   svgAndTitleWrapper: {
     flexDirection: "row",
@@ -51,13 +52,13 @@ const styles = StyleSheet.create({
     width: 256,
   },
 
-  titleSTD: {
+  title: {
     fontFamily: FONTS.AVENIR.HEAVY,
     fontSize: 14,
     lineHeight: 19,
     color: THEME.COLOR.BLUE_BRIGHT,
   },
-  textSTD: {
+  text: {
     fontFamily: FONTS.AVENIR.BOOK,
     fontSize: 12,
     lineHeight: 16,

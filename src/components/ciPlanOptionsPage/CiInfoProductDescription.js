@@ -1,7 +1,7 @@
 import { Text, StyleSheet } from "react-native";
 import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
-import ThermometerSvg from "../../assets/icons/ciPlanOptions/thermometerIcon.svg";
+import ThermometerSvg from "../../assets/icons/plans/ci.svg";
 import { PlanSector } from "../utils/PlanSector";
 
 export const CiInfoProductDescription = () => {

@@ -1,7 +1,7 @@
 import { Text, StyleSheet } from "react-native";
 import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
-import UmbrelaSvg from "../../assets/icons/termLifePlanOptions/umbrelaIconSvg.svg";
+import UmbrelaSvg from "../../assets/icons/plans/term.svg";
 import { PlanSector } from "../utils/PlanSector";
 
 export const TermInfoProductDescription = () => {

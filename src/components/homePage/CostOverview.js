@@ -1,14 +1,14 @@
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { FONTS } from "../../styles/fonts";
 import { THEME } from "../../styles/theme";
 import { useState } from "react";
-import ShowHideIconSvg from "../../assets/icons/arrowUp.svg";
 import { PseudoElement } from "../stdPlanOptions/PseudoElement";
+import { ShowHideButtonAndText } from "../utils/ShowHideButtonAndText";
 
 export const CostOverview = () => {
   const [isVisible, setIsVisible] = useState(true);
 
-  const onHandlePress = () => {
+  const handlePress = () => {
     setIsVisible((prev) => {
       return !prev;
     });
@@ -16,20 +16,10 @@ export const CostOverview = () => {
 
   return (
     <View style={styles.costOverviewWrapper}>
-      <View
-        style={[
-          styles.costOverviewTitleWrapper,
-          !isVisible && styles.additionalMarginBottom,
-        ]}
-      >
-        <Text>Cost Overview</Text>
-        <TouchableOpacity
-          style={[styles.buttonShowHide, isVisible && styles.rotate]}
-          onPress={onHandlePress}
-        >
-          <ShowHideIconSvg />
-        </TouchableOpacity>
-      </View>
+      <ShowHideButtonAndText isVisible={isVisible} handlePress={handlePress}>
+        <Text style={styles.costOverviewTitle}>Cost Overview</Text>
+      </ShowHideButtonAndText>
+
       <View style={isVisible ? { display: "flex" } : { display: "none" }}>
         <PseudoElement />
         <View style={styles.costListWrapper}>
@@ -91,36 +81,11 @@ const styles = StyleSheet.create({
     paddingBottom: 9,
   },
 
-  costOverviewTitleWrapper: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    paddingLeft: 18,
-    paddingRight: 10,
-    marginBottom: 9,
-  },
-
-  additionalMarginBottom: {
-    marginBottom: 0,
-  },
-
   costOverviewTitle: {
     fontFamily: FONTS.AVENIR.MEDIUM,
     fontSize: 14,
     lineHeight: 19,
     letterSpacing: -0.28,
-  },
-
-  buttonShowHide: {
-    width: 24,
-    height: 24,
-    backgroundColor: THEME.BACKGROUND.BUTTON_SHOW_HIDE,
-    borderRadius: 4,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  rotate: {
-    transform: [{ rotate: "180deg" }],
   },
 
   costListWrapper: {

@@ -7,36 +7,12 @@ export default StyleSheet.create({
     display: "none",
   },
 
-  subTitleAndButtonWrapper: {
-    flexDirection: "row",
-    paddingLeft: 4,
-    paddingRight: 6,
-    justifyContent: "space-between",
-    marginBottom: 9,
-    marginTop: 12,
-  },
-
-  subTitleWrapper: {
-    paddingLeft: 4,
-    marginBottom: 9,
-    marginTop: 12,
-  },
-
   subTitle: {
     fontFamily: FONTS.AVENIR.MEDIUM,
     fontSize: 13,
     lineHeight: 18,
     letterSpacing: -0.28,
     color: THEME.COLOR.GREY_DARK_TEXT,
-  },
-
-  buttonShowHide: {
-    width: 24,
-    height: 24,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: THEME.BACKGROUND.BUTTON_SHOW_HIDE,
-    borderRadius: 4,
   },
 
   listWrapper: {

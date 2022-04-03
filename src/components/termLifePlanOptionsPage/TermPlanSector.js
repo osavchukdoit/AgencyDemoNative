@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity } from "react-native";
-import UmbrelaSvg from "../../assets/icons/termLifePlanOptions/umbrelaIconSvg.svg";
+import UmbrelaSvg from "../../assets/icons/plans/term.svg";
 import { useState } from "react";
 import EyeSvg from "../../assets/icons/stdPlanOptions/eyeIcon.svg";
 import DownloadSvg from "../../assets/icons/stdPlanOptions/downloadIcon.svg";
@@ -30,8 +30,10 @@ export const TermPlanSector = ({ isRadioButton = false }) => {
       <ShowHideButtonAndText
         isVisible={isVisible}
         handlePress={handlePress}
-        title={"Plan Summary"}
-      />
+        isMarginTop={true}
+      >
+        <Text style={styles.showHideElementTitle}>Plan Summary</Text>
+      </ShowHideButtonAndText>
 
       <View style={isVisible ? { ...styles.listWrapper } : { display: "none" }}>
         <View style={styles.listItem}>

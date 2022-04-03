@@ -7,6 +7,14 @@ export default StyleSheet.create({
     display: "none",
   },
 
+  showHideElementTitle: {
+    fontFamily: FONTS.AVENIR.MEDIUM,
+    fontSize: 13,
+    lineHeight: 18,
+    letterSpacing: -0.28,
+    color: THEME.COLOR.GREY_DARK_TEXT,
+  },
+
   listWrapper: {
     paddingHorizontal: 2,
   },

@@ -1,17 +1,22 @@
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, TouchableOpacity, StyleSheet } from "react-native";
 import ShowHideIconSvg from "../../assets/icons/arrowUp.svg";
 import { THEME } from "../../styles/theme";
-import { FONTS } from "../../styles/fonts";
 
-export const ShowHideButtonAndText = ({ isVisible, handlePress, title }) => {
+export const ShowHideButtonAndText = ({
+  isVisible,
+  handlePress,
+  children,
+  isMarginTop = false,
+}) => {
   return (
     <View
       style={[
         styles.titleAndButtonWrapper,
+        isMarginTop && styles.additionalMarginTop,
         !isVisible && styles.zeroMarginBottom,
       ]}
     >
-      <Text style={styles.title}>{title}</Text>
+      {children}
       <TouchableOpacity
         style={[styles.buttonShowHide, isVisible && styles.rotate]}
         onPress={handlePress}
@@ -29,19 +34,14 @@ const styles = StyleSheet.create({
     paddingRight: 6,
     justifyContent: "space-between",
     marginBottom: 7,
+  },
+
+  additionalMarginTop: {
     marginTop: 9,
   },
 
   zeroMarginBottom: {
     marginBottom: 0,
-  },
-
-  title: {
-    fontFamily: FONTS.AVENIR.MEDIUM,
-    fontSize: 13,
-    lineHeight: 18,
-    letterSpacing: -0.28,
-    color: THEME.COLOR.GREY_DARK_TEXT,
   },
 
   buttonShowHide: {
