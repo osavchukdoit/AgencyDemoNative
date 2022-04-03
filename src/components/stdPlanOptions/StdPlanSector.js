@@ -1,11 +1,12 @@
 import { View, Text, TouchableOpacity } from "react-native";
-import CrutchesSvg from "../../assets/icons/stdPlanOptions/crutches.svg";
+import CrutchesSvg from "../../assets/icons/plans/std.svg";
 import ShowHideIconSvg from "../../assets/icons/arrowUp.svg";
 import { useState } from "react";
 import EyeSvg from "../../assets/icons/stdPlanOptions/eyeIcon.svg";
 import DownloadSvg from "../../assets/icons/stdPlanOptions/downloadIcon.svg";
 import styles from "./stdPlanSectorStyles";
 import { PlanSector } from "../utils/PlanSector";
+import { ShowHideButtonAndText } from "../utils/ShowHideButtonAndText";
 
 export const StdPlanSector = ({ isRadioButton = false }) => {
   const [isVisible, setIsVisible] = useState(true);
@@ -27,17 +28,13 @@ export const StdPlanSector = ({ isRadioButton = false }) => {
       isSelected={isSelected}
       isRadioButton={isRadioButton}
     >
-      <View style={styles.subTitleAndButtonWrapper}>
+      <ShowHideButtonAndText
+        isVisible={isVisible}
+        handlePress={handlePress}
+        isMarginTop={true}
+      >
         <Text style={styles.subTitle}>Plan Summary</Text>
-        <TouchableOpacity
-          style={[styles.buttonShowHide, isVisible && styles.rotate]}
-          onPress={handlePress}
-        >
-          <Text>
-            <ShowHideIconSvg />
-          </Text>
-        </TouchableOpacity>
-      </View>
+      </ShowHideButtonAndText>
 
       <View style={isVisible ? { ...styles.listWrapper } : { display: "none" }}>
         <View style={styles.listItem}>
@@ -69,7 +66,9 @@ export const StdPlanSector = ({ isRadioButton = false }) => {
         </View>
       </View>
 
-      <View style={styles.costWrapper}>
+      <View
+        style={[styles.costWrapper, !isVisible && styles.additionalMarginTop]}
+      >
         <Text style={[styles.subTitle, styles.additionalBottomMargin]}>
           Bi-Weekly cost for available weekly benefits amouts
         </Text>

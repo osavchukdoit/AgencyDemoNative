@@ -1,21 +1,18 @@
-import {
-  View,
-  ScrollView,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native";
+import { View, ScrollView, Text, StyleSheet } from "react-native";
 import { THEME } from "../styles/theme";
 import { FONTS } from "../styles/fonts";
 import { TwoRadioButtonSelectQuestion } from "../components/ciSelectPlan/TwoRadioButtonSelectQuestion";
 import { ThreeButtonsSelect } from "../components/ciSelectPlan/ThreeButtonsSelect";
 import { CiPlanSector } from "../components/ciPlanOptionsPage/CiPlanSector";
 import { CiSelectPlanTextAndSelect } from "../components/ciSelectPlan/CiSelectPlanTextAndSelect";
-import SelectedIconSvg from "../assets/icons/ciSelectPlan/selectedIcon.svg";
 import { ButtonBenefitsCart } from "../components/familyInfoPage/ButtonBenefitsCart";
 import { TopComponentPlanOptions } from "../components/utils/topComponents/TopComponentPlanOptions";
+import { useState } from "react";
+import { CheckboxAndText } from "../components/utils/CheckboxAndText";
 
 export const CiSelectPlanScreen = () => {
+  const [isChecked, setIsChecked] = useState(false);
+
   return (
     <>
       <ScrollView>
@@ -33,16 +30,18 @@ export const CiSelectPlanScreen = () => {
           <TwoRadioButtonSelectQuestion />
           <ThreeButtonsSelect />
           <Text style={styles.subText}>Select a plan below</Text>
-          <CiPlanSector isRadioButton={true} />
-          <CiPlanSector isRadioButton={true} />
+          <CiPlanSector
+          // TODO: fix header
+            header={"Critical Illness $10,000"}
+          />
+          <CiPlanSector
+          // TODO: fix header
+            header={"Critical Illness $20,000"}
+          />
           <CiSelectPlanTextAndSelect />
-
-          <View style={styles.radioButtonAndTextWrapper}>
-            <TouchableOpacity style={styles.radioButton}>
-              <SelectedIconSvg />
-            </TouchableOpacity>
-            <Text style={styles.buttonText}>Yes, I Accept</Text>
-          </View>
+          <CheckboxAndText isChecked={isChecked} handleCheck={setIsChecked}>
+            <Text style={styles.checkboxText}>Yes, I Accept</Text>
+          </CheckboxAndText>
         </View>
       </ScrollView>
       <ButtonBenefitsCart />
@@ -72,24 +71,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 
-  radioButtonAndTextWrapper: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 18,
-  },
-
-  radioButton: {
-    width: 15,
-    height: 15,
-    borderWidth: 1,
-    borderRadius: 3,
-    borderColor: THEME.BACKGROUND.MENU,
-    marginRight: 9,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  buttonText: {
+  checkboxText: {
     fontFamily: FONTS.AVENIR.ROMAN,
     fontSize: 12,
     lineHeight: 16,

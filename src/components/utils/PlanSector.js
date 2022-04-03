@@ -14,7 +14,8 @@ export const PlanSector = ({
   return (
     <View
       style={[
-        styles.planSectorWrapper, shadowStyles.boxShadow,
+        styles.planSectorWrapper,
+        shadowStyles.boxShadow,
         isSelected && isRadioButton && styles.focusPlanSectorBorder,
       ]}
     >
@@ -23,19 +24,19 @@ export const PlanSector = ({
         <View>
           <Text style={styles.sectorTitle}>{title}</Text>
           {isRadioButton && (
-            <View style={styles.selectedButtonAndTextWrapper}>
-              <TouchableOpacity
-                onPress={handleSelect}
-                style={styles.selectedRaioButton}
-              >
+            <TouchableOpacity
+              style={styles.selectedButtonAndTextWrapper}
+              onPress={handleSelect}
+            >
+              <View style={styles.selectedRaioButton}>
                 <View
                   style={
                     isSelected ? styles.radioButtonPoint : styles.displayNone
                   }
                 />
-              </TouchableOpacity>
+              </View>
               <Text style={styles.selectedRadioButtonText}>Selected Plan</Text>
-            </View>
+            </TouchableOpacity>
           )}
         </View>
       </View>

@@ -20,7 +20,7 @@ export const TwoRadioButtonSelectQuestion = () => {
           <TouchableOpacity style={styles.radioButton}>
             <View style={[styles.point, styles.displayNone]}></View>
           </TouchableOpacity>
-          <Text style={styles.buttonText}>Yes</Text>
+          <Text style={styles.buttonText}>No</Text>
         </View>
       </View>
     </View>

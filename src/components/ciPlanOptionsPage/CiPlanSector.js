@@ -1,23 +1,25 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import { PseudoElement } from "../stdPlanOptions/PseudoElement";
-import ShowHideIconSvg from "../../assets/icons/arrowUp.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EyeSvg from "../../assets/icons/stdPlanOptions/eyeIcon.svg";
 import DownloadSvg from "../../assets/icons/stdPlanOptions/downloadIcon.svg";
-import ThermometerIconSvg from "../../assets/icons/ciPlanOptions/thermometerIcon.svg";
+import ThermometerIconSvg from "../../assets/icons/plans/ci.svg";
 import styles from "./CiPlanSectorStyles";
 import { PlanSector } from "../utils/PlanSector";
+import { ShowHideButtonAndText } from "../utils/ShowHideButtonAndText";
 
-export const CiPlanSector = ({ isRadioButton = false }) => {
-  const [isVisible, setIsVisible] = useState(true);
+export const CiPlanSector = (props) => {
+  const { header, isRadioButton = true } = props;
+  const [isVisiblePlan, setIsVisiblePlan] = useState(true);
+  const [isVisibleEmployee, setIsVisibleEmployee] = useState(true);
   const [isSelected, setIsSelected] = useState(true);
-
+  
   const handleSelect = () => {
     setIsSelected((prev) => !prev);
   };
 
-  const handlePress = () => {
-    setIsVisible((prev) => !prev);
+  const handlePress = (state) => {
+    state((prev) => !prev);
   };
 
   return (
@@ -28,22 +30,17 @@ export const CiPlanSector = ({ isRadioButton = false }) => {
       isSelected={isSelected}
       isRadioButton={isRadioButton}
     >
-      <View style={styles.subTitleAndButtonWrapper}>
+      <ShowHideButtonAndText
+        isVisible={isVisiblePlan}
+        handlePress={() => handlePress(setIsVisiblePlan)}
+        isMarginTop={true}
+      >
         <Text style={styles.subTitle}>Plan Summary</Text>
-        <TouchableOpacity
-          style={[
-            styles.buttonShowHide,
-            isVisible && { transform: [{ rotate: "180deg" }] },
-          ]}
-          onPress={handlePress}
-        >
-          <Text>
-            <ShowHideIconSvg />
-          </Text>
-        </TouchableOpacity>
-      </View>
+      </ShowHideButtonAndText>
 
-      <View style={isVisible ? { ...styles.listWrapper } : { display: "none" }}>
+      <View
+        style={isVisiblePlan ? { ...styles.listWrapper } : { display: "none" }}
+      >
         <View style={styles.listItem}>
           <View style={styles.pointAndTitleWrapper}>
             <View style={styles.listPoint}></View>
@@ -79,15 +76,23 @@ export const CiPlanSector = ({ isRadioButton = false }) => {
             <Text style={styles.linkText}>Download Benefit Details</Text>
           </TouchableOpacity>
         </View>
+
+        <PseudoElement />
       </View>
 
-      <PseudoElement />
-
-      <View style={styles.subTitleWrapper}>
+      <ShowHideButtonAndText
+        isMarginTop={true}
+        isVisible={isVisibleEmployee}
+        handlePress={() => handlePress(setIsVisibleEmployee)}
+      >
         <Text style={styles.subTitle}>Employee Cost</Text>
-      </View>
+      </ShowHideButtonAndText>
 
-      <View style={styles.listWrapper}>
+      <View
+        style={
+          isVisibleEmployee ? { ...styles.listWrapper } : { display: "none" }
+        }
+      >
         <View style={styles.costListWrapper}>
           <View style={styles.titlesItemsWrapper}>
             <Text style={[styles.titleItems, styles.additionalWidth]}>
