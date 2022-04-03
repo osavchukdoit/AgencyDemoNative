@@ -1,6 +1,7 @@
+import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { PseudoElement } from "../stdPlanOptions/PseudoElement";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import EyeSvg from "../../assets/icons/stdPlanOptions/eyeIcon.svg";
 import DownloadSvg from "../../assets/icons/stdPlanOptions/downloadIcon.svg";
 import ThermometerIconSvg from "../../assets/icons/plans/ci.svg";
@@ -9,11 +10,10 @@ import { PlanSector } from "../utils/PlanSector";
 import { ShowHideButtonAndText } from "../utils/ShowHideButtonAndText";
 
 export const CiPlanSector = (props) => {
-  const { header, isRadioButton = true } = props;
+  const { header, isRadioButton = false } = props;
   const [isVisiblePlan, setIsVisiblePlan] = useState(true);
   const [isVisibleEmployee, setIsVisibleEmployee] = useState(true);
   const [isSelected, setIsSelected] = useState(true);
-  
   const handleSelect = () => {
     setIsSelected((prev) => !prev);
   };
@@ -25,7 +25,7 @@ export const CiPlanSector = (props) => {
   return (
     <PlanSector
       logo={<ThermometerIconSvg />}
-      title={"Critical Illness $10,000"}
+      title={header}
       handleSelect={handleSelect}
       isSelected={isSelected}
       isRadioButton={isRadioButton}
