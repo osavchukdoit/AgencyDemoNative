@@ -1,3 +1,4 @@
+import React from "react";
 import { View, ScrollView, Text, StyleSheet } from "react-native";
 import { THEME } from "../styles/theme";
 import { FONTS } from "../styles/fonts";
@@ -30,14 +31,8 @@ export const CiSelectPlanScreen = () => {
           <TwoRadioButtonSelectQuestion />
           <ThreeButtonsSelect />
           <Text style={styles.subText}>Select a plan below</Text>
-          <CiPlanSector
-          // TODO: fix header
-            header={"Critical Illness $10,000"}
-          />
-          <CiPlanSector
-          // TODO: fix header
-            header={"Critical Illness $20,000"}
-          />
+          <CiPlanSector header={"Critical Illness $10,000"} />
+          <CiPlanSector header={"Critical Illness $20,000"} />
           <CiSelectPlanTextAndSelect />
           <CheckboxAndText isChecked={isChecked} handleCheck={setIsChecked}>
             <Text style={styles.checkboxText}>Yes, I Accept</Text>
