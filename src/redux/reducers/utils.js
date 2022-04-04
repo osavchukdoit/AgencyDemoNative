@@ -10,6 +10,7 @@ import {
   SET_TOKEN,
   SET_USER_ID,
   SHOW_MODAL,
+  SET_ENROLL_WAIVE_VISIBLE,
 } from "../actionTypes";
 
 const initialState = {
@@ -31,6 +32,7 @@ const initialState = {
   },
   logoImage: "",
   userId: "",
+  isEnrollWaiveVisible: false,
 };
 
 export const utilityReducers = (state = initialState, { type, payload }) => {
@@ -92,6 +94,11 @@ export const utilityReducers = (state = initialState, { type, payload }) => {
       return {
         ...state,
         userId: payload,
+      };
+    case SET_ENROLL_WAIVE_VISIBLE:
+      return {
+        ...state,
+        isEnrollWaiveVisible: payload,
       };
     default:
       return state;

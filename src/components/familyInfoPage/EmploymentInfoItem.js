@@ -7,10 +7,10 @@ import mainStyles from "./FamilyInfoItemStyles";
 import { shadowStyles } from "../../styles/shadowStyles";
 import { commonPlanStyles } from "../../styles/commonPlanStyles";
 
-export const EmploymentInfoItem = () => {
+export const EmploymentInfoItem = ({ handleInfoDetails }) => {
   const [isWarning, setIsWarning] = useState(false);
 
-  const onHandleWarning = () => {
+  const handleWarning = () => {
     setIsWarning((prev) => {
       return !prev;
     });
@@ -38,7 +38,11 @@ export const EmploymentInfoItem = () => {
             </View>
             <Text style={mainStyles.subTitle}>Professor</Text>
           </View>
-          <TouchableOpacity onPress={onHandleWarning}>
+          <TouchableOpacity
+            onPress={() => {
+              handleInfoDetails("EmploymentInfoDetailsScreen");
+            }}
+          >
             <ArrowRightSvg />
           </TouchableOpacity>
         </View>
