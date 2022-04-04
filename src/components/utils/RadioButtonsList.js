@@ -9,14 +9,18 @@ import {
 import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
 import { PseudoElement } from "../stdPlanOptions/PseudoElement";
+import { useState } from "react";
 
 export const RadioButtonsList = ({ data, header }) => {
+  const [value, setValue] = useState(null);
   const renderItem = ({ item }) => (
     <TouchableOpacity
       style={styles.radioButtonAndTextWrapper}
-      onPress={() => console.log(item.title)}
+      onPress={() => setValue(item.title)}
     >
-      <View style={styles.radioButton}></View>
+      <View style={styles.radioButton}>
+        {value === item.title && <View style={styles.point}></View>}
+      </View>
       <Text style={styles.costText}>{item.title}</Text>
     </TouchableOpacity>
   );
@@ -58,6 +62,15 @@ const styles = StyleSheet.create({
     borderColor: THEME.COLOR.DARK_BLUE_TEXT,
     borderRadius: 8,
     marginRight: 10,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  point: {
+    height: 7,
+    width: 7,
+    backgroundColor: THEME.COLOR.DARK_BLUE_TEXT,
+    borderRadius: 6,
   },
 
   costText: {
