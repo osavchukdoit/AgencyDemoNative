@@ -13,3 +13,4 @@ export const SET_LOGO_IMAGE = "SET_LOGO_IMG";
 export const SET_USER_ID = "SET_USER_ID";
 export const SET_PAGE_DESC = "SET_PAGE_DESC";
 export const CLEAR_PAGE_DESC = "CLEAR_PAGE_DESC";
+export const SET_ENROLL_WAIVE_VISIBLE = "SET_ENROLL_WAIVE_VISIBLE";
