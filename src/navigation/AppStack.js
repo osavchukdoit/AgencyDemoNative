@@ -3,15 +3,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { EmployersScreen } from "../screens/EmployersScreen";
 import { AboutScreen } from "../screens/AboutScreen";
 import { TouchableOpacity, Text, View, Image, Platform } from "react-native";
-import { TermLifeEnrollScreen } from "../screens/TermLifeEnrollScreen";
-import { TermLifePlanOptionsScreen } from "../screens/TermLifePlanOptionsScreen";
-import { CiSelectPlanScreen } from "../screens/CiSelectPlanScreen";
-import { CiPlanOptionsScreen } from "../screens/CiPlanOptionsScreen";
-import { StdSelectPlanScreen } from "../screens/StdSelectPlanScreen";
-import { StdPlanOptionsScreen } from "../screens/StdPlanOptionsScreen";
-import { DependantsInfoDetailsScreen } from "../screens/DependantsInfoDetailsScreen";
-import { EmploymentInfoDetailsScreen } from "../screens/EmploymentInfoDetailsScreen";
-import { PersonalInfoDetailsScreen } from "../screens/PersonalInfoDetailsScreen";
 import { HomeScreen } from "../screens/HomeScreen";
 import { FamilyInfoOverviewScreen } from "../screens/FamilyInfoOverviewScreen";
 import { THEME } from "../styles/theme";
@@ -52,7 +43,7 @@ const DrawerContent = (props) => (
             "rgba(256, 256, 256, 0)",
           ]}
           style={styles.linearGradient}
-          start={[0, 0]}
+          start={[1, 1]}
         />
       </View>
     </View>
@@ -77,10 +68,6 @@ const DrawerContent = (props) => (
         </View>
       )}
       onPress={() => props.navigation.navigate("Benefit Contacts")}
-    />
-    <DrawerItem
-      label="Toggle drawer"
-      onPress={() => props.navigation.toggleDrawer()}
     />
   </DrawerContentScrollView>
 );
@@ -124,42 +111,6 @@ export const AppStack = ({ onLogout }) => {
           ),
         })}
       >
-        <Drawer.Screen
-          name={"TermLifeEnrollScreen"}
-          component={TermLifeEnrollScreen}
-        />
-        <Drawer.Screen
-          name={"TermLifePlanOptionsScreen"}
-          component={TermLifePlanOptionsScreen}
-        />
-        <Drawer.Screen
-          name={"CiSelectPlanScreen"}
-          component={CiSelectPlanScreen}
-        />
-        <Drawer.Screen
-          name={"CiPlanOptionsScreen"}
-          component={CiPlanOptionsScreen}
-        />
-        <Drawer.Screen
-          name={"StdSelectPlanScreen"}
-          component={StdSelectPlanScreen}
-        />
-        <Drawer.Screen
-          name={"StdPlanOptionsScreen"}
-          component={StdPlanOptionsScreen}
-        />
-        <Drawer.Screen
-          name={"DependantsInfoDetailsScreen"}
-          component={DependantsInfoDetailsScreen}
-        />
-        <Drawer.Screen
-          name={"EmploymentInfoDetailsScreen"}
-          component={EmploymentInfoDetailsScreen}
-        />
-        <Drawer.Screen
-          name={"PersonalInfoDetailsScreen"}
-          component={PersonalInfoDetailsScreen}
-        />
         <Drawer.Screen
           name={"FamilyInfoOverviewScreen"}
           component={FamilyInfoOverviewScreen}

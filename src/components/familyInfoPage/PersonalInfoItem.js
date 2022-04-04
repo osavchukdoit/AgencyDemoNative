@@ -7,14 +7,15 @@ import mainStyles from "./FamilyInfoItemStyles";
 import { shadowStyles } from "../../styles/shadowStyles";
 import { commonPlanStyles } from "../../styles/commonPlanStyles";
 
-export const PersonalInfoItem = () => {
+export const PersonalInfoItem = ({ handleInfoDetails }) => {
   const [isWarning, setIsWarning] = useState(true);
 
-  const onHandleWarning = () => {
-    setIsWarning((prev) => {
-      return !prev;
-    });
+  const handleWarning = () => {
+    setIsWarning((prev) => !prev);
   };
+
+  const handlePersonalInfo = () =>
+    handleInfoDetails("PersonalInfoDetailsScreen");
 
   return (
     <>
@@ -38,7 +39,7 @@ export const PersonalInfoItem = () => {
               DOB: <Text style={mainStyles.boldText}>09/09/1990</Text>
             </Text>
           </View>
-          <TouchableOpacity onPress={onHandleWarning}>
+          <TouchableOpacity onPress={handlePersonalInfo}>
             <ArrowRightSvg />
           </TouchableOpacity>
         </View>

@@ -9,7 +9,7 @@ import { FONTS } from "../../styles/fonts";
 import { shadowStyles } from "../../styles/shadowStyles";
 import { commonPlanStyles } from "../../styles/commonPlanStyles";
 
-export const DependantsInfoItem = () => {
+export const DependantsInfoItem = ({ handleInfoDetails }) => {
   return (
     <>
       <Text style={commonPlanStyles.planSectorHeader}>Dependants</Text>
@@ -31,7 +31,12 @@ export const DependantsInfoItem = () => {
             </View>
             <Text style={mainStyles.baseText}>Spouse</Text>
           </View>
-          <TouchableOpacity style={mainStyles.arrowButton}>
+          <TouchableOpacity
+            style={mainStyles.arrowButton}
+            onPress={() => {
+              handleInfoDetails("DependantsInfoDetailsScreen");
+            }}
+          >
             <ArrowRightSvg />
           </TouchableOpacity>
         </View>
@@ -55,7 +60,12 @@ export const DependantsInfoItem = () => {
             </View>
             <Text style={mainStyles.baseText}>Child</Text>
           </View>
-          <TouchableOpacity style={mainStyles.arrowButton}>
+          <TouchableOpacity
+            style={mainStyles.arrowButton}
+            onPress={() => {
+              handleInfoDetails("DependantsInfoDetailsScreen");
+            }}
+          >
             <ArrowRightSvg />
           </TouchableOpacity>
         </View>

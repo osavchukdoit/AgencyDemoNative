@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { FamilyInfoOverviewScreen } from "../screens/FamilyInfoOverviewScreen";
-import { BenefitsScreen } from "../screens/BenefitsScreen";
+import { FamilyInfoOverviewNavigator } from "../screens/FamilyInfoOverviewScreen";
+import { BenefitsNavigator } from "../screens/BenefitsOverviewScreen";
 import { PaymentScreen } from "../screens/PaymentScreen";
 import { SubmitScreen } from "../screens/SubmitScreen";
 import { EnrollmentTabBar } from "./EnrollmentTabBar";
+import { ScreenHeaderStyleZeroHeight } from "./navigationUtils";
 
 const Tab = createBottomTabNavigator();
 
@@ -37,10 +38,26 @@ export const EnrollmentNavigation = () => {
         />
       )}
     >
-      <Tab.Screen name={"Family Info"} component={FamilyInfoOverviewScreen} />
-      <Tab.Screen name={"Benefits"} component={BenefitsScreen} />
-      <Tab.Screen name={"Payment"} component={PaymentScreen} />
-      <Tab.Screen name={"Review and Submit"} component={SubmitScreen} />
+      <Tab.Screen
+        name={"Family Info"}
+        component={FamilyInfoOverviewNavigator}
+        options={ScreenHeaderStyleZeroHeight}
+      />
+      <Tab.Screen
+        name={"Benefits"}
+        component={BenefitsNavigator}
+        options={ScreenHeaderStyleZeroHeight}
+      />
+      <Tab.Screen
+        name={"Payment"}
+        component={PaymentScreen}
+        options={ScreenHeaderStyleZeroHeight}
+      />
+      <Tab.Screen
+        name={"Review and Submit"}
+        component={SubmitScreen}
+        options={ScreenHeaderStyleZeroHeight}
+      />
     </Tab.Navigator>
   );
 };

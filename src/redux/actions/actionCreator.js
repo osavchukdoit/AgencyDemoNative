@@ -5,6 +5,7 @@ import {
   SET_LOGGED_OUT,
   SET_PAGE_DESC,
   SET_TOKEN,
+  SET_ENROLL_WAIVE_VISIBLE,
 } from "../actionTypes";
 
 /**
@@ -56,3 +57,14 @@ export const setPageDesc = (payload) => ({ type: SET_PAGE_DESC, payload });
  * @returns {{type: string}}
  */
 export const clearPageDesc = () => ({ type: CLEAR_PAGE_DESC });
+
+/**
+ * Determines if the Enroll/Waive buttons are visible in the enrollment tab bar.
+ *
+ * @param {boolean} payload
+ * @return {{payload, type: string}}
+ */
+export const setEnrollWaiveVisible = (payload) => ({
+  type: SET_ENROLL_WAIVE_VISIBLE,
+  payload,
+});

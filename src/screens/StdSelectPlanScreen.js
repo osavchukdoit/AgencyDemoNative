@@ -26,7 +26,7 @@ export const StdSelectPlanScreen = () => {
         <View style={styles.wrapper}>
           <TitleOfSelectedPlan />
           <StdPlanSector isRadioButton={true} />
-          <StdPlanSector />
+          <StdPlanSector isRadioButton={true} />
           <CheckboxAndText isChecked={isChecked} handleCheck={setIsChecked}>
             <Text style={styles.checkboxText}>
               I acknowledge that I have read the Pre-Existing Document

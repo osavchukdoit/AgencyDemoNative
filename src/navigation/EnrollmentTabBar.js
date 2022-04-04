@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { TouchableOpacity, View } from "react-native";
 import { THEME } from "../styles/theme";
 import { AppText } from "../components/utils/AppText";
@@ -7,6 +7,9 @@ import ArrowLeftInactive from "../assets/icons/enrollmentNavigation/arrowLeftIna
 import CheckedIcon from "../assets/icons/enrollmentNavigation/checked.svg";
 import { FONTS } from "../styles/fonts";
 import styles from "./EnrollmentTabBarStyles";
+import { useDispatch, useSelector } from "react-redux";
+import { EnrollWaiveTabBar } from "./EnrollWaiveTabBar";
+import { setEnrollWaiveVisible } from "../redux/actions/actionCreator";
 
 export const EnrollmentTabBar = ({
   state,
@@ -14,6 +17,9 @@ export const EnrollmentTabBar = ({
   options,
   setOptions,
 }) => {
+  const dispatch = useDispatch();
+  const { isEnrollWaiveVisible } = useSelector((state) => state.utils);
+
   const backBtnActive = useMemo(() => state.index - 1 >= 0, [state.index]);
   const nextBtnActive = useMemo(
     () => state.index + 1 <= options.length - 1,
@@ -58,8 +64,16 @@ export const EnrollmentTabBar = ({
     [progressBarWidth, options, state.index]
   );
 
+  useEffect(() => {
+    if (state.index !== 1) {
+      dispatch(setEnrollWaiveVisible(false));
+    }
+  }, [state.index]);
+
   return (
     <View style={styles.tabBarWrapper}>
+      {/* Enroll / Waive buttons */}
+      {isEnrollWaiveVisible && <EnrollWaiveTabBar navigation={navigation} />}
       {/* Progress bar navigation */}
       <View style={[styles.buttonsWrapper, styles.progressWrapper]}>
         {options.map((route, index) => {
