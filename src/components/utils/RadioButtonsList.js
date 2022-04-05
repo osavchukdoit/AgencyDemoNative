@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -9,9 +9,8 @@ import {
 import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
 import { PseudoElement } from "../stdPlanOptions/PseudoElement";
-import { useState } from "react";
 
-export const RadioButtonsList = ({ data, header }) => {
+export const RadioButtonsList = ({ options, header }) => {
   const [value, setValue] = useState(null);
   const renderItem = ({ item }) => (
     <TouchableOpacity
@@ -30,7 +29,7 @@ export const RadioButtonsList = ({ data, header }) => {
       <PseudoElement />
 
       <FlatList
-        data={data}
+        data={options}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
       />
