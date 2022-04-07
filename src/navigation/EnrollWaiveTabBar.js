@@ -7,7 +7,7 @@ export const EnrollWaiveTabBar = ({ navigation }) => {
       <TouchableOpacity
         onPress={() => {
           // TODO: implement appropriate screen navigation
-          navigation.navigate("StdSelectPlanScreen");
+          navigation.navigate("CiSelectPlanScreen");
         }}
       >
         <Text>Enroll</Text>

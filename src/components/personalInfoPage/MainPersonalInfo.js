@@ -1,3 +1,4 @@
+import React from 'react'
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import PersonIconSvg from "../../assets/icons/familyInfoIcons/person.svg";
 import CalendarIconSvg from "../../assets/icons/familyInfoIcons/calendar.svg";
@@ -6,13 +7,11 @@ import ShieldIconSvg from "../../assets/icons/personInfoIcons/shield.svg";
 import PhoneIconSvg from "../../assets/icons/personInfoIcons/phone.svg";
 import MobileIconSvg from "../../assets/icons/personInfoIcons/mobile.svg";
 import GpsMarkIconSvg from "../../assets/icons/personInfoIcons/gpsMark.svg";
-import { useRadioButton } from "./customHooks/useRadioButton";
 import styles from "./stylesMainPersonalInfo";
 import { shadowStyles } from "../../styles/shadowStyles";
+import { RadioButtonsYesNo } from "../utils/RadioButtonsYesNo";
 
 export const MainPersonalInfo = () => {
-  const [isSmoke, setIsSmoke] = useRadioButton(null);
-
   return (
     <View style={styles.wrapper}>
       <View style={[styles.infoWrapper, shadowStyles.boxShadow]}>
@@ -112,41 +111,15 @@ export const MainPersonalInfo = () => {
           </TextInput>
         </View>
 
-        <View>
+        
           <Text style={styles.questionText}>
             Have you used any tobacco products (such as cigarettes, cigars,
             sniff, dip, chew or pipe) or any nicotine delivery system in the
             past 12 months?*
           </Text>
 
-          <View style={styles.radioButonsWrapper}>
-            <TouchableOpacity
-              style={styles.radioButtonContainer}
-              onPress={() => setIsSmoke(true)}
-            >
-              <View
-                style={[
-                  { display: "none" },
-                  isSmoke === true && styles.radioCheckPoint,
-                ]}
-              ></View>
-            </TouchableOpacity>
-            <Text style={styles.radioButtonLabel}>Yes</Text>
-
-            <TouchableOpacity
-              style={styles.radioButtonContainer}
-              onPress={() => setIsSmoke(false)}
-            >
-              <View
-                style={[
-                  { display: "none" },
-                  isSmoke === false && styles.radioCheckPoint,
-                ]}
-              ></View>
-            </TouchableOpacity>
-            <Text style={styles.radioButtonLabel}>No</Text>
-          </View>
-        </View>
+          <RadioButtonsYesNo />
+        
       </View>
       <View style={styles.saveButtonWrapper}>
         <TouchableOpacity style={styles.saveButton}>

@@ -1,38 +1,34 @@
-import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
+import React from "react";
+import { Text, View, StyleSheet } from "react-native";
 import { PseudoElement } from "../stdPlanOptions/PseudoElement";
 import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
-import SelectedIconSvg from "../../assets/icons/ciSelectPlan/selectedIcon.svg";
 import { shadowStyles } from "../../styles/shadowStyles";
+import { CheckboxAndText } from "../utils/CheckboxAndText";
 
 export const ThreeButtonsSelect = () => {
   return (
     <View style={[styles.sectorWrapper, shadowStyles.boxShadow]}>
-      <Text style={styles.questionTitle}>Are you actively at work?</Text>
+      <Text style={styles.questionTitle}>
+        Who all needs to be covered in the plan?
+      </Text>
       <PseudoElement />
       <View style={styles.radioButtonsWrapper}>
-        <View style={styles.radioButtonAndTextWrapper}>
-          <TouchableOpacity style={styles.radioButton}>
-            <SelectedIconSvg />
-          </TouchableOpacity>
+        <CheckboxAndText>
           <Text style={styles.buttonText}>Brock Eggleston</Text>
-        </View>
-        <View style={styles.radioButtonAndTextWrapper}>
-          <TouchableOpacity style={styles.radioButton}>
-            <SelectedIconSvg />
-          </TouchableOpacity>
+        </CheckboxAndText>
+
+        <CheckboxAndText>
           <Text style={styles.buttonText}>Spouse</Text>
           <View style={styles.bluePoint}></View>
           <Text style={styles.buttonText}>Marry Eggleston</Text>
-        </View>
-        <View style={styles.radioButtonAndTextWrapper}>
-          <TouchableOpacity style={styles.radioButton}>
-            <SelectedIconSvg />
-          </TouchableOpacity>
+        </CheckboxAndText>
+
+        <CheckboxAndText>
           <Text style={styles.buttonText}>Child</Text>
           <View style={styles.bluePoint}></View>
           <Text style={styles.buttonText}>Sarah Eggleston</Text>
-        </View>
+        </CheckboxAndText>
       </View>
     </View>
   );
@@ -59,28 +55,6 @@ const styles = StyleSheet.create({
   radioButtonsWrapper: {
     marginTop: 15,
     paddingHorizontal: 2,
-  },
-
-  radioButtonAndTextWrapper: {
-    flexDirection: "row",
-    width: "50%",
-    alignItems: "center",
-    marginBottom: 18,
-  },
-
-  radioButton: {
-    width: 15,
-    height: 15,
-    borderWidth: 1,
-    borderRadius: 3,
-    borderColor: THEME.BACKGROUND.MENU,
-    marginRight: 9,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  displayNone: {
-    display: "none",
   },
 
   buttonText: {

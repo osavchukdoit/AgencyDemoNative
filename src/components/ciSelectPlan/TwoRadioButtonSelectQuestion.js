@@ -3,6 +3,7 @@ import { PseudoElement } from "../stdPlanOptions/PseudoElement";
 import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
 import { shadowStyles } from "../../styles/shadowStyles";
+import { RadioButtonsCiSelectPlan } from "../utils/RadioButtonsCiSelectPlan";
 
 export const TwoRadioButtonSelectQuestion = () => {
   return (
@@ -10,7 +11,8 @@ export const TwoRadioButtonSelectQuestion = () => {
       <Text style={styles.questionTitle}>Are you actively at work?</Text>
       <PseudoElement />
       <View style={styles.radioButtonsWrapper}>
-        <View style={styles.radioButtonAndTextWrapper}>
+        <RadioButtonsCiSelectPlan/>
+        {/* <View style={styles.radioButtonAndTextWrapper}>
           <TouchableOpacity style={styles.radioButton}>
             <View style={[styles.point, styles.displayNone]}></View>
           </TouchableOpacity>
@@ -21,7 +23,7 @@ export const TwoRadioButtonSelectQuestion = () => {
             <View style={[styles.point, styles.displayNone]}></View>
           </TouchableOpacity>
           <Text style={styles.buttonText}>No</Text>
-        </View>
+        </View> */}
       </View>
     </View>
   );
@@ -33,7 +35,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     paddingHorizontal: 15,
     paddingTop: 19,
-    paddingBottom: 22,
+    // paddingBottom: 22,
     marginBottom: 20,
   },
 

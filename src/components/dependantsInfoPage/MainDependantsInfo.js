@@ -1,3 +1,4 @@
+import React from "react";
 import {
   View,
   Text,
@@ -15,11 +16,18 @@ import CalendarWhiteSvg from "../../assets/icons/employmentInfoIcons/calendarWhi
 import CalendarSvg from "../../assets/icons/familyInfoIcons/calendar.svg";
 import { GendersContainer } from "../personalInfoPage/GendersContainer";
 import ShieldSvg from "../../assets/icons/personInfoIcons/shield.svg";
-import { useRadioButton } from "../personalInfoPage/customHooks/useRadioButton";
 import { shadowStyles } from "../../styles/shadowStyles.js";
+import { DependantsRadioButtons } from "../utils/DependantsRadioButtons.js";
+import { RadioButtonsYesNo } from "../utils/RadioButtonsYesNo.js";
+
+const dependantsOptions = [
+  { title: "Spouse", id: 1 },
+  { title: "Child", id: 2 },
+  { title: "Domestic Partner", id: 3 },
+  { title: "Grandchild", id: 4 },
+];
 
 export const MainDependantsInfo = () => {
-  const [isChild, setIsChild] = useRadioButton(null);
   return (
     <View>
       <View style={[styles.infoWrapper, shadowStyles.boxShadow]}>
@@ -36,38 +44,7 @@ export const MainDependantsInfo = () => {
           </Text>
         </View>
 
-        <View style={localStyles.radioButtonsContainer}>
-          <View style={localStyles.radioButtonAndLabelWrapper}>
-            <TouchableOpacity style={styles.radioButtonContainer}>
-              <View style={styles.radioCheckPoint}></View>
-            </TouchableOpacity>
-            <Text style={styles.radioButtonLabel}>Spouse</Text>
-          </View>
-          <View style={localStyles.radioButtonAndLabelWrapper}>
-            <TouchableOpacity style={styles.radioButtonContainer}>
-              <View
-                style={[styles.radioCheckPoint, { display: "none" }]}
-              ></View>
-            </TouchableOpacity>
-            <Text style={styles.radioButtonLabel}>Child</Text>
-          </View>
-          <View style={localStyles.radioButtonAndLabelWrapper}>
-            <TouchableOpacity style={styles.radioButtonContainer}>
-              <View
-                style={[styles.radioCheckPoint, { display: "none" }]}
-              ></View>
-            </TouchableOpacity>
-            <Text style={styles.radioButtonLabel}>Domestic Partner</Text>
-          </View>
-          <View style={localStyles.radioButtonAndLabelWrapper}>
-            <TouchableOpacity style={styles.radioButtonContainer}>
-              <View
-                style={[styles.radioCheckPoint, { display: "none" }]}
-              ></View>
-            </TouchableOpacity>
-            <Text style={styles.radioButtonLabel}>Grandchild</Text>
-          </View>
-        </View>
+        <DependantsRadioButtons options={dependantsOptions} />
 
         <View style={localStyles.gradientWrapper}>
           <LinearGradient
@@ -127,68 +104,11 @@ export const MainDependantsInfo = () => {
 
         <View>
           <Text style={styles.questionText}>Is Child 1 Disabled?</Text>
-
-          <View
-            style={[styles.radioButonsWrapper, localStyles.additionalMargin]}
-          >
-            <TouchableOpacity
-              style={styles.radioButtonContainer}
-              onPress={() => setIsChild(true)}
-            >
-              <View
-                style={[
-                  { display: "none" },
-                  isChild === true && styles.radioCheckPoint,
-                ]}
-              ></View>
-            </TouchableOpacity>
-            <Text style={styles.radioButtonLabel}>Yes</Text>
-
-            <TouchableOpacity
-              style={styles.radioButtonContainer}
-              onPress={() => setIsChild(false)}
-            >
-              <View
-                style={[
-                  { display: "none" },
-                  isChild === false && styles.radioCheckPoint,
-                ]}
-              ></View>
-            </TouchableOpacity>
-            <Text style={styles.radioButtonLabel}>No</Text>
-          </View>
-
+          <RadioButtonsYesNo />
           <Text style={styles.questionText}>
             Is Child 1 a Full-time Student?
           </Text>
-
-          <View style={styles.radioButonsWrapper}>
-            <TouchableOpacity
-              style={styles.radioButtonContainer}
-              onPress={() => setIsChild(true)}
-            >
-              <View
-                style={[
-                  { display: "none" },
-                  isChild === true && styles.radioCheckPoint,
-                ]}
-              ></View>
-            </TouchableOpacity>
-            <Text style={styles.radioButtonLabel}>Yes</Text>
-
-            <TouchableOpacity
-              style={styles.radioButtonContainer}
-              onPress={() => setIsChild(false)}
-            >
-              <View
-                style={[
-                  { display: "none" },
-                  isChild === false && styles.radioCheckPoint,
-                ]}
-              ></View>
-            </TouchableOpacity>
-            <Text style={styles.radioButtonLabel}>No</Text>
-          </View>
+          <RadioButtonsYesNo />
         </View>
       </View>
       <View style={localStyles.addAndSaveButtonsWrapper}>
@@ -242,15 +162,6 @@ const localStyles = StyleSheet.create({
     lineHeight: 16,
     color: THEME.COLOR.GREY_DARK_TEXT,
     marginBottom: 7,
-  },
-
-  radioButtonsContainer: {
-    marginBottom: 3,
-  },
-
-  radioButtonAndLabelWrapper: {
-    flexDirection: "row",
-    marginBottom: 12,
   },
 
   gradientWrapper: {

@@ -1,3 +1,4 @@
+import React from "react";
 import { View, ScrollView, StyleSheet, Text } from "react-native";
 import { TermPlanBiWeekly } from "../components/termLifePlanOptionsPage/TermPlanBiWeekly";
 import { TermPlanSector } from "../components/termLifePlanOptionsPage/TermPlanSector";
@@ -5,13 +6,10 @@ import { TopComponentPlanOptions } from "../components/utils/topComponents/TopCo
 import { commonPlanStyles } from "../styles/commonPlanStyles";
 import { AgreementText } from "../components/termLifeEnroll/AgreementText";
 import { CheckboxAndText } from "../components/utils/CheckboxAndText";
-import { useState } from "react";
 import { FONTS } from "../styles/fonts";
 import { THEME } from "../styles/theme";
 
 export const TermLifeEnrollScreen = () => {
-  const [isChecked, setIsChecked] = useState(false);
-
   return (
     <>
       <ScrollView>
@@ -32,7 +30,7 @@ export const TermLifeEnrollScreen = () => {
           <TermPlanBiWeekly />
           <AgreementText />
 
-          <CheckboxAndText isChecked={isChecked} handleCheck={setIsChecked}>
+          <CheckboxAndText>
             <Text style={styles.checkboxText}>Yes, I Accept</Text>
           </CheckboxAndText>
         </View>

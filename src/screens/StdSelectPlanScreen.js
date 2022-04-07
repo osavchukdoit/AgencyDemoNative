@@ -1,16 +1,14 @@
+import React from "react";
 import { View, ScrollView, StyleSheet, Text } from "react-native";
 import { ButtonBenefitsCart } from "../components/familyInfoPage/ButtonBenefitsCart";
 import { StdPlanSector } from "../components/stdPlanOptions/StdPlanSector";
 import { TitleOfSelectedPlan } from "../components/stdSelectPlan/TitleOfSelectedPlan";
 import { TopComponentPlanOptions } from "../components/utils/topComponents/TopComponentPlanOptions";
 import { CheckboxAndText } from "../components/utils/CheckboxAndText";
-import { useState } from "react";
 import { FONTS } from "../styles/fonts";
 import { THEME } from "../styles/theme";
 
 export const StdSelectPlanScreen = () => {
-  const [isChecked, setIsChecked] = useState(false);
-
   return (
     <>
       <ScrollView>
@@ -27,7 +25,7 @@ export const StdSelectPlanScreen = () => {
           <TitleOfSelectedPlan />
           <StdPlanSector isRadioButton={true} />
           <StdPlanSector isRadioButton={true} />
-          <CheckboxAndText isChecked={isChecked} handleCheck={setIsChecked}>
+          <CheckboxAndText>
             <Text style={styles.checkboxText}>
               I acknowledge that I have read the Pre-Existing Document
             </Text>

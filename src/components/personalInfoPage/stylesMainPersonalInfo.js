@@ -8,7 +8,6 @@ export default StyleSheet.create({
     borderRadius: 20,
     paddingHorizontal: 15,
     paddingTop: 24,
-    paddingBottom: 23,
     marginBottom: 23,
   },
 
@@ -161,39 +160,12 @@ export default StyleSheet.create({
     fontSize: 14,
     lineHeight: 20,
     color: THEME.COLOR.GREY_DARK_TEXT,
-    marginBottom: 20,
+    marginBottom: 15,
   },
 
   radioButonsWrapper: {
     flexDirection: "row",
     alignItems: "center",
-  },
-
-  radioButtonContainer: {
-    width: 16,
-    height: 16,
-    borderColor: THEME.COLOR.BLUE_BRIGHT,
-    borderWidth: 1,
-    borderRadius: 53,
-    marginRight: 15,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  radioCheckPoint: {
-    width: 8,
-    height: 8,
-    backgroundColor: THEME.COLOR.BLUE_BRIGHT,
-    borderRadius: 53,
-    display: "flex",
-  },
-
-  radioButtonLabel: {
-    marginRight: 35,
-    color: THEME.COLOR.GREY_DARK_TEXT,
-    fontFamily: FONTS.AVENIR.BOOK,
-    fontSize: 12,
-    lineHeight: 16,
   },
 
   saveButton: {
