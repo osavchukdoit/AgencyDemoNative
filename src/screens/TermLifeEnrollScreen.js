@@ -6,8 +6,7 @@ import { TopComponentPlanOptions } from "../components/utils/topComponents/TopCo
 import { commonPlanStyles } from "../styles/commonPlanStyles";
 import { AgreementText } from "../components/termLifeEnroll/AgreementText";
 import { CheckboxAndText } from "../components/utils/CheckboxAndText";
-import { FONTS } from "../styles/fonts";
-import { THEME } from "../styles/theme";
+import { checkboxTextStyles } from "../components/utils/CheckboxTextStyles";
 
 export const TermLifeEnrollScreen = () => {
   return (
@@ -31,7 +30,7 @@ export const TermLifeEnrollScreen = () => {
           <AgreementText />
 
           <CheckboxAndText>
-            <Text style={styles.checkboxText}>Yes, I Accept</Text>
+            <Text style={checkboxTextStyles.checkboxText}>Yes, I Accept</Text>
           </CheckboxAndText>
         </View>
       </ScrollView>
@@ -42,13 +41,5 @@ export const TermLifeEnrollScreen = () => {
 const styles = StyleSheet.create({
   wrapper: {
     paddingHorizontal: 20,
-  },
-
-  checkboxText: {
-    fontFamily: FONTS.AVENIR.ROMAN,
-    fontSize: 12,
-    lineHeight: 16,
-    letterSpacing: -0.28,
-    color: THEME.COLOR.GREY_LIGHT_TEXT,
   },
 });

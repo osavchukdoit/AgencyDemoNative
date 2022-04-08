@@ -2,18 +2,27 @@ import React, { useState } from "react";
 import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
 import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
+import styles from "./RadioButtonsYesNoStyles";
 
 export const RadioButtonsCiSelectPlan = () => {
-  const [isValue, setIsValue] = useState(null);
+  const [isValue, setValue] = useState(null);
   return (
     <View style={[styles.radioButonsWrapper, styles.additionalMargin]}>
       <TouchableOpacity
         style={styles.radioButtonAndTextWrapper}
-        onPress={() => setIsValue(true)}
+        onPress={() => setValue(true)}
       >
-        <View style={styles.radioButtonContainer}>
+        <View
+          style={[
+            styles.radioButtonContainer,
+            localStyles.radioButtonContainer,
+          ]}
+        >
           <View
-            style={[{ display: "none" }, isValue && styles.radioCheckPoint]}
+            style={[
+              { display: "none" },
+              isValue && [styles.radioCheckPoint, localStyles.radioCheckPoint],
+            ]}
           ></View>
         </View>
         <Text style={styles.radioButtonLabel}>Yes</Text>
@@ -21,13 +30,21 @@ export const RadioButtonsCiSelectPlan = () => {
 
       <TouchableOpacity
         style={styles.radioButtonAndTextWrapper}
-        onPress={() => setIsValue(false)}
+        onPress={() => setValue(false)}
       >
-        <View style={styles.radioButtonContainer}>
+        <View
+          style={[
+            styles.radioButtonContainer,
+            localStyles.radioButtonContainer,
+          ]}
+        >
           <View
             style={[
               { display: "none" },
-              isValue === false && styles.radioCheckPoint,
+              isValue === false && [
+                styles.radioCheckPoint,
+                localStyles.radioCheckPoint,
+              ],
             ]}
           ></View>
         </View>
@@ -37,45 +54,16 @@ export const RadioButtonsCiSelectPlan = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  radioButonsWrapper: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-
-  additionalMargin: {
-    marginBottom: 22,
-  },
-
-  radioButtonAndTextWrapper: {
-    flexDirection: "row",
-    width: "50%",
-  },
-
+const localStyles = StyleSheet.create({
   radioButtonContainer: {
     width: 13,
     height: 13,
     borderColor: THEME.COLOR.DARK_BLUE_TEXT,
-    borderWidth: 1,
-    borderRadius: 53,
-    marginRight: 15,
-    justifyContent: "center",
-    alignItems: "center",
   },
 
   radioCheckPoint: {
     width: 7,
     height: 7,
     backgroundColor: THEME.COLOR.DARK_BLUE_TEXT,
-    borderRadius: 53,
-    display: "flex",
-  },
-
-  radioButtonLabel: {
-    marginRight: 35,
-    color: THEME.COLOR.GREY_DARK_TEXT,
-    fontFamily: FONTS.AVENIR.BOOK,
-    fontSize: 12,
-    lineHeight: 16,
   },
 });

@@ -5,6 +5,7 @@ import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
 import { shadowStyles } from "../../styles/shadowStyles";
 import { CheckboxAndText } from "../utils/CheckboxAndText";
+import { checkboxTextStyles } from "../utils/CheckboxTextStyles";
 
 export const ThreeButtonsSelect = () => {
   return (
@@ -15,19 +16,19 @@ export const ThreeButtonsSelect = () => {
       <PseudoElement />
       <View style={styles.radioButtonsWrapper}>
         <CheckboxAndText>
-          <Text style={styles.buttonText}>Brock Eggleston</Text>
+          <Text style={checkboxTextStyles.checkboxText}>Brock Eggleston</Text>
         </CheckboxAndText>
 
         <CheckboxAndText>
-          <Text style={styles.buttonText}>Spouse</Text>
+          <Text style={checkboxTextStyles.checkboxText}>Spouse</Text>
           <View style={styles.bluePoint}></View>
-          <Text style={styles.buttonText}>Marry Eggleston</Text>
+          <Text style={checkboxTextStyles.checkboxText}>Marry Eggleston</Text>
         </CheckboxAndText>
 
         <CheckboxAndText>
-          <Text style={styles.buttonText}>Child</Text>
+          <Text style={checkboxTextStyles.checkboxText}>Child</Text>
           <View style={styles.bluePoint}></View>
-          <Text style={styles.buttonText}>Sarah Eggleston</Text>
+          <Text style={checkboxTextStyles.checkboxText}>Sarah Eggleston</Text>
         </CheckboxAndText>
       </View>
     </View>
@@ -55,14 +56,6 @@ const styles = StyleSheet.create({
   radioButtonsWrapper: {
     marginTop: 15,
     paddingHorizontal: 2,
-  },
-
-  buttonText: {
-    fontFamily: FONTS.AVENIR.ROMAN,
-    fontSize: 12,
-    lineHeight: 16,
-    letterSpacing: -0.28,
-    color: THEME.COLOR.GREY_LIGHT_TEXT,
   },
 
   bluePoint: {

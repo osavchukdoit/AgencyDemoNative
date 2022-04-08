@@ -9,6 +9,7 @@ import { CiSelectPlanTextAndSelect } from "../components/ciSelectPlan/CiSelectPl
 import { ButtonBenefitsCart } from "../components/familyInfoPage/ButtonBenefitsCart";
 import { TopComponentPlanOptions } from "../components/utils/topComponents/TopComponentPlanOptions";
 import { CheckboxAndText } from "../components/utils/CheckboxAndText";
+import { checkboxTextStyles } from "../components/utils/CheckboxTextStyles";
 
 export const CiSelectPlanScreen = () => {
   return (
@@ -32,7 +33,7 @@ export const CiSelectPlanScreen = () => {
           <CiPlanSector header={"Critical Illness $20,000"} />
           <CiSelectPlanTextAndSelect />
           <CheckboxAndText>
-            <Text style={styles.checkboxText}>Yes, I Accept</Text>
+            <Text style={checkboxTextStyles.checkboxText}>Yes, I Accept</Text>
           </CheckboxAndText>
         </View>
       </ScrollView>
@@ -61,13 +62,5 @@ const styles = StyleSheet.create({
     lineHeight: 16,
     color: THEME.COLOR.GREY_LIGHT_TEXT,
     marginBottom: 10,
-  },
-
-  checkboxText: {
-    fontFamily: FONTS.AVENIR.ROMAN,
-    fontSize: 12,
-    lineHeight: 16,
-    letterSpacing: -0.28,
-    color: THEME.COLOR.GREY_LIGHT_TEXT,
   },
 });

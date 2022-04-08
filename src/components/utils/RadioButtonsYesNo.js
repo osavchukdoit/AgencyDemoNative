@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
-import { THEME } from "../../styles/theme";
-import { FONTS } from "../../styles/fonts";
+import { View, TouchableOpacity, Text } from "react-native";
+import styles from "./RadioButtonsYesNoStyles";
 
 export const RadioButtonsYesNo = () => {
-  const [isValue, setIsValue] = useState(null);
+  const [isValue, setValue] = useState(null);
   return (
     <View style={[styles.radioButonsWrapper, styles.additionalMargin]}>
       <TouchableOpacity
         style={styles.radioButtonAndTextWrapper}
-        onPress={() => setIsValue(true)}
+        onPress={() => setValue(true)}
       >
         <View style={styles.radioButtonContainer}>
           <View
@@ -21,7 +20,7 @@ export const RadioButtonsYesNo = () => {
 
       <TouchableOpacity
         style={styles.radioButtonAndTextWrapper}
-        onPress={() => setIsValue(false)}
+        onPress={() => setValue(false)}
       >
         <View style={styles.radioButtonContainer}>
           <View
@@ -36,45 +35,3 @@ export const RadioButtonsYesNo = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  radioButonsWrapper: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-
-  additionalMargin: {
-    marginBottom: 25,
-  },
-
-  radioButtonAndTextWrapper: {
-    flexDirection: "row",
-  },
-
-  radioButtonContainer: {
-    width: 16,
-    height: 16,
-    borderColor: THEME.COLOR.BLUE_BRIGHT,
-    borderWidth: 1,
-    borderRadius: 53,
-    marginRight: 15,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  radioCheckPoint: {
-    width: 8,
-    height: 8,
-    backgroundColor: THEME.COLOR.BLUE_BRIGHT,
-    borderRadius: 53,
-    display: "flex",
-  },
-
-  radioButtonLabel: {
-    marginRight: 35,
-    color: THEME.COLOR.GREY_DARK_TEXT,
-    fontFamily: FONTS.AVENIR.BOOK,
-    fontSize: 12,
-    lineHeight: 16,
-  },
-});
