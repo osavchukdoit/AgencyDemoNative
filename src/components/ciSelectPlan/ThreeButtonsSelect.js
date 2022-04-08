@@ -1,38 +1,35 @@
-import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
+import React from "react";
+import { Text, View, StyleSheet } from "react-native";
 import { PseudoElement } from "../stdPlanOptions/PseudoElement";
 import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
-import SelectedIconSvg from "../../assets/icons/ciSelectPlan/selectedIcon.svg";
 import { shadowStyles } from "../../styles/shadowStyles";
+import { CheckboxAndText } from "../utils/CheckboxAndText";
+import { checkboxTextStyles } from "../utils/CheckboxTextStyles";
 
 export const ThreeButtonsSelect = () => {
   return (
     <View style={[styles.sectorWrapper, shadowStyles.boxShadow]}>
-      <Text style={styles.questionTitle}>Are you actively at work?</Text>
+      <Text style={styles.questionTitle}>
+        Who all needs to be covered in the plan?
+      </Text>
       <PseudoElement />
       <View style={styles.radioButtonsWrapper}>
-        <View style={styles.radioButtonAndTextWrapper}>
-          <TouchableOpacity style={styles.radioButton}>
-            <SelectedIconSvg />
-          </TouchableOpacity>
-          <Text style={styles.buttonText}>Brock Eggleston</Text>
-        </View>
-        <View style={styles.radioButtonAndTextWrapper}>
-          <TouchableOpacity style={styles.radioButton}>
-            <SelectedIconSvg />
-          </TouchableOpacity>
-          <Text style={styles.buttonText}>Spouse</Text>
+        <CheckboxAndText>
+          <Text style={checkboxTextStyles.checkboxText}>Brock Eggleston</Text>
+        </CheckboxAndText>
+
+        <CheckboxAndText>
+          <Text style={checkboxTextStyles.checkboxText}>Spouse</Text>
           <View style={styles.bluePoint}></View>
-          <Text style={styles.buttonText}>Marry Eggleston</Text>
-        </View>
-        <View style={styles.radioButtonAndTextWrapper}>
-          <TouchableOpacity style={styles.radioButton}>
-            <SelectedIconSvg />
-          </TouchableOpacity>
-          <Text style={styles.buttonText}>Child</Text>
+          <Text style={checkboxTextStyles.checkboxText}>Marry Eggleston</Text>
+        </CheckboxAndText>
+
+        <CheckboxAndText>
+          <Text style={checkboxTextStyles.checkboxText}>Child</Text>
           <View style={styles.bluePoint}></View>
-          <Text style={styles.buttonText}>Sarah Eggleston</Text>
-        </View>
+          <Text style={checkboxTextStyles.checkboxText}>Sarah Eggleston</Text>
+        </CheckboxAndText>
       </View>
     </View>
   );
@@ -59,36 +56,6 @@ const styles = StyleSheet.create({
   radioButtonsWrapper: {
     marginTop: 15,
     paddingHorizontal: 2,
-  },
-
-  radioButtonAndTextWrapper: {
-    flexDirection: "row",
-    width: "50%",
-    alignItems: "center",
-    marginBottom: 18,
-  },
-
-  radioButton: {
-    width: 15,
-    height: 15,
-    borderWidth: 1,
-    borderRadius: 3,
-    borderColor: THEME.BACKGROUND.MENU,
-    marginRight: 9,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  displayNone: {
-    display: "none",
-  },
-
-  buttonText: {
-    fontFamily: FONTS.AVENIR.ROMAN,
-    fontSize: 12,
-    lineHeight: 16,
-    letterSpacing: -0.28,
-    color: THEME.COLOR.GREY_LIGHT_TEXT,
   },
 
   bluePoint: {

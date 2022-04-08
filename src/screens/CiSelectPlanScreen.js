@@ -8,12 +8,10 @@ import { CiPlanSector } from "../components/ciPlanOptionsPage/CiPlanSector";
 import { CiSelectPlanTextAndSelect } from "../components/ciSelectPlan/CiSelectPlanTextAndSelect";
 import { ButtonBenefitsCart } from "../components/familyInfoPage/ButtonBenefitsCart";
 import { TopComponentPlanOptions } from "../components/utils/topComponents/TopComponentPlanOptions";
-import { useState } from "react";
 import { CheckboxAndText } from "../components/utils/CheckboxAndText";
+import { checkboxTextStyles } from "../components/utils/CheckboxTextStyles";
 
 export const CiSelectPlanScreen = () => {
-  const [isChecked, setIsChecked] = useState(false);
-
   return (
     <>
       <ScrollView>
@@ -34,8 +32,8 @@ export const CiSelectPlanScreen = () => {
           <CiPlanSector header={"Critical Illness $10,000"} />
           <CiPlanSector header={"Critical Illness $20,000"} />
           <CiSelectPlanTextAndSelect />
-          <CheckboxAndText isChecked={isChecked} handleCheck={setIsChecked}>
-            <Text style={styles.checkboxText}>Yes, I Accept</Text>
+          <CheckboxAndText>
+            <Text style={checkboxTextStyles.checkboxText}>Yes, I Accept</Text>
           </CheckboxAndText>
         </View>
       </ScrollView>
@@ -64,13 +62,5 @@ const styles = StyleSheet.create({
     lineHeight: 16,
     color: THEME.COLOR.GREY_LIGHT_TEXT,
     marginBottom: 10,
-  },
-
-  checkboxText: {
-    fontFamily: FONTS.AVENIR.ROMAN,
-    fontSize: 12,
-    lineHeight: 16,
-    letterSpacing: -0.28,
-    color: THEME.COLOR.GREY_LIGHT_TEXT,
   },
 });

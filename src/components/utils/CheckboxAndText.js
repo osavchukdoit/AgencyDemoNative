@@ -1,11 +1,17 @@
+import React, { useState } from "react";
 import { View, TouchableOpacity, StyleSheet } from "react-native";
 import { THEME } from "../../styles/theme";
 import SelectedIconSvg from "../../assets/icons/ciSelectPlan/selectedIcon.svg";
 
-export const CheckboxAndText = ({ isChecked, handleCheck, children }) => {
+export const CheckboxAndText = ({ children }) => {
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleCheck = () => {
+    setIsChecked((prev) => !prev);
+  };
   return (
     <TouchableOpacity
-      onPress={() => handleCheck(!isChecked)}
+      onPress={handleCheck}
       style={styles.checkboxAndTextWrapper}
     >
       <View style={styles.checkbox}>{isChecked && <SelectedIconSvg />}</View>
