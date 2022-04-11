@@ -4,12 +4,13 @@ import { THEME } from "../../../styles/theme";
 import { FONTS } from "../../../styles/fonts";
 import { shadowStyles } from "../../../styles/shadowStyles";
 
-export const EnrollmentInfoTop = ({ title, subtitle }) => {
+export const EnrollmentInfoTop = ({ title, subtitle, children }) => {
   return (
     <View style={[styles.wrapper, shadowStyles.boxShadow]}>
       <Text style={styles.title}>{title}</Text>
       <View style={styles.pseudoElement} />
       <Text style={styles.text}>{subtitle}</Text>
+      {children}
     </View>
   );
 };
@@ -18,12 +19,11 @@ const styles = StyleSheet.create({
   wrapper: {
     backgroundColor: THEME.COLOR.WHITE,
     paddingTop: 15,
-    paddingRight: 15,
     paddingBottom: 21,
-    paddingLeft: 20,
+    paddingHorizontal: 18,
     borderBottomRightRadius: 20,
     borderBottomLeftRadius: 20,
-    marginBottom: 20,
+    marginBottom: 16,
   },
 
   title: {
