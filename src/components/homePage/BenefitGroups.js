@@ -46,7 +46,6 @@ const styles = StyleSheet.create({
   benefitWrapper: {
     backgroundColor: THEME.COLOR.WHITE,
     paddingTop: 15,
-    paddingBottom: 15,
     paddingHorizontal: 15,
     borderRadius: 20,
     marginBottom: 20,

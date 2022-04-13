@@ -4,6 +4,7 @@ import { EmployersScreen } from "../screens/EmployersScreen";
 import { AboutScreen } from "../screens/AboutScreen";
 import { TouchableOpacity, Text, View, Image, Platform } from "react-native";
 import { HomeScreen } from "../screens/HomeScreen";
+import { PostEnrollmentHomeScreen } from "../screens/PostEnrollmentHomeScreen";
 import { FamilyInfoOverviewScreen } from "../screens/FamilyInfoOverviewScreen";
 import { THEME } from "../styles/theme";
 import {
@@ -111,6 +112,10 @@ export const AppStack = ({ onLogout }) => {
           ),
         })}
       >
+        <Drawer.Screen
+          name={"PostEnrollmentHomeScreen"}
+          component={PostEnrollmentHomeScreen}
+        />
         <Drawer.Screen
           name={"FamilyInfoOverviewScreen"}
           component={FamilyInfoOverviewScreen}
