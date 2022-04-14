@@ -4,15 +4,15 @@ import { FONTS } from "../../styles/fonts";
 import { THEME } from "../../styles/theme";
 
 export const InformationMapper = ({ options }) => {
-  return options.map(({ id, title, status }, idx) => {
+  return options.map(({ id, title, status }, index) => {
     return (
       <View
         key={id}
         style={[
           styles.wrapper,
-          idx % 2 !== 0 && styles.additionalBgColor,
-          idx === 0 && styles.additionalTopRadius,
-          idx === options.length - 1 && styles.additionalBottomRadius,
+          index % 2 !== 0 && styles.additionalBgColor,
+          index === 0 && styles.additionalTopRadius,
+          index === options.length - 1 && styles.additionalBottomRadius,
         ]}
       >
         <Text style={styles.text}>{title}</Text>

@@ -4,14 +4,9 @@ import { THEME } from "../../../styles/theme";
 import { AppText } from "../../utils/AppText";
 import { shadowStyles } from "../../../styles/shadowStyles";
 
-export const HomeAndPostTop = ({ title, subtitle = false }) => {
+export const HomeAndPostTop = ({ title, subtitle = "" }) => {
   return (
-    <View
-      style={[
-        styles.wrapper,
-        shadowStyles.boxShadow,
-      ]}
-    >
+    <View style={[styles.wrapper, shadowStyles.boxShadow]}>
       <View>
         <Image
           style={styles.image}
@@ -20,13 +15,10 @@ export const HomeAndPostTop = ({ title, subtitle = false }) => {
       </View>
       <AppText style={styles.text}>{title}</AppText>
 
-      {subtitle && (
+      {!!subtitle && (
         <>
           <View style={styles.pseudoElement} />
-          <AppText
-            color={THEME.COLOR.GREY_LIGHT_TEXT}
-            style={styles.text}
-          >
+          <AppText color={THEME.COLOR.GREY_LIGHT_TEXT} style={styles.text}>
             {subtitle}
           </AppText>
         </>
@@ -67,5 +59,4 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 9,
   },
-
 });
