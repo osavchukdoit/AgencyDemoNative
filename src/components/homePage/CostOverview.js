@@ -78,7 +78,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.05,
     borderRadius: 8,
     paddingTop: 11,
-    paddingBottom: 9,
   },
 
   costOverviewTitle: {

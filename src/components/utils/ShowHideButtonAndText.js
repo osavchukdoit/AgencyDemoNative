@@ -13,12 +13,11 @@ export const ShowHideButtonAndText = ({
       style={[
         styles.titleAndButtonWrapper,
         isMarginTop && styles.additionalMarginTop,
-        !isVisible && styles.zeroMarginBottom,
       ]}
     >
       {children}
       <TouchableOpacity
-        style={[styles.buttonShowHide, isVisible && styles.rotate]}
+        style={[styles.buttonShowHide, !isVisible && styles.rotate]}
         onPress={handlePress}
       >
         <ShowHideIconSvg />
@@ -33,15 +32,11 @@ const styles = StyleSheet.create({
     paddingLeft: 4,
     paddingRight: 6,
     justifyContent: "space-between",
-    marginBottom: 7,
+    marginBottom: 9,
   },
 
   additionalMarginTop: {
     marginTop: 9,
-  },
-
-  zeroMarginBottom: {
-    marginBottom: 0,
   },
 
   buttonShowHide: {

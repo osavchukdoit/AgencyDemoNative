@@ -1,7 +1,6 @@
 import React from "react";
 import { ScrollView, View, StyleSheet } from "react-native";
 import { BenefitGroups } from "../components/homePage/BenefitGroups";
-import { HomePageTop } from "../components/homePage/HomePageTop";
 import { ButtonEnrollment } from "../components/homePage/ButtonEnrollment";
 import { BenefitSubSector } from "../components/homePage/BenefitSubSector";
 import { CostOverview } from "../components/homePage/CostOverview";
@@ -10,12 +9,20 @@ import WheelchairSvg from "../assets/icons/plans/ltd.svg";
 import UmbrelaSvg from "../assets/icons/plans/term.svg";
 import ThermometrSvg from "../assets/icons/plans/ci.svg";
 import HospitalBedSvg from "../assets/icons/plans/hospital.svg";
+import { HomeAndPostTop } from "../components/utils/topComponents/HomeAndPostTop";
 
 export const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.scrollWrapper}>
       <ScrollView stickyHeaderIndices={[0]} style={styles.scrollContainer}>
-        <HomePageTop />
+        <HomeAndPostTop
+          title={
+            "Lockheed 2 Industries Inc working with Brown Agencies Inc has created a best-in-class benefits program to meet your benefit needs. Below are the benefits offered in this enrollment."
+          }
+          subtitle={
+            "View details by clicking on each and select which one you would like to enroll to"
+          }
+        />
         <View style={styles.wrapper}>
           <BenefitGroups title={"Income Protection"}>
             <BenefitSubSector
