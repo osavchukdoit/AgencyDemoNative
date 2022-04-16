@@ -24,6 +24,7 @@ import { FONTS } from "../styles/fonts";
 import { LinearGradient } from "expo-linear-gradient";
 import { CONSTANTS } from "../constants";
 import { styles } from "./AppStackStyles";
+import { ContactDetailsScreen } from "../screens/ContactDetailsScreen";
 
 const isWebOs = Platform.OS === CONSTANTS.OS.web;
 const isIos = Platform.OS === CONSTANTS.OS.ios;
@@ -112,6 +113,10 @@ export const AppStack = ({ onLogout }) => {
           ),
         })}
       >
+        <Drawer.Screen
+          name={"ContactDetailsScreen"}
+          component={ContactDetailsScreen}
+        />
         <Drawer.Screen
           name={"PostEnrollmentHomeScreen"}
           component={PostEnrollmentHomeScreen}

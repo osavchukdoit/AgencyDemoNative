@@ -16,7 +16,7 @@ export const SubmitPersonDependants = ({ options }) => {
             <PersonIconSvg />
             <Text style={styles.boldText}>{item.name}</Text>
             <View style={styles.point} />
-            <Text style={styles.normalText}>{item.status}</Text>
+            <Text style={styles.normalText}>{item.value}</Text>
           </View>
         );
       })}
