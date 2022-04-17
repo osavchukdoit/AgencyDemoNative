@@ -4,6 +4,23 @@ import MapButtonSvg from "../../assets/icons/contactDetailsIcons/mapButtonSvg.sv
 import PhoneButtonSvg from "../../assets/icons/contactDetailsIcons/phoneButtonISvg.svg";
 import styles from "./InformationMapperStyles";
 
+const IconButton = (id, editActiveFlag, text) => {
+  return (
+    <>
+      {id === "phoneNumber" && !editActiveFlag && text !== "" && (
+        <TouchableOpacity style={styles.buttonWithIcon}>
+          <PhoneButtonSvg />
+        </TouchableOpacity>
+      )}
+      {id === "address" && !editActiveFlag && text !== "" && (
+        <TouchableOpacity style={styles.buttonWithIcon}>
+          <MapButtonSvg />
+        </TouchableOpacity>
+      )}
+    </>
+  );
+};
+
 export const InformationMapper = ({ options, isEditActive }) => {
   return options.map(({ id, title, value }, index) => {
     return (
@@ -35,22 +52,13 @@ export const InformationMapper = ({ options, isEditActive }) => {
                 ...styles.additionalWidthFull,
               },
               id !== "phoneNumber" &&
-                id !== "address" && { ...styles.additionalWidthFull },
+                id !== "address" &&
+                styles.additionalWidthFull,
             ]}
           >
             {value === "" ? "N/A" : value}
           </TextInput>
-
-          {id === "phoneNumber" && !isEditActive && value !== "" && (
-            <TouchableOpacity style={styles.buttonWithIcon}>
-              <PhoneButtonSvg />
-            </TouchableOpacity>
-          )}
-          {id === "address" && !isEditActive && value !== "" && (
-            <TouchableOpacity style={styles.buttonWithIcon}>
-              <MapButtonSvg />
-            </TouchableOpacity>
-          )}
+          {IconButton(id, isEditActive, value)}
         </View>
       </View>
     );

@@ -6,16 +6,16 @@ import { InformationMapper } from "../postEnrollmentHomePage/InformationMapper";
 import { SubmitSectorWrapper } from "../submitPage/SubmitSectorWrapper";
 import EditButtonSvg from "../../assets/icons/contactDetailsIcons/editButtonSvg.svg";
 
-export const MemberServiceIAndContactDetailsSector = ({ options }) => {
+export const MemberServiceAndContactDetailsSector = ({ memberDetails }) => {
   const [editActive, setEditActive] = useState(false);
-
+  const { header, isEditable, infoOptions } = memberDetails;
   const handleEditActive = () => setEditActive((prev) => !prev);
 
   return (
     <SubmitSectorWrapper>
       <View style={styles.headerAndIconContainer}>
-        <Text style={styles.header}>{options.header}</Text>
-        {options.isEditable &&
+        <Text style={styles.header}>{header}</Text>
+        {isEditable &&
           (editActive ? (
             <TouchableOpacity
               onPress={handleEditActive}
@@ -32,12 +32,7 @@ export const MemberServiceIAndContactDetailsSector = ({ options }) => {
             </TouchableOpacity>
           ))}
       </View>
-      {
-        <InformationMapper
-          isEditActive={editActive}
-          options={options.infoOptions}
-        />
-      }
+      {<InformationMapper isEditActive={editActive} options={infoOptions} />}
     </SubmitSectorWrapper>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import { ScrollView, StyleSheet, View, Text } from "react-native";
-import { MemberServiceIAndContactDetailsSector } from "../components/contactDetailsPage/MemberServiceIAndContactDetailsSector";
+import { MemberServiceAndContactDetailsSector } from "../components/contactDetailsPage/MemberServiceAndContactDetailsSector";
 import { NewContactButton } from "../components/contactDetailsPage/NewContactButton";
 import { serviceAndContactsOptions } from "../components/contactDetailsPage/serviceAndContactsOptions";
 import { EnrollmentInfoTop } from "../components/utils/topComponents/EnrollmentInfoTop";
@@ -17,9 +17,9 @@ export const ContactDetailsScreen = () => {
 
         {serviceAndContactsOptions.map((item) => {
           return (
-            <MemberServiceIAndContactDetailsSector
+            <MemberServiceAndContactDetailsSector
               key={item.id}
-              options={item}
+              memberDetails={item}
             />
           );
         })}
