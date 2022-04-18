@@ -6,7 +6,10 @@ import { commonPlanStyles } from "../styles/commonPlanStyles";
 import { SubmitSectorWrapper } from "../components/submitPage/SubmitSectorWrapper";
 import { SubmitPersonInfo } from "../components/submitPage/SubmitPersonInfo";
 import { SubmitPersonDependants } from "../components/submitPage/SubmitPersonDependants";
-import { submitOptions, disclaimersPoints } from "../components/submitPage/submitOptions";
+import {
+  submitOptions,
+  disclaimersPoints,
+} from "../components/submitPage/submitOptions";
 import { SubmitSelectedBenefits } from "../components/submitPage/SubmitSelectedBenefits";
 import { SubmitTotalCost } from "../components/submitPage/SubmitTotalCost";
 import { THEME } from "../styles/theme";
@@ -16,12 +19,12 @@ import { SubmitDisclaimersPoints } from "../components/submitPage/SubmitDisclaim
 const personOptions = [
   {
     name: "Mary Smith",
-    status: "Spouse",
+    value: "Spouse",
     id: 1,
   },
   {
     name: "Josh Doe",
-    status: "Child",
+    value: "Child",
     id: 2,
   },
 ];
@@ -67,7 +70,7 @@ export const SubmitScreen = () => {
         </Text>
         <Text style={styles.subHeaderText}>Then click submit</Text>
 
-        <SubmitDisclaimersPoints options={disclaimersPoints}/>
+        <SubmitDisclaimersPoints options={disclaimersPoints} />
       </View>
     </ScrollView>
   );

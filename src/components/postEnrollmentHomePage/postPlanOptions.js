@@ -5,12 +5,12 @@ import TermSvg from "../../assets/icons/plans/term.svg";
 export const personDependants = [
   {
     name: "Mary Smith",
-    status: "Spouse - Dependant",
+    value: "Spouse - Dependant",
     id: 1,
   },
   {
     name: "Josh Doe",
-    status: "Child - Dependant",
+    value: "Child - Dependant",
     id: 2,
   },
 ];
@@ -45,30 +45,30 @@ export const planInformation = [
   {
     id: 1,
     title: "Type of Benefit Coverage",
-    status: "Non Occupational",
+    value: "Non Occupational",
   },
 
   {
     id: 2,
     title: "Elimination Period",
-    status: "7 days injury/ 7 days illness",
+    value: "7 days injury/ 7 days illness",
   },
 
   {
     id: 3,
     title: "Benefit Duration in Weeks",
-    status: "25 weeks",
+    value: "25 weeks",
   },
 
   {
     id: 4,
     title: "Weekly Benefit Maximumas a Percentage of Salary",
-    status: "60.00%",
+    value: "60.00%",
   },
 
   {
     id: 5,
     title: "Employee and Family",
-    status: "$8.58",
+    value: "$8.58",
   },
 ];

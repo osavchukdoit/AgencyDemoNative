@@ -1,10 +1,28 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { FONTS } from "../../styles/fonts";
-import { THEME } from "../../styles/theme";
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import MapButtonSvg from "../../assets/icons/contactDetailsIcons/mapButtonSvg.svg";
+import PhoneButtonSvg from "../../assets/icons/contactDetailsIcons/phoneButtonISvg.svg";
+import styles from "./InformationMapperStyles";
 
-export const InformationMapper = ({ options }) => {
-  return options.map(({ id, title, status }, index) => {
+const IconButton = (id, editActiveFlag, text) => {
+  return (
+    <>
+      {id === "phoneNumber" && !editActiveFlag && text !== "" && (
+        <TouchableOpacity style={styles.buttonWithIcon}>
+          <PhoneButtonSvg />
+        </TouchableOpacity>
+      )}
+      {id === "address" && !editActiveFlag && text !== "" && (
+        <TouchableOpacity style={styles.buttonWithIcon}>
+          <MapButtonSvg />
+        </TouchableOpacity>
+      )}
+    </>
+  );
+};
+
+export const InformationMapper = ({ options, isEditActive }) => {
+  return options.map(({ id, title, value }, index) => {
     return (
       <View
         key={id}
@@ -15,47 +33,34 @@ export const InformationMapper = ({ options }) => {
           index === options.length - 1 && styles.additionalBottomRadius,
         ]}
       >
-        <Text style={styles.text}>{title}</Text>
-        <Text style={[styles.text, styles.textDark]}>{status}</Text>
+        <Text style={[styles.text, styles.additionalTextWrappertWidth]}>
+          {title}
+        </Text>
+        <View
+          style={[styles.textAndButtonWrapper, styles.additionalInputWidth]}
+        >
+          <TextInput
+            multiline={true}
+            editable={isEditActive}
+            style={[
+              styles.text,
+              styles.textDark,
+              styles.additionalTextWidth,
+              styles.inputContainer,
+              isEditActive && {
+                ...styles.borderActive,
+                ...styles.additionalWidthFull,
+              },
+              id !== "phoneNumber" &&
+                id !== "address" &&
+                styles.additionalWidthFull,
+            ]}
+          >
+            {value === "" ? "N/A" : value}
+          </TextInput>
+          {IconButton(id, isEditActive, value)}
+        </View>
       </View>
     );
   });
 };
-
-const styles = StyleSheet.create({
-  wrapper: {
-    flexDirection: "row",
-    height: 42,
-    alignItems: "center",
-    backgroundColor: THEME.BACKGROUND.VERY_LIGHT_BLUE_V4,
-    paddingHorizontal: 16,
-  },
-
-  additionalBgColor: {
-    backgroundColor: THEME.BACKGROUND.VERY_LIGHT_BLUE_V2,
-  },
-
-  additionalTopRadius: {
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8,
-  },
-
-  additionalBottomRadius: {
-    borderBottomLeftRadius: 8,
-    borderBottomRightRadius: 8,
-    marginBottom: 13,
-  },
-
-  text: {
-    width: "50%",
-    fontFamily: FONTS.AVENIR.ROMAN,
-    fontSize: 12,
-    lineHeight: 16,
-    letterSpacing: -0.28,
-    color: THEME.COLOR.GREY_LIGHT_RGBA,
-  },
-
-  textDark: {
-    color: THEME.COLOR.GREY_DARK_TEXT,
-  },
-});

@@ -13,6 +13,7 @@ export const THEME = {
     HEADER_TINT: "#fff",
     MENU: "#fff",
     BLUE_BRIGHT: "#43BEBB",
+    BLUE_BRIGHT_RGBA: "rgba(67, 190, 187, 0.6)",
     WHITE: "#FFF",
     BLACK: "#000000",
     GREY_LIGHT_TEXT: "#707070",
