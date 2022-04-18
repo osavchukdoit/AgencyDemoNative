@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, StyleSheet, View, Text } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { MemberServiceAndContactDetailsSector } from "../components/contactDetailsPage/MemberServiceAndContactDetailsSector";
 import { NewContactButton } from "../components/contactDetailsPage/NewContactButton";
 import { serviceAndContactsOptions } from "../components/contactDetailsPage/serviceAndContactsOptions";

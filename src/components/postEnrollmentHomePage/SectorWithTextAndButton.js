@@ -2,11 +2,11 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { FONTS } from "../../styles/fonts";
 import { THEME } from "../../styles/theme";
-import { SubmitSectorWrapper } from "../submitPage/SubmitSectorWrapper";
+import { BasicSectorWrapper } from "../../components/utils/BasicSectorWrapper";
 
 export const SectorWithTextAndButton = () => {
   return (
-    <SubmitSectorWrapper>
+    <BasicSectorWrapper>
       <Text style={styles.text}>
         If you would like to make changes to your enrollment that you have
         completed, click below.
@@ -16,7 +16,7 @@ export const SectorWithTextAndButton = () => {
           <Text style={styles.buttonText}>Begin Re-Enrollment</Text>
         </TouchableOpacity>
       </View>
-    </SubmitSectorWrapper>
+    </BasicSectorWrapper>
   );
 };
 

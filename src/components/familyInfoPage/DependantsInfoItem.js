@@ -1,3 +1,4 @@
+import React from 'react'
 import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
 import PersonIconSvg from "../../assets/icons/familyInfoIcons/person.svg";
 import ArrowRightSvg from "../../assets/icons/familyInfoIcons/vectorRight.svg";
@@ -6,14 +7,15 @@ import TrashBasketSvg from "../../assets/icons/familyInfoIcons/trashBasket.svg";
 import { THEME } from "../../styles/theme";
 import CrossSvg from "../../assets/icons/familyInfoIcons/cross.svg";
 import { FONTS } from "../../styles/fonts";
-import { shadowStyles } from "../../styles/shadowStyles";
 import { commonPlanStyles } from "../../styles/commonPlanStyles";
+import { BasicSectorWrapper } from "../utils/BasicSectorWrapper";
 
 export const DependantsInfoItem = ({ handleInfoDetails }) => {
   return (
     <>
       <Text style={commonPlanStyles.planSectorHeader}>Dependants</Text>
-      <View style={[mainStyles.infoWrapper, shadowStyles.boxShadow]}>
+
+      <BasicSectorWrapper>
         <View style={mainStyles.subTitleContainer}>
           <Text style={mainStyles.baseText}>Dependant #1</Text>
           <TouchableOpacity style={localStyles.trashButton}>
@@ -40,9 +42,9 @@ export const DependantsInfoItem = ({ handleInfoDetails }) => {
             <ArrowRightSvg />
           </TouchableOpacity>
         </View>
-      </View>
+      </BasicSectorWrapper>
 
-      <View style={mainStyles.infoWrapper}>
+      <BasicSectorWrapper>
         <View style={mainStyles.subTitleContainer}>
           <Text style={mainStyles.baseText}>Dependant #2</Text>
           <TouchableOpacity style={localStyles.trashButton}>
@@ -69,7 +71,8 @@ export const DependantsInfoItem = ({ handleInfoDetails }) => {
             <ArrowRightSvg />
           </TouchableOpacity>
         </View>
-      </View>
+      </BasicSectorWrapper>
+
       <TouchableOpacity style={localStyles.buttonAddDependant}>
         <CrossSvg />
         <Text style={localStyles.addButtonText}>Add Dependent</Text>

@@ -1,3 +1,4 @@
+import React from "react";
 import {
   View,
   Text,
@@ -13,12 +14,12 @@ import CalendarWhiteSvg from "../../assets/icons/employmentInfoIcons/calendarWhi
 import TimerSvg from "../../assets/icons/employmentInfoIcons/timerIcon.svg";
 import ClockSvg from "../../assets/icons/employmentInfoIcons/clockIcon.svg";
 import { THEME } from "../../styles/theme";
-import { shadowStyles } from "../../styles/shadowStyles";
+import { BasicSectorWrapper } from "../utils/BasicSectorWrapper";
 
 export const MainEmploymentInfo = () => {
   return (
-    <View style={styles.wrapper}>
-      <View style={[styles.infoWrapper, shadowStyles.boxShadow]}>
+    <>
+      <BasicSectorWrapper>
         <View style={styles.titleAndInputWrapper}>
           <Text style={styles.titleInfo}>Employee ID/Code</Text>
           <PersonWithTieSvg style={styles.inputIcon} />
@@ -73,14 +74,14 @@ export const MainEmploymentInfo = () => {
           <ClockSvg style={styles.inputIcon} />
           <TextInput style={styles.textInput}>40</TextInput>
         </View>
-      </View>
+      </BasicSectorWrapper>
 
       <View style={styles.saveButtonWrapper}>
         <TouchableOpacity style={styles.saveButton}>
           <Text style={styles.saveButtonText}>Save</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </>
   );
 };
 

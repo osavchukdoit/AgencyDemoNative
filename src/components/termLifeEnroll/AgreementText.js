@@ -1,11 +1,12 @@
-import { View, Text, StyleSheet } from "react-native";
+import React from "react";
+import { Text, StyleSheet } from "react-native";
 import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
-import { shadowStyles } from "../../styles/shadowStyles";
+import { BasicSectorWrapper } from "../utils/BasicSectorWrapper";
 
 export const AgreementText = () => {
   return (
-    <View style={[styles.sectorWrapper, shadowStyles.boxShadow]}>
+    <BasicSectorWrapper>
       <Text style={styles.sectorText}>
         I apply for the insurance for which I am now eligible (or for which I
         may become eligible) under the provisions of the Group Policy or Group
@@ -20,27 +21,18 @@ export const AgreementText = () => {
         expense, evidence of insurability satisfactory to Boston Mutual Life
         Insurance Company.
       </Text>
-    </View>
+    </BasicSectorWrapper>
   );
 };
 
 const styles = StyleSheet.create({
-  sectorWrapper: {
-    backgroundColor: THEME.COLOR.WHITE,
-    borderRadius: 20,
-    paddingLeft: 15,
-    paddingRight: 15,
-    paddingTop: 20,
-    paddingBottom: 10,
-    marginBottom: 15,
-  },
-
   sectorText: {
     fontFamily: FONTS.AVENIR.ROMAN,
     fontSize: 12,
     lineHeight: 16,
     letterSpacing: -0.28,
     color: THEME.COLOR.GREY_LIGHT_TEXT,
-    marginBottom: 9,
+    marginBottom: 18,
+    marginTop: 5,
   },
 });

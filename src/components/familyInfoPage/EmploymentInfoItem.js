@@ -1,11 +1,11 @@
+import React, { useState } from "react";
 import { Text, View, TouchableOpacity } from "react-native";
 import InfoCircleSvg from "../../assets/icons/familyInfoIcons/infoCircle.svg";
 import BagIconSvg from "../../assets/icons/familyInfoIcons/bag.svg";
 import ArrowRightSvg from "../../assets/icons/familyInfoIcons/vectorRight.svg";
-import { useState } from "react";
 import mainStyles from "./FamilyInfoItemStyles";
-import { shadowStyles } from "../../styles/shadowStyles";
 import { commonPlanStyles } from "../../styles/commonPlanStyles";
+import { BasicSectorWrapper } from "../utils/BasicSectorWrapper";
 
 export const EmploymentInfoItem = ({ handleInfoDetails }) => {
   const [isWarning, setIsWarning] = useState(false);
@@ -19,7 +19,8 @@ export const EmploymentInfoItem = ({ handleInfoDetails }) => {
   return (
     <>
       <Text style={commonPlanStyles.planSectorHeader}>Employment Info</Text>
-      <View style={[mainStyles.infoWrapper, shadowStyles.boxShadow]}>
+
+      <BasicSectorWrapper>
         <View style={mainStyles.subTitleContainer}>
           <Text style={mainStyles.baseText}>
             Emploee ID: <Text style={mainStyles.boldText}>1234</Text>
@@ -46,7 +47,7 @@ export const EmploymentInfoItem = ({ handleInfoDetails }) => {
             <ArrowRightSvg />
           </TouchableOpacity>
         </View>
-      </View>
+      </BasicSectorWrapper>
     </>
   );
 };

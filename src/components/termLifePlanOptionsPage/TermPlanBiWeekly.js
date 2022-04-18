@@ -1,8 +1,6 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
-import { THEME } from "../../styles/theme.js";
-import { shadowStyles } from "../../styles/shadowStyles.js";
 import { RadioButtonsList } from "../utils/RadioButtonsList.js";
+import { BasicSectorWrapper } from "../utils/BasicSectorWrapper.js";
 
 const biWeeklyOptions = [
   { title: "$6.92 for $50,000 Policy", id: 1 },
@@ -29,8 +27,9 @@ const biWeeklyOptionsForChildren = [
 
 export const TermPlanBiWeekly = () => {
   return (
-    <View style={[styles.planBiWeeklyWrapper, shadowStyles.boxShadow]}>
+    <BasicSectorWrapper>
       <RadioButtonsList
+        additionalMarginTop={true}
         options={biWeeklyOptions}
         header={"Bi-Weekly costs for available Policies"}
       />
@@ -44,16 +43,6 @@ export const TermPlanBiWeekly = () => {
         options={biWeeklyOptionsForChildren}
         header={"Bi-Weekly costs for available Policies for Children"}
       />
-    </View>
+    </BasicSectorWrapper>
   );
 };
-
-const styles = StyleSheet.create({
-  planBiWeeklyWrapper: {
-    paddingHorizontal: 15,
-    paddingBottom: 20,
-    backgroundColor: THEME.COLOR.WHITE,
-    borderRadius: 20,
-    marginBottom: 20,
-  },
-});

@@ -9,7 +9,7 @@ export default StyleSheet.create({
   },
 
   additionalMargin: {
-    marginBottom: 25,
+    marginBottom: 23,
   },
 
   radioButtonAndTextWrapper: {

@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, ScrollView } from "react-native";
 import { OpenEnrollmentTerm } from "../components/submitPage/OpenEnrollmentTerm";
 import { EnrollmentInfoTop } from "../components/utils/topComponents/EnrollmentInfoTop";
 import { commonPlanStyles } from "../styles/commonPlanStyles";
-import { SubmitSectorWrapper } from "../components/submitPage/SubmitSectorWrapper";
+import { BasicSectorWrapper } from "../components/utils/BasicSectorWrapper";
 import { SubmitPersonInfo } from "../components/submitPage/SubmitPersonInfo";
 import { SubmitPersonDependants } from "../components/submitPage/SubmitPersonDependants";
 import {
@@ -43,18 +43,18 @@ export const SubmitScreen = () => {
       <View style={styles.wrapper}>
         <Text style={commonPlanStyles.planSectorHeader}>Personal Info</Text>
 
-        <SubmitSectorWrapper>
+        <BasicSectorWrapper>
           <SubmitPersonInfo />
           <SubmitPersonDependants options={personOptions} />
-        </SubmitSectorWrapper>
+        </BasicSectorWrapper>
 
         <Text style={commonPlanStyles.planSectorHeader}>Selected Benefits</Text>
 
         {submitOptions.map((item) => {
           return (
-            <SubmitSectorWrapper key={item.id}>
+            <BasicSectorWrapper key={item.id}>
               <SubmitSelectedBenefits item={item} />
-            </SubmitSectorWrapper>
+            </BasicSectorWrapper>
           );
         })}
 

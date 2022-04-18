@@ -3,14 +3,6 @@ import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
 
 export default StyleSheet.create({
-  infoWrapper: {
-    backgroundColor: THEME.COLOR.WHITE,
-    borderRadius: 20,
-    paddingHorizontal: 15,
-    paddingTop: 24,
-    marginBottom: 23,
-  },
-
   twoRowElements: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -105,22 +97,6 @@ export default StyleSheet.create({
     marginBottom: 16,
   },
 
-  genderTitleAndButtonsWrapper: {
-    marginBottom: 16,
-  },
-
-  genderButtonsContainer: {
-    flexDirection: "row",
-    shadowOffset: { width: 0, height: 1 },
-    shadowRadius: 8,
-    shadowColor: THEME.COLOR.GREY_LIGHT_TEXT,
-    shadowOpacity: 0.06,
-    borderWidth: 1,
-    borderColor: THEME.COLOR.LIGHT_BORDER,
-    borderStyle: "solid",
-    borderRadius: 10,
-  },
-
   genderButton: {
     width: "50%",
     height: 49,
@@ -131,20 +107,6 @@ export default StyleSheet.create({
 
   additionalButtonColor: {
     backgroundColor: THEME.COLOR.BLUE_BRIGHT,
-  },
-
-  genderText: {
-    fontFamily: FONTS.AVENIR.ROMAN,
-    fontSize: 14,
-    lineHeight: 22,
-    color: THEME.COLOR.DARK_BLUE_TEXT,
-  },
-
-  checkedGenderText: {
-    fontFamily: FONTS.AVENIR.HEAVY,
-    fontSize: 14,
-    lineHeight: 22,
-    color: THEME.COLOR.WHITE,
   },
 
   additionalMarginBiger: {
