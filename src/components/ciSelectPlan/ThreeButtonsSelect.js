@@ -3,13 +3,13 @@ import { Text, View, StyleSheet } from "react-native";
 import { PseudoElement } from "../stdPlanOptions/PseudoElement";
 import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
-import { shadowStyles } from "../../styles/shadowStyles";
 import { CheckboxAndText } from "../utils/CheckboxAndText";
 import { checkboxTextStyles } from "../utils/CheckboxTextStyles";
+import { BasicSectorWrapper } from "../utils/BasicSectorWrapper";
 
 export const ThreeButtonsSelect = () => {
   return (
-    <View style={[styles.sectorWrapper, shadowStyles.boxShadow]}>
+    <BasicSectorWrapper>
       <Text style={styles.questionTitle}>
         Who all needs to be covered in the plan?
       </Text>
@@ -31,20 +31,11 @@ export const ThreeButtonsSelect = () => {
           <Text style={checkboxTextStyles.checkboxText}>Sarah Eggleston</Text>
         </CheckboxAndText>
       </View>
-    </View>
+    </BasicSectorWrapper>
   );
 };
 
 const styles = StyleSheet.create({
-  sectorWrapper: {
-    backgroundColor: THEME.COLOR.WHITE,
-    borderRadius: 20,
-    paddingHorizontal: 15,
-    paddingTop: 19,
-    paddingBottom: 5,
-    marginBottom: 20,
-  },
-
   questionTitle: {
     fontFamily: FONTS.AVENIR.HEAVY,
     fontSize: 13,

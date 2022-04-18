@@ -5,7 +5,6 @@ import { FONTS } from "../../styles/fonts";
 export default StyleSheet.create({
   planSectorWrapper: {
     padding: 11,
-    paddingBottom: 22,
     backgroundColor: THEME.COLOR.WHITE,
     borderRadius: 20,
     marginBottom: 16,

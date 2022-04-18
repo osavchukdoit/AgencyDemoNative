@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import PersonIconSvg from "../../assets/icons/familyInfoIcons/person.svg";
 import CalendarIconSvg from "../../assets/icons/familyInfoIcons/calendar.svg";
@@ -8,13 +8,14 @@ import PhoneIconSvg from "../../assets/icons/personInfoIcons/phone.svg";
 import MobileIconSvg from "../../assets/icons/personInfoIcons/mobile.svg";
 import GpsMarkIconSvg from "../../assets/icons/personInfoIcons/gpsMark.svg";
 import styles from "./stylesMainPersonalInfo";
-import { shadowStyles } from "../../styles/shadowStyles";
 import { RadioButtonsYesNo } from "../utils/RadioButtonsYesNo";
+import { BasicSectorWrapper } from "../utils/BasicSectorWrapper";
+import { GenderButtons } from "../utils/GenderButtons";
 
 export const MainPersonalInfo = () => {
   return (
-    <View style={styles.wrapper}>
-      <View style={[styles.infoWrapper, shadowStyles.boxShadow]}>
+    <>
+      <BasicSectorWrapper>
         <View style={styles.twoRowElements}>
           <View style={styles.nameWrapper}>
             <Text style={styles.titleInfo}>
@@ -40,19 +41,8 @@ export const MainPersonalInfo = () => {
           <TextInput style={styles.textInput}>09/09/1990</TextInput>
         </View>
 
-        <View style={styles.genderTitleAndButtonsWrapper}>
-          <Text style={styles.titleInfo}>Gender</Text>
-          <View style={styles.genderButtonsContainer}>
-            <TouchableOpacity
-              style={[styles.genderButton, styles.additionalButtonColor]}
-            >
-              <Text style={styles.checkedGenderText}>Male</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.genderButton}>
-              <Text style={styles.genderText}>Female</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
+        <GenderButtons/>
+
 
         <View style={styles.titleAndInputWrapper}>
           <Text style={styles.titleInfo}>Email</Text>
@@ -111,21 +101,20 @@ export const MainPersonalInfo = () => {
           </TextInput>
         </View>
 
-        
-          <Text style={styles.questionText}>
-            Have you used any tobacco products (such as cigarettes, cigars,
-            sniff, dip, chew or pipe) or any nicotine delivery system in the
-            past 12 months?*
-          </Text>
+        <Text style={styles.questionText}>
+          Have you used any tobacco products (such as cigarettes, cigars, sniff,
+          dip, chew or pipe) or any nicotine delivery system in the past 12
+          months?*
+        </Text>
 
-          <RadioButtonsYesNo />
-        
-      </View>
+        <RadioButtonsYesNo />
+      </BasicSectorWrapper>
+
       <View style={styles.saveButtonWrapper}>
         <TouchableOpacity style={styles.saveButton}>
           <Text style={styles.saveButtonText}>Save</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </>
   );
 };

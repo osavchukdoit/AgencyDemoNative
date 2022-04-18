@@ -13,7 +13,7 @@ import { HomeAndPostTop } from "../components/utils/topComponents/HomeAndPostTop
 
 export const HomeScreen = ({ navigation }) => {
   return (
-    <View style={styles.scrollWrapper}>
+    <>
       <ScrollView stickyHeaderIndices={[0]} style={styles.scrollContainer}>
         <HomeAndPostTop
           title={
@@ -75,14 +75,11 @@ export const HomeScreen = ({ navigation }) => {
           navigation.navigate("EnrollmentNavigation")
         }
       />
-    </View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
-  scrollWrapper: {
-    height: "100%",
-  },
   scrollContainer: {
     marginBottom: 70,
   },

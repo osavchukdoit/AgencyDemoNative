@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { FONTS } from "../../styles/fonts";
 import { THEME } from "../../styles/theme";
 import { InformationMapper } from "../postEnrollmentHomePage/InformationMapper";
-import { SubmitSectorWrapper } from "../submitPage/SubmitSectorWrapper";
+import { BasicSectorWrapper } from "../../components/utils/BasicSectorWrapper";
 import EditButtonSvg from "../../assets/icons/contactDetailsIcons/editButtonSvg.svg";
 
 export const MemberServiceAndContactDetailsSector = ({ memberDetails }) => {
@@ -12,7 +12,7 @@ export const MemberServiceAndContactDetailsSector = ({ memberDetails }) => {
   const handleEditActive = () => setEditActive((prev) => !prev);
 
   return (
-    <SubmitSectorWrapper>
+    <BasicSectorWrapper>
       <View style={styles.headerAndIconContainer}>
         <Text style={styles.header}>{header}</Text>
         {isEditable &&
@@ -33,7 +33,7 @@ export const MemberServiceAndContactDetailsSector = ({ memberDetails }) => {
           ))}
       </View>
       {<InformationMapper isEditActive={editActive} options={infoOptions} />}
-    </SubmitSectorWrapper>
+    </BasicSectorWrapper>
   );
 };
 

@@ -14,11 +14,11 @@ import { LinearGradient } from "expo-linear-gradient";
 import PersonSvg from "../../assets/icons/familyInfoIcons/person.svg";
 import CalendarWhiteSvg from "../../assets/icons/employmentInfoIcons/calendarWhiteIcon.svg";
 import CalendarSvg from "../../assets/icons/familyInfoIcons/calendar.svg";
-import { GendersContainer } from "../personalInfoPage/GendersContainer";
 import ShieldSvg from "../../assets/icons/personInfoIcons/shield.svg";
-import { shadowStyles } from "../../styles/shadowStyles.js";
 import { DependantsRadioButtons } from "../utils/DependantsRadioButtons.js";
 import { RadioButtonsYesNo } from "../utils/RadioButtonsYesNo.js";
+import { BasicSectorWrapper } from "../utils/BasicSectorWrapper.js";
+import { GenderButtons } from "../utils/GenderButtons.js";
 
 const dependantsOptions = [
   { title: "Spouse", id: 1 },
@@ -29,8 +29,8 @@ const dependantsOptions = [
 
 export const MainDependantsInfo = () => {
   return (
-    <View>
-      <View style={[styles.infoWrapper, shadowStyles.boxShadow]}>
+    <>
+      <BasicSectorWrapper>
         <View>
           <TouchableOpacity style={localStyles.deleteButton}>
             <TrushSvg />
@@ -89,7 +89,7 @@ export const MainDependantsInfo = () => {
           ></TextInput>
         </View>
 
-        <GendersContainer />
+        <GenderButtons />
 
         <View
           style={[styles.titleAndInputWrapper, localStyles.additionalMargin]}
@@ -110,7 +110,8 @@ export const MainDependantsInfo = () => {
           </Text>
           <RadioButtonsYesNo />
         </View>
-      </View>
+      </BasicSectorWrapper>
+
       <View style={localStyles.addAndSaveButtonsWrapper}>
         <TouchableOpacity style={[styles.saveButton, localStyles.addButton]}>
           <Text style={[styles.saveButtonText, localStyles.addButtonText]}>
@@ -121,7 +122,7 @@ export const MainDependantsInfo = () => {
           <Text style={styles.saveButtonText}>Save</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </>
   );
 };
 

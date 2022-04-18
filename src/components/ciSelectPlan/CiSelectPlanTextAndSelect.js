@@ -1,11 +1,12 @@
+import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
-import { shadowStyles } from "../../styles/shadowStyles";
+import { BasicSectorWrapper } from "../utils/BasicSectorWrapper";
 
 export const CiSelectPlanTextAndSelect = () => {
   return (
-    <View style={[styles.sectorWrapper, shadowStyles.boxShadow]}>
+    <BasicSectorWrapper>
       <Text style={styles.sectorText}>
         By submitting my election for coverage, I am attesting that I have read
         and agree to the posted Conditions of Enrollment document:
@@ -16,21 +17,11 @@ export const CiSelectPlanTextAndSelect = () => {
           terms and conditions.
         </Text>
       </View>
-    </View>
+    </BasicSectorWrapper>
   );
 };
 
 const styles = StyleSheet.create({
-  sectorWrapper: {
-    backgroundColor: THEME.COLOR.WHITE,
-    borderRadius: 20,
-    paddingLeft: 15,
-    paddingRight: 15,
-    paddingTop: 20,
-    paddingBottom: 10,
-    marginBottom: 15,
-  },
-
   sectorText: {
     fontFamily: FONTS.AVENIR.ROMAN,
     fontSize: 12,
@@ -42,6 +33,7 @@ const styles = StyleSheet.create({
 
   linkTextWrapper: {
     flexDirection: "row",
+    marginBottom: 5,
   },
 
   linkText: {

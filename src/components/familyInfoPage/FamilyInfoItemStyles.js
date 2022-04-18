@@ -3,15 +3,6 @@ import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
 
 export default StyleSheet.create({
-  infoWrapper: {
-    backgroundColor: THEME.COLOR.WHITE,
-    borderRadius: 20,
-    paddingHorizontal: 23,
-    paddingTop: 16,
-    paddingBottom: 21,
-    marginBottom: 20,
-  },
-
   subTitleContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -41,6 +32,7 @@ export default StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    marginBottom: 21,
   },
 
   subTextAndIconsContainer: {

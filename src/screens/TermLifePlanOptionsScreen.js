@@ -1,10 +1,10 @@
+import React, { useState } from "react";
 import { View, ScrollView, StyleSheet } from "react-native";
 import { ButtonsPlanAndMoreInfo } from "../components/utils/ButtonsPlanAndMoreInfo";
 import { TermPlanSector } from "../components/termLifePlanOptionsPage/TermPlanSector";
 import { TermPlanBiWeekly } from "../components/termLifePlanOptionsPage/TermPlanBiWeekly";
 import { ButtonBenefitsCart } from "../components/familyInfoPage/ButtonBenefitsCart";
 import { TopComponentPlanOptions } from "../components/utils/topComponents/TopComponentPlanOptions";
-import { useState } from "react";
 import { ButtonsMoreInfo } from "../components/utils/ButtonsMoreInfo";
 import { TermInfoProductDescription } from "../components/termLifePlanOptionsPage/TermInfoProductDescription";
 

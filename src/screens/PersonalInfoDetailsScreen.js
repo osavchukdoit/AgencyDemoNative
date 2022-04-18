@@ -1,3 +1,4 @@
+import React from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 import { MainPersonalInfo } from "../components/personalInfoPage/MainPersonalInfo";
 import { TopPersonalInfo } from "../components/personalInfoPage/TopPersonalInfo";

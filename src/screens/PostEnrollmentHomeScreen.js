@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { submitOptions } from "../components/submitPage/submitOptions";
 import { SubmitTotalCost } from "../components/submitPage/SubmitTotalCost";
 import { HomeAndPostTop } from "../components/utils/topComponents/HomeAndPostTop";
-import { SubmitSectorWrapper } from "../components/submitPage/SubmitSectorWrapper";
+import { BasicSectorWrapper } from "../components/utils/BasicSectorWrapper"; 
 import { SubscriberDependants } from "../components/postEnrollmentHomePage/SubscriberDependants";
 import { DependantsItemMapper } from "../components/postEnrollmentHomePage/DependantsItemMapper";
 import {
@@ -40,11 +40,11 @@ export const PostEnrollmentHomeScreen = () => {
         }
       />
       <View style={styles.wrapper}>
-        <SubmitSectorWrapper>
+        <BasicSectorWrapper>
           <SubscriberDependants>
             <DependantsItemMapper options={personDependants} />
           </SubscriberDependants>
-        </SubmitSectorWrapper>
+        </BasicSectorWrapper>
         <SubmitTotalCost options={submitOptions} />
 
         {postPlanOptions.map((item) => {
@@ -84,11 +84,11 @@ export const PostEnrollmentHomeScreen = () => {
           Waivers and Documents
         </Text>
 
-        <SubmitSectorWrapper>
+        <BasicSectorWrapper>
           <LinkIconAndText text={"Download Enrollment Summary Document"} />
           <LinkIconAndText text={"Download Employee Benefits Guide"} />
           <LinkIconAndText text={"Download Employee Benefits FAQ"} />
-        </SubmitSectorWrapper>
+        </BasicSectorWrapper>
 
         <SectorWithTextAndButton/>
       </View>

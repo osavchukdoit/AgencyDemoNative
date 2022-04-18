@@ -10,7 +10,11 @@ import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
 import { PseudoElement } from "../stdPlanOptions/PseudoElement";
 
-export const RadioButtonsList = ({ options, header }) => {
+export const RadioButtonsList = ({
+  options,
+  header,
+  additionalMarginTop = false,
+}) => {
   const [value, setValue] = useState(null);
   const renderItem = ({ item }) => (
     <TouchableOpacity
@@ -25,7 +29,14 @@ export const RadioButtonsList = ({ options, header }) => {
   );
   return (
     <>
-      <Text style={styles.sectorTitle}>{header}</Text>
+      <Text
+        style={[
+          styles.sectorTitle,
+          additionalMarginTop && styles.additionalMarginTop,
+        ]}
+      >
+        {header}
+      </Text>
       <PseudoElement />
 
       <FlatList
@@ -46,6 +57,10 @@ const styles = StyleSheet.create({
     letterSpacing: -0.28,
     marginBottom: 9,
     marginTop: 19,
+  },
+
+  additionalMarginTop: {
+    marginTop: 5,
   },
 
   radioButtonAndTextWrapper: {

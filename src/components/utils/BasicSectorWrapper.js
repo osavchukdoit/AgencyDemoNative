@@ -3,7 +3,7 @@ import { View, StyleSheet } from "react-native";
 import { THEME } from "../../styles/theme";
 import { shadowStyles } from "../../styles/shadowStyles";
 
-export const SubmitSectorWrapper = ({ children }) => {
+export const BasicSectorWrapper = ({ children }) => {
   return (
     <View style={[styles.wrapper, shadowStyles.boxShadow]}>{children}</View>
   );
@@ -11,7 +11,7 @@ export const SubmitSectorWrapper = ({ children }) => {
 
 const styles = StyleSheet.create({
   wrapper: {
-    paddingTop: 16,
+    paddingTop: 14,
     paddingHorizontal: 18,
     backgroundColor: THEME.COLOR.WHITE,
     borderRadius: 20,

@@ -4,8 +4,8 @@ import CalendarIconSvg from "../../assets/icons/familyInfoIcons/calendar.svg";
 import ArrowRightSvg from "../../assets/icons/familyInfoIcons/vectorRight.svg";
 import { useState } from "react";
 import mainStyles from "./FamilyInfoItemStyles";
-import { shadowStyles } from "../../styles/shadowStyles";
 import { commonPlanStyles } from "../../styles/commonPlanStyles";
+import { BasicSectorWrapper } from "../utils/BasicSectorWrapper";
 
 export const PersonalInfoItem = ({ handleInfoDetails }) => {
   const [isWarning, setIsWarning] = useState(true);
@@ -20,7 +20,8 @@ export const PersonalInfoItem = ({ handleInfoDetails }) => {
   return (
     <>
       <Text style={commonPlanStyles.planSectorHeader}>Personal Info</Text>
-      <View style={[mainStyles.infoWrapper, shadowStyles.boxShadow]}>
+
+      <BasicSectorWrapper>
         <View style={mainStyles.subTitleContainer}>
           <Text style={mainStyles.subTitle}>John Doe</Text>
           {isWarning && (
@@ -43,7 +44,7 @@ export const PersonalInfoItem = ({ handleInfoDetails }) => {
             <ArrowRightSvg />
           </TouchableOpacity>
         </View>
-      </View>
+      </BasicSectorWrapper>
     </>
   );
 };
