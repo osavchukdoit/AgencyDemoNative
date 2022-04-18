@@ -6,7 +6,7 @@ import { THEME } from "../../styles/theme";
 export const GenderButtons = () => {
   const [isMale, setMale] = useState(true);
 
-  const handleChangeMale = () => setMale(true);
+  const handleMale = () => setMale(true);
 
   const handleFemale = () => setMale(false);
 
@@ -15,7 +15,7 @@ export const GenderButtons = () => {
       <Text style={styles.titleInfo}>Gender</Text>
       <View style={styles.genderButtonsContainer}>
         <TouchableOpacity
-          onPress={handleChangeMale}
+          onPress={handleMale}
           style={[styles.genderButton, isMale && styles.additionalButtonColor]}
         >
           <Text style={[styles.genderText, isMale && styles.checkedGenderText]}>

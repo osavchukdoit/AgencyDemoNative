@@ -1,8 +1,8 @@
+import React, { useState } from "react";
 import { Text, View, TouchableOpacity } from "react-native";
 import InfoCircleSvg from "../../assets/icons/familyInfoIcons/infoCircle.svg";
 import CalendarIconSvg from "../../assets/icons/familyInfoIcons/calendar.svg";
 import ArrowRightSvg from "../../assets/icons/familyInfoIcons/vectorRight.svg";
-import { useState } from "react";
 import mainStyles from "./FamilyInfoItemStyles";
 import { commonPlanStyles } from "../../styles/commonPlanStyles";
 import { BasicSectorWrapper } from "../utils/BasicSectorWrapper";

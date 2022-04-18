@@ -1,3 +1,4 @@
+import React from "react";
 import { Text, StyleSheet } from "react-native";
 import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";

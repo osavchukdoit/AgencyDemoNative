@@ -1,3 +1,4 @@
+import React from 'react'
 import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
 import PersonIconSvg from "../../assets/icons/familyInfoIcons/person.svg";
 import ArrowRightSvg from "../../assets/icons/familyInfoIcons/vectorRight.svg";
