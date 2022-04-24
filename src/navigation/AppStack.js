@@ -101,7 +101,7 @@ export const AppStack = ({ onLogout }) => {
               <TouchableOpacity
                 style={styles.headerButton}
                 onPress={() => {
-                  navigation.navigate("Home");
+                  navigation.navigate("ContactDetailsScreen"); //here
                 }}
               >
                 {!isWebOs ? <HomeIconSvg /> : <Text>HomeIconSvg</Text>}

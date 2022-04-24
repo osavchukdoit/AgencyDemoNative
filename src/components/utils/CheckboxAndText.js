@@ -3,7 +3,7 @@ import { View, TouchableOpacity, StyleSheet } from "react-native";
 import { THEME } from "../../styles/theme";
 import SelectedIconSvg from "../../assets/icons/ciSelectPlan/selectedIcon.svg";
 
-export const CheckboxAndText = ({ children }) => {
+export const CheckboxAndText = ({ children, onModalVisible }) => {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleCheck = () => {
@@ -11,7 +11,7 @@ export const CheckboxAndText = ({ children }) => {
   };
   return (
     <TouchableOpacity
-      onPress={handleCheck}
+      onPress={() => (handleCheck(), onModalVisible())}
       style={styles.checkboxAndTextWrapper}
     >
       <View style={styles.checkbox}>{isChecked && <SelectedIconSvg />}</View>

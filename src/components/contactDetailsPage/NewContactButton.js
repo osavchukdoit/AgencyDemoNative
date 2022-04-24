@@ -4,10 +4,13 @@ import AddContactButton from "../../assets/icons/contactDetailsIcons/plusIconSvg
 import { FONTS } from "../../styles/fonts";
 import { THEME } from "../../styles/theme";
 
-export const NewContactButton = () => {
+export const NewContactButton = ({ onVisible }) => {
   return (
     <View style={styles.wrapper}>
-      <TouchableOpacity style={styles.buttonAndTextContainer}>
+      <TouchableOpacity
+        onPress={onVisible}
+        style={styles.buttonAndTextContainer}
+      >
         <AddContactButton />
         <Text style={styles.text}>New Contact</Text>
       </TouchableOpacity>
