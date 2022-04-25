@@ -5,18 +5,8 @@ import ArrowDownSvg from "../../assets/icons/contactDetailsIcons/arrowDownSvg.sv
 import { FONTS } from "../../styles/fonts";
 import { THEME } from "../../styles/theme";
 
-export const Dropdown = () => {
+export const Dropdown = ({ dropdownOptions }) => {
   const [textInputValue, setTextInputValue] = useState("");
-
-  const dropdownOptions = [
-    { key: 1, section: true, label: "Doctors" },
-    { key: 2, label: "Vision Care" },
-    { key: 3, label: "Dantist" },
-    {
-      key: 4,
-      label: "Family Doctor",
-    },
-  ];
 
   return (
     <View

@@ -3,13 +3,13 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { FONTS } from "../../styles/fonts";
 import { shadowStyles } from "../../styles/shadowStyles";
 import { THEME } from "../../styles/theme";
-import PlanSvedSvg from "../../assets/icons/planSavedSvg.svg";
+import PlanSavedSvg from "../../assets/icons/planSavedSvg.svg";
 
 export const WindowPlanElectionSaved = ({ onCancel }) => {
   return (
     <View style={[styles.wrapper, shadowStyles.boxShadow]}>
       <View style={styles.iconWrapper}>
-        <PlanSvedSvg />
+        <PlanSavedSvg />
       </View>
       <Text style={styles.title}>Your plan election is saved</Text>
       <Text style={styles.subTitle}>
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.AVENIR.HEAVY,
     fontSize: 16,
     lineHeight: 22,
-    letterSpacing: -0.28,
+    letterSpacing: FONTS.LETTER_SPACING.DEFAULT,
     marginBottom: 4,
   },
 
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.AVENIR.ROMAN,
     fontSize: 12,
     lineHeight: 16,
-    letterSpacing: -0.28,
+    letterSpacing: FONTS.LETTER_SPACING.DEFAULT,
     color: THEME.COLOR.GREY_LIGHT_TEXT,
     marginBottom: 20,
   },

@@ -12,38 +12,45 @@ import { shadowStyles } from "../../styles/shadowStyles";
 import { THEME } from "../../styles/theme";
 import { Dropdown } from "./Dropdown";
 
+const dropdownOptions = [
+  { key: 1, section: true, label: "Doctors" },
+  { key: 2, label: "Vision Care" },
+  { key: 3, label: "Dantist" },
+  {
+    key: 4,
+    label: "Family Doctor",
+  },
+];
+
+const inputOptions = [
+  { labelText: "Doctor Name", placeholderText: "Enter Doctor Name", id: 1 },
+  { labelText: "Phone Number", placeholderText: "Enter number", id: 2 },
+  { labelText: "Location", placeholderText: "Enter location name", id: 3 },
+  { labelText: "Address", placeholderText: "Enter address", id: 4 },
+];
+
 export const AddContactForm = ({ onCancel }) => {
   return (
     <View style={[styles.wrapper, shadowStyles.boxShadow]}>
       <ScrollView>
         <Text style={styles.formTitle}>Add New Contact</Text>
         <Text style={styles.inputTitle}>Select Type</Text>
-        <Dropdown />
+        <Dropdown dropdownOptions={dropdownOptions} />
 
-        <Text style={styles.inputTitle}>Doctor Name</Text>
-        <TextInput
-          placeholder="Enter Doctor Name"
-          placeholderTextColor={THEME.COLOR.PLACEHOLDER_TEXT}
-          style={styles.textInput}
-        />
-        <Text style={styles.inputTitle}>Phone Number</Text>
-        <TextInput
-          placeholder="Enter number"
-          placeholderTextColor={THEME.COLOR.PLACEHOLDER_TEXT}
-          style={styles.textInput}
-        />
-        <Text style={styles.inputTitle}>Location</Text>
-        <TextInput
-          placeholder="Enter location name"
-          placeholderTextColor={THEME.COLOR.PLACEHOLDER_TEXT}
-          style={styles.textInput}
-        />
-        <Text style={styles.inputTitle}>Address</Text>
-        <TextInput
-          placeholder="Enter address"
-          placeholderTextColor={THEME.COLOR.PLACEHOLDER_TEXT}
-          style={styles.textInput}
-        />
+        {inputOptions.map((item) => {
+          const { labelText, placeholderText, id } = item;
+          return (
+            <View key={id}>
+              <Text style={styles.inputTitle}>{labelText}</Text>
+              <TextInput
+                placeholder={placeholderText}
+                placeholderTextColor={THEME.COLOR.PLACEHOLDER_TEXT}
+                style={styles.textInput}
+              />
+            </View>
+          );
+        })}
+
         <View style={styles.buttonsContainer}>
           <TouchableOpacity onPress={onCancel} style={styles.button}>
             <Text style={styles.buttonText}>Cancel</Text>
@@ -74,7 +81,7 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.AVENIR.HEAVY,
     fontSize: 16,
     lineHeight: 22,
-    letterSpacing: -0.28,
+    letterSpacing: FONTS.LETTER_SPACING.DEFAULT,
     color: THEME.COLOR.GREY_DARK_TEXT,
   },
 

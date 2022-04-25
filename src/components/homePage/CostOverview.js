@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.AVENIR.MEDIUM,
     fontSize: 14,
     lineHeight: 19,
-    letterSpacing: -0.28,
+    letterSpacing: FONTS.LETTER_SPACING.DEFAULT,
   },
 
   costListWrapper: {
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.AVENIR.MEDIUM,
     fontSize: 13,
     lineHeight: 17.76,
-    letterSpacing: -0.28,
+    letterSpacing: FONTS.LETTER_SPACING.DEFAULT,
     color: THEME.COLOR.BLUE_BRIGHT,
   },
 
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.AVENIR.BOOK,
     fontSize: 12,
     lineHeight: 16,
-    letterSpacing: -0.28,
+    letterSpacing: FONTS.LETTER_SPACING.DEFAULT,
     color: THEME.COLOR.GREY_DARK_TEXT,
     opacity: 0.45,
   },
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.AVENIR.BOOK,
     fontSize: 12,
     lineHeight: 16,
-    letterSpacing: -0.28,
+    letterSpacing: FONTS.LETTER_SPACING.DEFAULT,
     color: THEME.COLOR.GREY_DARK_TEXT,
   },
 });

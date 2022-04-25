@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.AVENIR.MEDIUM,
     fontSize: 16,
     lineHeight: 22,
-    letterSpacing: -0.28,
+    letterSpacing: FONTS.LETTER_SPACING.DEFAULT,
     color: THEME.COLOR.BLUE_BRIGHT,
   },
 });
