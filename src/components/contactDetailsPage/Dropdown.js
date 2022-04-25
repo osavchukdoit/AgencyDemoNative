@@ -1,38 +1,52 @@
-import React, { useState, useRef } from "react";
-import { View, StyleSheet, Pressable, Text } from "react-native";
-import { Picker } from "@react-native-picker/picker";
+import React, { useState } from "react";
+import { View, TextInput, StyleSheet, Platform } from "react-native";
+import ModalSelector from "react-native-modal-selector";
+import ArrowDownSvg from "../../assets/icons/contactDetailsIcons/arrowDownSvg.svg";
 import { FONTS } from "../../styles/fonts";
 import { THEME } from "../../styles/theme";
-import ArrowDownSvg from "../../assets/icons/contactDetailsIcons/arrowDownSvg.svg";
-
-const Icon = ({ onPress }) => {
-  return (
-    <Pressable onPress={onPress} style={styles.iconWrapper}>
-      <ArrowDownSvg />
-    </Pressable>
-  );
-};
 
 export const Dropdown = () => {
-  const [selectedType, setSelectedType] = useState();
-  const pickerRef = useRef();
-  const open = () => {
-    pickerRef.current.focus();
-  };
-  return (
-    <View style={styles.selectWrapper}>
-      <Icon onPress={open} />
+  const [textInputValue, setTextInputValue] = useState("");
 
-      <Picker
-        itemStyle={styles.textInputValue}
-        ref={pickerRef}
-        style={styles.textInput}
-        selectedValue={selectedType}
-        onValueChange={(itemValue, itemIndex) => setSelectedType(itemValue)}
+  const dropdownOptions = [
+    { key: 1, section: true, label: "Doctors" },
+    { key: 2, label: "Vision Care" },
+    { key: 3, label: "Dantist" },
+    {
+      key: 4,
+      label: "Family Doctor",
+    },
+  ];
+
+  return (
+    <View
+      style={[
+        styles.selectWrapper,
+        Platform.OS === "android" && styles.additionalHight,
+      ]}
+    >
+      <View style={styles.iconWrapper}>
+        <ArrowDownSvg />
+      </View>
+
+      <ModalSelector
+        optionContainerStyle={styles.additionalBgColor}
+        data={dropdownOptions}
+        supportedOrientations={["portrait"]}
+        accessible={true}
+        scrollViewAccessibilityLabel={"Scrollable options"}
+        cancelButtonAccessibilityLabel={"Cancel Button"}
+        onChange={(option) => {
+          setTextInputValue(option.label);
+        }}
       >
-        <Picker.Item label="Vision Care" value="visioncare" />
-        <Picker.Item label="Dantist" value="dantist" />
-      </Picker>
+        <TextInput
+          style={[textInputValue && styles.textInputValue]}
+          editable={false}
+          placeholder="Select Specialist"
+          value={textInputValue}
+        />
+      </ModalSelector>
     </View>
   );
 };
@@ -40,28 +54,24 @@ export const Dropdown = () => {
 const styles = StyleSheet.create({
   selectWrapper: {
     borderWidth: 1,
-    borderColor: "rgba(29, 37, 43, 0.05)",
+    borderColor: THEME.COLOR.GREY_LIGHT_BORDER,
     borderRadius: 10,
     shadowOffset: { width: 0, height: 1 },
     shadowRadius: 8,
-    shadowColor: "rgba(112, 112, 112, 0.05)",
+    shadowColor: THEME.COLOR.GREY_LIGHT_SHADOW,
     marginBottom: 16,
-    paddingLeft: 8,
-    height: 49,
+    paddingLeft: 19,
+    height: 44,
     justifyContent: "center",
     position: "relative",
   },
 
-  textInput: {
-    fontFamily: FONTS.AVENIR.HEAVY,
-    color: THEME.COLOR.DARK_BLUE_TEXT,
-    fontSize: 16,
-    marginBottom: 10,
+  additionalBgColor: {
+    backgroundColor: THEME.COLOR.GREY_MODAL_DROPDOWN,
   },
 
-  textInputValue: {
-    fontFamily: FONTS.AVENIR.HEAVY,
-    fontSize: 16,
+  additionalHight: {
+    height: 49,
   },
 
   iconWrapper: {
@@ -70,9 +80,14 @@ const styles = StyleSheet.create({
     position: "absolute",
     right: 11,
     backgroundColor: THEME.BACKGROUND.VERY_LIGHT_BLUE_V2,
-    zIndex: 1,
     borderRadius: 4,
     justifyContent: "center",
     alignItems: "center",
+  },
+
+  textInputValue: {
+    fontFamily: FONTS.AVENIR.HEAVY,
+    color: THEME.COLOR.DARK_BLUE_TEXT,
+    fontSize: 16,
   },
 });

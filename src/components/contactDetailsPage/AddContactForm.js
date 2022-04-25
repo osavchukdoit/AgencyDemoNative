@@ -88,14 +88,14 @@ const styles = StyleSheet.create({
 
   textInput: {
     borderWidth: 1,
-    borderColor: "rgba(29, 37, 43, 0.05)",
+    borderColor: THEME.COLOR.GREY_LIGHT_BORDER,
     borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 19,
     marginBottom: 16,
     shadowOffset: { width: 0, height: 1 },
     shadowRadius: 8,
-    shadowColor: "rgba(112, 112, 112, 0.05)",
+    shadowColor: THEME.COLOR.GREY_LIGHT_SHADOW,
     fontFamily: FONTS.AVENIR.ROMAN,
     fontSize: 14,
     lineHeight: 20,
