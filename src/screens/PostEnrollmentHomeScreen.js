@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.AVENIR.MEDIUM,
     fontSize: 13,
     lineHeight: 18,
-    letterSpacing: -0.28,
+    letterSpacing: FONTS.LETTER_SPACING.DEFAULT,
     color: THEME.COLOR.GREY_DARK_TEXT,
   },
 });

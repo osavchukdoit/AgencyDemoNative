@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.AVENIR.ROMAN,
     fontSize: 12,
     lineHeight: 16,
-    letterSpacing: -0.28,
+    letterSpacing: FONTS.LETTER_SPACING.DEFAULT,
     color: THEME.COLOR.GREY_LIGHT_TEXT,
     marginBottom: 9,
   },

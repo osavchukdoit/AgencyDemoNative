@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet } from "react-native";
+import { FONTS } from "../styles/fonts";
 
 export const styles = StyleSheet.create({
   drawerHeader: {
@@ -9,7 +10,7 @@ export const styles = StyleSheet.create({
   drawerHeaderText: {
     fontSize: 16,
     lineHeight: 22,
-    letterSpacing: -0.28,
+    letterSpacing: FONTS.LETTER_SPACING.DEFAULT,
   },
   drawerItemWrapper: {
     flexDirection: "row",
@@ -29,7 +30,7 @@ export const styles = StyleSheet.create({
   labelText: {
     fontSize: 14,
     lineHeight: 19,
-    letterSpacing: -0.28,
+    letterSpacing: FONTS.LETTER_SPACING.DEFAULT,
   },
   headerLogo: {
     width: 64,

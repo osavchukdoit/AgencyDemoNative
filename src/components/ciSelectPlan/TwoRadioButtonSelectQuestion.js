@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.AVENIR.HEAVY,
     fontSize: 13,
     lineHeight: 18,
-    letterSpacing: -0.28,
+    letterSpacing: FONTS.LETTER_SPACING.DEFAULT,
     marginBottom: 9,
     color: THEME.COLOR.GREY_DARK_TEXT,
   },

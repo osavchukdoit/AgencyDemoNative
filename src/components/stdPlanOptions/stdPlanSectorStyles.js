@@ -11,7 +11,7 @@ export default StyleSheet.create({
     fontFamily: FONTS.AVENIR.MEDIUM,
     fontSize: 13,
     lineHeight: 18,
-    letterSpacing: -0.28,
+    letterSpacing: FONTS.LETTER_SPACING.DEFAULT,
     color: THEME.COLOR.GREY_DARK_TEXT,
   },
 
@@ -42,7 +42,7 @@ export default StyleSheet.create({
     fontFamily: FONTS.AVENIR.ROMAN,
     fontSize: 12,
     lineHeight: 16,
-    letterSpacing: -0.28,
+    letterSpacing: FONTS.LETTER_SPACING.DEFAULT,
     color: THEME.COLOR.GREY_LIGHT_RGBA,
   },
 
@@ -105,7 +105,7 @@ export default StyleSheet.create({
     fontFamily: FONTS.AVENIR.MEDIUM,
     fontSize: 12,
     lineHeight: 16,
-    letterSpacing: -0.28,
+    letterSpacing: FONTS.LETTER_SPACING.DEFAULT,
     color: THEME.COLOR.BLUE_BRIGHT,
     textDecorationLine: "underline",
   },

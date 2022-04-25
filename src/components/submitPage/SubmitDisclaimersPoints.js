@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.AVENIR.LIGHT,
     fontSize: 11,
     lineHeight: 15,
-    letterSpacing: -0.28,
+    letterSpacing: FONTS.LETTER_SPACING.DEFAULT,
     color: THEME.COLOR.BLACK,
   },
 });
