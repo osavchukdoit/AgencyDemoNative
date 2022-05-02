@@ -10,39 +10,75 @@ import GpsMarkIconSvg from "../../assets/icons/personInfoIcons/gpsMark.svg";
 import styles from "./stylesMainPersonalInfo";
 import { RadioButtonsYesNo } from "../utils/RadioButtonsYesNo";
 import { BasicSectorWrapper } from "../utils/BasicSectorWrapper";
-import { GenderButtons } from "../utils/GenderButtons";
+import { useSelector } from "react-redux";
+import { FirstName } from "../../uiControl/FirstName";
+import { MiddleName } from "../../uiControl/MiddleName";
+import { LastName } from "../../uiControl/LastName";
+import { DateOfBirth } from "../../uiControl/DateOfBirth";
+import { Gender } from "../../uiControl/Gender";
 
 export const MainPersonalInfo = () => {
+  const employerBlocks = useSelector(
+    (state) => state.pageDesc.pageDesc.blocks.BlockDesc
+  );
+  const profileBlockDesc = employerBlocks.find(
+    ({ blockName }) => blockName === "Profile"
+  );
+  const profileFields = profileBlockDesc.props.PropDesc;
+
+  console.log("profileBlockDesc=", profileFields);
+
+  const fieldsRender = profileFields.map((field, index) => {
+    const { propName, displayable } = field;
+    if (!displayable) return;
+    if (propName === "firstName")
+      return <FirstName key={propName} {...field} />;
+    if (propName === "middleName")
+      return <MiddleName key={propName} {...field} />;
+    if (propName === "lastName") return <LastName key={propName} {...field} />;
+    if (propName === "dob") return <DateOfBirth key={propName} {...field} />;
+    if (propName === "gender") return <Gender key={propName} {...field} />;
+  });
+
   return (
     <>
       <BasicSectorWrapper>
-        <View style={styles.twoRowElements}>
-          <View style={styles.nameWrapper}>
-            <Text style={styles.titleInfo}>
-              First Name<Text style={styles.notifyStar}>*</Text>
-            </Text>
-            <PersonIconSvg style={styles.inputIcon} />
-            <TextInput style={styles.textInput}>John</TextInput>
-          </View>
-          <View style={styles.nameWrapper}>
-            <Text style={styles.titleInfo}>
-              Last Name<Text style={styles.notifyStar}>*</Text>
-            </Text>
-            <PersonIconSvg style={styles.inputIcon} />
-            <TextInput style={styles.textInput}>Doe</TextInput>
-          </View>
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+          }}
+        >
+          {fieldsRender}
         </View>
 
-        <View style={styles.titleAndInputWrapper}>
-          <Text style={styles.titleInfo}>
-            Date of Birth<Text style={styles.notifyStar}>*</Text>
-          </Text>
-          <CalendarIconSvg style={styles.inputIcon} />
-          <TextInput style={styles.textInput}>09/09/1990</TextInput>
-        </View>
+        {/*<View style={styles.twoRowElements}>*/}
+        {/*  <View style={styles.nameWrapper}>*/}
+        {/*    <Text style={styles.titleInfo}>*/}
+        {/*      First Name<Text style={styles.notifyStar}>*</Text>*/}
+        {/*    </Text>*/}
+        {/*    <PersonIconSvg style={styles.inputIcon} />*/}
+        {/*    <TextInput style={styles.textInput}>John</TextInput>*/}
+        {/*  </View>*/}
+        {/*  <View style={styles.nameWrapper}>*/}
+        {/*    <Text style={styles.titleInfo}>*/}
+        {/*      Last Name<Text style={styles.notifyStar}>*</Text>*/}
+        {/*    </Text>*/}
+        {/*    <PersonIconSvg style={styles.inputIcon} />*/}
+        {/*    <TextInput style={styles.textInput}>Doe</TextInput>*/}
+        {/*  </View>*/}
+        {/*</View>*/}
 
-        <GenderButtons/>
+        {/*<View style={styles.titleAndInputWrapper}>*/}
+        {/*  <Text style={styles.titleInfo}>*/}
+        {/*    Date of Birth<Text style={styles.notifyStar}>*</Text>*/}
+        {/*  </Text>*/}
+        {/*  <CalendarIconSvg style={styles.inputIcon} />*/}
+        {/*  <TextInput style={styles.textInput}>09/09/1990</TextInput>*/}
+        {/*</View>*/}
 
+        {/*<GenderButtons />*/}
 
         <View style={styles.titleAndInputWrapper}>
           <Text style={styles.titleInfo}>Email</Text>
@@ -50,7 +86,7 @@ export const MainPersonalInfo = () => {
           <TextInput
             style={styles.textInputBorderFocus}
             placeholder={"Enter your email address"}
-          ></TextInput>
+          />
         </View>
 
         <View style={styles.titleAndInputWrapper}>
@@ -65,7 +101,7 @@ export const MainPersonalInfo = () => {
           <TextInput
             style={styles.textInputBorderFocus}
             placeholder={"Enter your phone number"}
-          ></TextInput>
+          />
         </View>
 
         <View style={styles.titleAndInputWrapper}>
@@ -74,7 +110,7 @@ export const MainPersonalInfo = () => {
           <TextInput
             style={styles.textInputBorderFocus}
             placeholder={"Enter your mobile number"}
-          ></TextInput>
+          />
         </View>
 
         <View

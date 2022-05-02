@@ -7,7 +7,7 @@ export const useLoginUser = () => {
   const dispatch = useDispatch();
 
   return (userDetails) => {
-    const { jwtToken } = userDetails.HitfUser;
+    const { jwtToken } = userDetails?.HitfUser;
     dispatch(setToken(jwtToken));
     getPageDesc(jwtToken).then((pageDesc) => {
       dispatch(setPageDesc(pageDesc));

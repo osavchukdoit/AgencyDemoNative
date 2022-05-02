@@ -7,19 +7,17 @@ import mainStyles from "./FamilyInfoItemStyles";
 import { commonPlanStyles } from "../../styles/commonPlanStyles";
 import { BasicSectorWrapper } from "../utils/BasicSectorWrapper";
 
-export const PersonalInfoItem = ({ handleInfoDetails }) => {
-  const [isWarning, setIsWarning] = useState(true);
+export const PersonalInfoItem = ({ profileBlockDesc, handleInfoDetails }) => {
+  const { blockTitle } = profileBlockDesc;
 
-  const handleWarning = () => {
-    setIsWarning((prev) => !prev);
-  };
+  const [isWarning, setIsWarning] = useState(true);
 
   const handlePersonalInfo = () =>
     handleInfoDetails("PersonalInfoDetailsScreen");
 
   return (
     <>
-      <Text style={commonPlanStyles.planSectorHeader}>Personal Info</Text>
+      <Text style={commonPlanStyles.planSectorHeader}>{blockTitle}</Text>
 
       <BasicSectorWrapper>
         <View style={mainStyles.subTitleContainer}>

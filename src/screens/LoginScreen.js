@@ -19,7 +19,7 @@ import { useLoginUser } from "../api/useLoginUser";
 
 export const LoginScreen = ({ onLogin }) => {
   const [userDetails, setUserDetails] = useState({
-    login: "mattEnroller",
+    login: "mattenroller",
     password: "mattEnroller1$",
   });
   const [isFocusedLogin, setIsFocusedLogin] = useState(false);

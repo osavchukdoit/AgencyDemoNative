@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import { FONTS } from "../../styles/fonts";
-import { THEME } from "../../styles/theme";
+import { FONTS } from "../styles/fonts";
+import { THEME } from "../styles/theme";
+import { RequiredField } from "../components/utils/RequiredField";
 
-export const GenderButtons = () => {
+export const Gender = (props) => {
+  const { propLabel, mandatory } = props;
   const [isMale, setMale] = useState(true);
-
   const handleMale = () => setMale(true);
-
   const handleFemale = () => setMale(false);
 
   return (
     <View style={styles.genderTitleAndButtonsWrapper}>
-      <Text style={styles.titleInfo}>Gender</Text>
+      <Text style={styles.titleInfo}>
+        {propLabel}
+        {mandatory && <RequiredField />}
+      </Text>
       <View style={styles.genderButtonsContainer}>
         <TouchableOpacity
           onPress={handleMale}
