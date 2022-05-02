@@ -1,9 +1,6 @@
 import React from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
-import PersonIconSvg from "../../assets/icons/familyInfoIcons/person.svg";
-import CalendarIconSvg from "../../assets/icons/familyInfoIcons/calendar.svg";
 import EnvelopeIconSvg from "../../assets/icons/personInfoIcons/envelope.svg";
-import ShieldIconSvg from "../../assets/icons/personInfoIcons/shield.svg";
 import PhoneIconSvg from "../../assets/icons/personInfoIcons/phone.svg";
 import MobileIconSvg from "../../assets/icons/personInfoIcons/mobile.svg";
 import GpsMarkIconSvg from "../../assets/icons/personInfoIcons/gpsMark.svg";
@@ -16,6 +13,7 @@ import { MiddleName } from "../../uiControl/MiddleName";
 import { LastName } from "../../uiControl/LastName";
 import { DateOfBirth } from "../../uiControl/DateOfBirth";
 import { Gender } from "../../uiControl/Gender";
+import { Ssn } from "../../uiControl/Ssn";
 
 export const MainPersonalInfo = () => {
   const employerBlocks = useSelector(
@@ -26,11 +24,9 @@ export const MainPersonalInfo = () => {
   );
   const profileFields = profileBlockDesc.props.PropDesc;
 
-  console.log("profileBlockDesc=", profileFields);
-
-  const fieldsRender = profileFields.map((field, index) => {
+  const fieldsRender = profileFields.map((field) => {
     const { propName, displayable } = field;
-    if (!displayable) return;
+    if (displayable === "false") return null;
     if (propName === "firstName")
       return <FirstName key={propName} {...field} />;
     if (propName === "middleName")
@@ -38,6 +34,8 @@ export const MainPersonalInfo = () => {
     if (propName === "lastName") return <LastName key={propName} {...field} />;
     if (propName === "dob") return <DateOfBirth key={propName} {...field} />;
     if (propName === "gender") return <Gender key={propName} {...field} />;
+    if (propName === "SSN") return <Ssn key={propName} {...field} />;
+    return <Text key={propName}>{propName}</Text>;
   });
 
   return (
@@ -89,11 +87,11 @@ export const MainPersonalInfo = () => {
           />
         </View>
 
-        <View style={styles.titleAndInputWrapper}>
-          <Text style={styles.titleInfo}>SSN</Text>
-          <ShieldIconSvg style={styles.inputIcon} />
-          <TextInput style={styles.textInput}>XXX-XXX-XXXX</TextInput>
-        </View>
+        {/*<View style={styles.titleAndInputWrapper}>*/}
+        {/*  <Text style={styles.titleInfo}>SSN</Text>*/}
+        {/*  <ShieldIconSvg style={styles.inputIcon} />*/}
+        {/*  <TextInput style={styles.textInput}>XXX-XXX-XXXX</TextInput>*/}
+        {/*</View>*/}
 
         <View style={styles.titleAndInputWrapper}>
           <Text style={styles.titleInfo}>Work Phone</Text>

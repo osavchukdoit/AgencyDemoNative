@@ -5,19 +5,20 @@ import { RequiredField } from "../components/utils/RequiredField";
 import { styles } from "./NameFieldStyles";
 
 export const MiddleName = (props) => {
-  const { uiControl, mandatory, propLabel } = props;
+  const { uiControl, mandatory, propLabel, editable } = props;
   return (
     <View style={styles.nameWrapper}>
       <Text style={styles.titleInfo}>
         {propLabel}
-        {mandatory && <RequiredField />}
+        {mandatory === "true" && <RequiredField />}
       </Text>
       <PersonIconSvg style={styles.inputIcon} />
-      {uiControl === "statictext" ? (
-        <Text style={[styles.textInput, styles.statictext]}></Text>
-      ) : (
-        <TextInput style={styles.textInput}>John</TextInput>
-      )}
+      <TextInput
+        editable={uiControl !== "statictext" || editable === "true"}
+        style={styles.textInput}
+      >
+        Oleh
+      </TextInput>
     </View>
   );
 };

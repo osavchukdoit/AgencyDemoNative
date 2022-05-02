@@ -1,20 +1,14 @@
 import React, { useState } from "react";
-import { Text, View, StyleSheet } from "react-native";
-import CalendarIconSvg from "../assets/icons/familyInfoIcons/calendar.svg";
+import { View, Text, StyleSheet, TextInput } from "react-native";
+import ShieldIconSvg from "../assets/icons/personInfoIcons/shield.svg";
 import { FONTS } from "../styles/fonts";
 import { THEME } from "../styles/theme";
 import { RequiredField } from "../components/utils/RequiredField";
-import { AppDatePicker } from "../components/AppDatePicker";
+import { TextInputMask } from "react-native-masked-text";
 
-export const DateOfBirth = (props) => {
-  const { mandatory, editable, propLabel } = props;
-  const [showDatePicker, setShowDatePicker] = useState(false);
-  const [date, setDate] = useState(new Date(598051730000));
-
-  const handleDatePress = () => {
-    if (editable === "false") return;
-    setShowDatePicker(true);
-  };
+export const Ssn = (props) => {
+  const { propLabel, editable, mandatory } = props;
+  const [ssnValue, setSsnValue] = useState("XXX-XXX-XXXX");
 
   return (
     <View style={styles.titleAndInputWrapper}>
@@ -22,16 +16,22 @@ export const DateOfBirth = (props) => {
         {propLabel}
         {mandatory === "true" && <RequiredField />}
       </Text>
-      <CalendarIconSvg style={styles.inputIcon} />
-      <Text style={styles.dateText} onPress={handleDatePress}>
-        {date.toLocaleDateString("en-US")}
-      </Text>
-      <AppDatePicker
-        date={date}
-        setDate={setDate}
-        show={showDatePicker}
-        setShow={setShowDatePicker}
-      />
+      <ShieldIconSvg style={styles.inputIcon} />
+      {editable === "true" ? (
+        <TextInputMask
+          type={"custom"}
+          options={{
+            mask: "999-999-9999",
+          }}
+          value={ssnValue}
+          onChangeText={setSsnValue}
+          style={styles.textInput}
+        />
+      ) : (
+        <TextInput editable={false} style={styles.textInput}>
+          XXX-XXX-XXXX
+        </TextInput>
+      )}
     </View>
   );
 };
@@ -51,16 +51,16 @@ const styles = StyleSheet.create({
   },
   inputIcon: {
     position: "absolute",
-    top: 46,
+    bottom: 16,
     left: 20,
-    zIndex: 1,
+    zIndex: 9,
   },
-  dateText: {
+  textInput: {
     height: 49,
     backgroundColor: THEME.BACKGROUND.LIGHT_BLUE,
     fontFamily: FONTS.AVENIR.HEAVY,
     fontSize: 16,
-    lineHeight: 49,
+    lineHeight: 22,
     color: THEME.COLOR.DARK_BLUE_TEXT,
     borderRadius: 10,
     paddingLeft: 51,

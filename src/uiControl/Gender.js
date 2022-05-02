@@ -5,7 +5,7 @@ import { THEME } from "../styles/theme";
 import { RequiredField } from "../components/utils/RequiredField";
 
 export const Gender = (props) => {
-  const { propLabel, mandatory } = props;
+  const { propLabel, mandatory, editable } = props;
   const [isMale, setMale] = useState(true);
   const handleMale = () => setMale(true);
   const handleFemale = () => setMale(false);
@@ -14,10 +14,11 @@ export const Gender = (props) => {
     <View style={styles.genderTitleAndButtonsWrapper}>
       <Text style={styles.titleInfo}>
         {propLabel}
-        {mandatory && <RequiredField />}
+        {mandatory === "true" && <RequiredField />}
       </Text>
       <View style={styles.genderButtonsContainer}>
         <TouchableOpacity
+          disabled={editable === "false"}
           onPress={handleMale}
           style={[styles.genderButton, isMale && styles.additionalButtonColor]}
         >
@@ -26,6 +27,7 @@ export const Gender = (props) => {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
+          disabled={editable === "false"}
           onPress={handleFemale}
           style={[styles.genderButton, !isMale && styles.additionalButtonColor]}
         >
