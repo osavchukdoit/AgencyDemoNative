@@ -9,6 +9,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { PersonalInfoDetailsScreen } from "./PersonalInfoDetailsScreen";
 import { EmploymentInfoDetailsScreen } from "./EmploymentInfoDetailsScreen";
 import { DependantsInfoDetailsScreen } from "./DependantsInfoDetailsScreen";
+import { useSelector } from "react-redux";
 
 export const FamilyInfoOverviewNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -40,12 +41,24 @@ export const FamilyInfoOverviewScreen = ({ navigation }) => {
     navigation.navigate(editScreen);
   };
 
+  const { pageDesc } = useSelector((state) => state);
+  const pageDescriptor = pageDesc.pageDesc;
+  const pageBlocks = pageDescriptor.blocks;
+  const employerBlocks = pageBlocks.BlockDesc;
+
+  const profileBlockDesc = employerBlocks.find(
+    ({ blockName }) => blockName === "Profile"
+  );
+
   return (
     <>
       <ScrollView stickyHeaderIndices={[0]}>
         <FamilyInfoTop />
         <View style={styles.wrapper}>
-          <PersonalInfoItem handleInfoDetails={handleInfoDetails} />
+          <PersonalInfoItem
+            profileBlockDesc={profileBlockDesc}
+            handleInfoDetails={handleInfoDetails}
+          />
           <EmploymentInfoItem handleInfoDetails={handleInfoDetails} />
           <DependantsInfoItem handleInfoDetails={handleInfoDetails} />
         </View>
