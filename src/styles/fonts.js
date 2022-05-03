@@ -6,4 +6,8 @@ export const FONTS = {
     MEDIUM: "AvenirMedium",
     ROMAN: "AvenirRoman",
   },
+
+  LETTER_SPACING: {
+    DEFAULT: -0.28,
+  },
 };

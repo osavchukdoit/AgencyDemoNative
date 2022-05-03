@@ -7,7 +7,7 @@ export const commonPlanStyles = StyleSheet.create({
     fontFamily: FONTS.AVENIR.HEAVY,
     fontSize: 16,
     lineHeight: 22,
-    letterSpacing: -0.28,
+    letterSpacing: FONTS.LETTER_SPACING.DEFAULT,
     marginBottom: 10,
     color: THEME.COLOR.GREY_DARK_TEXT,
   },

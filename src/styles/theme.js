@@ -23,6 +23,9 @@ export const THEME = {
     GREY_BORDER: "#B0B0B0",
     GREY_MEDIUM_TEXT: "#414040",
     GREY_LIGHT_RGBA: "rgba(29, 37, 43, 0.38)",
+    GREY_LIGHT_BORDER: "rgba(29, 37, 43, 0.05)",
+    GREY_LIGHT_SHADOW: "rgba(112, 112, 112, 0.05)",
+    GREY_MODAL_DROPDOWN: "#dbdbdb",
     BLUE_LIGHT: "#E5E5E5",
     BLUE_DARK_RGBA: "rgba(29, 37, 43, 0.93)",
     DARK_BLUE_TEXT: "#1A3C5A",
@@ -39,6 +42,7 @@ export const THEME = {
     BENEFIT_LABEL_SELECTED: "rgba(67,190,187,0.8)",
     BENEFIT_SELECTED_MARK: "#002D4F",
     BENEFIT_NOT_SELECTED_MARK: "rgba(0,45,79,0.8)",
+    PLACEHOLDER_TEXT: "#B4B4B4",
   },
   BOX_SHADOW: {
     COLOR_BLACK: "#000",
@@ -68,5 +72,6 @@ export const THEME = {
     ENROLLMENT_NAVIGATION_TAB_BAR_PROGRESS_ACTIVE: "#2A6D75",
     ENROLLMENT_NAVIGATION_TAB_BAR: "#fff",
     BENEFITS_OVERVIEW_ICON: "rgba(67, 190, 187, 0.1)",
+    MODAL_WINDOW: "rgba(0, 0, 0, 0.3)",
   },
 };

@@ -37,7 +37,7 @@ export default StyleSheet.create({
     fontFamily: FONTS.AVENIR.HEAVY,
     fontSize: 16,
     lineHeight: 22,
-    letterSpacing: -0.28,
+    letterSpacing: FONTS.LETTER_SPACING.DEFAULT,
   },
 
   selectedButtonAndTextWrapper: {
@@ -71,7 +71,7 @@ export default StyleSheet.create({
     fontFamily: FONTS.AVENIR.ROMAN,
     fontSize: 14,
     lineHeight: 19,
-    letterSpacing: -0.28,
+    letterSpacing: FONTS.LETTER_SPACING.DEFAULT,
     color: THEME.COLOR.BLACK,
   },
 });

@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 19,
     color: THEME.COLOR.DARK_BLUE_TEXT,
-    letterSpacing: -0.28,
+    letterSpacing: FONTS.LETTER_SPACING.DEFAULT,
   },
 
   checkedButtonText: {

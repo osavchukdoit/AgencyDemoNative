@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.AVENIR.ROMAN,
     fontSize: 12,
     lineHeight: 21,
-    letterSpacing: -0.28,
+    letterSpacing: FONTS.LETTER_SPACING.DEFAULT,
   },
 
   imageTopTextDown: {
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.AVENIR.ROMAN,
     fontSize: 14,
     lineHeight: 18,
-    letterSpacing: -0.28,
+    letterSpacing: FONTS.LETTER_SPACING.DEFAULT,
     color: THEME.COLOR.GREY_LIGHT_TEXT,
   },
 });

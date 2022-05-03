@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, View, StyleSheet, ScrollView } from "react-native";
 import { OpenEnrollmentTerm } from "../components/submitPage/OpenEnrollmentTerm";
 import { EnrollmentInfoTop } from "../components/utils/topComponents/EnrollmentInfoTop";
@@ -15,6 +15,8 @@ import { SubmitTotalCost } from "../components/submitPage/SubmitTotalCost";
 import { THEME } from "../styles/theme";
 import { FONTS } from "../styles/fonts";
 import { SubmitDisclaimersPoints } from "../components/submitPage/SubmitDisclaimersPoints";
+import { ModalWindow } from "../components/utils/ModalWindow";
+import { WindowCompletingEnrollment } from "../components/utils/WindowCompletingEnrollment";
 
 const personOptions = [
   {
@@ -29,9 +31,19 @@ const personOptions = [
   },
 ];
 
-export const SubmitScreen = () => {
+export const SubmitScreen = ({ navigation }) => {
+  const [modalVisible, setModalVisible] = useState(true);
+  const handleModalVisible = () => setModalVisible(true);
+  const handleModalInvisible = () => setModalVisible(false);
+
   return (
     <ScrollView stickyHeaderIndices={[0]}>
+      <ModalWindow isVisible={modalVisible}>
+        <WindowCompletingEnrollment
+          navigation={navigation}
+          onCancel={handleModalInvisible}
+        />
+      </ModalWindow>
       <EnrollmentInfoTop
         title={"Please review your elections below"}
         subtitle={
@@ -58,7 +70,10 @@ export const SubmitScreen = () => {
           );
         })}
 
-        <SubmitTotalCost options={submitOptions} />
+        <SubmitTotalCost
+          options={submitOptions}
+          onModalVisible={handleModalVisible}
+        />
 
         <Text
           style={[
