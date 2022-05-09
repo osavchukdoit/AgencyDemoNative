@@ -38,13 +38,16 @@ export const uiControlStyles = StyleSheet.create({
 
   textInput: {
     height: 49,
-    backgroundColor: THEME.BACKGROUND.LIGHT_BLUE,
+    backgroundColor: "transparent",
     fontFamily: FONTS.AVENIR.HEAVY,
     fontSize: 16,
     lineHeight: 22,
     color: THEME.COLOR.DARK_BLUE_TEXT,
     borderRadius: 10,
     paddingLeft: 51,
+  },
+  textInputEditable: {
+    backgroundColor: THEME.BACKGROUND.LIGHT_BLUE,
   },
 
   textInputLessSize: {

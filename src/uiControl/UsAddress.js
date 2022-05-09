@@ -27,8 +27,10 @@ export const GooglePlacesInput = ({ editable }) => {
       styles={{
         textInputContainer: [
           uiControlStyles.textInputBorderFocus,
+          editable === "true" && uiControlStyles.textInputEditable,
           { paddingLeft: 40 },
         ],
+        textInput: [editable === "true" && uiControlStyles.textInputEditable],
       }}
     />
   );

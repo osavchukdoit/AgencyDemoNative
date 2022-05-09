@@ -6,11 +6,19 @@ import ArrowRightSvg from "../../assets/icons/familyInfoIcons/vectorRight.svg";
 import mainStyles from "./FamilyInfoItemStyles";
 import { commonPlanStyles } from "../../styles/commonPlanStyles";
 import { BasicSectorWrapper } from "../utils/BasicSectorWrapper";
+import { useFormikContext } from "formik";
+import { fullNameOf } from "../../api/utils";
 
 export const PersonalInfoItem = ({ profileBlockDesc, handleInfoDetails }) => {
   const { blockTitle } = profileBlockDesc;
+  const {
+    values,
+    errors,
+  } = useFormikContext();
 
-  const [isWarning, setIsWarning] = useState(true);
+  const employeeFullName = fullNameOf(values.employee);
+
+  const [isWarning, setIsWarning] = useState(false);
 
   const handlePersonalInfo = () =>
     handleInfoDetails("PersonalInfoDetailsScreen");
@@ -21,7 +29,7 @@ export const PersonalInfoItem = ({ profileBlockDesc, handleInfoDetails }) => {
 
       <BasicSectorWrapper>
         <View style={mainStyles.subTitleContainer}>
-          <Text style={mainStyles.subTitle}>John Doe</Text>
+          <Text style={mainStyles.subTitle}>{employeeFullName}</Text>
           {isWarning && (
             <View style={mainStyles.warningTextContainer}>
               <InfoCircleSvg />

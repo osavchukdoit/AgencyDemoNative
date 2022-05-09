@@ -26,6 +26,7 @@ export const DateControl = (props) => {
         style={[
           uiControlStyles.textInputBorderFocus,
           uiControlStyles.textInput,
+          editable === "true" && uiControlStyles.textInputEditable,
           styles.dateText,
           !showDatePicker && uiControlStyles.textInputBorderBlurTransparent,
         ]}

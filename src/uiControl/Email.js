@@ -32,7 +32,7 @@ export const Email = (props) => {
       <ControlTextInput
         placeholder={"Enter your email address"}
         keyboardType={"email-address"}
-        editable={editable === "true"}
+        editable={editable}
         value={fieldValue}
         onChangeText={handleChange(fieldName)}
         errorMessage={errorMessage}

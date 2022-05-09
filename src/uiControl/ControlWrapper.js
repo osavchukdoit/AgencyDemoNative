@@ -6,15 +6,9 @@ import { RequiredField } from "../components/utils/RequiredField";
 
 export const ControlWrapper = (props) => {
   const { propLabel, mandatory, children, propName } = props;
-  const fixedWidthFields = ["firstName", "middleName", "lastName"];
 
   return (
-    <View
-      style={[
-        styles.wrapper,
-        fixedWidthFields.includes(propName) && { width: 152 },
-      ]}
-    >
+    <View style={[styles.wrapper]}>
       <Text style={styles.title}>
         {propLabel}
         {mandatory === "true" && <RequiredField />}

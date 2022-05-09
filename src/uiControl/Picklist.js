@@ -63,6 +63,7 @@ export const Picklist = (props) => {
           style={[
             uiControlStyles.textInputBorderFocus,
             uiControlStyles.textInput,
+            editable === "true" && uiControlStyles.textInputEditable,
             styles.picklistValue,
             !isVisible && uiControlStyles.textInputBorderBlurTransparent,
           ]}
@@ -88,7 +89,10 @@ export const Picklist = (props) => {
             }}
             enabled={editable === "true"}
             mode={"dropdown"}
-            style={[!isIos && styles.picklistValueAndroid]}
+            style={[
+              !isIos && styles.picklistValueAndroid,
+              editable === "true" && uiControlStyles.textInputEditable,
+            ]}
           >
             {picklistOptions?.map((option) => (
               <Picker.Item key={option.value} {...option} />

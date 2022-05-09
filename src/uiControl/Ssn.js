@@ -30,6 +30,7 @@ export const Ssn = (props) => {
           style={[
             uiControlStyles.textInputBorderFocus,
             uiControlStyles.textInput,
+            uiControlStyles.textInputEditable,
             !isFocused && uiControlStyles.textInputBorderBlurTransparent,
             errorMessage && uiControlStyles.textInputError,
           ]}

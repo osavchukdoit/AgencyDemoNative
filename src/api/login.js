@@ -1,5 +1,5 @@
 import { encode as btoa } from "base-64";
-import { GATEWAY_SERVICES_URL } from "../constants";
+import { LOGIN_URL } from "../constants";
 
 export const login = async ({ login, password }) => {
   const base64EncodedAuth = btoa(`${login}:${password}`);
@@ -10,12 +10,9 @@ export const login = async ({ login, password }) => {
   };
 
   try {
-    const response = await fetch(
-      `${GATEWAY_SERVICES_URL}/authservice/authenroller?media=json`,
-      {
-        headers: headers,
-      }
-    );
+    const response = await fetch(LOGIN_URL, {
+      headers: headers,
+    });
     const result = await response.json();
     return result;
   } catch (e) {

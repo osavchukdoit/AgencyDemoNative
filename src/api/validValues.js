@@ -7,6 +7,6 @@ export const getValidValues = async (jwt, propName) => {
     const result = values.ValidValues.ValidValue;
     return result;
   } catch (e) {
-    console.error("Failed to get 'PageDesc'", e);
+    console.error("Failed to get 'ValidValues'", e);
   }
 };

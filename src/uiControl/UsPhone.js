@@ -26,6 +26,7 @@ export const UsPhone = (props) => {
         onChangeText={setPhoneValue}
         style={[
           uiControlStyles.textInputBorderFocus,
+          editable === "true" && uiControlStyles.textInputEditable,
           !isFocused && uiControlStyles.textInputBorderBlur,
         ]}
         placeholder={placeholder}

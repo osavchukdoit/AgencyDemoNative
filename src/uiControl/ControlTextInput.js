@@ -3,7 +3,7 @@ import { uiControlStyles } from "./uiControlStyles";
 import { TextInput, Text } from "react-native";
 
 export const ControlTextInput = (props) => {
-  const { style, children, errorMessage = null, onBlur } = props;
+  const { additionalStyle, children, errorMessage = null, onBlur = () => {}, editable } = props;
   const [isFocused, setIsFocused] = useState(false);
 
   return (
@@ -14,7 +14,8 @@ export const ControlTextInput = (props) => {
         style={[
           uiControlStyles.textInputBorderFocus,
           !isFocused && uiControlStyles.textInputBorderBlur,
-          style && style,
+          editable === "true" && uiControlStyles.textInputEditable,
+          additionalStyle && additionalStyle,
           errorMessage && uiControlStyles.textInputError,
         ]}
         onFocus={() => setIsFocused(true)}
@@ -22,6 +23,7 @@ export const ControlTextInput = (props) => {
           setIsFocused(false);
           onBlur();
         }}
+        editable={editable === "true"}
         {...props}
       >
         {children}

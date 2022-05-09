@@ -1,4 +1,5 @@
 import React from "react";
+import { StyleSheet } from "react-native";
 import PersonIconSvg from "../assets/icons/familyInfoIcons/person.svg";
 import { ControlWrapper } from "./ControlWrapper";
 import { uiControlStyles } from "./uiControlStyles";
@@ -15,11 +16,21 @@ export const StaticText = (props) => {
     <ControlWrapper {...props}>
       <PersonIconSvg style={uiControlStyles.inputIcon} />
       <ControlTextInput
-        editable={editable === "true"}
+        editable={editable}
         value={fieldValue}
         onChangeText={handleChange(fieldName)}
-        style={uiControlStyles.textInput}
+        additionalStyle={[
+          editable === "true"
+            ? [uiControlStyles.textInput, uiControlStyles.textInputEditable]
+            : staticTextStyles.textInput,
+        ]}
       />
     </ControlWrapper>
   );
 };
+
+const staticTextStyles = StyleSheet.create({
+  textInput: {
+    borderColor: "transparent",
+  },
+});
