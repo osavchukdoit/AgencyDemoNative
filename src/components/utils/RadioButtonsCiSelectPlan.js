@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
 import { THEME } from "../../styles/theme";
-import { FONTS } from "../../styles/fonts";
 import styles from "./RadioButtonsYesNoStyles";
 
 export const RadioButtonsCiSelectPlan = () => {
   const [isValue, setValue] = useState(null);
   return (
-    <View style={[styles.radioButonsWrapper, styles.additionalMargin]}>
+    <View style={[styles.radioButtonsWrapper, styles.additionalMargin]}>
       <TouchableOpacity
         style={styles.radioButtonAndTextWrapper}
         onPress={() => setValue(true)}

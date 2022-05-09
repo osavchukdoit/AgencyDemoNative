@@ -3,7 +3,7 @@ import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
 
 export default StyleSheet.create({
-  radioButonsWrapper: {
+  radioButtonsWrapper: {
     flexDirection: "row",
     alignItems: "center",
   },

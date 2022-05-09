@@ -5,7 +5,7 @@ import styles from "./RadioButtonsYesNoStyles";
 export const RadioButtonsYesNo = () => {
   const [isValue, setValue] = useState(null);
   return (
-    <View style={[styles.radioButonsWrapper, styles.additionalMargin]}>
+    <View style={[styles.radioButtonsWrapper, styles.additionalMargin]}>
       <TouchableOpacity
         style={styles.radioButtonAndTextWrapper}
         onPress={() => setValue(true)}
