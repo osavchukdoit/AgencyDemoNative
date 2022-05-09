@@ -1,0 +1,30 @@
+export const US = "United States";
+export const DEFAULT_EMPLOYEE_VALUES = {
+  firstName: "John",
+  middleName: "Tester",
+  lastName: "Terry",
+  dob: "",
+  gender: "",
+  SSN: "",
+  countryOfCitizenship: US,
+  stateOfBirth: "",
+  address: "",
+  email: "",
+  phone: "",
+  mobilePhone: "",
+  employerEmployeeIdentifier: "",
+  jobTitle: "",
+  annualSalary: 0,
+  employeeBenefitClass: "",
+  employeeLocation: "",
+  unionName: "",
+  hoursWorkedPerWeek: 40,
+  dateofhire: "",
+  employeeType: "Fulltime",
+  heightInFeetAndInches: undefined,
+  weightInPounds: undefined,
+  enrolledProducts: [], // data from the benefits tab may go here
+  enrolledBeneficiaries: [], // data from the benefits tab may also go here, see beneficiaries,
+  testEmployee: false, // denotes that the employee is created for test purposes
+  tobaccoUse: undefined,
+};

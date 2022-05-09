@@ -18,7 +18,7 @@ import ShieldSvg from "../../assets/icons/personInfoIcons/shield.svg";
 import { DependantsRadioButtons } from "../utils/DependantsRadioButtons.js";
 import { RadioButtonsYesNo } from "../utils/RadioButtonsYesNo.js";
 import { BasicSectorWrapper } from "../utils/BasicSectorWrapper.js";
-import { Gender } from "../../uiControl/Gender.js";
+// import { Gender } from "../../uiControl/Gender.js";
 
 const dependantsOptions = [
   { title: "Spouse", id: 1 },
@@ -89,7 +89,8 @@ export const MainDependantsInfo = () => {
           ></TextInput>
         </View>
 
-        <Gender />
+        {/*<Gender />*/}
+        <Text>Gender</Text>
 
         <View
           style={[styles.titleAndInputWrapper, localStyles.additionalMargin]}

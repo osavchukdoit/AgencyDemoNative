@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { THEME } from "../styles/theme";
+import { CONSTANTS } from "../constants";
 
 export const AppDatePicker = ({ date, setDate, show, setShow }) => {
   const onChange = (event, selectedDate) => {
@@ -15,7 +16,7 @@ export const AppDatePicker = ({ date, setDate, show, setShow }) => {
     setShow(false);
     setDate(currentDate);
   };
-  const isIos = Platform.OS === "ios";
+  const isIos = Platform.OS === CONSTANTS.OS.ios;
   const pickerDisplay = isIos ? "inline" : "default";
 
   if (!show) return null;

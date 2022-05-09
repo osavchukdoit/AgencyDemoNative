@@ -1,14 +1,8 @@
 import { StyleSheet } from "react-native";
-import { THEME } from "../../styles/theme";
-import { FONTS } from "../../styles/fonts";
+import { FONTS } from "../styles/fonts";
+import { THEME } from "../styles/theme";
 
-export default StyleSheet.create({
-  twoRowElements: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 16,
-  },
-
+export const uiControlStyles = StyleSheet.create({
   nameWrapper: {
     width: "48%",
     position: "relative",
@@ -37,9 +31,9 @@ export default StyleSheet.create({
 
   inputIcon: {
     position: "absolute",
-    bottom: 16,
+    top: 46,
     left: 20,
-    zIndex: 9,
+    zIndex: 1,
   },
 
   textInput: {
@@ -51,6 +45,12 @@ export default StyleSheet.create({
     color: THEME.COLOR.DARK_BLUE_TEXT,
     borderRadius: 10,
     paddingLeft: 51,
+  },
+
+  textInputLessSize: {
+    fontSize: 14,
+    lineHeight: 20,
+    fontFamily: FONTS.AVENIR.HEAVY,
   },
 
   textInputLessGreySize: {
@@ -69,7 +69,7 @@ export default StyleSheet.create({
     height: 49,
     fontFamily: FONTS.AVENIR.MEDIUM,
     fontSize: 14,
-    lineHeight: 20,
+    lineHeight: 18,
     color: THEME.COLOR.DARK_BLUE_TEXT,
     borderRadius: 10,
     paddingLeft: 51,
@@ -84,6 +84,9 @@ export default StyleSheet.create({
 
   textInputBorderBlur: {
     borderColor: THEME.COLOR.LIGHT_BORDER,
+  },
+  textInputBorderBlurTransparent: {
+    borderColor: "transparent",
   },
 
   titleAndInputWrapper: {
@@ -147,5 +150,11 @@ export default StyleSheet.create({
 
   saveButtonWrapper: {
     alignItems: "center",
+  },
+  textInputError: {
+    borderColor: THEME.COLOR.WARNING_TEXT,
+  },
+  textError: {
+    color: THEME.COLOR.WARNING_TEXT,
   },
 });

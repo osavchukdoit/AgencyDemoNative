@@ -7,8 +7,11 @@ import { Loader } from "./src/components/utils/Loader";
 import { setLoggedIn, setLoggedOut } from "./src/redux/actions/actionCreator";
 import { StatusBar } from "react-native";
 import * as Font from "expo-font";
+import { Formik } from "formik";
+import { useInitialFormikValues } from "./src/form/useInitialFormikValues";
+import { newYupSchema } from "./src/form/yup-schema";
 
-function ToCoverAppByProvider() {
+function UncoveredApp() {
   const { isLogged, loaderStatus } = useSelector((state) => state.utils);
   const { visible: isLoading } = loaderStatus;
   const dispatch = useDispatch();
@@ -32,6 +35,7 @@ function ToCoverAppByProvider() {
 
 export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
+  const initialFormikValues = useInitialFormikValues();
 
   async function loadFonts() {
     await Font.loadAsync({
@@ -48,10 +52,22 @@ export default function App() {
     loadFonts();
   }, []);
 
+  const validationSchema = newYupSchema();
+
   if (fontsLoaded) {
     return (
       <Provider store={store}>
-        <ToCoverAppByProvider />
+        <Formik
+          initialValues={initialFormikValues}
+          onSubmit={(values) => console.log("values=", values)}
+          validationSchema={validationSchema}
+        >
+          {(props) => {
+            const { handleChange, handleBlur, handleSubmit, values } = props;
+
+            return <UncoveredApp />;
+          }}
+        </Formik>
       </Provider>
     );
   }

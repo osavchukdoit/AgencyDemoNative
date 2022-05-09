@@ -1,19 +1,16 @@
 import React from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
-import EnvelopeIconSvg from "../../assets/icons/personInfoIcons/envelope.svg";
-import PhoneIconSvg from "../../assets/icons/personInfoIcons/phone.svg";
-import MobileIconSvg from "../../assets/icons/personInfoIcons/mobile.svg";
-import GpsMarkIconSvg from "../../assets/icons/personInfoIcons/gpsMark.svg";
+import { View, Text, TouchableOpacity } from "react-native";
 import styles from "./stylesMainPersonalInfo";
-import { RadioButtonsYesNo } from "../utils/RadioButtonsYesNo";
 import { BasicSectorWrapper } from "../utils/BasicSectorWrapper";
 import { useSelector } from "react-redux";
-import { FirstName } from "../../uiControl/FirstName";
-import { MiddleName } from "../../uiControl/MiddleName";
-import { LastName } from "../../uiControl/LastName";
-import { DateOfBirth } from "../../uiControl/DateOfBirth";
-import { Gender } from "../../uiControl/Gender";
+import { DateControl } from "../../uiControl/DateControl";
 import { Ssn } from "../../uiControl/Ssn";
+import { Picklist } from "../../uiControl/Picklist";
+import { Email } from "../../uiControl/Email";
+import { UsPhone } from "../../uiControl/UsPhone";
+import { UsAddress } from "../../uiControl/UsAddress";
+import { StaticText } from "../../uiControl/StaticText";
+import { RadioButton } from "../../uiControl/RadioButton";
 
 export const MainPersonalInfo = () => {
   const employerBlocks = useSelector(
@@ -27,14 +24,25 @@ export const MainPersonalInfo = () => {
   const fieldsRender = profileFields.map((field) => {
     const { propName, displayable } = field;
     if (displayable === "false") return null;
-    if (propName === "firstName")
-      return <FirstName key={propName} {...field} />;
-    if (propName === "middleName")
-      return <MiddleName key={propName} {...field} />;
-    if (propName === "lastName") return <LastName key={propName} {...field} />;
-    if (propName === "dob") return <DateOfBirth key={propName} {...field} />;
-    if (propName === "gender") return <Gender key={propName} {...field} />;
+    if (
+      propName === "firstName" ||
+      propName === "middleName" ||
+      propName === "lastName"
+    )
+      return <StaticText key={propName} {...field} />;
+    if (propName === "dob") return <DateControl key={propName} {...field} />;
+    if (propName === "gender") return <RadioButton key={propName} {...field} />;
     if (propName === "SSN") return <Ssn key={propName} {...field} />;
+    if (propName === "countryOfCitizenship")
+      return <Picklist key={propName} {...field} />;
+    if (propName === "birthState")
+      return <Picklist key={propName} {...field} />;
+    if (propName === "email") return <Email key={propName} {...field} />;
+    if (propName === "mobilePhone")
+      return <UsPhone key={propName} {...field} />;
+    if (propName === "homeAddress")
+      return <UsAddress key={propName} {...field} />;
+
     return <Text key={propName}>{propName}</Text>;
   });
 
@@ -51,102 +59,20 @@ export const MainPersonalInfo = () => {
           {fieldsRender}
         </View>
 
-        {/*<View style={styles.twoRowElements}>*/}
-        {/*  <View style={styles.nameWrapper}>*/}
-        {/*    <Text style={styles.titleInfo}>*/}
-        {/*      First Name<Text style={styles.notifyStar}>*</Text>*/}
-        {/*    </Text>*/}
-        {/*    <PersonIconSvg style={styles.inputIcon} />*/}
-        {/*    <TextInput style={styles.textInput}>John</TextInput>*/}
-        {/*  </View>*/}
-        {/*  <View style={styles.nameWrapper}>*/}
-        {/*    <Text style={styles.titleInfo}>*/}
-        {/*      Last Name<Text style={styles.notifyStar}>*</Text>*/}
-        {/*    </Text>*/}
-        {/*    <PersonIconSvg style={styles.inputIcon} />*/}
-        {/*    <TextInput style={styles.textInput}>Doe</TextInput>*/}
-        {/*  </View>*/}
-        {/*</View>*/}
+        {/*<Text style={styles.questionText}>*/}
+        {/*  Have you used any tobacco products (such as cigarettes, cigars, sniff,*/}
+        {/*  dip, chew or pipe) or any nicotine delivery system in the past 12*/}
+        {/*  months?**/}
+        {/*</Text>*/}
 
-        {/*<View style={styles.titleAndInputWrapper}>*/}
-        {/*  <Text style={styles.titleInfo}>*/}
-        {/*    Date of Birth<Text style={styles.notifyStar}>*</Text>*/}
-        {/*  </Text>*/}
-        {/*  <CalendarIconSvg style={styles.inputIcon} />*/}
-        {/*  <TextInput style={styles.textInput}>09/09/1990</TextInput>*/}
-        {/*</View>*/}
-
-        {/*<GenderButtons />*/}
-
-        <View style={styles.titleAndInputWrapper}>
-          <Text style={styles.titleInfo}>Email</Text>
-          <EnvelopeIconSvg style={styles.inputIcon} />
-          <TextInput
-            style={styles.textInputBorderFocus}
-            placeholder={"Enter your email address"}
-          />
-        </View>
-
-        {/*<View style={styles.titleAndInputWrapper}>*/}
-        {/*  <Text style={styles.titleInfo}>SSN</Text>*/}
-        {/*  <ShieldIconSvg style={styles.inputIcon} />*/}
-        {/*  <TextInput style={styles.textInput}>XXX-XXX-XXXX</TextInput>*/}
-        {/*</View>*/}
-
-        <View style={styles.titleAndInputWrapper}>
-          <Text style={styles.titleInfo}>Work Phone</Text>
-          <PhoneIconSvg style={styles.inputIcon} />
-          <TextInput
-            style={styles.textInputBorderFocus}
-            placeholder={"Enter your phone number"}
-          />
-        </View>
-
-        <View style={styles.titleAndInputWrapper}>
-          <Text style={styles.titleInfo}>Mobile Phone</Text>
-          <MobileIconSvg style={styles.inputIcon} />
-          <TextInput
-            style={styles.textInputBorderFocus}
-            placeholder={"Enter your mobile number"}
-          />
-        </View>
-
-        <View
-          style={[styles.titleAndInputWrapper, styles.additionalMarginBiger]}
-        >
-          <Text style={[styles.titleInfo, styles.additionalMarginLess]}>
-            Address<Text style={styles.notifyStar}>*</Text>
-          </Text>
-          <Text style={styles.subText}>
-            Must be selected from the google list that will populate once you
-            enter your complete address including city, state and zip code. If
-            you have an apartment number, please enter it with a comma before
-            the city (for example: Apt 310, Any City)
-          </Text>
-          <GpsMarkIconSvg style={styles.inputIcon} />
-          <TextInput
-            style={[
-              styles.textInputBorderFocus,
-              styles.textInputBorderBlur,
-              styles.textInputLessSize,
-            ]}
-          >
-            12-3 Bayard, LL2394 St Staten Island
-          </TextInput>
-        </View>
-
-        <Text style={styles.questionText}>
-          Have you used any tobacco products (such as cigarettes, cigars, sniff,
-          dip, chew or pipe) or any nicotine delivery system in the past 12
-          months?*
-        </Text>
-
-        <RadioButtonsYesNo />
+        {/*<RadioButtonsYesNo />*/}
       </BasicSectorWrapper>
 
       <View style={styles.saveButtonWrapper}>
         <TouchableOpacity style={styles.saveButton}>
-          <Text style={styles.saveButtonText}>Save</Text>
+          <Text style={styles.saveButtonText}>
+            {profileBlockDesc.submitLabel}
+          </Text>
         </TouchableOpacity>
       </View>
     </>
