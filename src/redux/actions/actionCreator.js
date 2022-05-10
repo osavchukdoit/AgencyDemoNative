@@ -6,6 +6,8 @@ import {
   SET_PAGE_DESC,
   SET_TOKEN,
   SET_ENROLL_WAIVE_VISIBLE,
+  SET_USER_MODEL,
+  SET_DOMAIN_MODEL,
 } from "../actionTypes";
 
 /**
@@ -66,5 +68,24 @@ export const clearPageDesc = () => ({ type: CLEAR_PAGE_DESC });
  */
 export const setEnrollWaiveVisible = (payload) => ({
   type: SET_ENROLL_WAIVE_VISIBLE,
+  payload,
+});
+
+/**
+ * Stores logged in user data as `user` object.
+ *
+ * @param {object} payload user details
+ * @returns {{payload, type: string}}
+ */
+export const setUserModel = (payload) => ({ type: SET_USER_MODEL, payload });
+
+/**
+ * Stores user data obtained from the `find` page descriptor URL.
+ *
+ * @param {object} payload domain user data
+ * @returns {{payload, type: string}}
+ */
+export const setDomainModel = (payload) => ({
+  type: SET_DOMAIN_MODEL,
   payload,
 });

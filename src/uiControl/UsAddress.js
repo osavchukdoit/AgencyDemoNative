@@ -12,14 +12,14 @@ export const GooglePlacesInput = ({ editable }) => {
       placeholder="Search"
       onPress={(data, details = null) => {
         // 'details' is provided when fetchDetails = true
-        console.log(data, details);
+        console.info(data, details);
       }}
       query={{
         key: GOOGLE_API_KEY,
         language: "en",
       }}
       onFail={(error) => {
-        console.log("error=", error);
+        console.error("error=", error);
       }}
       // textInputProps={{
       //   editable: editable === "true",

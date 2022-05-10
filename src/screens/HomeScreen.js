@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ScrollView, View, StyleSheet } from "react-native";
 import { BenefitGroups } from "../components/homePage/BenefitGroups";
 import { ButtonEnrollment } from "../components/homePage/ButtonEnrollment";
@@ -10,8 +10,25 @@ import UmbrelaSvg from "../assets/icons/plans/term.svg";
 import ThermometrSvg from "../assets/icons/plans/ci.svg";
 import HospitalBedSvg from "../assets/icons/plans/hospital.svg";
 import { HomeAndPostTop } from "../components/utils/topComponents/HomeAndPostTop";
+import { useDispatch, useSelector } from "react-redux";
+import { getDomainModel } from "../api/domainModel";
+import { setDomainModel } from "../redux/actions/actionCreator";
+import { useFillDynamicUrl } from "../api/useFillDynamicUrl";
 
 export const HomeScreen = ({ navigation }) => {
+  const state = useSelector((state) => state);
+  const { jwt } = useSelector((state) => state.utils);
+  const dispatch = useDispatch();
+  const fillDynamicUrl = useFillDynamicUrl();
+
+  useEffect(() => {
+    const findDomainModelUrl = state?.pageDesc?.pageDesc?.datamodelFindGETURL;
+    const domainUrl = fillDynamicUrl(findDomainModelUrl);
+    getDomainModel(domainUrl, jwt).then((domainModel) => {
+      dispatch(setDomainModel(domainModel));
+    });
+  }, []);
+
   return (
     <>
       <ScrollView stickyHeaderIndices={[0]} style={styles.scrollContainer}>

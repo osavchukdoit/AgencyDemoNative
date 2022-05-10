@@ -19,8 +19,8 @@ import { useLoginUser } from "../api/useLoginUser";
 
 export const LoginScreen = ({ onLogin }) => {
   const [userDetails, setUserDetails] = useState({
-    login: "mattenroller",
-    password: "mattEnroller1$",
+    login: "kathleenbrowntest",
+    password: "kathleenBrowntest1$",
   });
   const [isFocusedLogin, setIsFocusedLogin] = useState(false);
   const [isFocusedPassword, setIsFocusedPassword] = useState(false);
@@ -61,9 +61,10 @@ export const LoginScreen = ({ onLogin }) => {
   const onUserLogin = () => {
     dispatch(setLoader({ visible: true, text: "Loading..." }));
     login(userDetails).then((userDetails) => {
-      loginUser(userDetails);
-      dispatch(setLoader({ visible: false, text: "" }));
-      onLogin({ userName: userDetails.HitfUser.fullName });
+      loginUser(userDetails).then(() => {
+        onLogin({ userName: userDetails.HitfUser.fullName });
+        dispatch(setLoader({ visible: false, text: "" }));
+      });
     });
   };
 

@@ -13,7 +13,7 @@ export const CONSTANTS = {
 export const SERVER_URL = "https://www.aezbenefitsdev2.com";
 export const SERVER_API_URL = `${SERVER_URL}/hitf`;
 export const GATEWAY_SERVICES_URL = `${SERVER_API_URL}/gateway/services`;
-export const LOGIN_URL = `${GATEWAY_SERVICES_URL}/authservice/authenroller?media=json`;
+export const LOGIN_URL = `${GATEWAY_SERVICES_URL}/authservice/auth?media=json`;
 export const dropdownStaticUrl = (propName) =>
   `${GATEWAY_SERVICES_URL}/appservice/validvalues/${propName}?media=json`;
 export const PAGE_DESC_URL = `${GATEWAY_SERVICES_URL}/metadataservice/find/content/PageDesc/EnrollProfile?media=json`;

@@ -1,23 +1,24 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { setPageDesc, setToken } from "../redux/actions/actionCreator";
+import {
+  setPageDesc,
+  setToken,
+  setUserModel,
+} from "../redux/actions/actionCreator";
 import { getPageDesc } from "./pageDesc";
-import { getDomainModel } from "./domainModel";
 
 export const useLoginUser = () => {
   const dispatch = useDispatch();
 
-  return (userDetails) => {
+  return async (userDetails) => {
     const { jwtToken } = userDetails?.HitfUser;
+    dispatch(setUserModel(userDetails?.HitfUser));
     dispatch(setToken(jwtToken));
-    getPageDesc(jwtToken).then((pageDesc) => {
+    try {
+      const pageDesc = await getPageDesc(jwtToken);
       dispatch(setPageDesc(pageDesc));
-    });
-    getDomainModel(
-      "hitf/gateway/services/dataservice/find/employer/Employee/496975?media=json",
-      jwtToken
-    ).then((res) => {
-      console.log("res=", res);
-    });
+    } catch (error) {
+      console.error(`Page Desc error: ${error}`);
+    }
   };
 };
