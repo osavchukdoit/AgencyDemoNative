@@ -1,21 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { StyleSheet } from "react-native";
 import PersonIconSvg from "../assets/icons/familyInfoIcons/person.svg";
 import { ControlWrapper } from "./ControlWrapper";
 import { uiControlStyles } from "./uiControlStyles";
 import { useField } from "formik";
 import { ControlTextInput } from "./ControlTextInput";
-import { useDomainValues } from "../form/useDomainValues";
 
 export const StaticText = (props) => {
   const { editable, propName, personType = "employee" } = props;
   const fieldName = `${personType}.${propName}`;
   const [{ value: fieldValue }, , { setValue }] = useField(fieldName);
-  const { domainValue } = useDomainValues(propName);
-
-  useEffect(() => {
-    if (domainValue) setValue(domainValue);
-  }, [domainValue]);
 
   return (
     <ControlWrapper {...props}>

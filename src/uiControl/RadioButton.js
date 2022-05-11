@@ -6,7 +6,6 @@ import { ControlWrapper } from "./ControlWrapper";
 import { useSelector } from "react-redux";
 import { getValidValues } from "../api/validValues";
 import { useField } from "formik";
-import { useDomainValues } from "../form/useDomainValues";
 
 export const RadioButton = (props) => {
   const { editable, propName, personType = "employee" } = props;
@@ -14,17 +13,12 @@ export const RadioButton = (props) => {
   const [options, setOptions] = useState();
   const fieldName = `${personType}.${propName}`;
   const [{ value: fieldValue }, , { setValue }] = useField(fieldName);
-  const { domainValue } = useDomainValues(propName);
 
   useEffect(() => {
     getValidValues(jwt, propName).then((validValues) => {
       setOptions(validValues);
     });
   }, [propName]);
-
-  useEffect(() => {
-    if (domainValue) setValue(domainValue);
-  }, [domainValue]);
 
   const onOptionPressed = (id) => {
     setValue(id);

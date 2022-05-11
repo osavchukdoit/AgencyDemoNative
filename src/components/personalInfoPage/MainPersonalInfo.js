@@ -48,7 +48,7 @@ export const MainPersonalInfo = () => {
 
   const onSubmitProfile = () => {
     console.info("Submit Profile!");
-  }
+  };
 
   return (
     <>
@@ -73,9 +73,12 @@ export const MainPersonalInfo = () => {
       </BasicSectorWrapper>
 
       <View style={styles.saveButtonWrapper}>
-        <TouchableOpacity style={styles.saveButton} onPress={() => {
-          onSubmitProfile();
-        }}>
+        <TouchableOpacity
+          style={styles.saveButton}
+          onPress={() => {
+            onSubmitProfile();
+          }}
+        >
           <Text style={styles.saveButtonText}>
             {profileBlockDesc.submitLabel}
           </Text>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Text, StyleSheet } from "react-native";
 import CalendarIconSvg from "../assets/icons/familyInfoIcons/calendar.svg";
 import { AppDatePicker } from "../components/AppDatePicker";
@@ -8,7 +8,6 @@ import { uiControlStyles } from "./uiControlStyles";
 // & it doesn't work well with dates, but work during debug
 // because it uses chrome V8 engine while debugging.
 import moment from "moment";
-import { useDomainValues } from "../form/useDomainValues";
 import { useField } from "formik";
 
 export const DateControl = (props) => {
@@ -16,10 +15,6 @@ export const DateControl = (props) => {
   const fieldName = `${personType}.${propName}`;
   const [{ value: fieldValue }, , { setValue }] = useField(fieldName);
   const [showDatePicker, setShowDatePicker] = useState(false);
-  const { domainValue } = useDomainValues(propName);
-  useEffect(() => {
-    if (domainValue) setValue(domainValue);
-  }, [domainValue]);
 
   const handleDatePress = () => {
     if (editable === "false") return;

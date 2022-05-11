@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import MobileIconSvg from "../assets/icons/personInfoIcons/mobile.svg";
 import PhoneIconSvg from "../assets/icons/personInfoIcons/phone.svg";
 import { TextInputMask } from "react-native-masked-text";
 import { ControlWrapper } from "./ControlWrapper";
 import { uiControlStyles } from "./uiControlStyles";
 import { useField } from "formik";
-import { useDomainValues } from "../form/useDomainValues";
 
 export const UsPhone = (props) => {
   const {
@@ -21,11 +20,6 @@ export const UsPhone = (props) => {
     { setValue, setTouched },
   ] = useField(fieldName);
   const [isFocused, setIsFocused] = useState(false);
-  const { domainValue } = useDomainValues(propName);
-
-  useEffect(() => {
-    if (domainValue) setValue(domainValue);
-  }, [domainValue]);
 
   return (
     <ControlWrapper {...props}>

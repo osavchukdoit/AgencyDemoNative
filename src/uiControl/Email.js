@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import EnvelopeIconSvg from "../assets/icons/personInfoIcons/envelope.svg";
 import { ControlWrapper } from "./ControlWrapper";
 import { uiControlStyles } from "./uiControlStyles";
 import { ControlTextInput } from "./ControlTextInput";
 import { useField } from "formik";
-import { useDomainValues } from "../form/useDomainValues";
 
 export const Email = (props) => {
   const { editable, personType = "employee", propName } = props;
@@ -14,11 +13,6 @@ export const Email = (props) => {
     { error: errorMessage, touched },
     { setValue, setTouched },
   ] = useField(fieldName);
-  const { domainValue } = useDomainValues(propName);
-
-  useEffect(() => {
-    if (domainValue) setValue(domainValue);
-  }, [domainValue]);
 
   return (
     <ControlWrapper {...props}>

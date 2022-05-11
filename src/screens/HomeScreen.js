@@ -14,12 +14,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDomainModel } from "../api/domainModel";
 import { setDomainModel } from "../redux/actions/actionCreator";
 import { useFillDynamicUrl } from "../api/useFillDynamicUrl";
+import { isEmpty } from "lodash";
+import { useFormikContext } from "formik";
+import { useInitialFormikValues } from "../form/useInitialFormikValues";
 
 export const HomeScreen = ({ navigation }) => {
   const state = useSelector((state) => state);
+  const { domain } = state;
   const { jwt } = useSelector((state) => state.utils);
   const dispatch = useDispatch();
   const fillDynamicUrl = useFillDynamicUrl();
+  const { setValues } = useFormikContext();
+  const initialFormikValues = useInitialFormikValues();
 
   useEffect(() => {
     const findDomainModelUrl = state?.pageDesc?.pageDesc?.datamodelFindGETURL;
@@ -28,6 +34,17 @@ export const HomeScreen = ({ navigation }) => {
       dispatch(setDomainModel(domainModel));
     });
   }, []);
+
+  useEffect(() => {
+    if (!isEmpty(domain)) {
+      setValues({
+        ...initialFormikValues,
+        employee: {
+          ...domain,
+        },
+      });
+    }
+  }, [domain]);
 
   return (
     <>
