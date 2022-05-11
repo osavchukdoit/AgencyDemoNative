@@ -6,10 +6,14 @@ export const newYupSchema = () => {
   const emailValidation = Yup.string()
     .email("Invalid email")
     .required("The field is required");
+  const usPhoneValidation = Yup.string()
+    .min(10, "Invalid phone number")
+    .required("The field is required");
 
   const employeeValidation = Yup.object().shape({
     email: emailValidation,
     SSN: ssnValidator(),
+    mobilePhone: usPhoneValidation,
   });
 
   const result = Yup.object().shape({

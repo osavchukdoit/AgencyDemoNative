@@ -11,10 +11,7 @@ import { fullNameOf } from "../../api/utils";
 
 export const PersonalInfoItem = ({ profileBlockDesc, handleInfoDetails }) => {
   const { blockTitle } = profileBlockDesc;
-  const {
-    values,
-    errors,
-  } = useFormikContext();
+  const { values } = useFormikContext();
 
   const employeeFullName = fullNameOf(values.employee);
 
@@ -43,7 +40,8 @@ export const PersonalInfoItem = ({ profileBlockDesc, handleInfoDetails }) => {
               <CalendarIconSvg />
             </View>
             <Text style={mainStyles.baseText}>
-              DOB: <Text style={mainStyles.boldText}>09/09/1990</Text>
+              DOB:{" "}
+              <Text style={mainStyles.boldText}>{values.employee.dob}</Text>
             </Text>
           </View>
           <TouchableOpacity onPress={handlePersonalInfo}>

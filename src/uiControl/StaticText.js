@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StyleSheet } from "react-native";
 import PersonIconSvg from "../assets/icons/familyInfoIcons/person.svg";
 import { ControlWrapper } from "./ControlWrapper";
 import { uiControlStyles } from "./uiControlStyles";
-import { useFormikContext } from "formik";
+import { useField } from "formik";
 import { ControlTextInput } from "./ControlTextInput";
+import { useDomainValues } from "../form/useDomainValues";
 
 export const StaticText = (props) => {
   const { editable, propName, personType = "employee" } = props;
-  const { values, handleChange, handleBlur } = useFormikContext();
-  const fieldValue = values[personType][propName];
   const fieldName = `${personType}.${propName}`;
+  const [{ value: fieldValue }, , { setValue }] = useField(fieldName);
+  const { domainValue } = useDomainValues(propName);
+
+  useEffect(() => {
+    if (domainValue) setValue(domainValue);
+  }, [domainValue]);
 
   return (
     <ControlWrapper {...props}>
@@ -18,7 +23,7 @@ export const StaticText = (props) => {
       <ControlTextInput
         editable={editable}
         value={fieldValue}
-        onChangeText={handleChange(fieldName)}
+        onChangeText={setValue}
         additionalStyle={[
           editable === "true"
             ? [uiControlStyles.textInput, uiControlStyles.textInputEditable]

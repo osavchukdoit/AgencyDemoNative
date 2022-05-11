@@ -1,8 +1,8 @@
 export const US = "United States";
 export const DEFAULT_EMPLOYEE_VALUES = {
-  firstName: "John",
-  middleName: "Tester",
-  lastName: "Terry",
+  firstName: "",
+  middleName: "",
+  lastName: "",
   dob: "",
   gender: "",
   SSN: "",

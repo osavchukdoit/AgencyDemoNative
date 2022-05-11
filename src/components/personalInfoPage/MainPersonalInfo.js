@@ -46,6 +46,10 @@ export const MainPersonalInfo = () => {
     return <Text key={propName}>{propName}</Text>;
   });
 
+  const onSubmitProfile = () => {
+    console.info("Submit Profile!");
+  }
+
   return (
     <>
       <BasicSectorWrapper>
@@ -69,7 +73,9 @@ export const MainPersonalInfo = () => {
       </BasicSectorWrapper>
 
       <View style={styles.saveButtonWrapper}>
-        <TouchableOpacity style={styles.saveButton}>
+        <TouchableOpacity style={styles.saveButton} onPress={() => {
+          onSubmitProfile();
+        }}>
           <Text style={styles.saveButtonText}>
             {profileBlockDesc.submitLabel}
           </Text>

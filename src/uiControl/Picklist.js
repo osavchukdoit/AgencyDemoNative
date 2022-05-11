@@ -15,15 +15,34 @@ import { isEmpty } from "lodash";
 import { ControlWrapper } from "./ControlWrapper";
 import { uiControlStyles } from "./uiControlStyles";
 import { CONSTANTS } from "../constants";
+import { useField } from "formik";
+import { useDomainValues } from "../form/useDomainValues";
 
 export const Picklist = (props) => {
-  const { editable, propName } = props;
+  const { editable, propName, personType = "employee" } = props;
   const { jwt } = useSelector((state) => state.utils);
   const [picklistOptions, setPicklistOptions] = useState([]);
   const [selectedValue, setSelectedValue] = useState("");
   const [selectedLabel, setSelectedLabel] = useState("");
   const [isVisible, setIsVisible] = useState(false);
   const isIos = Platform.OS === CONSTANTS.OS.ios;
+  const fieldName = `${personType}.${propName}`;
+  const [{ value: fieldValue }, , { setValue }] = useField(fieldName);
+  const [fieldLabel, setFieldLabel] = useState();
+  const { domainValue } = useDomainValues(propName);
+
+  useEffect(() => {
+    if (domainValue) setValue(domainValue);
+  }, [domainValue]);
+
+  useEffect(() => {
+    if (!isEmpty(picklistOptions)) {
+      const value = picklistOptions?.find(
+        ({ value }) => value === fieldValue
+      );
+      setFieldLabel(value?.label);
+    }
+  }, [picklistOptions, fieldValue]);
 
   const getPicklistValidValues = () => {
     getValidValues(jwt, propName).then((validValues) => {
@@ -39,21 +58,23 @@ export const Picklist = (props) => {
   }, []);
 
   useEffect(() => {
-    setSelectedValue(picklistOptions[0]?.value);
-    setSelectedLabel(picklistOptions[0]?.label);
+    if (!isEmpty(picklistOptions)) {
+      // setSelectedValue(picklistOptions[0]?.value);
+      // setSelectedLabel(picklistOptions[0]?.label);
+      setValue(picklistOptions[0]?.value);
 
-    if (propName === "countryOfCitizenship" && !isEmpty(picklistOptions)) {
-      const defaultUsCitizenshipIndex = picklistOptions?.findIndex(
-        ({ value }) => value === "United States"
-      );
-      setSelectedValue(picklistOptions[defaultUsCitizenshipIndex]?.value);
-      setSelectedLabel(picklistOptions[defaultUsCitizenshipIndex]?.label);
+      if (propName === "countryOfCitizenship") {
+        const defaultUsCitizenshipIndex = picklistOptions?.findIndex(
+          ({ value }) => value === "United States"
+        );
+        // setSelectedValue(picklistOptions[defaultUsCitizenshipIndex]?.value);
+        // setSelectedLabel(picklistOptions[defaultUsCitizenshipIndex]?.label);
+        setValue(picklistOptions[defaultUsCitizenshipIndex]?.value);
+      }
     }
-  }, [picklistOptions]);
+  }, [picklistOptions, propName]);
 
-  const openPicklist = () => {
-    setIsVisible(true);
-  };
+  const openPicklist = () => setIsVisible(true);
   const closePicklist = () => setIsVisible(false);
 
   return (
@@ -69,7 +90,8 @@ export const Picklist = (props) => {
           ]}
           onPress={openPicklist}
         >
-          {selectedLabel}
+          {/*{selectedLabel}*/}
+          {fieldLabel}
         </Text>
       )}
       {(!isIos || isVisible) && (
@@ -82,10 +104,12 @@ export const Picklist = (props) => {
           ]}
         >
           <Picker
-            selectedValue={selectedValue}
+            // selectedValue={selectedValue}
+            selectedValue={fieldValue}
             onValueChange={(itemValue, itemIndex) => {
-              setSelectedValue(itemValue);
-              setSelectedLabel(picklistOptions[itemIndex].label);
+              // setSelectedValue(itemValue);
+              setValue(itemValue);
+              // setSelectedLabel(picklistOptions[itemIndex].label);
             }}
             enabled={editable === "true"}
             mode={"dropdown"}

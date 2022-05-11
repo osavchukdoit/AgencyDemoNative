@@ -5,13 +5,16 @@ import { THEME } from "../styles/theme";
 import { ControlWrapper } from "./ControlWrapper";
 import { useSelector } from "react-redux";
 import { getValidValues } from "../api/validValues";
-import { isEmpty } from "lodash";
+import { useField } from "formik";
+import { useDomainValues } from "../form/useDomainValues";
 
 export const RadioButton = (props) => {
-  const { editable, propName } = props;
+  const { editable, propName, personType = "employee" } = props;
   const { jwt } = useSelector((state) => state.utils);
   const [options, setOptions] = useState();
-  const [checkedOption, setCheckedOption] = useState(null);
+  const fieldName = `${personType}.${propName}`;
+  const [{ value: fieldValue }, , { setValue }] = useField(fieldName);
+  const { domainValue } = useDomainValues(propName);
 
   useEffect(() => {
     getValidValues(jwt, propName).then((validValues) => {
@@ -19,12 +22,16 @@ export const RadioButton = (props) => {
     });
   }, [propName]);
 
+  useEffect(() => {
+    if (domainValue) setValue(domainValue);
+  }, [domainValue]);
+
   const onOptionPressed = (id) => {
-    setCheckedOption(id);
+    setValue(id);
   };
 
   const radioButton = ({ display, id }) => {
-    const isChecked = checkedOption === id;
+    const isChecked = fieldValue === id;
     return (
       <TouchableOpacity
         disabled={editable === "false"}
@@ -40,12 +47,6 @@ export const RadioButton = (props) => {
       </TouchableOpacity>
     );
   };
-
-  useEffect(() => {
-    if (!isEmpty(options) && propName === "gender") {
-      setCheckedOption(options[0].id);
-    }
-  }, [propName, options]);
 
   return (
     <ControlWrapper {...props}>
