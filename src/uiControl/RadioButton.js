@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  FlatList,
+} from "react-native";
 import { FONTS } from "../styles/fonts";
 import { THEME } from "../styles/theme";
 import { ControlWrapper } from "./ControlWrapper";
 import { useSelector } from "react-redux";
 import { getValidValues } from "../api/validValues";
 import { useField } from "formik";
+import { AppTooltip } from "../components/utils/AppTooltip";
 
 export const RadioButton = (props) => {
   const { editable, propName, personType = "employee" } = props;
@@ -24,17 +31,25 @@ export const RadioButton = (props) => {
     setValue(id);
   };
 
-  const radioButton = ({ display, id }) => {
+  const isGenderProp = propName === "gender" || propName === "depGender";
+
+  const genderRadioButton = ({ display, id }) => {
     const isChecked = fieldValue === id;
     return (
       <TouchableOpacity
         disabled={editable === "false"}
         onPress={() => onOptionPressed(id)}
-        style={[styles.radioButton, isChecked && styles.checkedRadioButton]}
+        style={[
+          styles.genderRadioButton,
+          isChecked && styles.checkedGenderRadioButton,
+        ]}
         key={id}
       >
         <Text
-          style={[styles.radioLabel, isChecked && styles.checkedRadioLabel]}
+          style={[
+            styles.genderRadioLabel,
+            isChecked && styles.checkedGenderRadioLabel,
+          ]}
         >
           {display}
         </Text>
@@ -42,17 +57,44 @@ export const RadioButton = (props) => {
     );
   };
 
+  const radioButton = ({ item }) => {
+    const { display, id, tooltip } = item;
+
+    return (
+      <View style={styles.radioButtonWrapper}>
+        <TouchableOpacity
+          style={styles.radioButtonAndLabelWrapper}
+          onPress={() => setValue(id)}
+        >
+          <View style={styles.radioButtonContainer}>
+            {fieldValue === id && <View style={styles.radioCheckPoint}></View>}
+          </View>
+          <Text style={styles.radioButtonLabel}>{display}</Text>
+        </TouchableOpacity>
+        {tooltip && <AppTooltip tooltipText={tooltip} />}
+      </View>
+    );
+  };
+
   return (
     <ControlWrapper {...props}>
-      <View style={styles.radioButtonsContainer}>
-        {options?.map((radioOption) => radioButton(radioOption))}
-      </View>
+      {isGenderProp ? (
+        <View style={styles.genderRadioButtonsContainer}>
+          {options?.map((radioOption) => genderRadioButton(radioOption))}
+        </View>
+      ) : (
+        <FlatList
+          data={options}
+          renderItem={radioButton}
+          keyExtractor={(item) => item.id}
+        />
+      )}
     </ControlWrapper>
   );
 };
 
 const styles = StyleSheet.create({
-  radioButtonsContainer: {
+  genderRadioButtonsContainer: {
     flexDirection: "row",
     shadowOffset: { width: 0, height: 1 },
     shadowRadius: 8,
@@ -63,26 +105,60 @@ const styles = StyleSheet.create({
     borderStyle: "solid",
     borderRadius: 10,
   },
-  radioButton: {
+  genderRadioButton: {
     width: "50%",
     height: 49,
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
   },
-  checkedRadioButton: {
+  checkedGenderRadioButton: {
     backgroundColor: THEME.COLOR.BLUE_BRIGHT,
   },
-  radioLabel: {
+  genderRadioLabel: {
     fontFamily: FONTS.AVENIR.ROMAN,
     fontSize: 14,
     lineHeight: 22,
     color: THEME.COLOR.DARK_BLUE_TEXT,
   },
-  checkedRadioLabel: {
+  checkedGenderRadioLabel: {
     fontFamily: FONTS.AVENIR.HEAVY,
     fontSize: 14,
     lineHeight: 22,
     color: THEME.COLOR.WHITE,
+  },
+
+  radioButtonWrapper: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 12,
+  },
+  radioButtonAndLabelWrapper: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  radioButtonContainer: {
+    width: 16,
+    height: 16,
+    borderColor: THEME.COLOR.BLUE_BRIGHT,
+    borderWidth: 1,
+    borderRadius: 53,
+    marginRight: 15,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  radioCheckPoint: {
+    width: 8,
+    height: 8,
+    backgroundColor: THEME.COLOR.BLUE_BRIGHT,
+    borderRadius: 53,
+    display: "flex",
+  },
+  radioButtonLabel: {
+    marginRight: 5,
+    color: THEME.COLOR.GREY_DARK_TEXT,
+    fontFamily: FONTS.AVENIR.BOOK,
+    fontSize: 14,
+    lineHeight: 16,
   },
 });

@@ -1,19 +1,33 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
 import { FONTS } from "../styles/fonts";
 import { THEME } from "../styles/theme";
 import { RequiredField } from "../components/utils/RequiredField";
+import { useFillDynamicField } from "../api/useFillDynamicUrl";
+import { CONSTANTS } from "../constants";
 
 export const ControlWrapper = (props) => {
   const { propLabel, mandatory, children, propName } = props;
+  const fillDynamicField = useFillDynamicField();
 
   return (
-    <View style={[styles.wrapper]}>
+    <View style={styles.wrapper}>
+    {/*// <KeyboardAvoidingView*/}
+    {/*//   behavior={Platform.OS === CONSTANTS.OS.ios ? "padding" : "height"}*/}
+    {/*//   style={styles.wrapper}*/}
+    {/*// >*/}
       <Text style={styles.title}>
-        {propLabel}
+        {fillDynamicField(propLabel)}
         {mandatory === "true" && <RequiredField />}
       </Text>
-      {children}
+        {children}
+      {/*// </KeyboardAvoidingView>*/}
     </View>
   );
 };

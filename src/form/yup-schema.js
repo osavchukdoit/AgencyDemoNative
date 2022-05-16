@@ -7,7 +7,8 @@ export const newYupSchema = () => {
     .email("Invalid email")
     .required("The field is required");
   const usPhoneValidation = Yup.string()
-    .min(10, "Invalid phone number")
+    // includes mask symbols
+    .min(14, "Invalid phone number")
     .required("The field is required");
 
   const employeeValidation = Yup.object().shape({

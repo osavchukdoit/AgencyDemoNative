@@ -11,11 +11,16 @@ import { UsPhone } from "../../uiControl/UsPhone";
 import { UsAddress } from "../../uiControl/UsAddress";
 import { StaticText } from "../../uiControl/StaticText";
 import { RadioButton } from "../../uiControl/RadioButton";
+import { savePostModel } from "../../api/savePostModel";
+import { showMessage } from "react-native-flash-message";
+import { CONSTANTS } from "../../constants";
 
 export const MainPersonalInfo = () => {
   const employerBlocks = useSelector(
     (state) => state.pageDesc.pageDesc.blocks.BlockDesc
   );
+  const { jwt } = useSelector((state) => state.utils);
+  const { domain } = useSelector((state) => state);
   const profileBlockDesc = employerBlocks.find(
     ({ blockName }) => blockName === "Profile"
   );
@@ -48,6 +53,41 @@ export const MainPersonalInfo = () => {
 
   const onSubmitProfile = () => {
     console.info("Submit Profile!");
+    showMessage({
+      message: "Submitting",
+      type: "info",
+      duration: CONSTANTS.FLASH_MESSAGE_DURATION,
+    });
+    savePostModel(
+      515057,
+      { id: 515057, email: "qweasd@gmail.com" },
+      // { blockIdentifier: 515057, email: "qweasd@gmail.com" },
+      jwt,
+      "https://www.aezbenefitsdev2.com/hitf/gateway/services/dataservice/save/employer/Employee?media=json"
+    ).then((response) => {
+      console.log("response=", response);
+      const { ResponseMessage } = response;
+      if (ResponseMessage) {
+        const errors =
+          ResponseMessage.Exception.validationMessages.validationMsg.objectMsg
+            .recordMsg.propertyMsg;
+        console.log("errors=", errors);
+        const errorMessages = errors.map(({ msg }) => msg);
+        const errorString = errorMessages.join(". ");
+        showMessage({
+          message: "Failed to save",
+          description: errorString,
+          type: "danger",
+          duration: CONSTANTS.FLASH_MESSAGE_DURATION,
+        });
+      } else {
+        showMessage({
+          message: "Saved!",
+          type: "success",
+          duration: CONSTANTS.FLASH_MESSAGE_DURATION,
+        });
+      }
+    });
   };
 
   return (

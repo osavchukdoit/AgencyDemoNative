@@ -8,6 +8,7 @@ export const CONSTANTS = {
     web: "web",
     android: "android",
   },
+  FLASH_MESSAGE_DURATION: 20000,
 };
 
 export const SERVER_URL = "https://www.aezbenefitsdev2.com";
@@ -19,6 +20,7 @@ export const dropdownStaticUrl = (propName) =>
 export const PAGE_DESC_URL = `${GATEWAY_SERVICES_URL}/metadataservice/find/content/PageDesc/EnrollProfile?media=json`;
 export const domainModelUrl = (datamodelFindGETURL) =>
   `${SERVER_URL}/${datamodelFindGETURL}`;
+export const savePostUrl = (savePOSTURL) => `${SERVER_URL}/${savePOSTURL}`;
 
 // export const GOOGLE_API_KEY = "AIzaSyDFypetmaRCy6bzbsEz2__gLPSU3NmqZAM";
 export const GOOGLE_API_KEY =

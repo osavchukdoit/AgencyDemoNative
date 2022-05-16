@@ -76,7 +76,8 @@ export default StyleSheet.create({
     alignItems: "center",
   },
   saveButton: {
-    width: 160,
+    minWidth: 160,
+    paddingHorizontal: 10,
     height: 49,
     borderRadius: 10,
     backgroundColor: THEME.COLOR.BLUE_BRIGHT,

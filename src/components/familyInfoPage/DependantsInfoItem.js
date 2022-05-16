@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
 import PersonIconSvg from "../../assets/icons/familyInfoIcons/person.svg";
 import ArrowRightSvg from "../../assets/icons/familyInfoIcons/vectorRight.svg";
@@ -9,109 +9,135 @@ import CrossSvg from "../../assets/icons/familyInfoIcons/cross.svg";
 import { FONTS } from "../../styles/fonts";
 import { commonPlanStyles } from "../../styles/commonPlanStyles";
 import { BasicSectorWrapper } from "../utils/BasicSectorWrapper";
+import { useField } from "formik";
+import { isEmpty } from "lodash";
+import { DependentsListItem } from "./DependentsListItem";
 
-export const DependantsInfoItem = ({ handleInfoDetails }) => {
+export const DependantsInfoItem = ({
+  dependentsBlockDesc,
+  handleInfoDetails,
+  personType = "employee",
+}) => {
+  const {
+    blockListLabel,
+    blockListName,
+    addLabel,
+    allowDelete,
+    allowEdit,
+    allowAdd,
+    block,
+  } = dependentsBlockDesc;
+  const dependentsFieldName = `${personType}.${blockListName}`;
+  const [{ value: dependents }, { error: errorMessage }, { setDependents }] =
+    useField(dependentsFieldName);
+
+  const onAddDependent = () => {
+    handleInfoDetails("DependantsInfoDetailsScreen");
+  };
+
   return (
-    <>
-      <Text style={commonPlanStyles.planSectorHeader}>Dependants</Text>
+    <View style={localStyles.wrapper}>
+      <Text style={commonPlanStyles.planSectorHeader}>{blockListLabel}</Text>
 
-      <BasicSectorWrapper>
-        <View style={mainStyles.subTitleContainer}>
-          <Text style={mainStyles.baseText}>Dependant #1</Text>
-          <TouchableOpacity style={localStyles.trashButton}>
-            <TrashBasketSvg />
-          </TouchableOpacity>
-        </View>
-        <View style={mainStyles.subInfoWrapper}>
-          <View style={mainStyles.subTextAndIconsContainer}>
-            <View style={mainStyles.iconSvgWrapper}>
-              <PersonIconSvg />
-            </View>
-            <Text style={mainStyles.subTitle}>Mary Smith</Text>
-            <View style={localStyles.pointWrapper}>
-              <View style={localStyles.point} />
-            </View>
-            <Text style={mainStyles.baseText}>Spouse</Text>
-          </View>
-          <TouchableOpacity
-            style={mainStyles.arrowButton}
-            onPress={() => {
-              handleInfoDetails("DependantsInfoDetailsScreen");
-            }}
-          >
-            <ArrowRightSvg />
-          </TouchableOpacity>
-        </View>
-      </BasicSectorWrapper>
+      {isEmpty(dependents)
+        ? null
+        : dependents.map((dependentItem, index) => {
+            return (
+              <DependentsListItem
+                key={index}
+                {...dependentItem}
+                dependantIndex={index}
+                handleInfoDetails={handleInfoDetails}
+              />
+            );
+          })}
 
-      <BasicSectorWrapper>
-        <View style={mainStyles.subTitleContainer}>
-          <Text style={mainStyles.baseText}>Dependant #2</Text>
-          <TouchableOpacity style={localStyles.trashButton}>
-            <TrashBasketSvg />
-          </TouchableOpacity>
-        </View>
-        <View style={mainStyles.subInfoWrapper}>
-          <View style={mainStyles.subTextAndIconsContainer}>
-            <View style={mainStyles.iconSvgWrapper}>
-              <PersonIconSvg />
-            </View>
-            <Text style={mainStyles.subTitle}>Josh Doe</Text>
-            <View style={localStyles.pointWrapper}>
-              <View style={localStyles.point} />
-            </View>
-            <Text style={mainStyles.baseText}>Child</Text>
-          </View>
-          <TouchableOpacity
-            style={mainStyles.arrowButton}
-            onPress={() => {
-              handleInfoDetails("DependantsInfoDetailsScreen");
-            }}
-          >
-            <ArrowRightSvg />
-          </TouchableOpacity>
-        </View>
-      </BasicSectorWrapper>
+      {/*<DependentsListItem*/}
+      {/*  handleInfoDetails={handleInfoDetails}*/}
+      {/*/>*/}
 
-      <TouchableOpacity style={localStyles.buttonAddDependant}>
-        <CrossSvg />
-        <Text style={localStyles.addButtonText}>Add Dependent</Text>
-      </TouchableOpacity>
-    </>
+      {/*<BasicSectorWrapper>*/}
+      {/*  <View style={mainStyles.subTitleContainer}>*/}
+      {/*    <Text style={mainStyles.baseText}>Dependant #1</Text>*/}
+      {/*    <TouchableOpacity style={localStyles.trashButton}>*/}
+      {/*      <TrashBasketSvg />*/}
+      {/*    </TouchableOpacity>*/}
+      {/*  </View>*/}
+      {/*  <View style={mainStyles.subInfoWrapper}>*/}
+      {/*    <View style={mainStyles.subTextAndIconsContainer}>*/}
+      {/*      <View style={mainStyles.iconSvgWrapper}>*/}
+      {/*        <PersonIconSvg />*/}
+      {/*      </View>*/}
+      {/*      <Text style={mainStyles.subTitle}>Mary Smith</Text>*/}
+      {/*      <View style={localStyles.pointWrapper}>*/}
+      {/*        <View style={localStyles.point} />*/}
+      {/*      </View>*/}
+      {/*      <Text style={mainStyles.baseText}>Spouse</Text>*/}
+      {/*    </View>*/}
+      {/*    <TouchableOpacity*/}
+      {/*      style={mainStyles.arrowButton}*/}
+      {/*      onPress={() => {*/}
+      {/*        handleInfoDetails("DependantsInfoDetailsScreen");*/}
+      {/*      }}*/}
+      {/*    >*/}
+      {/*      <ArrowRightSvg />*/}
+      {/*    </TouchableOpacity>*/}
+      {/*  </View>*/}
+      {/*</BasicSectorWrapper>*/}
+
+      {/*<BasicSectorWrapper>*/}
+      {/*  <View style={mainStyles.subTitleContainer}>*/}
+      {/*    <Text style={mainStyles.baseText}>Dependant #2</Text>*/}
+      {/*    <TouchableOpacity style={localStyles.trashButton}>*/}
+      {/*      <TrashBasketSvg />*/}
+      {/*    </TouchableOpacity>*/}
+      {/*  </View>*/}
+      {/*  <View style={mainStyles.subInfoWrapper}>*/}
+      {/*    <View style={mainStyles.subTextAndIconsContainer}>*/}
+      {/*      <View style={mainStyles.iconSvgWrapper}>*/}
+      {/*        <PersonIconSvg />*/}
+      {/*      </View>*/}
+      {/*      <Text style={mainStyles.subTitle}>Josh Doe</Text>*/}
+      {/*      <View style={localStyles.pointWrapper}>*/}
+      {/*        <View style={localStyles.point} />*/}
+      {/*      </View>*/}
+      {/*      <Text style={mainStyles.baseText}>Child</Text>*/}
+      {/*    </View>*/}
+      {/*    <TouchableOpacity*/}
+      {/*      style={mainStyles.arrowButton}*/}
+      {/*      onPress={() => {*/}
+      {/*        handleInfoDetails("DependantsInfoDetailsScreen");*/}
+      {/*      }}*/}
+      {/*    >*/}
+      {/*      <ArrowRightSvg />*/}
+      {/*    </TouchableOpacity>*/}
+      {/*  </View>*/}
+      {/*</BasicSectorWrapper>*/}
+
+      {allowAdd === "true" && (
+        <TouchableOpacity
+          style={localStyles.buttonAddDependant}
+          onPress={onAddDependent}
+        >
+          <CrossSvg />
+          <Text style={localStyles.addButtonText}>{addLabel}</Text>
+        </TouchableOpacity>
+      )}
+    </View>
   );
 };
 
 const localStyles = StyleSheet.create({
-  trashButton: {
-    width: 28,
-    height: 28,
-    backgroundColor: THEME.BACKGROUND.DARK_BLUE,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 15,
+  wrapper: {
+    alignItems: "flex-start",
   },
-
-  pointWrapper: {
-    width: 21,
-    height: 21,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  point: {
-    width: 5,
-    height: 5,
-    backgroundColor: THEME.COLOR.BLUE_BRIGHT,
-    borderRadius: 2,
-  },
-
   buttonAddDependant: {
-    width: 150,
+    minWidth: 150,
     height: 40,
     borderRadius: 10,
     backgroundColor: THEME.COLOR.BLUE_BRIGHT,
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "flex-start",
     alignItems: "center",
     paddingTop: 11,
     paddingRight: 13,
@@ -119,11 +145,11 @@ const localStyles = StyleSheet.create({
     paddingLeft: 17,
     marginBottom: 25,
   },
-
   addButtonText: {
     fontFamily: FONTS.AVENIR.ROMAN,
     fontSize: 14,
     lineHeight: 19,
     color: THEME.COLOR.WHITE,
+    paddingLeft: 17,
   },
 });

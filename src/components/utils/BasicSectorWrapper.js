@@ -11,6 +11,7 @@ export const BasicSectorWrapper = ({ children }) => {
 
 const styles = StyleSheet.create({
   wrapper: {
+    width: "100%",
     paddingTop: 14,
     paddingHorizontal: 18,
     backgroundColor: THEME.COLOR.WHITE,

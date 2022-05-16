@@ -8,6 +8,8 @@ import {
   SET_ENROLL_WAIVE_VISIBLE,
   SET_USER_MODEL,
   SET_DOMAIN_MODEL,
+  ADD_FLASH_MESSAGE,
+  CLEAR_ALL_FLASH_MESSAGES,
 } from "../actionTypes";
 
 /**
@@ -88,4 +90,24 @@ export const setUserModel = (payload) => ({ type: SET_USER_MODEL, payload });
 export const setDomainModel = (payload) => ({
   type: SET_DOMAIN_MODEL,
   payload,
+});
+
+/**
+ * Adds flash message to the redux store.
+ *
+ * @param {object} payload message containing `message` and `type`
+ * @returns {{payload, type: string}}
+ */
+export const addFlashMessage = (payload) => ({
+  type: ADD_FLASH_MESSAGE,
+  payload,
+});
+
+/**
+ * Removes all flash messages from the redux store.
+ *
+ * @returns {{type: string}}
+ */
+export const clearAllFlashMessages = () => ({
+  type: CLEAR_ALL_FLASH_MESSAGES,
 });

@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  StyleSheet,
-} from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { THEME } from "../../styles/theme.js";
 import styles from "../personalInfoPage/stylesMainPersonalInfo.js";
 import TrushSvg from "../../assets/icons/dependantsInfoIcons/trush.svg";
@@ -18,109 +12,150 @@ import ShieldSvg from "../../assets/icons/personInfoIcons/shield.svg";
 import { DependantsRadioButtons } from "../utils/DependantsRadioButtons.js";
 import { RadioButtonsYesNo } from "../utils/RadioButtonsYesNo.js";
 import { BasicSectorWrapper } from "../utils/BasicSectorWrapper.js";
+import { useSelector } from "react-redux";
+import { StaticText } from "../../uiControl/StaticText";
+import { RadioButton } from "../../uiControl/RadioButton";
+import { DateControl } from "../../uiControl/DateControl";
+import { Ssn } from "../../uiControl/Ssn";
+import { Picklist } from "../../uiControl/Picklist";
+import { UsAddress } from "../../uiControl/UsAddress";
 // import { Gender } from "../../uiControl/Gender.js";
 
-const dependantsOptions = [
-  { title: "Spouse", id: 1 },
-  { title: "Child", id: 2 },
-  { title: "Domestic Partner", id: 3 },
-  { title: "Grandchild", id: 4 },
-];
-
 export const MainDependantsInfo = () => {
+  const { pageDesc } = useSelector((state) => state);
+  const pageDescriptor = pageDesc.pageDesc;
+  const dependentsBlockDesc = pageDescriptor.blockLists.BlockListDesc;
+  const blockDescriptor = dependentsBlockDesc.block.BlockDesc;
+  const { submitLabel } = blockDescriptor;
+  const dependentFields = blockDescriptor.props.PropDesc;
+
+  const fieldsRender = dependentFields.map((field) => {
+    const { propName, displayable, uiControl } = field;
+    const personType = `employee.dependents[0]`;
+
+    if (displayable === "false") return null;
+    if (uiControl === "statictext")
+      return <StaticText personType={personType} key={propName} {...field} />;
+    if (uiControl === "radiobutton")
+      return <RadioButton personType={personType} key={propName} {...field} />;
+    if (uiControl === "date")
+      return <DateControl personType={personType} key={propName} {...field} />;
+    if (uiControl === "ssn")
+      return <Ssn personType={personType} key={propName} {...field} />;
+    if (uiControl === "picklist")
+      return <Picklist personType={personType} key={propName} {...field} />;
+    if (uiControl === "usaddress")
+      return <UsAddress personType={personType} key={propName} {...field} />;
+  });
+
+  const onSubmitDependent = () => {
+    console.info("Save Dependent");
+  };
+
   return (
     <>
       <BasicSectorWrapper>
-        <View>
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+            position: "relative",
+          }}
+        >
           <TouchableOpacity style={localStyles.deleteButton}>
             <TrushSvg />
             <Text style={localStyles.deleteButtonText}>Delete</Text>
           </TouchableOpacity>
-          <Text style={localStyles.topTitleText}>
-            Dependents who need to be covered for benefits
-          </Text>
-          <Text style={localStyles.topSubTitleText}>
-            (not needed if you are waiving benefits)
-          </Text>
+          {fieldsRender}
         </View>
 
-        <DependantsRadioButtons options={dependantsOptions} />
+        {/*<View>*/}
+        {/*  <Text style={localStyles.topTitleText}>*/}
+        {/*    Dependents who need to be covered for benefits*/}
+        {/*  </Text>*/}
+        {/*  <Text style={localStyles.topSubTitleText}>*/}
+        {/*    (not needed if you are waiving benefits)*/}
+        {/*  </Text>*/}
+        {/*</View>*/}
 
-        <View style={localStyles.gradientWrapper}>
-          <LinearGradient
-            colors={[
-              "rgba(26, 60, 90, 0)",
-              "rgba(26, 60, 90, 0.5)",
-              "rgba(26, 60, 90, 0)",
-            ]}
-            style={localStyles.linearBackground}
-            start={[1, 1]}
-          />
-        </View>
+        {/*<DependantsRadioButtons options={dependantsOptions} />*/}
 
-        <View style={styles.titleAndInputWrapper}>
-          <Text style={styles.titleInfo}>First Name</Text>
-          <PersonSvg style={styles.inputIcon} />
-          <TextInput
-            style={[styles.textInputBorderFocus, styles.textInputMediumSize]}
-          >
-            Mary
-          </TextInput>
-        </View>
+        {/*<View style={localStyles.gradientWrapper}>*/}
+        {/*  <LinearGradient*/}
+        {/*    colors={[*/}
+        {/*      "rgba(26, 60, 90, 0)",*/}
+        {/*      "rgba(26, 60, 90, 0.5)",*/}
+        {/*      "rgba(26, 60, 90, 0)",*/}
+        {/*    ]}*/}
+        {/*    style={localStyles.linearBackground}*/}
+        {/*    start={[1, 1]}*/}
+        {/*  />*/}
+        {/*</View>*/}
 
-        <View style={styles.titleAndInputWrapper}>
-          <Text style={styles.titleInfo}>Last Name</Text>
-          <PersonSvg style={styles.inputIcon} />
-          <TextInput
-            style={[styles.textInputBorderFocus, styles.textInputBorderBlur]}
-            placeholder={"Enter last name"}
-          ></TextInput>
-        </View>
+        {/*<View style={styles.titleAndInputWrapper}>*/}
+        {/*  <Text style={styles.titleInfo}>First Name</Text>*/}
+        {/*  <PersonSvg style={styles.inputIcon} />*/}
+        {/*  <TextInput*/}
+        {/*    style={[styles.textInputBorderFocus, styles.textInputMediumSize]}*/}
+        {/*  >*/}
+        {/*    Mary*/}
+        {/*  </TextInput>*/}
+        {/*</View>*/}
 
-        <View style={styles.titleAndInputWrapper}>
-          <Text style={styles.titleInfo}>Date of Birth</Text>
-          <CalendarSvg style={styles.inputIcon} />
-          <TouchableOpacity style={localStyles.calendarButton}>
-            <CalendarWhiteSvg />
-          </TouchableOpacity>
-          <TextInput
-            style={[styles.textInputBorderFocus, styles.textInputBorderBlur]}
-            placeholder={"DD/MM/YYYY"}
-          ></TextInput>
-        </View>
+        {/*<View style={styles.titleAndInputWrapper}>*/}
+        {/*  <Text style={styles.titleInfo}>Last Name</Text>*/}
+        {/*  <PersonSvg style={styles.inputIcon} />*/}
+        {/*  <TextInput*/}
+        {/*    style={[styles.textInputBorderFocus, styles.textInputBorderBlur]}*/}
+        {/*    placeholder={"Enter last name"}*/}
+        {/*  ></TextInput>*/}
+        {/*</View>*/}
 
-        {/*<Gender />*/}
-        <Text>Gender</Text>
+        {/*<View style={styles.titleAndInputWrapper}>*/}
+        {/*  <Text style={styles.titleInfo}>Date of Birth</Text>*/}
+        {/*  <CalendarSvg style={styles.inputIcon} />*/}
+        {/*  <TouchableOpacity style={localStyles.calendarButton}>*/}
+        {/*    <CalendarWhiteSvg />*/}
+        {/*  </TouchableOpacity>*/}
+        {/*  <TextInput*/}
+        {/*    style={[styles.textInputBorderFocus, styles.textInputBorderBlur]}*/}
+        {/*    placeholder={"DD/MM/YYYY"}*/}
+        {/*  ></TextInput>*/}
+        {/*</View>*/}
 
-        <View
-          style={[styles.titleAndInputWrapper, localStyles.additionalMargin]}
-        >
-          <Text style={styles.titleInfo}>SNN</Text>
-          <ShieldSvg style={styles.inputIcon} />
-          <TextInput
-            style={[styles.textInputBorderFocus, styles.textInputBorderBlur]}
-            placeholder={"XXX-XXX-XXXX"}
-          ></TextInput>
-        </View>
+        {/*/!*<Gender />*!/*/}
+        {/*<Text>Gender</Text>*/}
 
-        <View>
-          <Text style={styles.questionText}>Is Child 1 Disabled?</Text>
-          <RadioButtonsYesNo />
-          <Text style={styles.questionText}>
-            Is Child 1 a Full-time Student?
-          </Text>
-          <RadioButtonsYesNo />
-        </View>
+        {/*<View*/}
+        {/*  style={[styles.titleAndInputWrapper, localStyles.additionalMargin]}*/}
+        {/*>*/}
+        {/*  <Text style={styles.titleInfo}>SNN</Text>*/}
+        {/*  <ShieldSvg style={styles.inputIcon} />*/}
+        {/*  <TextInput*/}
+        {/*    style={[styles.textInputBorderFocus, styles.textInputBorderBlur]}*/}
+        {/*    placeholder={"XXX-XXX-XXXX"}*/}
+        {/*  ></TextInput>*/}
+        {/*</View>*/}
+
+        {/*<View>*/}
+        {/*  <Text style={styles.questionText}>Is Child 1 Disabled?</Text>*/}
+        {/*  <RadioButtonsYesNo />*/}
+        {/*  <Text style={styles.questionText}>*/}
+        {/*    Is Child 1 a Full-time Student?*/}
+        {/*  </Text>*/}
+        {/*  <RadioButtonsYesNo />*/}
+        {/*</View>*/}
       </BasicSectorWrapper>
 
       <View style={localStyles.addAndSaveButtonsWrapper}>
-        <TouchableOpacity style={[styles.saveButton, localStyles.addButton]}>
-          <Text style={[styles.saveButtonText, localStyles.addButtonText]}>
-            Add Dependant
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.saveButton}>
-          <Text style={styles.saveButtonText}>Save</Text>
+        {/*<TouchableOpacity style={[styles.saveButton, localStyles.addButton]}>*/}
+        {/*  <Text style={[styles.saveButtonText, localStyles.addButtonText]}>*/}
+        {/*    Add Dependant*/}
+        {/*  </Text>*/}
+        {/*</TouchableOpacity>*/}
+        <TouchableOpacity style={styles.saveButton} onPress={onSubmitDependent}>
+          <Text style={styles.saveButtonText}>{submitLabel}</Text>
         </TouchableOpacity>
       </View>
     </>
@@ -143,7 +178,7 @@ const localStyles = StyleSheet.create({
     alignItems: "center",
     position: "absolute",
     right: -30,
-    top: -37,
+    top: -27,
   },
 
   deleteButtonText: {

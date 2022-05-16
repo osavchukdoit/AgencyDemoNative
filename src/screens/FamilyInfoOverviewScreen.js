@@ -13,24 +13,37 @@ import { useSelector } from "react-redux";
 
 export const FamilyInfoOverviewNavigator = () => {
   const Stack = createNativeStackNavigator();
+  const pageDesc = useSelector((state) => state.pageDesc.pageDesc);
+  const blockDesk = pageDesc.blocks.BlockDesc;
+  const profileBlockDesc = blockDesk.find(
+    ({ blockName }) => blockName === "Profile"
+  );
+  const employmentBlockDesc = blockDesk.find(
+    ({ blockName }) => blockName === "Employment"
+  );
+  const dependentBlockDesc = pageDesc.blockLists.BlockListDesc.block.BlockDesc;
 
   return (
     <Stack.Navigator>
       <Stack.Screen
         name={"FamilyInfoOverviewScreen"}
         component={FamilyInfoOverviewScreen}
+        options={{ title: pageDesc.pageTitle }}
       />
       <Stack.Screen
         name={"PersonalInfoDetailsScreen"}
         component={PersonalInfoDetailsScreen}
+        options={{ title: profileBlockDesc.blockTitle }}
       />
       <Stack.Screen
         name={"EmploymentInfoDetailsScreen"}
         component={EmploymentInfoDetailsScreen}
+        options={{ title: employmentBlockDesc.blockTitle }}
       />
       <Stack.Screen
         name={"DependantsInfoDetailsScreen"}
         component={DependantsInfoDetailsScreen}
+        options={{ title: dependentBlockDesc.blockTitle }}
       />
     </Stack.Navigator>
   );
@@ -49,6 +62,10 @@ export const FamilyInfoOverviewScreen = ({ navigation }) => {
   const profileBlockDesc = employerBlocks.find(
     ({ blockName }) => blockName === "Profile"
   );
+  const employmentBlockDesc = employerBlocks.find(
+    ({ blockName }) => blockName === "Employment"
+  );
+  const dependentsBlockDesc = pageDescriptor.blockLists.BlockListDesc;
 
   return (
     <>
@@ -59,8 +76,14 @@ export const FamilyInfoOverviewScreen = ({ navigation }) => {
             profileBlockDesc={profileBlockDesc}
             handleInfoDetails={handleInfoDetails}
           />
-          <EmploymentInfoItem handleInfoDetails={handleInfoDetails} />
-          <DependantsInfoItem handleInfoDetails={handleInfoDetails} />
+          <EmploymentInfoItem
+            employmentBlockDesc={employmentBlockDesc}
+            handleInfoDetails={handleInfoDetails}
+          />
+          <DependantsInfoItem
+            dependentsBlockDesc={dependentsBlockDesc}
+            handleInfoDetails={handleInfoDetails}
+          />
         </View>
       </ScrollView>
       <ButtonBenefitsCart />

@@ -5,6 +5,7 @@ import { TextInputMask } from "react-native-masked-text";
 import { ControlWrapper } from "./ControlWrapper";
 import { uiControlStyles } from "./uiControlStyles";
 import { useField } from "formik";
+import { Text } from "react-native";
 
 export const UsPhone = (props) => {
   const {
@@ -34,11 +35,15 @@ export const UsPhone = (props) => {
           mask: "(999) 999-9999",
         }}
         value={fieldValue}
-        onChangeText={setValue}
+        onChangeText={(val) => {
+          setValue(val);
+          setTouched(true);
+        }}
         style={[
           uiControlStyles.textInputBorderFocus,
           editable === "true" && uiControlStyles.textInputEditable,
           !isFocused && uiControlStyles.textInputBorderBlur,
+          errorMessage && touched && uiControlStyles.textInputError,
         ]}
         placeholder={placeholder}
         keyboardType={"phone-pad"}
@@ -48,6 +53,9 @@ export const UsPhone = (props) => {
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
       />
+      {errorMessage && touched && (
+        <Text style={uiControlStyles.textError}>{errorMessage}</Text>
+      )}
     </ControlWrapper>
   );
 };

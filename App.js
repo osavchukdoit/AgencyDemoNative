@@ -10,6 +10,7 @@ import * as Font from "expo-font";
 import { Formik } from "formik";
 import { useInitialFormikValues } from "./src/form/useInitialFormikValues";
 import { newYupSchema } from "./src/form/yup-schema";
+import FlashMessage from "react-native-flash-message";
 
 function UncoveredApp() {
   const { isLogged, loaderStatus } = useSelector((state) => state.utils);
@@ -24,6 +25,7 @@ function UncoveredApp() {
       <StatusBar barStyle={"light-content"} />
       <AppStack onLogout={handleLogout} />
       {isLoading && <Loader />}
+      <FlashMessage />
     </>
   ) : (
     <>
@@ -63,8 +65,10 @@ export default function App() {
           validationSchema={validationSchema}
         >
           {(props) => {
-            const { handleChange, handleBlur, handleSubmit, values } = props;
-            console.info("values=", values)
+            const { handleChange, handleBlur, handleSubmit, values, touched } =
+              props;
+            // console.info("values=", values.employee.dependents)
+            // console.info("touched=", touched);
             return <UncoveredApp />;
           }}
         </Formik>

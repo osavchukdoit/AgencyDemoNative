@@ -33,3 +33,30 @@ export const useFillDynamicUrl = () => {
     return resultUrl;
   };
 };
+
+export const useFillDynamicField = () => {
+  const { domain } = useSelector((state) => state);
+
+  return (dynamicString) => {
+    const dynamicFillerMatcher = /\{(.*?)\}/g;
+    const fillerFields = dynamicString?.match(dynamicFillerMatcher);
+    if (isEmpty(fillerFields)) return dynamicString;
+
+    const replacedFields = fillerFields.map((field) =>
+      field.replace(/\{/g, "").replace(/\}/g, "")
+    );
+    const domainData = replacedFields.map((field) => {
+      let result = domain;
+      const splitArray = field.split(".");
+      splitArray.forEach((item) => {
+        result = result[item];
+      });
+      return result;
+    });
+    let result = dynamicString;
+    fillerFields.map((matchedField, index) => {
+      result = result.replace(matchedField, domainData[index]);
+    });
+    return result;
+  };
+};
