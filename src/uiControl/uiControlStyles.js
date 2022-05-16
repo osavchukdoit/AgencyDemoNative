@@ -29,6 +29,9 @@ export const uiControlStyles = StyleSheet.create({
   textInputEditable: {
     backgroundColor: THEME.BACKGROUND.LIGHT_BLUE,
   },
+  textInputNonEditable: {
+    paddingLeft: 0,
+  },
   textInputBorderFocus: {
     height: 49,
     fontFamily: FONTS.AVENIR.MEDIUM,

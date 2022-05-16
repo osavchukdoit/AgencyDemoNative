@@ -22,6 +22,7 @@ export default StyleSheet.create({
     color: THEME.COLOR.LOGIN_TITLE,
     marginBottom: 20,
     fontWeight: "bold",
+    textAlign: "center",
   },
 
   textInput: {

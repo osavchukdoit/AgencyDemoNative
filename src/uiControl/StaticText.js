@@ -13,7 +13,9 @@ export const StaticText = (props) => {
 
   return (
     <ControlWrapper {...props}>
-      <PersonIconSvg style={uiControlStyles.inputIcon} />
+      {editable === "true" && (
+        <PersonIconSvg style={uiControlStyles.inputIcon} />
+      )}
       <ControlTextInput
         editable={editable}
         value={fieldValue}

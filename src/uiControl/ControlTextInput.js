@@ -21,7 +21,9 @@ export const ControlTextInput = (props) => {
         style={[
           uiControlStyles.textInputBorderFocus,
           !isFocused && uiControlStyles.textInputBorderBlur,
-          editable === "true" && uiControlStyles.textInputEditable,
+          editable === "true"
+            ? uiControlStyles.textInputEditable
+            : uiControlStyles.textInputNonEditable,
           additionalStyle && additionalStyle,
           errorMessage && uiControlStyles.textInputError,
         ]}
