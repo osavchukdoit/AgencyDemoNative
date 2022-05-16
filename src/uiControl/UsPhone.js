@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import MobileIconSvg from "../assets/icons/personInfoIcons/mobile.svg";
 import PhoneIconSvg from "../assets/icons/personInfoIcons/phone.svg";
 import { TextInputMask } from "react-native-masked-text";
-import { ControlWrapper } from "./ControlWrapper";
 import { uiControlStyles } from "./uiControlStyles";
 import { useField } from "formik";
 import { Text } from "react-native";
@@ -23,7 +22,7 @@ export const UsPhone = (props) => {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
-    <ControlWrapper {...props}>
+    <>
       {propName === "mobilePhone" ? (
         <MobileIconSvg style={uiControlStyles.inputIcon} />
       ) : (
@@ -56,6 +55,6 @@ export const UsPhone = (props) => {
       {errorMessage && touched && (
         <Text style={uiControlStyles.textError}>{errorMessage}</Text>
       )}
-    </ControlWrapper>
+    </>
   );
 };

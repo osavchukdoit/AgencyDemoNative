@@ -16,6 +16,8 @@ import { DateControl } from "../../uiControl/DateControl";
 import { showMessage } from "react-native-flash-message";
 import { CONSTANTS } from "../../constants";
 import { savePostModel } from "../../api/savePostModel";
+import { uiControlsFields } from "../../api/uiControlsFields";
+import { ControlWrapper } from "../../uiControl/ControlWrapper";
 
 export const MainEmploymentInfo = () => {
   const employerBlocks = useSelector(
@@ -29,11 +31,14 @@ export const MainEmploymentInfo = () => {
 
   const fieldsRender = employmentFields.map((field) => {
     const { propName, displayable, uiControl } = field;
-    if (displayable === "false") return null;
-    if (uiControl === "statictext")
-      return <StaticText key={propName} {...field} />;
-    if (uiControl === "amount") return <Amount key={propName} {...field} />;
-    if (uiControl === "date") return <DateControl key={propName} {...field} />;
+    const personType = `employee`;
+
+    const resultField = uiControlsFields(field, personType);
+    return (
+      <ControlWrapper personType={personType} {...field} key={propName}>
+        {resultField}
+      </ControlWrapper>
+    );
   });
 
   const onSave = () => {

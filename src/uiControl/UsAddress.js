@@ -1,7 +1,6 @@
 import React from "react";
 import { Text, StyleSheet } from "react-native";
 import GpsMarkIconSvg from "../assets/icons/personInfoIcons/gpsMark.svg";
-import { ControlWrapper } from "./ControlWrapper";
 import { uiControlStyles } from "./uiControlStyles";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { GOOGLE_API_KEY } from "../constants";
@@ -43,7 +42,7 @@ export const UsAddress = (props) => {
   // }, [])
 
   return (
-    <ControlWrapper {...props}>
+    <>
       <Text style={uiControlStyles.subText}>
         Must be selected from the google list that will populate once you enter
         your complete address including city, state and zip code. If you have an
@@ -57,7 +56,7 @@ export const UsAddress = (props) => {
       {/*  12-3 Bayard, LL2394 St Staten Island*/}
       {/*</ControlTextInput>*/}
       <GooglePlacesInput {...props} />
-    </ControlWrapper>
+    </>
   );
 };
 

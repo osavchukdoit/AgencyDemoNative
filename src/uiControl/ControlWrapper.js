@@ -1,33 +1,47 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  KeyboardAvoidingView,
-  Platform,
-} from "react-native";
+import { StyleSheet, Text, View, KeyboardAvoidingView } from "react-native";
 import { FONTS } from "../styles/fonts";
 import { THEME } from "../styles/theme";
 import { RequiredField } from "../components/utils/RequiredField";
-import { useFillDynamicField } from "../api/useFillDynamicUrl";
-import { CONSTANTS } from "../constants";
+import {
+  useFillDynamicDomainField,
+  useFillDynamicValue,
+} from "../api/useFillDynamicValue";
+import { useField } from "formik";
 
 export const ControlWrapper = (props) => {
-  const { propLabel, mandatory, children, propName } = props;
-  const fillDynamicField = useFillDynamicField();
+  const {
+    propLabel,
+    mandatory,
+    children,
+    propName,
+    displayable,
+    propValue,
+    personType = "employee",
+    editable,
+  } = props;
+  const fillDynamicFieldValue = useFillDynamicValue();
+  const fillDynamicDomainField = useFillDynamicDomainField();
+  const fieldName = `${personType}.${propName}`;
+  const [{ value: fieldValue }, , { setValue }] = useField(fieldName);
+
+  if (displayable === "false") {
+    if (propValue) {
+      const value = fillDynamicFieldValue(propValue);
+      if (fieldValue !== value && editable === "true") {
+        setValue(value);
+      }
+    }
+    return null;
+  }
 
   return (
     <View style={styles.wrapper}>
-    {/*// <KeyboardAvoidingView*/}
-    {/*//   behavior={Platform.OS === CONSTANTS.OS.ios ? "padding" : "height"}*/}
-    {/*//   style={styles.wrapper}*/}
-    {/*// >*/}
       <Text style={styles.title}>
-        {fillDynamicField(propLabel)}
+        {fillDynamicDomainField(propLabel)}
         {mandatory === "true" && <RequiredField />}
       </Text>
-        {children}
-      {/*// </KeyboardAvoidingView>*/}
+      {children}
     </View>
   );
 };

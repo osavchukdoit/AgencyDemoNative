@@ -14,6 +14,8 @@ import { RadioButton } from "../../uiControl/RadioButton";
 import { savePostModel } from "../../api/savePostModel";
 import { showMessage } from "react-native-flash-message";
 import { CONSTANTS } from "../../constants";
+import { uiControlsFields } from "../../api/uiControlsFields";
+import { ControlWrapper } from "../../uiControl/ControlWrapper";
 
 export const MainPersonalInfo = () => {
   const employerBlocks = useSelector(
@@ -26,29 +28,42 @@ export const MainPersonalInfo = () => {
   );
   const profileFields = profileBlockDesc.props.PropDesc;
 
-  const fieldsRender = profileFields.map((field) => {
-    const { propName, displayable } = field;
-    if (displayable === "false") return null;
-    if (
-      propName === "firstName" ||
-      propName === "middleName" ||
-      propName === "lastName"
-    )
-      return <StaticText key={propName} {...field} />;
-    if (propName === "dob") return <DateControl key={propName} {...field} />;
-    if (propName === "gender") return <RadioButton key={propName} {...field} />;
-    if (propName === "SSN") return <Ssn key={propName} {...field} />;
-    if (propName === "countryOfCitizenship")
-      return <Picklist key={propName} {...field} />;
-    if (propName === "birthState")
-      return <Picklist key={propName} {...field} />;
-    if (propName === "email") return <Email key={propName} {...field} />;
-    if (propName === "mobilePhone")
-      return <UsPhone key={propName} {...field} />;
-    if (propName === "homeAddress")
-      return <UsAddress key={propName} {...field} />;
+  // const fieldsRender = profileFields.map((field) => {
+  //   const { propName, displayable } = field;
+  //   if (displayable === "false") return null;
+  //   if (
+  //     propName === "firstName" ||
+  //     propName === "middleName" ||
+  //     propName === "lastName"
+  //   )
+  //     return <StaticText key={propName} {...field} />;
+  //   if (propName === "dob") return <DateControl key={propName} {...field} />;
+  //   if (propName === "gender") return <RadioButton key={propName} {...field} />;
+  //   if (propName === "SSN") return <Ssn key={propName} {...field} />;
+  //   if (propName === "countryOfCitizenship")
+  //     return <Picklist key={propName} {...field} />;
+  //   if (propName === "birthState")
+  //     return <Picklist key={propName} {...field} />;
+  //   if (propName === "email") return <Email key={propName} {...field} />;
+  //   if (propName === "mobilePhone")
+  //     return <UsPhone key={propName} {...field} />;
+  //   if (propName === "homeAddress")
+  //     return <UsAddress key={propName} {...field} />;
+  //
+  //   return <Text key={propName}>{propName}</Text>;
+  // });
 
-    return <Text key={propName}>{propName}</Text>;
+  // hidden until the appropriate controls are received
+  const fieldsRender = profileFields.map((field) => {
+    const { propName, displayable, uiControl } = field;
+    const personType = `employee`;
+
+    const resultField = uiControlsFields(field, personType);
+    return (
+      <ControlWrapper personType={personType} {...field} key={propName}>
+        {resultField}
+      </ControlWrapper>
+    );
   });
 
   const onSubmitProfile = () => {

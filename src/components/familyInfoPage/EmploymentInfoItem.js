@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, View, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity, Image } from "react-native";
 import InfoCircleSvg from "../../assets/icons/familyInfoIcons/infoCircle.svg";
 import BagIconSvg from "../../assets/icons/familyInfoIcons/bag.svg";
 import ArrowRightSvg from "../../assets/icons/familyInfoIcons/vectorRight.svg";
@@ -7,18 +7,26 @@ import mainStyles from "./FamilyInfoItemStyles";
 import { commonPlanStyles } from "../../styles/commonPlanStyles";
 import { BasicSectorWrapper } from "../utils/BasicSectorWrapper";
 import { useFormikContext } from "formik";
+import { getServerIcon } from "../../constants";
 
 export const EmploymentInfoItem = ({
   employmentBlockDesc,
   handleInfoDetails,
 }) => {
   const [isWarning, setIsWarning] = useState(false);
-  const { blockTitle } = employmentBlockDesc;
+  const { blockTitle, blockIcon } = employmentBlockDesc;
   const { values } = useFormikContext();
+  const blockServerIcon = getServerIcon(blockIcon);
 
   return (
     <>
-      <Text style={commonPlanStyles.planSectorHeader}>{blockTitle}</Text>
+      <View style={{ flexDirection: "row" }}>
+        <Image
+          source={{ uri: blockServerIcon }}
+          style={{ width: 22, height: 22 }}
+        />
+        <Text style={commonPlanStyles.planSectorHeader}>{blockTitle}</Text>
+      </View>
 
       <BasicSectorWrapper>
         <View style={mainStyles.subTitleContainer}>

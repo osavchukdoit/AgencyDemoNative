@@ -21,6 +21,7 @@ export const PAGE_DESC_URL = `${GATEWAY_SERVICES_URL}/metadataservice/find/conte
 export const domainModelUrl = (datamodelFindGETURL) =>
   `${SERVER_URL}/${datamodelFindGETURL}`;
 export const savePostUrl = (savePOSTURL) => `${SERVER_URL}/${savePOSTURL}`;
+export const getServerIcon = (iconPath) => `${SERVER_URL}/${iconPath}`;
 
 // export const GOOGLE_API_KEY = "AIzaSyDFypetmaRCy6bzbsEz2__gLPSU3NmqZAM";
 export const GOOGLE_API_KEY =

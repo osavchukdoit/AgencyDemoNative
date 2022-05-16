@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
+import { Text, View, TouchableOpacity, StyleSheet, Image } from "react-native";
 import PersonIconSvg from "../../assets/icons/familyInfoIcons/person.svg";
 import ArrowRightSvg from "../../assets/icons/familyInfoIcons/vectorRight.svg";
 import mainStyles from "./FamilyInfoItemStyles";
@@ -12,6 +12,7 @@ import { BasicSectorWrapper } from "../utils/BasicSectorWrapper";
 import { useField } from "formik";
 import { isEmpty } from "lodash";
 import { DependentsListItem } from "./DependentsListItem";
+import { getServerIcon } from "../../constants";
 
 export const DependantsInfoItem = ({
   dependentsBlockDesc,
@@ -30,6 +31,8 @@ export const DependantsInfoItem = ({
   const dependentsFieldName = `${personType}.${blockListName}`;
   const [{ value: dependents }, { error: errorMessage }, { setDependents }] =
     useField(dependentsFieldName);
+  const { blockTitle, blockIcon } = block.BlockDesc;
+  const blockServerIcon = getServerIcon(blockIcon);
 
   const onAddDependent = () => {
     handleInfoDetails("DependantsInfoDetailsScreen");
@@ -37,7 +40,13 @@ export const DependantsInfoItem = ({
 
   return (
     <View style={localStyles.wrapper}>
-      <Text style={commonPlanStyles.planSectorHeader}>{blockListLabel}</Text>
+      <View style={{ flexDirection: "row" }}>
+        <Image
+          source={{ uri: blockServerIcon }}
+          style={{ width: 22, height: 22 }}
+        />
+        <Text style={commonPlanStyles.planSectorHeader}>{blockTitle}</Text>
+      </View>
 
       {isEmpty(dependents)
         ? null

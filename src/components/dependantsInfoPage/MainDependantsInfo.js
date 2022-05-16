@@ -19,6 +19,9 @@ import { DateControl } from "../../uiControl/DateControl";
 import { Ssn } from "../../uiControl/Ssn";
 import { Picklist } from "../../uiControl/Picklist";
 import { UsAddress } from "../../uiControl/UsAddress";
+import { ControlCheckbox } from "../../uiControl/ControlCheckbox";
+import { uiControlsFields } from "../../api/uiControlsFields";
+import { ControlWrapper } from "../../uiControl/ControlWrapper";
 // import { Gender } from "../../uiControl/Gender.js";
 
 export const MainDependantsInfo = () => {
@@ -33,19 +36,12 @@ export const MainDependantsInfo = () => {
     const { propName, displayable, uiControl } = field;
     const personType = `employee.dependents[0]`;
 
-    if (displayable === "false") return null;
-    if (uiControl === "statictext")
-      return <StaticText personType={personType} key={propName} {...field} />;
-    if (uiControl === "radiobutton")
-      return <RadioButton personType={personType} key={propName} {...field} />;
-    if (uiControl === "date")
-      return <DateControl personType={personType} key={propName} {...field} />;
-    if (uiControl === "ssn")
-      return <Ssn personType={personType} key={propName} {...field} />;
-    if (uiControl === "picklist")
-      return <Picklist personType={personType} key={propName} {...field} />;
-    if (uiControl === "usaddress")
-      return <UsAddress personType={personType} key={propName} {...field} />;
+    const resultField = uiControlsFields(field, personType);
+    return (
+      <ControlWrapper personType={personType} {...field} key={propName}>
+        {resultField}
+      </ControlWrapper>
+    );
   });
 
   const onSubmitDependent = () => {
@@ -163,11 +159,6 @@ export const MainDependantsInfo = () => {
 };
 
 const localStyles = StyleSheet.create({
-  buttonAndTextWrapper: {
-    position: "relative",
-    marginBottom: 7,
-  },
-
   deleteButton: {
     width: 93,
     height: 32,

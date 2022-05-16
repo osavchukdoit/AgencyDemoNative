@@ -12,7 +12,6 @@ import { THEME } from "../styles/theme";
 import { getValidValues } from "../api/validValues";
 import { useSelector } from "react-redux";
 import { isEmpty } from "lodash";
-import { ControlWrapper } from "./ControlWrapper";
 import { uiControlStyles } from "./uiControlStyles";
 import { CONSTANTS } from "../constants";
 import { useField } from "formik";
@@ -64,7 +63,7 @@ export const Picklist = (props) => {
   const closePicklist = () => setIsVisible(false);
 
   return (
-    <ControlWrapper {...props}>
+    <>
       {isIos && (
         <Text
           style={[
@@ -113,7 +112,7 @@ export const Picklist = (props) => {
           </TouchableOpacity>
         </View>
       )}
-    </ControlWrapper>
+    </>
   );
 };
 

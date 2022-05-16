@@ -13,7 +13,7 @@ import { HomeAndPostTop } from "../components/utils/topComponents/HomeAndPostTop
 import { useDispatch, useSelector } from "react-redux";
 import { getDomainModel } from "../api/domainModel";
 import { setDomainModel } from "../redux/actions/actionCreator";
-import { useFillDynamicUrl } from "../api/useFillDynamicUrl";
+import { useFillDynamicValue } from "../api/useFillDynamicValue";
 import { isEmpty } from "lodash";
 import { useFormikContext } from "formik";
 import { useInitialFormikValues } from "../form/useInitialFormikValues";
@@ -23,7 +23,7 @@ export const HomeScreen = ({ navigation }) => {
   const { domain } = state;
   const { jwt } = useSelector((state) => state.utils);
   const dispatch = useDispatch();
-  const fillDynamicUrl = useFillDynamicUrl();
+  const fillDynamicUrl = useFillDynamicValue();
   const { setValues } = useFormikContext();
   const initialFormikValues = useInitialFormikValues();
 

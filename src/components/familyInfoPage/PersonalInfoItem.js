@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, View, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity, Image } from "react-native";
 import InfoCircleSvg from "../../assets/icons/familyInfoIcons/infoCircle.svg";
 import CalendarIconSvg from "../../assets/icons/familyInfoIcons/calendar.svg";
 import ArrowRightSvg from "../../assets/icons/familyInfoIcons/vectorRight.svg";
@@ -8,10 +8,12 @@ import { commonPlanStyles } from "../../styles/commonPlanStyles";
 import { BasicSectorWrapper } from "../utils/BasicSectorWrapper";
 import { useFormikContext } from "formik";
 import { fullNameOf } from "../../api/utils";
+import { getServerIcon } from "../../constants";
 
 export const PersonalInfoItem = ({ profileBlockDesc, handleInfoDetails }) => {
-  const { blockTitle } = profileBlockDesc;
+  const { blockTitle, blockIcon } = profileBlockDesc;
   const { values } = useFormikContext();
+  const blockServerIcon = getServerIcon(blockIcon);
 
   const employeeFullName = fullNameOf(values.employee);
 
@@ -22,7 +24,13 @@ export const PersonalInfoItem = ({ profileBlockDesc, handleInfoDetails }) => {
 
   return (
     <>
-      <Text style={commonPlanStyles.planSectorHeader}>{blockTitle}</Text>
+      <View style={{ flexDirection: "row" }}>
+        <Image
+          source={{ uri: blockServerIcon }}
+          style={{ width: 22, height: 22 }}
+        />
+        <Text style={commonPlanStyles.planSectorHeader}>{blockTitle}</Text>
+      </View>
 
       <BasicSectorWrapper>
         <View style={mainStyles.subTitleContainer}>

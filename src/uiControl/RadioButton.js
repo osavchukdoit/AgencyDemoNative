@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import { FONTS } from "../styles/fonts";
 import { THEME } from "../styles/theme";
-import { ControlWrapper } from "./ControlWrapper";
 import { useSelector } from "react-redux";
 import { getValidValues } from "../api/validValues";
 import { useField } from "formik";
@@ -77,7 +76,7 @@ export const RadioButton = (props) => {
   };
 
   return (
-    <ControlWrapper {...props}>
+    <>
       {isGenderProp ? (
         <View style={styles.genderRadioButtonsContainer}>
           {options?.map((radioOption) => genderRadioButton(radioOption))}
@@ -89,7 +88,7 @@ export const RadioButton = (props) => {
           keyExtractor={(item) => item.id}
         />
       )}
-    </ControlWrapper>
+    </>
   );
 };
 

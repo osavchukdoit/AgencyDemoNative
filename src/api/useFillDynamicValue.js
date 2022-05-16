@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
  * Replace dynamic string inside `{}` with corresponding values
  * to form the appropriate URL.
  */
-export const useFillDynamicUrl = () => {
+export const useFillDynamicValue = () => {
   const state = useSelector((state) => state);
 
   return (dynamicUrl) => {
@@ -34,7 +34,7 @@ export const useFillDynamicUrl = () => {
   };
 };
 
-export const useFillDynamicField = () => {
+export const useFillDynamicDomainField = () => {
   const { domain } = useSelector((state) => state);
 
   return (dynamicString) => {

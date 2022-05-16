@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { TextInput, Text } from "react-native";
 import ShieldIconSvg from "../assets/icons/personInfoIcons/shield.svg";
 import { TextInputMask } from "react-native-masked-text";
-import { ControlWrapper } from "./ControlWrapper";
 import { uiControlStyles } from "./uiControlStyles";
 import { useField } from "formik";
 
@@ -14,7 +13,7 @@ export const Ssn = (props) => {
     useField(fieldName);
 
   return (
-    <ControlWrapper {...props}>
+    <>
       <ShieldIconSvg style={uiControlStyles.inputIcon} />
       {editable === "true" ? (
         <TextInputMask
@@ -44,6 +43,6 @@ export const Ssn = (props) => {
       {errorMessage && (
         <Text style={uiControlStyles.textError}>{errorMessage}</Text>
       )}
-    </ControlWrapper>
+    </>
   );
 };

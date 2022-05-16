@@ -1,5 +1,5 @@
 import React from "react";
-import { View, ScrollView, StyleSheet } from "react-native";
+import { View, ScrollView, StyleSheet, Image } from "react-native";
 import { FamilyInfoTop } from "../components/familyInfoPage/FamilyInfoTop";
 import { PersonalInfoItem } from "../components/familyInfoPage/PersonalInfoItem";
 import { EmploymentInfoItem } from "../components/familyInfoPage/EmploymentInfoItem";
@@ -10,6 +10,7 @@ import { PersonalInfoDetailsScreen } from "./PersonalInfoDetailsScreen";
 import { EmploymentInfoDetailsScreen } from "./EmploymentInfoDetailsScreen";
 import { DependantsInfoDetailsScreen } from "./DependantsInfoDetailsScreen";
 import { useSelector } from "react-redux";
+import { getServerIcon } from "../constants";
 
 export const FamilyInfoOverviewNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -22,6 +23,11 @@ export const FamilyInfoOverviewNavigator = () => {
     ({ blockName }) => blockName === "Employment"
   );
   const dependentBlockDesc = pageDesc.blockLists.BlockListDesc.block.BlockDesc;
+  const profileBlockServerIcon = getServerIcon(profileBlockDesc.blockIcon);
+  const employmentBlockServerIcon = getServerIcon(
+    employmentBlockDesc.blockIcon
+  );
+  const dependentBlockServerIcon = getServerIcon(dependentBlockDesc.blockIcon);
 
   return (
     <Stack.Navigator>
@@ -33,17 +39,41 @@ export const FamilyInfoOverviewNavigator = () => {
       <Stack.Screen
         name={"PersonalInfoDetailsScreen"}
         component={PersonalInfoDetailsScreen}
-        options={{ title: profileBlockDesc.blockTitle }}
+        options={() => ({
+          title: profileBlockDesc.blockTitle,
+          headerRight: () => (
+            <Image
+              source={{ uri: profileBlockServerIcon }}
+              style={styles.blockIcon}
+            />
+          ),
+        })}
       />
       <Stack.Screen
         name={"EmploymentInfoDetailsScreen"}
         component={EmploymentInfoDetailsScreen}
-        options={{ title: employmentBlockDesc.blockTitle }}
+        options={() => ({
+          title: employmentBlockDesc.blockTitle,
+          headerRight: () => (
+            <Image
+              source={{ uri: employmentBlockServerIcon }}
+              style={styles.blockIcon}
+            />
+          ),
+        })}
       />
       <Stack.Screen
         name={"DependantsInfoDetailsScreen"}
         component={DependantsInfoDetailsScreen}
-        options={{ title: dependentBlockDesc.blockTitle }}
+        options={() => ({
+          title: dependentBlockDesc.blockTitle,
+          headerRight: () => (
+            <Image
+              source={{ uri: dependentBlockServerIcon }}
+              style={styles.blockIcon}
+            />
+          ),
+        })}
       />
     </Stack.Navigator>
   );
@@ -94,5 +124,9 @@ export const FamilyInfoOverviewScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   wrapper: {
     paddingHorizontal: 20,
+  },
+  blockIcon: {
+    width: 22,
+    height: 22,
   },
 });
