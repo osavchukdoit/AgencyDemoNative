@@ -9,6 +9,9 @@ export const CONSTANTS = {
     android: "android",
   },
   FLASH_MESSAGE_DURATION: 20000,
+  STYLES: {
+    BASE_FONT_SIZE: 14,
+  },
 };
 
 export const SERVER_URL = "https://www.aezbenefitsdev2.com";
