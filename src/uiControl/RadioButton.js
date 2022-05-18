@@ -12,13 +12,15 @@ import { useSelector } from "react-redux";
 import { getValidValues } from "../api/validValues";
 import { useField } from "formik";
 import { AppTooltip } from "../components/utils/AppTooltip";
+import { propMarkupStyles } from "./propMarkupStyles";
 
 export const RadioButton = (props) => {
-  const { editable, propName, personType = "employee" } = props;
+  const { editable, propName, personType = "employee", markup } = props;
   const { jwt } = useSelector((state) => state.utils);
   const [options, setOptions] = useState();
   const fieldName = `${personType}.${propName}`;
   const [{ value: fieldValue }, , { setValue }] = useField(fieldName);
+  const markupStyles = propMarkupStyles(markup);
 
   useEffect(() => {
     getValidValues(jwt, propName).then((validValues) => {
@@ -48,6 +50,7 @@ export const RadioButton = (props) => {
           style={[
             styles.genderRadioLabel,
             isChecked && styles.checkedGenderRadioLabel,
+            markupStyles && markupStyles,
           ]}
         >
           {display}
@@ -68,7 +71,9 @@ export const RadioButton = (props) => {
           <View style={styles.radioButtonContainer}>
             {fieldValue === id && <View style={styles.radioCheckPoint}></View>}
           </View>
-          <Text style={styles.radioButtonLabel}>{display}</Text>
+          <Text style={[styles.radioButtonLabel, markupStyles && markupStyles]}>
+            {display}
+          </Text>
         </TouchableOpacity>
         {tooltip && <AppTooltip tooltipText={tooltip} />}
       </View>

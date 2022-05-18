@@ -4,13 +4,15 @@ import ShieldIconSvg from "../assets/icons/personInfoIcons/shield.svg";
 import { TextInputMask } from "react-native-masked-text";
 import { uiControlStyles } from "./uiControlStyles";
 import { useField } from "formik";
+import { propMarkupStyles } from "./propMarkupStyles";
 
 export const Ssn = (props) => {
-  const { editable, personType = "employee", propName } = props;
+  const { editable, personType = "employee", propName, markup } = props;
   const [isFocused, setIsFocused] = useState(false);
   const fieldName = `${personType}.${propName}`;
   const [{ value: fieldValue }, { error: errorMessage }, { setValue }] =
     useField(fieldName);
+  const markupStyles = propMarkupStyles(markup);
 
   return (
     <>
@@ -28,6 +30,7 @@ export const Ssn = (props) => {
             uiControlStyles.textInput,
             uiControlStyles.textInputEditable,
             !isFocused && uiControlStyles.textInputBorderBlurTransparent,
+            markupStyles && markupStyles,
             errorMessage && uiControlStyles.textInputError,
           ]}
           keyboardType={"numeric"}

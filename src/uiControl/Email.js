@@ -3,15 +3,17 @@ import EnvelopeIconSvg from "../assets/icons/personInfoIcons/envelope.svg";
 import { uiControlStyles } from "./uiControlStyles";
 import { ControlTextInput } from "./ControlTextInput";
 import { useField } from "formik";
+import { propMarkupStyles } from "./propMarkupStyles";
 
 export const Email = (props) => {
-  const { editable, personType = "employee", propName } = props;
+  const { editable, personType = "employee", propName, markup } = props;
   const fieldName = `${personType}.${propName}`;
   const [
     { value: fieldValue },
     { error: errorMessage, touched },
     { setValue, setTouched },
   ] = useField(fieldName);
+  const markupStyles = propMarkupStyles(markup);
 
   return (
     <>
@@ -26,6 +28,7 @@ export const Email = (props) => {
           setTouched(true);
         }}
         errorMessage={touched && errorMessage}
+        additionalStyle={[markupStyles && markupStyles]}
       />
     </>
   );

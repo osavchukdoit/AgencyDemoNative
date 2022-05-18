@@ -4,6 +4,7 @@ import GpsMarkIconSvg from "../assets/icons/personInfoIcons/gpsMark.svg";
 import { uiControlStyles } from "./uiControlStyles";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { GOOGLE_API_KEY } from "../constants";
+import { propMarkupStyles } from "./propMarkupStyles";
 
 export const GooglePlacesInput = ({ editable }) => {
   return (
@@ -35,7 +36,8 @@ export const GooglePlacesInput = ({ editable }) => {
   );
 };
 export const UsAddress = (props) => {
-  const { editable, propName } = props;
+  const { editable, propName, markup } = props;
+  const markupStyles = propMarkupStyles(markup);
 
   // useEffect(() => {
   //   LogBox.ignoreLogs(['VirtualizedLists should never be nested']);

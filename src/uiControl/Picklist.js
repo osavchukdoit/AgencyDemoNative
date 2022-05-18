@@ -15,9 +15,10 @@ import { isEmpty } from "lodash";
 import { uiControlStyles } from "./uiControlStyles";
 import { CONSTANTS } from "../constants";
 import { useField } from "formik";
+import { propMarkupStyles } from "./propMarkupStyles";
 
 export const Picklist = (props) => {
-  const { editable, propName, personType = "employee" } = props;
+  const { editable, propName, personType = "employee", markup } = props;
   const { jwt } = useSelector((state) => state.utils);
   const [picklistOptions, setPicklistOptions] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
@@ -25,6 +26,7 @@ export const Picklist = (props) => {
   const fieldName = `${personType}.${propName}`;
   const [{ value: fieldValue }, , { setValue }] = useField(fieldName);
   const [fieldLabel, setFieldLabel] = useState();
+  const markupStyles = propMarkupStyles(markup);
 
   useEffect(() => {
     if (!isEmpty(picklistOptions)) {
@@ -71,6 +73,7 @@ export const Picklist = (props) => {
             uiControlStyles.textInput,
             editable === "true" && uiControlStyles.textInputEditable,
             styles.picklistValue,
+            markupStyles && markupStyles,
             !isVisible && uiControlStyles.textInputBorderBlurTransparent,
           ]}
           onPress={openPicklist}
@@ -97,6 +100,7 @@ export const Picklist = (props) => {
             style={[
               !isIos && styles.picklistValueAndroid,
               editable === "true" && uiControlStyles.textInputEditable,
+              markupStyles && markupStyles,
             ]}
           >
             {picklistOptions?.map((option) => (

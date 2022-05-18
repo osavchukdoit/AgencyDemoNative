@@ -5,6 +5,7 @@ import { TextInputMask } from "react-native-masked-text";
 import { uiControlStyles } from "./uiControlStyles";
 import { useField } from "formik";
 import { Text } from "react-native";
+import { propMarkupStyles } from "./propMarkupStyles";
 
 export const UsPhone = (props) => {
   const {
@@ -12,6 +13,7 @@ export const UsPhone = (props) => {
     placeholder = "Enter your phone number",
     editable,
     personType = "employee",
+    markup,
   } = props;
   const fieldName = `${personType}.${propName}`;
   const [
@@ -20,6 +22,7 @@ export const UsPhone = (props) => {
     { setValue, setTouched },
   ] = useField(fieldName);
   const [isFocused, setIsFocused] = useState(false);
+  const markupStyles = propMarkupStyles(markup);
 
   return (
     <>
@@ -42,6 +45,7 @@ export const UsPhone = (props) => {
           uiControlStyles.textInputBorderFocus,
           editable === "true" && uiControlStyles.textInputEditable,
           !isFocused && uiControlStyles.textInputBorderBlur,
+          markupStyles && markupStyles,
           errorMessage && touched && uiControlStyles.textInputError,
         ]}
         placeholder={placeholder}

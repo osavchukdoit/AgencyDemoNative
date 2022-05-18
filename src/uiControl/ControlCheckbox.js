@@ -5,9 +5,10 @@ import { THEME } from "../styles/theme";
 import { getValidValues } from "../api/validValues";
 import { useSelector } from "react-redux";
 import { useField } from "formik";
+import { propMarkupStyles } from "./propMarkupStyles";
 
 export const ControlCheckbox = (props) => {
-  const { editable, propName, personType = "employee" } = props;
+  const { editable, propName, personType = "employee", markup } = props;
   const { jwt } = useSelector((state) => state.utils);
   const [options, setOptions] = useState([]);
   const [yesLabel, setYesLabel] = useState("");
@@ -31,6 +32,8 @@ export const ControlCheckbox = (props) => {
       setValue(options.find(({ id }) => id === "true" || id === "Yes").id);
     }
   };
+  const markupStyles = propMarkupStyles(markup);
+
   return (
     <TouchableOpacity
       onPress={() => handleCheck()}
@@ -45,7 +48,7 @@ export const ControlCheckbox = (props) => {
       >
         {(fieldValue === "true" || fieldValue === "Yes") && <SelectedIconSvg />}
       </View>
-      <Text>{yesLabel}</Text>
+      <Text style={[markupStyles && markupStyles]}>{yesLabel}</Text>
     </TouchableOpacity>
   );
 };

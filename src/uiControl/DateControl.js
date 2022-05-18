@@ -8,12 +8,14 @@ import { uiControlStyles } from "./uiControlStyles";
 // because it uses chrome V8 engine while debugging.
 import moment from "moment";
 import { useField } from "formik";
+import { propMarkupStyles } from "./propMarkupStyles";
 
 export const DateControl = (props) => {
-  const { editable, propName, personType = "employee" } = props;
+  const { editable, propName, personType = "employee", markup } = props;
   const fieldName = `${personType}.${propName}`;
   const [{ value: fieldValue }, , { setValue }] = useField(fieldName);
   const [showDatePicker, setShowDatePicker] = useState(false);
+  const markupStyles = propMarkupStyles(markup);
 
   const handleDatePress = () => {
     if (editable === "false") return;
@@ -29,6 +31,7 @@ export const DateControl = (props) => {
           uiControlStyles.textInput,
           editable === "true" && uiControlStyles.textInputEditable,
           styles.dateText,
+          markupStyles && markupStyles,
           !showDatePicker && uiControlStyles.textInputBorderBlurTransparent,
         ]}
         onPress={handleDatePress}

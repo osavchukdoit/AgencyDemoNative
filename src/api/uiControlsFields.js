@@ -11,8 +11,8 @@ import { Email } from "../uiControl/Email";
 import { UsPhone } from "../uiControl/UsPhone";
 
 export const uiControlsFields = (field, personType = "employee") => {
-  const { propName, displayable, uiControl } = field;
-  let resultComponent = null;
+  const { propName, uiControl } = field;
+  let resultComponent;
 
   switch (uiControl) {
     case "statictext":
@@ -59,10 +59,12 @@ export const uiControlsFields = (field, personType = "employee") => {
       resultComponent = (
         <Email personType={personType} key={propName} {...field} />
       );
+      break;
     case "usphone":
       resultComponent = (
         <UsPhone personType={personType} key={propName} {...field} />
       );
+      break;
     default:
       resultComponent = null;
   }
