@@ -15,6 +15,7 @@ export const DependentsListItem = (props) => {
     depLastName,
     relationType,
   } = props;
+
   const onDeleteDependent = () => {
     console.info(`Delete dependent #${dependantIndex}`);
   };
