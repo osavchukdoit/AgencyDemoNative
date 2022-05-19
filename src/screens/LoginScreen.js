@@ -27,7 +27,7 @@ export const LoginScreen = ({ onLogin }) => {
   const dispatch = useDispatch();
   const loginUser = useLoginUser();
 
-  const onHandleFocus = (value) => {
+  const onFocus = (value) => {
     switch (value) {
       case CONSTANTS.LOGIN_SCREEN.LOGIN_INPUT:
         setIsFocusedLogin(true);
@@ -41,7 +41,7 @@ export const LoginScreen = ({ onLogin }) => {
     }
   };
 
-  const onHandleBlur = (value) => {
+  const onBlur = (value) => {
     switch (value) {
       case CONSTANTS.LOGIN_SCREEN.LOGIN_INPUT:
         setIsFocusedLogin(false);
@@ -83,8 +83,8 @@ export const LoginScreen = ({ onLogin }) => {
             source={require("../img/user.png")}
           />
           <TextInput
-            onFocus={() => onHandleFocus(CONSTANTS.LOGIN_SCREEN.LOGIN_INPUT)}
-            onBlur={() => onHandleBlur(CONSTANTS.LOGIN_SCREEN.LOGIN_INPUT)}
+            onFocus={() => onFocus(CONSTANTS.LOGIN_SCREEN.LOGIN_INPUT)}
+            onBlur={() => onBlur(CONSTANTS.LOGIN_SCREEN.LOGIN_INPUT)}
             style={isFocusedLogin ? styles.textInputFocus : styles.textInput}
             onChangeText={(text) =>
               handleInputValue(CONSTANTS.LOGIN_SCREEN.LOGIN_INPUT, text)
@@ -99,8 +99,8 @@ export const LoginScreen = ({ onLogin }) => {
             source={require("../img/pass.png")}
           />
           <TextInput
-            onFocus={() => onHandleFocus(CONSTANTS.LOGIN_SCREEN.PASSWORD_INPUT)}
-            onBlur={() => onHandleBlur(CONSTANTS.LOGIN_SCREEN.PASSWORD_INPUT)}
+            onFocus={() => onFocus(CONSTANTS.LOGIN_SCREEN.PASSWORD_INPUT)}
+            onBlur={() => onBlur(CONSTANTS.LOGIN_SCREEN.PASSWORD_INPUT)}
             style={isFocusedPassword ? styles.textInputFocus : styles.textInput}
             onChangeText={(text) =>
               handleInputValue(CONSTANTS.LOGIN_SCREEN.PASSWORD_INPUT, text)
