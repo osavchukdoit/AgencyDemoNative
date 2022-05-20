@@ -5,12 +5,14 @@ import { uiControlStyles } from "./uiControlStyles";
 import { useField } from "formik";
 import { ControlTextInput } from "./ControlTextInput";
 import { propMarkupStyles } from "./propMarkupStyles";
+import { useHandleChangeFieldValue } from "../form/useHandleChangeFieldValue";
 
 export const StaticText = (props) => {
   const { editable, propName, personType = "employee", markup } = props;
   const fieldName = `${personType}.${propName}`;
-  const [{ value: fieldValue }, , { setValue }] = useField(fieldName);
+  const [{ value: fieldValue }] = useField(fieldName);
   const markupStyles = propMarkupStyles(markup);
+  const handleChangeFieldValue = useHandleChangeFieldValue(fieldName);
 
   return (
     <>
@@ -20,12 +22,12 @@ export const StaticText = (props) => {
       <ControlTextInput
         editable={editable}
         value={fieldValue}
-        onChangeText={setValue}
+        onChangeText={handleChangeFieldValue}
         additionalStyle={[
           editable === "true"
             ? [uiControlStyles.textInput, uiControlStyles.textInputEditable]
             : staticTextStyles.textInput,
-          markupStyles && markupStyles
+          markupStyles && markupStyles,
         ]}
       />
     </>

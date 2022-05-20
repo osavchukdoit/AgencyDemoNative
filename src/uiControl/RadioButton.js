@@ -13,14 +13,16 @@ import { getValidValues } from "../api/validValues";
 import { useField } from "formik";
 import { AppTooltip } from "../components/utils/AppTooltip";
 import { propMarkupStyles } from "./propMarkupStyles";
+import { useHandleChangeFieldValue } from "../form/useHandleChangeFieldValue";
 
 export const RadioButton = (props) => {
   const { editable, propName, personType = "employee", markup } = props;
   const { jwt } = useSelector((state) => state.utils);
   const [options, setOptions] = useState();
   const fieldName = `${personType}.${propName}`;
-  const [{ value: fieldValue }, , { setValue }] = useField(fieldName);
+  const [{ value: fieldValue }] = useField(fieldName);
   const markupStyles = propMarkupStyles(markup);
+  const handleChangeFieldValue = useHandleChangeFieldValue(fieldName);
 
   useEffect(() => {
     getValidValues(jwt, propName).then((validValues) => {
@@ -29,7 +31,7 @@ export const RadioButton = (props) => {
   }, [propName]);
 
   const onOptionPressed = (id) => {
-    setValue(id);
+    handleChangeFieldValue(id);
   };
 
   const isGenderProp = propName === "gender" || propName === "depGender";
@@ -66,7 +68,7 @@ export const RadioButton = (props) => {
       <View style={styles.radioButtonWrapper}>
         <TouchableOpacity
           style={styles.radioButtonAndLabelWrapper}
-          onPress={() => setValue(id)}
+          onPress={() => handleChangeFieldValue(id)}
         >
           <View style={styles.radioButtonContainer}>
             {fieldValue === id && <View style={styles.radioCheckPoint}></View>}

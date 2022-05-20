@@ -35,7 +35,9 @@ export const DependantsInfoItem = ({
   const blockServerIcon = getServerIcon(blockIcon);
 
   const onAddDependent = () => {
-    handleInfoDetails("DependantsInfoDetailsScreen");
+    handleInfoDetails("DependantsInfoDetailsScreen", {
+      dependentIndex: dependents.length,
+    });
   };
 
   return (
@@ -55,7 +57,7 @@ export const DependantsInfoItem = ({
               <DependentsListItem
                 key={index}
                 {...dependentItem}
-                dependantIndex={index}
+                dependentIndex={index}
                 handleInfoDetails={handleInfoDetails}
               />
             );

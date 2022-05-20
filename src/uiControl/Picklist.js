@@ -16,6 +16,7 @@ import { uiControlStyles } from "./uiControlStyles";
 import { CONSTANTS } from "../constants";
 import { useField } from "formik";
 import { propMarkupStyles } from "./propMarkupStyles";
+import { useHandleChangeFieldValue } from "../form/useHandleChangeFieldValue";
 
 export const Picklist = (props) => {
   const { editable, propName, personType = "employee", markup } = props;
@@ -24,9 +25,10 @@ export const Picklist = (props) => {
   const [isVisible, setIsVisible] = useState(false);
   const isIos = Platform.OS === CONSTANTS.OS.ios;
   const fieldName = `${personType}.${propName}`;
-  const [{ value: fieldValue }, , { setValue }] = useField(fieldName);
+  const [{ value: fieldValue }] = useField(fieldName);
   const [fieldLabel, setFieldLabel] = useState();
   const markupStyles = propMarkupStyles(markup);
+  const handleChangeFieldValue = useHandleChangeFieldValue(fieldName);
 
   useEffect(() => {
     if (!isEmpty(picklistOptions)) {
@@ -49,17 +51,19 @@ export const Picklist = (props) => {
   }, []);
 
   useEffect(() => {
-    if (!isEmpty(picklistOptions)) {
-      setValue(picklistOptions[0]?.value);
+    if (!isEmpty(picklistOptions) && isEmpty(fieldValue)) {
+      handleChangeFieldValue(picklistOptions[0]?.value);
 
       if (propName === "countryOfCitizenship") {
         const defaultUsCitizenshipIndex = picklistOptions?.findIndex(
           ({ value }) => value === "United States"
         );
-        setValue(picklistOptions[defaultUsCitizenshipIndex]?.value);
+        handleChangeFieldValue(
+          picklistOptions[defaultUsCitizenshipIndex]?.value
+        );
       }
     }
-  }, [picklistOptions, propName]);
+  }, [picklistOptions, propName, fieldValue]);
 
   const openPicklist = () => setIsVisible(true);
   const closePicklist = () => setIsVisible(false);
@@ -93,7 +97,7 @@ export const Picklist = (props) => {
           <Picker
             selectedValue={fieldValue}
             onValueChange={(itemValue) => {
-              setValue(itemValue);
+              handleChangeFieldValue(itemValue);
             }}
             enabled={editable === "true"}
             mode={"dropdown"}

@@ -3,12 +3,12 @@ import { View, ScrollView, StyleSheet } from "react-native";
 import { TopPersonalInfo } from "../components/personalInfoPage/TopPersonalInfo";
 import { MainDependantsInfo } from "../components/dependantsInfoPage/MainDependantsInfo";
 
-export const DependantsInfoDetailsScreen = () => {
+export const DependantsInfoDetailsScreen = ({ route }) => {
   return (
     <ScrollView stickyHeaderIndices={[0]}>
       <TopPersonalInfo />
       <View style={styles.wrapper}>
-        <MainDependantsInfo />
+        <MainDependantsInfo params={route.params} />
       </View>
     </ScrollView>
   );

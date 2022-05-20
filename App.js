@@ -61,14 +61,11 @@ export default function App() {
       <Provider store={store}>
         <Formik
           initialValues={initialFormikValues}
-          onSubmit={(values) => console.info("values=", values)}
+          onSubmit={(values) => {}}
           validationSchema={validationSchema}
         >
           {(props) => {
-            const { handleChange, handleBlur, handleSubmit, values, touched } =
-              props;
-            // console.info("values=", values.employee.id);
-            // console.info("touched=", touched);
+            const { values, touched } = props;
             return <UncoveredApp />;
           }}
         </Formik>

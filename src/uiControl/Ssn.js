@@ -5,14 +5,15 @@ import { TextInputMask } from "react-native-masked-text";
 import { uiControlStyles } from "./uiControlStyles";
 import { useField } from "formik";
 import { propMarkupStyles } from "./propMarkupStyles";
+import { useHandleChangeFieldValue } from "../form/useHandleChangeFieldValue";
 
 export const Ssn = (props) => {
   const { editable, personType = "employee", propName, markup } = props;
   const [isFocused, setIsFocused] = useState(false);
   const fieldName = `${personType}.${propName}`;
-  const [{ value: fieldValue }, { error: errorMessage }, { setValue }] =
-    useField(fieldName);
+  const [{ value: fieldValue }, { error: errorMessage }] = useField(fieldName);
   const markupStyles = propMarkupStyles(markup);
+  const handleChangeFieldValue = useHandleChangeFieldValue(fieldName);
 
   return (
     <>
@@ -24,7 +25,7 @@ export const Ssn = (props) => {
             mask: "999-99-9999",
           }}
           value={fieldValue}
-          onChangeText={setValue}
+          onChangeText={handleChangeFieldValue}
           style={[
             uiControlStyles.textInputBorderFocus,
             uiControlStyles.textInput,

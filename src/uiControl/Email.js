@@ -4,16 +4,15 @@ import { uiControlStyles } from "./uiControlStyles";
 import { ControlTextInput } from "./ControlTextInput";
 import { useField } from "formik";
 import { propMarkupStyles } from "./propMarkupStyles";
+import { useHandleChangeFieldValue } from "../form/useHandleChangeFieldValue";
 
 export const Email = (props) => {
   const { editable, personType = "employee", propName, markup } = props;
   const fieldName = `${personType}.${propName}`;
-  const [
-    { value: fieldValue },
-    { error: errorMessage, touched },
-    { setValue, setTouched },
-  ] = useField(fieldName);
+  const [{ value: fieldValue }, { error: errorMessage, touched }] =
+    useField(fieldName);
   const markupStyles = propMarkupStyles(markup);
+  const handleChangeFieldValue = useHandleChangeFieldValue(fieldName);
 
   return (
     <>
@@ -23,10 +22,7 @@ export const Email = (props) => {
         keyboardType={"email-address"}
         editable={editable}
         value={fieldValue}
-        onChangeText={(val) => {
-          setValue(val);
-          setTouched(true);
-        }}
+        onChangeText={handleChangeFieldValue}
         errorMessage={touched && errorMessage}
         additionalStyle={[markupStyles && markupStyles]}
       />

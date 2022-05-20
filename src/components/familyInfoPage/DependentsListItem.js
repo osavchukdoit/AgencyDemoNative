@@ -10,20 +10,20 @@ import { THEME } from "../../styles/theme";
 export const DependentsListItem = (props) => {
   const {
     handleInfoDetails,
-    dependantIndex,
+    dependentIndex,
     depFirstName,
     depLastName,
     relationType,
   } = props;
 
   const onDeleteDependent = () => {
-    console.info(`Delete dependent #${dependantIndex}`);
+    console.info(`Delete dependent #${dependentIndex}`);
   };
 
   return (
     <BasicSectorWrapper>
       <View style={mainStyles.subTitleContainer}>
-        <Text style={mainStyles.baseText}>Dependant #{dependantIndex + 1}</Text>
+        <Text style={mainStyles.baseText}>Dependant #{dependentIndex}</Text>
         <TouchableOpacity
           style={localStyles.trashButton}
           onPress={onDeleteDependent}
@@ -47,7 +47,9 @@ export const DependentsListItem = (props) => {
         <TouchableOpacity
           style={mainStyles.arrowButton}
           onPress={() => {
-            handleInfoDetails("DependantsInfoDetailsScreen");
+            handleInfoDetails("DependantsInfoDetailsScreen", {
+              dependentIndex,
+            });
           }}
         >
           <ArrowRightSvg />

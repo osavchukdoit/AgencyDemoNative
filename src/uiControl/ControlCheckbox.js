@@ -6,6 +6,7 @@ import { getValidValues } from "../api/validValues";
 import { useSelector } from "react-redux";
 import { useField } from "formik";
 import { propMarkupStyles } from "./propMarkupStyles";
+import { useHandleChangeFieldValue } from "../form/useHandleChangeFieldValue";
 
 export const ControlCheckbox = (props) => {
   const { editable, propName, personType = "employee", markup } = props;
@@ -13,7 +14,8 @@ export const ControlCheckbox = (props) => {
   const [options, setOptions] = useState([]);
   const [yesLabel, setYesLabel] = useState("");
   const fieldName = `${personType}.${propName}`;
-  const [{ value: fieldValue }, , { setValue }] = useField(fieldName);
+  const [{ value: fieldValue }] = useField(fieldName);
+  const handleChangeFieldValue = useHandleChangeFieldValue(fieldName);
 
   useEffect(() => {
     getValidValues(jwt, propName).then((validValues) => {
@@ -26,10 +28,14 @@ export const ControlCheckbox = (props) => {
 
   const handleCheck = () => {
     if (fieldValue === "true" || fieldValue === "Yes") {
-      setValue(options.find(({ id }) => id === "false" || id === "No").id);
+      handleChangeFieldValue(
+        options.find(({ id }) => id === "false" || id === "No").id
+      );
     }
     if (fieldValue === "false" || fieldValue === "No" || !fieldValue) {
-      setValue(options.find(({ id }) => id === "true" || id === "Yes").id);
+      handleChangeFieldValue(
+        options.find(({ id }) => id === "true" || id === "Yes").id
+      );
     }
   };
   const markupStyles = propMarkupStyles(markup);

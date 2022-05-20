@@ -9,13 +9,15 @@ import { uiControlStyles } from "./uiControlStyles";
 import moment from "moment";
 import { useField } from "formik";
 import { propMarkupStyles } from "./propMarkupStyles";
+import { useHandleChangeFieldValue } from "../form/useHandleChangeFieldValue";
 
 export const DateControl = (props) => {
   const { editable, propName, personType = "employee", markup } = props;
   const fieldName = `${personType}.${propName}`;
-  const [{ value: fieldValue }, , { setValue }] = useField(fieldName);
+  const [{ value: fieldValue }] = useField(fieldName);
   const [showDatePicker, setShowDatePicker] = useState(false);
   const markupStyles = propMarkupStyles(markup);
+  const handleChangeFieldValue = useHandleChangeFieldValue(fieldName);
 
   const handleDatePress = () => {
     if (editable === "false") return;
@@ -39,8 +41,8 @@ export const DateControl = (props) => {
         {fieldValue}
       </Text>
       <AppDatePicker
-        date={moment(fieldValue, "L").toDate()}
-        setDate={setValue}
+        date={moment(fieldValue ? fieldValue : "01/01/2000", "L").toDate()}
+        setDate={handleChangeFieldValue}
         show={showDatePicker}
         setShow={setShowDatePicker}
       />

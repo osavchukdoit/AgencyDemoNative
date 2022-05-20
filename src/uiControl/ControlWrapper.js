@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, KeyboardAvoidingView } from "react-native";
 import { FONTS } from "../styles/fonts";
 import { THEME } from "../styles/theme";
 import { RequiredField } from "../components/utils/RequiredField";
 import {
-  useFillDynamicDomainField,
+  useFillDynamicContextField,
   useFillDynamicValue,
 } from "../api/useFillDynamicValue";
 import { useField } from "formik";
+import { isEmpty } from "lodash";
+import { useSelector } from "react-redux";
 
 export const ControlWrapper = (props) => {
   const {
@@ -19,11 +21,19 @@ export const ControlWrapper = (props) => {
     propValue,
     personType = "employee",
     editable,
+    depPropDesc = null,
   } = props;
+  const { domain } = useSelector((state) => state);
   const fillDynamicFieldValue = useFillDynamicValue();
-  const fillDynamicDomainField = useFillDynamicDomainField();
+  const fillDynamicDomainField = useFillDynamicContextField(domain);
+  const [{ value: personFieldValue }] = useField(personType);
+  const fillDynamicPersonField = useFillDynamicContextField(
+    personFieldValue,
+    true
+  );
   const fieldName = `${personType}.${propName}`;
   const [{ value: fieldValue }, , { setValue }] = useField(fieldName);
+  const [conditionalRender, setConditionalRender] = useState(true);
 
   if (displayable === "false") {
     if (propValue) {
@@ -34,6 +44,32 @@ export const ControlWrapper = (props) => {
     }
     return null;
   }
+
+  useEffect(() => {
+    if (!isEmpty(depPropDesc)) {
+      const propDependencies = depPropDesc.filter(({ displayPropNames }) => {
+        return displayPropNames.includes(propName);
+      });
+      if (!isEmpty(propDependencies)) {
+        const propConditions = propDependencies.map(({ condition }) => {
+          const processedCondition = condition.replaceAll(
+            /\=[\w\d\s]*/gi,
+            (value) => {
+              return value.trim().replace("=", '==="').concat('"');
+            }
+          );
+          const filledCondition = fillDynamicPersonField(processedCondition);
+          const result = eval(filledCondition);
+          return result;
+        });
+        setConditionalRender(
+          propConditions.some((condition) => condition === true)
+        );
+      }
+    }
+  }, [depPropDesc, personFieldValue]);
+
+  if (!conditionalRender) return null;
 
   return (
     <View style={styles.wrapper}>

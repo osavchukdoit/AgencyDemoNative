@@ -6,6 +6,7 @@ import { uiControlStyles } from "./uiControlStyles";
 import { useField } from "formik";
 import { Text } from "react-native";
 import { propMarkupStyles } from "./propMarkupStyles";
+import { useHandleChangeFieldValue } from "../form/useHandleChangeFieldValue";
 
 export const UsPhone = (props) => {
   const {
@@ -16,13 +17,11 @@ export const UsPhone = (props) => {
     markup,
   } = props;
   const fieldName = `${personType}.${propName}`;
-  const [
-    { value: fieldValue },
-    { error: errorMessage, touched },
-    { setValue, setTouched },
-  ] = useField(fieldName);
+  const [{ value: fieldValue }, { error: errorMessage, touched }] =
+    useField(fieldName);
   const [isFocused, setIsFocused] = useState(false);
   const markupStyles = propMarkupStyles(markup);
+  const handleChangeFieldValue = useHandleChangeFieldValue(fieldName);
 
   return (
     <>
@@ -37,10 +36,7 @@ export const UsPhone = (props) => {
           mask: "(999) 999-9999",
         }}
         value={fieldValue}
-        onChangeText={(val) => {
-          setValue(val);
-          setTouched(true);
-        }}
+        onChangeText={handleChangeFieldValue}
         style={[
           uiControlStyles.textInputBorderFocus,
           editable === "true" && uiControlStyles.textInputEditable,

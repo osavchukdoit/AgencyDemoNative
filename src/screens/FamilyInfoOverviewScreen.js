@@ -80,8 +80,8 @@ export const FamilyInfoOverviewNavigator = () => {
 };
 
 export const FamilyInfoOverviewScreen = ({ navigation }) => {
-  const handleInfoDetails = (editScreen) => {
-    navigation.navigate(editScreen);
+  const handleInfoDetails = (editScreen, params = {}) => {
+    navigation.navigate(editScreen, params);
   };
 
   const { pageDesc } = useSelector((state) => state);
