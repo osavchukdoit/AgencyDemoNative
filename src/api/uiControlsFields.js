@@ -1,15 +1,25 @@
 import React from "react";
-import { StaticText } from "../uiControl/StaticText";
-import { RadioButton } from "../uiControl/RadioButton";
-import { DateControl } from "../uiControl/DateControl";
-import { Ssn } from "../uiControl/Ssn";
-import { Picklist } from "../uiControl/Picklist";
-import { UsAddress } from "../uiControl/UsAddress";
-import { ControlCheckbox } from "../uiControl/ControlCheckbox";
-import { Amount } from "../uiControl/Amount";
-import { Email } from "../uiControl/Email";
-import { UsPhone } from "../uiControl/UsPhone";
+import {
+  StaticText,
+  RadioButton,
+  DateControl,
+  Ssn,
+  Picklist,
+  UsAddress,
+  ControlCheckbox,
+  Amount,
+  Email,
+  UsPhone,
+} from "../uiControl";
 
+/**
+ * Returns the appropriate UI control component based on the `uiControl` property
+ * and passes the field props to the component.
+ *
+ * @param {object} field form field details containing `propName` and `uiControl`
+ * @param {string} personType type of person
+ * @returns {JSX.Element}
+ */
 export const uiControlsFields = (field, personType = "employee") => {
   const { propName, uiControl } = field;
   let resultComponent;

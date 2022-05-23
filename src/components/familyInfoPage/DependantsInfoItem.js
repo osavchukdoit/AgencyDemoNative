@@ -1,14 +1,9 @@
 import React from "react";
 import { Text, View, TouchableOpacity, StyleSheet, Image } from "react-native";
-import PersonIconSvg from "../../assets/icons/familyInfoIcons/person.svg";
-import ArrowRightSvg from "../../assets/icons/familyInfoIcons/vectorRight.svg";
-import mainStyles from "./FamilyInfoItemStyles";
-import TrashBasketSvg from "../../assets/icons/familyInfoIcons/trashBasket.svg";
 import { THEME } from "../../styles/theme";
 import CrossSvg from "../../assets/icons/familyInfoIcons/cross.svg";
 import { FONTS } from "../../styles/fonts";
 import { commonPlanStyles } from "../../styles/commonPlanStyles";
-import { BasicSectorWrapper } from "../utils/BasicSectorWrapper";
 import { useField } from "formik";
 import { isEmpty } from "lodash";
 import { DependentsListItem } from "./DependentsListItem";
@@ -62,68 +57,6 @@ export const DependantsInfoItem = ({
               />
             );
           })}
-
-      {/*<DependentsListItem*/}
-      {/*  handleInfoDetails={handleInfoDetails}*/}
-      {/*/>*/}
-
-      {/*<BasicSectorWrapper>*/}
-      {/*  <View style={mainStyles.subTitleContainer}>*/}
-      {/*    <Text style={mainStyles.baseText}>Dependant #1</Text>*/}
-      {/*    <TouchableOpacity style={localStyles.trashButton}>*/}
-      {/*      <TrashBasketSvg />*/}
-      {/*    </TouchableOpacity>*/}
-      {/*  </View>*/}
-      {/*  <View style={mainStyles.subInfoWrapper}>*/}
-      {/*    <View style={mainStyles.subTextAndIconsContainer}>*/}
-      {/*      <View style={mainStyles.iconSvgWrapper}>*/}
-      {/*        <PersonIconSvg />*/}
-      {/*      </View>*/}
-      {/*      <Text style={mainStyles.subTitle}>Mary Smith</Text>*/}
-      {/*      <View style={localStyles.pointWrapper}>*/}
-      {/*        <View style={localStyles.point} />*/}
-      {/*      </View>*/}
-      {/*      <Text style={mainStyles.baseText}>Spouse</Text>*/}
-      {/*    </View>*/}
-      {/*    <TouchableOpacity*/}
-      {/*      style={mainStyles.arrowButton}*/}
-      {/*      onPress={() => {*/}
-      {/*        handleInfoDetails("DependantsInfoDetailsScreen");*/}
-      {/*      }}*/}
-      {/*    >*/}
-      {/*      <ArrowRightSvg />*/}
-      {/*    </TouchableOpacity>*/}
-      {/*  </View>*/}
-      {/*</BasicSectorWrapper>*/}
-
-      {/*<BasicSectorWrapper>*/}
-      {/*  <View style={mainStyles.subTitleContainer}>*/}
-      {/*    <Text style={mainStyles.baseText}>Dependant #2</Text>*/}
-      {/*    <TouchableOpacity style={localStyles.trashButton}>*/}
-      {/*      <TrashBasketSvg />*/}
-      {/*    </TouchableOpacity>*/}
-      {/*  </View>*/}
-      {/*  <View style={mainStyles.subInfoWrapper}>*/}
-      {/*    <View style={mainStyles.subTextAndIconsContainer}>*/}
-      {/*      <View style={mainStyles.iconSvgWrapper}>*/}
-      {/*        <PersonIconSvg />*/}
-      {/*      </View>*/}
-      {/*      <Text style={mainStyles.subTitle}>Josh Doe</Text>*/}
-      {/*      <View style={localStyles.pointWrapper}>*/}
-      {/*        <View style={localStyles.point} />*/}
-      {/*      </View>*/}
-      {/*      <Text style={mainStyles.baseText}>Child</Text>*/}
-      {/*    </View>*/}
-      {/*    <TouchableOpacity*/}
-      {/*      style={mainStyles.arrowButton}*/}
-      {/*      onPress={() => {*/}
-      {/*        handleInfoDetails("DependantsInfoDetailsScreen");*/}
-      {/*      }}*/}
-      {/*    >*/}
-      {/*      <ArrowRightSvg />*/}
-      {/*    </TouchableOpacity>*/}
-      {/*  </View>*/}
-      {/*</BasicSectorWrapper>*/}
 
       {allowAdd === "true" && (
         <TouchableOpacity

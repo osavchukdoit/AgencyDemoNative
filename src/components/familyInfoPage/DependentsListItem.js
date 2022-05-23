@@ -23,7 +23,7 @@ export const DependentsListItem = (props) => {
   return (
     <BasicSectorWrapper>
       <View style={mainStyles.subTitleContainer}>
-        <Text style={mainStyles.baseText}>Dependant #{dependentIndex}</Text>
+        <Text style={mainStyles.baseText}>Dependent #{dependentIndex}</Text>
         <TouchableOpacity
           style={localStyles.trashButton}
           onPress={onDeleteDependent}
