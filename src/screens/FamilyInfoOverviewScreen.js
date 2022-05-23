@@ -21,14 +21,21 @@ export const FamilyInfoOverviewNavigator = () => {
       <Stack.Screen
         name={"FamilyInfoOverviewScreen"}
         component={FamilyInfoOverviewScreen}
-        options={{ title: pageDesc.pageTitle }}
+        options={{ title: pageDesc.pageTitle, headerTitleAlign: "center" }}
       />
-      <Stack.Screen name={"BlockDescScreen"} component={BlockDescScreen} />
+      <Stack.Screen
+        name={"BlockDescScreen"}
+        component={BlockDescScreen}
+        options={() => ({
+          headerTitleAlign: "center",
+        })}
+      />
       <Stack.Screen
         name={"DependantsInfoDetailsScreen"}
         component={DependantsInfoDetailsScreen}
         options={() => ({
           title: dependentBlockDesc.blockTitle,
+          headerTitleAlign: "center",
           headerRight: () => (
             <Image
               source={{ uri: dependentBlockServerIcon }}
@@ -56,6 +63,7 @@ export const FamilyInfoOverviewScreen = ({ navigation }) => {
       <PageBlockItem
         key={blockDesc.blockName}
         blockDesc={blockDesc}
+        personType={"employee"}
         handleInfoDetails={handleInfoDetails}
       />
     ));

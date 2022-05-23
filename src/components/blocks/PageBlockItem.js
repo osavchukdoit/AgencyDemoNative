@@ -7,13 +7,15 @@ import { BasicSectorWrapper } from "../utils/BasicSectorWrapper";
 import { ItemInnerProfile } from "../blockItemInner/ItemInnerProfile";
 import { ItemInnerEmployment } from "../blockItemInner/ItemInnerEmployment";
 
-export const PageBlockItem = ({ blockDesc, handleInfoDetails }) => {
+export const PageBlockItem = ({ blockDesc, handleInfoDetails, personType }) => {
   const { blockTitle, blockIcon, blockName } = blockDesc;
   const blockServerIcon = getServerIcon(blockIcon);
   const [isWarning, setIsWarning] = useState(false);
 
   const handleDescInfo = () =>
-    handleInfoDetails("BlockDescScreen", { blockDesc: blockDesc });
+    handleInfoDetails("BlockDescScreen", {
+      blockDesc: { personType, ...blockDesc },
+    });
 
   const blockItemInner = () => {
     switch (blockName) {

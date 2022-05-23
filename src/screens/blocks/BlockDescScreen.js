@@ -1,17 +1,45 @@
 import React, { useEffect } from "react";
-import { View, ScrollView, StyleSheet, Image } from "react-native";
+import {
+  View,
+  ScrollView,
+  StyleSheet,
+  Image,
+  Alert,
+  TouchableOpacity,
+  Text,
+} from "react-native";
 import { TopPersonalInfo } from "../../components/personalInfoPage/TopPersonalInfo";
 import { BlockDesc } from "../../components/blocks/BlockDesc";
 import { getServerIcon } from "../../constants";
 import { useFormikContext } from "formik";
+import { isEmpty } from "lodash";
 
 export const BlockDescScreen = (props) => {
   const { blockDesc } = props.route.params;
-  const { blockTitle } = blockDesc;
+  const { blockTitle, personType } = blockDesc;
   const { navigation } = props;
   const blockServerIcon = getServerIcon(blockDesc.blockIcon);
-  // TODO: show modal on back if there are unsaved changes
+
   const { touched } = useFormikContext();
+
+  const handleGoBack = () => {
+    if (isEmpty(touched[personType])) {
+      navigation.goBack();
+      return;
+    }
+    Alert.alert(
+      "Leave the screen?",
+      "You have unsaved changes. Are you sure to leave the screen?",
+      [
+        { text: "Don't leave", style: "cancel", onPress: () => {} },
+        {
+          text: "Leave",
+          style: "destructive",
+          onPress: () => navigation.goBack(),
+        },
+      ]
+    );
+  };
 
   useEffect(() => {
     navigation.setOptions({
@@ -19,6 +47,14 @@ export const BlockDescScreen = (props) => {
       headerRight: () => (
         <Image source={{ uri: blockServerIcon }} style={styles.blockIcon} />
       ),
+      gestureEnabled: false,
+      headerLeft: () => {
+        return (
+          <TouchableOpacity onPress={handleGoBack}>
+            <Text>Back</Text>
+          </TouchableOpacity>
+        );
+      },
     });
   }, [blockDesc]);
 
@@ -26,7 +62,7 @@ export const BlockDescScreen = (props) => {
     <ScrollView stickyHeaderIndices={[0]}>
       <TopPersonalInfo />
       <View style={styles.wrapper}>
-        <BlockDesc {...blockDesc} />
+        <BlockDesc {...blockDesc} navigation={navigation} />
       </View>
     </ScrollView>
   );
