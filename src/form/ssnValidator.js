@@ -79,7 +79,7 @@ const hasNoSSAAdvertisement = (ssn = "") =>
  */
 export const ssnValidator = () => {
   return Yup.string()
-    .required("validation.ssn.empty")
+    .required("The field is required")
     .matches(charactersValidationRegExp, "Invalid SSN")
     .test(
       "hasNoZerosInEachPart",

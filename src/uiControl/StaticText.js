@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StyleSheet } from "react-native";
 import PersonIconSvg from "../assets/icons/familyInfoIcons/person.svg";
 import { uiControlStyles } from "./uiControlStyles";
@@ -8,11 +8,22 @@ import { propMarkupStyles } from "./propMarkupStyles";
 import { useHandleChangeFieldValue } from "../form/useHandleChangeFieldValue";
 
 export const StaticText = (props) => {
-  const { editable, propName, personType = "employee", markup } = props;
+  const {
+    editable,
+    propName,
+    personType = "employee",
+    markup,
+    mandatory,
+  } = props;
   const fieldName = `${personType}.${propName}`;
-  const [{ value: fieldValue }] = useField(fieldName);
+  const mandatoryPropName = `${personType}.is${propName}Mandatory`;
+  const [{ value: fieldValue }, {error}] = useField(fieldName);
+  const [, , { setValue: setMandatory }] = useField(mandatoryPropName);
   const markupStyles = propMarkupStyles(markup);
   const handleChangeFieldValue = useHandleChangeFieldValue(fieldName);
+  useEffect(() => {
+    setMandatory(mandatory);
+  }, [propName]);
 
   return (
     <>
@@ -29,6 +40,7 @@ export const StaticText = (props) => {
             : staticTextStyles.textInput,
           markupStyles && markupStyles,
         ]}
+        errorMessage={error}
       />
     </>
   );

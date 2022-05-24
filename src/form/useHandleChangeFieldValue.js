@@ -9,7 +9,7 @@ export const useHandleChangeFieldValue = (fieldName) => {
   const [, , { setValue, setTouched }] = useField(fieldName);
 
   return (inputValue) => {
-    setValue(inputValue);
     setTouched(true);
+    setValue(inputValue);
   };
 };
