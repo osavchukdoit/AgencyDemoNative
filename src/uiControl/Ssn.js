@@ -6,14 +6,23 @@ import { uiControlStyles } from "./uiControlStyles";
 import { useField } from "formik";
 import { propMarkupStyles } from "./propMarkupStyles";
 import { useHandleChangeFieldValue } from "../form/useHandleChangeFieldValue";
+import { useSetMandatory } from "../form/useSetMandatory";
 
 export const Ssn = (props) => {
-  const { editable, personType = "employee", propName, markup } = props;
+  const {
+    editable,
+    personType = "employee",
+    propName,
+    markup,
+    mandatory,
+  } = props;
   const [isFocused, setIsFocused] = useState(false);
   const fieldName = `${personType}.${propName}`;
-  const [{ value: fieldValue }, { error: errorMessage }] = useField(fieldName);
+  const [{ value: fieldValue }, { error: errorMessage, touched }] =
+    useField(fieldName);
   const markupStyles = propMarkupStyles(markup);
   const handleChangeFieldValue = useHandleChangeFieldValue(fieldName);
+  useSetMandatory({ personType, propName, mandatory });
 
   return (
     <>
@@ -32,7 +41,7 @@ export const Ssn = (props) => {
             uiControlStyles.textInputEditable,
             !isFocused && uiControlStyles.textInputBorderBlurTransparent,
             markupStyles && markupStyles,
-            errorMessage && uiControlStyles.textInputError,
+            errorMessage && touched && uiControlStyles.textInputError,
           ]}
           keyboardType={"numeric"}
           placeholder={"XXX-XX-XXXX"}
@@ -44,7 +53,7 @@ export const Ssn = (props) => {
           {fieldValue}
         </TextInput>
       )}
-      {errorMessage && (
+      {errorMessage && touched && (
         <Text style={uiControlStyles.textError}>{errorMessage}</Text>
       )}
     </>

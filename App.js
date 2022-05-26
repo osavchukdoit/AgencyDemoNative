@@ -65,7 +65,7 @@ export default function App() {
           validationSchema={validationSchema}
         >
           {(props) => {
-            const { values, touched } = props;
+            const { values, touched, errors, isValid } = props;
             return <UncoveredApp />;
           }}
         </Formik>

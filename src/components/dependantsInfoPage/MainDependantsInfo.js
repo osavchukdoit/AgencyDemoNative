@@ -10,6 +10,8 @@ import { uiControlsFields } from "../../api/uiControlsFields";
 import { ControlWrapper } from "../../uiControl";
 import { isEmpty } from "lodash";
 import { useSavePostModel } from "../../api/useSavePostModel";
+import { useFormikContext } from "formik";
+import { showWarningMessage } from "../../api/showFlashMessage";
 
 export const MainDependantsInfo = ({ params }) => {
   const { pageDesc } = useSelector((state) => state);
@@ -19,8 +21,10 @@ export const MainDependantsInfo = ({ params }) => {
   const { submitLabel } = blockDescriptor;
   const dependentFields = blockDescriptor.props.PropDesc;
   const [depPropDesc, setDepPropDesc] = useState(null);
+  const [isBlockValid, setBlockValid] = useState(false);
   const { dependentIndex } = params;
   const personType = `employee.dependents[${dependentIndex}]`;
+  const { setFieldTouched, errors } = useFormikContext();
 
   useEffect(() => {
     const depProps = [];
@@ -69,7 +73,25 @@ export const MainDependantsInfo = ({ params }) => {
   );
 
   const onSave = () => {
-    savePostModel();
+    const validFields = dependentFields.map(({ propName }) => {
+      const fieldName = `${personType}.${propName}`;
+      setFieldTouched(fieldName, true);
+      return { fieldName, fieldError: Object.byString(errors, fieldName) };
+    });
+    setBlockValid(validFields.every(({ fieldError }) => !fieldError));
+
+    if (!isBlockValid) {
+      showWarningMessage("Please fill all required fields");
+    } else {
+      savePostModel().then((success) => {
+        if (success) {
+          for (const { propName } of propFields) {
+            const fieldName = `${personType}.${propName}`;
+            setFieldTouched(fieldName, false);
+          }
+        }
+      });
+    }
   };
 
   return (

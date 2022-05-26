@@ -30,7 +30,8 @@ export const newYupSchema = () => {
       depCountryCitizenship: mandatoryRequired("depCountryCitizenship"),
       depStateofbirth: mandatoryRequired("depStateofbirth"),
       sameAddressAsEmployee: mandatoryRequired("sameAddressAsEmployee"),
-      depDifferentAddress: mandatoryRequired("depDifferentAddress"),
+      // temporary unused
+      // depDifferentAddress: mandatoryRequired("depDifferentAddress"),
       disabled: mandatoryRequired("disabled"),
       studentStatus: mandatoryRequired("studentStatus"),
       depTobaccoUseInput: mandatoryRequired("depTobaccoUseInput"),

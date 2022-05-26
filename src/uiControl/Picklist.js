@@ -17,18 +17,27 @@ import { CONSTANTS } from "../constants";
 import { useField } from "formik";
 import { propMarkupStyles } from "./propMarkupStyles";
 import { useHandleChangeFieldValue } from "../form/useHandleChangeFieldValue";
+import { useSetMandatory } from "../form/useSetMandatory";
 
 export const Picklist = (props) => {
-  const { editable, propName, personType = "employee", markup } = props;
+  const {
+    editable,
+    propName,
+    personType = "employee",
+    markup,
+    mandatory,
+  } = props;
   const { jwt } = useSelector((state) => state.utils);
   const [picklistOptions, setPicklistOptions] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
   const isIos = Platform.OS === CONSTANTS.OS.ios;
   const fieldName = `${personType}.${propName}`;
-  const [{ value: fieldValue }] = useField(fieldName);
+  const [{ value: fieldValue }, { error: errorMessage, touched }] =
+    useField(fieldName);
   const [fieldLabel, setFieldLabel] = useState();
   const markupStyles = propMarkupStyles(markup);
   const handleChangeFieldValue = useHandleChangeFieldValue(fieldName);
+  useSetMandatory({ personType, propName, mandatory });
 
   useEffect(() => {
     if (!isEmpty(picklistOptions)) {
@@ -54,7 +63,10 @@ export const Picklist = (props) => {
     if (!isEmpty(picklistOptions) && isEmpty(fieldValue)) {
       handleChangeFieldValue(picklistOptions[0]?.value);
 
-      if (propName === "countryOfCitizenship") {
+      if (
+        propName === "countryOfCitizenship" ||
+        propName === "depCountryCitizenship"
+      ) {
         const defaultUsCitizenshipIndex = picklistOptions?.findIndex(
           ({ value }) => value === "United States"
         );
@@ -71,47 +83,57 @@ export const Picklist = (props) => {
   return (
     <>
       {isIos && (
-        <Text
-          style={[
-            uiControlStyles.textInputBorderFocus,
-            uiControlStyles.textInput,
-            editable === "true" && uiControlStyles.textInputEditable,
-            styles.picklistValue,
-            markupStyles && markupStyles,
-            !isVisible && uiControlStyles.textInputBorderBlurTransparent,
-          ]}
-          onPress={openPicklist}
-        >
-          {fieldLabel}
-        </Text>
+        <>
+          <Text
+            style={[
+              uiControlStyles.textInputBorderFocus,
+              uiControlStyles.textInput,
+              editable === "true" && uiControlStyles.textInputEditable,
+              styles.picklistValue,
+              markupStyles && markupStyles,
+              !isVisible && uiControlStyles.textInputBorderBlurTransparent,
+            ]}
+            onPress={openPicklist}
+          >
+            {fieldLabel}
+          </Text>
+          {errorMessage && touched && (
+            <Text style={uiControlStyles.textError}>{errorMessage}</Text>
+          )}
+        </>
       )}
       {(!isIos || isVisible) && (
-        <View
-          style={[
-            !isIos &&
-              uiControlStyles.textInput &&
-              styles.picklistValue &&
-              styles.picklistWrapperAndroid,
-          ]}
-        >
-          <Picker
-            selectedValue={fieldValue}
-            onValueChange={(itemValue) => {
-              handleChangeFieldValue(itemValue);
-            }}
-            enabled={editable === "true"}
-            mode={"dropdown"}
+        <>
+          <View
             style={[
-              !isIos && styles.picklistValueAndroid,
-              editable === "true" && uiControlStyles.textInputEditable,
-              markupStyles && markupStyles,
+              !isIos &&
+                uiControlStyles.textInput &&
+                styles.picklistValue &&
+                styles.picklistWrapperAndroid,
             ]}
           >
-            {picklistOptions?.map((option) => (
-              <Picker.Item key={option.value} {...option} />
-            ))}
-          </Picker>
-        </View>
+            <Picker
+              selectedValue={fieldValue}
+              onValueChange={(itemValue) => {
+                handleChangeFieldValue(itemValue);
+              }}
+              enabled={editable === "true"}
+              mode={"dropdown"}
+              style={[
+                !isIos && styles.picklistValueAndroid,
+                editable === "true" && uiControlStyles.textInputEditable,
+                markupStyles && markupStyles,
+              ]}
+            >
+              {picklistOptions?.map((option) => (
+                <Picker.Item key={option.value} {...option} />
+              ))}
+            </Picker>
+          </View>
+          {errorMessage && touched && (
+            <Text style={uiControlStyles.textError}>{errorMessage}</Text>
+          )}
+        </>
       )}
       {isIos && isVisible && (
         <View style={styles.btnWrapper}>

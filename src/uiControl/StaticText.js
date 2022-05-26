@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { StyleSheet } from "react-native";
 import PersonIconSvg from "../assets/icons/familyInfoIcons/person.svg";
 import { uiControlStyles } from "./uiControlStyles";
@@ -6,6 +6,7 @@ import { useField } from "formik";
 import { ControlTextInput } from "./ControlTextInput";
 import { propMarkupStyles } from "./propMarkupStyles";
 import { useHandleChangeFieldValue } from "../form/useHandleChangeFieldValue";
+import { useSetMandatory } from "../form/useSetMandatory";
 
 export const StaticText = (props) => {
   const {
@@ -16,14 +17,10 @@ export const StaticText = (props) => {
     mandatory,
   } = props;
   const fieldName = `${personType}.${propName}`;
-  const mandatoryPropName = `${personType}.is${propName}Mandatory`;
-  const [{ value: fieldValue }, {error}] = useField(fieldName);
-  const [, , { setValue: setMandatory }] = useField(mandatoryPropName);
+  const [{ value: fieldValue }, { error, touched }] = useField(fieldName);
   const markupStyles = propMarkupStyles(markup);
   const handleChangeFieldValue = useHandleChangeFieldValue(fieldName);
-  useEffect(() => {
-    setMandatory(mandatory);
-  }, [propName]);
+  useSetMandatory({ personType, propName, mandatory });
 
   return (
     <>
@@ -40,7 +37,7 @@ export const StaticText = (props) => {
             : staticTextStyles.textInput,
           markupStyles && markupStyles,
         ]}
-        errorMessage={error}
+        errorMessage={touched ? error : null}
       />
     </>
   );

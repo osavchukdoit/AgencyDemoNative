@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { uiControlsFields } from "../../api/uiControlsFields";
 import { ControlWrapper } from "../../uiControl";
 import { useSavePostModel } from "../../api/useSavePostModel";
@@ -6,6 +6,8 @@ import { BasicSectorWrapper } from "../utils/BasicSectorWrapper";
 import { Text, TouchableOpacity, View, StyleSheet } from "react-native";
 import { THEME } from "../../styles/theme";
 import { FONTS } from "../../styles/fonts";
+import { useFormikContext } from "formik";
+import { showWarningMessage } from "../../api/showFlashMessage";
 
 export const BlockDesc = (props) => {
   const {
@@ -14,6 +16,8 @@ export const BlockDesc = (props) => {
     submitLabel = "Submit",
   } = props;
   const propFields = props.props.PropDesc;
+  const [isBlockValid, setBlockValid] = useState(false);
+  const { setFieldTouched, errors } = useFormikContext();
 
   const fieldsRender = propFields.map((field) => {
     const { propName } = field;
@@ -32,7 +36,25 @@ export const BlockDesc = (props) => {
   );
 
   const onSave = () => {
-    savePostModel();
+    const validFields = propFields.map(({ propName }) => {
+      const fieldName = `${personType}.${propName}`;
+      setFieldTouched(fieldName, true);
+      return { fieldName, fieldError: Object.byString(errors, fieldName) };
+    });
+    setBlockValid(validFields.every(({ fieldError }) => !fieldError));
+
+    if (!isBlockValid) {
+      showWarningMessage("Please fill all required fields");
+    } else {
+      savePostModel().then((success) => {
+        if (success) {
+          for (const { propName } of propFields) {
+            const fieldName = `${personType}.${propName}`;
+            setFieldTouched(fieldName, false);
+          }
+        }
+      });
+    }
   };
 
   return (

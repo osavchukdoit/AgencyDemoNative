@@ -7,15 +7,27 @@ import { useSelector } from "react-redux";
 import { useField } from "formik";
 import { propMarkupStyles } from "./propMarkupStyles";
 import { useHandleChangeFieldValue } from "../form/useHandleChangeFieldValue";
+import { useSetMandatory } from "../form/useSetMandatory";
+import { uiControlStyles } from "./uiControlStyles";
+import { isEmpty } from "lodash";
 
 export const ControlCheckbox = (props) => {
-  const { editable, propName, personType = "employee", markup } = props;
+  const {
+    editable,
+    propName,
+    personType = "employee",
+    markup,
+    mandatory,
+  } = props;
   const { jwt } = useSelector((state) => state.utils);
   const [options, setOptions] = useState([]);
   const [yesLabel, setYesLabel] = useState("");
   const fieldName = `${personType}.${propName}`;
-  const [{ value: fieldValue }] = useField(fieldName);
+  const [{ value: fieldValue }, { error: errorMessage, touched }] =
+    useField(fieldName);
   const handleChangeFieldValue = useHandleChangeFieldValue(fieldName);
+  const markupStyles = propMarkupStyles(markup);
+  useSetMandatory({ personType, propName, mandatory });
 
   useEffect(() => {
     getValidValues(jwt, propName).then((validValues) => {
@@ -38,24 +50,38 @@ export const ControlCheckbox = (props) => {
       );
     }
   };
-  const markupStyles = propMarkupStyles(markup);
+
+  useEffect(() => {
+    if (fieldValue === undefined && !isEmpty(options)) {
+      handleChangeFieldValue(
+        options.find(({ id }) => id === "false" || id === "No").id
+      );
+    }
+  }, [options]);
 
   return (
-    <TouchableOpacity
-      onPress={() => handleCheck()}
-      style={styles.checkboxAndTextWrapper}
-      disabled={editable === "false"}
-    >
-      <View
-        style={[
-          styles.checkbox,
-          editable === "false" && styles.checkboxDisabled,
-        ]}
+    <>
+      <TouchableOpacity
+        onPress={() => handleCheck()}
+        style={styles.checkboxAndTextWrapper}
+        disabled={editable === "false"}
       >
-        {(fieldValue === "true" || fieldValue === "Yes") && <SelectedIconSvg />}
-      </View>
-      <Text style={[markupStyles && markupStyles]}>{yesLabel}</Text>
-    </TouchableOpacity>
+        <View
+          style={[
+            styles.checkbox,
+            editable === "false" && styles.checkboxDisabled,
+          ]}
+        >
+          {(fieldValue === "true" || fieldValue === "Yes") && (
+            <SelectedIconSvg />
+          )}
+        </View>
+        <Text style={[markupStyles && markupStyles]}>{yesLabel}</Text>
+      </TouchableOpacity>
+      {errorMessage && touched && (
+        <Text style={uiControlStyles.textError}>{errorMessage}</Text>
+      )}
+    </>
   );
 };
 

@@ -69,6 +69,7 @@ export const useSavePostModel = (
     } else {
       showSuccessMessage("Saved successfully");
       dispatch(setDomainModel(response));
+      return true;
     }
   };
 };

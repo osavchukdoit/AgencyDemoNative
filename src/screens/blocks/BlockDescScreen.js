@@ -18,12 +18,16 @@ export const BlockDescScreen = (props) => {
   const { blockDesc } = props.route.params;
   const { blockTitle, personType } = blockDesc;
   const { navigation } = props;
+  const { touched } = useFormikContext();
   const blockServerIcon = getServerIcon(blockDesc.blockIcon);
 
-  const { touched } = useFormikContext();
-
   const handleGoBack = () => {
-    if (isEmpty(touched[personType])) {
+    const touchedFields = touched[personType];
+    const touchedFieldsValues = Object.values(touchedFields);
+    if (
+      touchedFieldsValues.every((value) => !value) ||
+      isEmpty(touchedFields)
+    ) {
       navigation.goBack();
       return;
     }

@@ -5,6 +5,7 @@ import { uiControlStyles } from "./uiControlStyles";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { GOOGLE_API_KEY } from "../constants";
 import { propMarkupStyles } from "./propMarkupStyles";
+import { useSetMandatory } from "../form/useSetMandatory";
 
 export const GooglePlacesInput = ({ editable }) => {
   return (
@@ -36,8 +37,9 @@ export const GooglePlacesInput = ({ editable }) => {
   );
 };
 export const UsAddress = (props) => {
-  const { editable, propName, markup } = props;
+  const { editable, propName, markup, personType, mandatory } = props;
   const markupStyles = propMarkupStyles(markup);
+  useSetMandatory({ personType, propName, mandatory });
 
   // useEffect(() => {
   //   LogBox.ignoreLogs(['VirtualizedLists should never be nested']);

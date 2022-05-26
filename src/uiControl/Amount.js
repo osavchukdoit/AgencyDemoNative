@@ -4,14 +4,24 @@ import { useField } from "formik";
 import { uiControlStyles } from "./uiControlStyles";
 import { propMarkupStyles } from "./propMarkupStyles";
 import { useHandleChangeFieldValue } from "../form/useHandleChangeFieldValue";
+import { useSetMandatory } from "../form/useSetMandatory";
+import { Text } from "react-native";
 
 export const Amount = (props) => {
-  const { editable, propName, personType = "employee", markup } = props;
+  const {
+    editable,
+    propName,
+    personType = "employee",
+    markup,
+    mandatory,
+  } = props;
   const fieldName = `${personType}.${propName}`;
   const [isFocused, setIsFocused] = useState(false);
-  const [{ value: fieldValue }, { error: errorMessage }] = useField(fieldName);
+  const [{ value: fieldValue }, { error: errorMessage, touched }] =
+    useField(fieldName);
   const markupStyles = propMarkupStyles(markup);
   const handleChangeFieldValue = useHandleChangeFieldValue(fieldName);
+  useSetMandatory({ personType, propName, mandatory });
 
   const moneyMaskOptions = {
     precision: 2,
@@ -27,25 +37,30 @@ export const Amount = (props) => {
   );
 
   return (
-    <TextInputMask
-      type={"money"}
-      value={maskedFieldValue}
-      includeRawValueInChangeText={true}
-      onChangeText={(maskedValue, rawValue) => {
-        handleChangeFieldValue(rawValue);
-      }}
-      style={[
-        uiControlStyles.textInputBorderFocus,
-        uiControlStyles.textInput,
-        uiControlStyles.textInputEditable,
-        !isFocused && uiControlStyles.textInputBorderBlurTransparent,
-        markupStyles && markupStyles,
-        errorMessage && uiControlStyles.textInputError,
-      ]}
-      options={moneyMaskOptions}
-      editable={editable === "true"}
-      onFocus={() => setIsFocused(true)}
-      onBlur={() => setIsFocused(false)}
-    />
+    <>
+      <TextInputMask
+        type={"money"}
+        value={maskedFieldValue}
+        includeRawValueInChangeText={true}
+        onChangeText={(maskedValue, rawValue) => {
+          handleChangeFieldValue(rawValue);
+        }}
+        style={[
+          uiControlStyles.textInputBorderFocus,
+          uiControlStyles.textInput,
+          uiControlStyles.textInputEditable,
+          !isFocused && uiControlStyles.textInputBorderBlurTransparent,
+          markupStyles && markupStyles,
+          errorMessage && uiControlStyles.textInputError,
+        ]}
+        options={moneyMaskOptions}
+        editable={editable === "true"}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
+      />
+      {errorMessage && touched && (
+        <Text style={uiControlStyles.textError}>{errorMessage}</Text>
+      )}
+    </>
   );
 };

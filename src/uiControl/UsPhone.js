@@ -7,6 +7,7 @@ import { useField } from "formik";
 import { Text } from "react-native";
 import { propMarkupStyles } from "./propMarkupStyles";
 import { useHandleChangeFieldValue } from "../form/useHandleChangeFieldValue";
+import { useSetMandatory } from "../form/useSetMandatory";
 
 export const UsPhone = (props) => {
   const {
@@ -15,6 +16,7 @@ export const UsPhone = (props) => {
     editable,
     personType = "employee",
     markup,
+    mandatory,
   } = props;
   const fieldName = `${personType}.${propName}`;
   const [{ value: fieldValue }, { error: errorMessage, touched }] =
@@ -22,6 +24,7 @@ export const UsPhone = (props) => {
   const [isFocused, setIsFocused] = useState(false);
   const markupStyles = propMarkupStyles(markup);
   const handleChangeFieldValue = useHandleChangeFieldValue(fieldName);
+  useSetMandatory({ personType, propName, mandatory });
 
   return (
     <>

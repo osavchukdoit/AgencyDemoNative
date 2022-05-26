@@ -14,15 +14,25 @@ import { useField } from "formik";
 import { AppTooltip } from "../components/utils/AppTooltip";
 import { propMarkupStyles } from "./propMarkupStyles";
 import { useHandleChangeFieldValue } from "../form/useHandleChangeFieldValue";
+import { useSetMandatory } from "../form/useSetMandatory";
+import { uiControlStyles } from "./uiControlStyles";
 
 export const RadioButton = (props) => {
-  const { editable, propName, personType = "employee", markup } = props;
+  const {
+    editable,
+    propName,
+    personType = "employee",
+    markup,
+    mandatory,
+  } = props;
   const { jwt } = useSelector((state) => state.utils);
   const [options, setOptions] = useState();
   const fieldName = `${personType}.${propName}`;
-  const [{ value: fieldValue }] = useField(fieldName);
+  const [{ value: fieldValue }, { error: errorMessage, touched }] =
+    useField(fieldName);
   const markupStyles = propMarkupStyles(markup);
   const handleChangeFieldValue = useHandleChangeFieldValue(fieldName);
+  useSetMandatory({ personType, propName, mandatory });
 
   useEffect(() => {
     getValidValues(jwt, propName).then((validValues) => {
@@ -94,6 +104,9 @@ export const RadioButton = (props) => {
           renderItem={radioButton}
           keyExtractor={(item) => item.id}
         />
+      )}
+      {errorMessage && touched && (
+        <Text style={uiControlStyles.textError}>{errorMessage}</Text>
       )}
     </>
   );

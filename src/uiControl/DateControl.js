@@ -10,14 +10,23 @@ import moment from "moment";
 import { useField } from "formik";
 import { propMarkupStyles } from "./propMarkupStyles";
 import { useHandleChangeFieldValue } from "../form/useHandleChangeFieldValue";
+import { useSetMandatory } from "../form/useSetMandatory";
 
 export const DateControl = (props) => {
-  const { editable, propName, personType = "employee", markup } = props;
+  const {
+    editable,
+    propName,
+    personType = "employee",
+    markup,
+    mandatory,
+  } = props;
   const fieldName = `${personType}.${propName}`;
-  const [{ value: fieldValue }] = useField(fieldName);
+  const [{ value: fieldValue }, { error: errorMessage, touched }] =
+    useField(fieldName);
   const [showDatePicker, setShowDatePicker] = useState(false);
   const markupStyles = propMarkupStyles(markup);
   const handleChangeFieldValue = useHandleChangeFieldValue(fieldName);
+  useSetMandatory({ personType, propName, mandatory });
 
   const handleDatePress = () => {
     if (editable === "false") return;
@@ -35,11 +44,15 @@ export const DateControl = (props) => {
           styles.dateText,
           markupStyles && markupStyles,
           !showDatePicker && uiControlStyles.textInputBorderBlurTransparent,
+          errorMessage && touched && uiControlStyles.textInputError,
         ]}
         onPress={handleDatePress}
       >
         {fieldValue}
       </Text>
+      {errorMessage && touched && (
+        <Text style={uiControlStyles.textError}>{errorMessage}</Text>
+      )}
       <AppDatePicker
         date={moment(fieldValue ? fieldValue : "01/01/2000", "L").toDate()}
         setDate={handleChangeFieldValue}
