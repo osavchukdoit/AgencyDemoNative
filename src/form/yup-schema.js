@@ -2,7 +2,7 @@ import * as Yup from "yup";
 import { ssnValidator } from "./ssnValidator";
 import { isEmpty } from "lodash";
 
-export const newYupSchema = () => {
+export const newYupSchema = (pageDesc = null) => {
   const requiredString = Yup.string().required("The field is required");
   const emailValidation = Yup.string()
     .email("Invalid email")
@@ -26,7 +26,7 @@ export const newYupSchema = () => {
       depLastName: mandatoryRequired("depLastName"),
       depDob: mandatoryRequired("depDob"),
       depGender: mandatoryRequired("depGender"),
-      depSSN: ssnValidator(),
+      depSSN: mandatoryRequired("depSSN", ssnValidator()),
       depCountryCitizenship: mandatoryRequired("depCountryCitizenship"),
       depStateofbirth: mandatoryRequired("depStateofbirth"),
       sameAddressAsEmployee: mandatoryRequired("sameAddressAsEmployee"),

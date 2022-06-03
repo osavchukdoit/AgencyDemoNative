@@ -12,10 +12,15 @@ import { useInitialFormikValues } from "./src/form/useInitialFormikValues";
 import { newYupSchema } from "./src/form/yup-schema";
 import FlashMessage from "react-native-flash-message";
 
-function UncoveredApp() {
+function UncoveredApp({ setPageDesc }) {
   const { isLogged, loaderStatus } = useSelector((state) => state.utils);
   const { visible: isLoading } = loaderStatus;
   const dispatch = useDispatch();
+  const { pageDesc } = useSelector((state) => state);
+
+  useEffect(() => {
+    setPageDesc(pageDesc);
+  }, [pageDesc]);
 
   const handleLogin = ({ userName }) => dispatch(setLoggedIn(userName));
   const handleLogout = () => dispatch(setLoggedOut());
@@ -38,6 +43,7 @@ function UncoveredApp() {
 export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
   const initialFormikValues = useInitialFormikValues();
+  const [pageDesc, setPageDesc] = useState(null);
 
   async function loadFonts() {
     await Font.loadAsync({
@@ -54,7 +60,7 @@ export default function App() {
     loadFonts();
   }, []);
 
-  const validationSchema = newYupSchema();
+  const validationSchema = newYupSchema(pageDesc);
 
   if (fontsLoaded) {
     return (
@@ -66,7 +72,7 @@ export default function App() {
         >
           {(props) => {
             const { values, touched, errors, isValid } = props;
-            return <UncoveredApp />;
+            return <UncoveredApp setPageDesc={setPageDesc} />;
           }}
         </Formik>
       </Provider>

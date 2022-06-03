@@ -52,7 +52,7 @@ export const ControlWrapper = (props) => {
       });
       if (!isEmpty(propDependencies)) {
         const propConditions = propDependencies.map(({ condition }) => {
-          const processedCondition = condition.replaceAll(
+          const processedCondition = condition.replace(
             /\=[\w\d\s]*/gi,
             (value) => {
               return value.trim().replace("=", '==="').concat('"');

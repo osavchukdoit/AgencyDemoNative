@@ -6,16 +6,21 @@ import { THEME } from "../../styles/theme";
 import { BasicSectorWrapper } from "../utils/BasicSectorWrapper";
 import { ItemInnerProfile } from "../blockItemInner/ItemInnerProfile";
 import { ItemInnerEmployment } from "../blockItemInner/ItemInnerEmployment";
+import { useDispatch } from "react-redux";
+import { setLoader } from "../../redux/actions/actionCreator";
 
 export const PageBlockItem = ({ blockDesc, handleInfoDetails, personType }) => {
   const { blockTitle, blockIcon, blockName } = blockDesc;
   const blockServerIcon = getServerIcon(blockIcon);
   const [isWarning, setIsWarning] = useState(false);
+  const dispatch = useDispatch();
 
-  const handleDescInfo = () =>
+  const handleDescInfo = () => {
+    dispatch(setLoader({ visible: true, text: "Opening..." }));
     handleInfoDetails("BlockDescScreen", {
       blockDesc: { personType, ...blockDesc },
     });
+  };
 
   const blockItemInner = () => {
     switch (blockName) {

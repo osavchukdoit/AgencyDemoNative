@@ -13,6 +13,8 @@ import { BlockDesc } from "../../components/blocks/BlockDesc";
 import { getServerIcon } from "../../constants";
 import { useFormikContext } from "formik";
 import { isEmpty } from "lodash";
+import { setLoader } from "../../redux/actions/actionCreator";
+import { useDispatch } from "react-redux";
 
 export const BlockDescScreen = (props) => {
   const { blockDesc } = props.route.params;
@@ -20,16 +22,39 @@ export const BlockDescScreen = (props) => {
   const { navigation } = props;
   const { touched } = useFormikContext();
   const blockServerIcon = getServerIcon(blockDesc.blockIcon);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setLoader({ visible: false, text: "" }));
+  }, []);
 
   const handleGoBack = () => {
     const touchedFields = touched[personType];
-    const touchedFieldsValues = Object.values(touchedFields);
-    if (
-      touchedFieldsValues.every((value) => !value) ||
-      isEmpty(touchedFields)
-    ) {
+    if (isEmpty(touchedFields)) {
       navigation.goBack();
       return;
+    }
+    const touchedFieldsValues = Object.values(touchedFields);
+    const touchedDependents = touchedFields.dependents;
+    if (isEmpty(touchedDependents)) {
+      if (
+        touchedFieldsValues.every((value) => !value) ||
+        isEmpty(touchedFields)
+      ) {
+        navigation.goBack();
+        return;
+      }
+    } else {
+      if (
+        touchedDependents.every(
+          (dependent) =>
+            Object.values(dependent).every((value) => !value) ||
+            isEmpty(dependent)
+        )
+      ) {
+        navigation.goBack();
+        return;
+      }
     }
     Alert.alert(
       "Leave the screen?",
@@ -60,7 +85,7 @@ export const BlockDescScreen = (props) => {
         );
       },
     });
-  }, [blockDesc]);
+  }, [blockDesc, touched, handleGoBack]);
 
   return (
     <ScrollView stickyHeaderIndices={[0]}>

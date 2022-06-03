@@ -1,12 +1,26 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 import { THEME } from "../../../styles/theme";
 import { FONTS } from "../../../styles/fonts";
 import { shadowStyles } from "../../../styles/shadowStyles";
+import { getServerIcon } from "../../../constants";
 
-export const EnrollmentInfoTop = ({ title, subtitle, children }) => {
+export const EnrollmentInfoTop = ({
+  title,
+  subtitle,
+  children,
+  bannerUri = null,
+}) => {
+  const serverBanner = bannerUri ? getServerIcon(bannerUri) : null;
   return (
     <View style={[styles.wrapper, shadowStyles.boxShadow]}>
+      {bannerUri && (
+        <Image
+          source={{ uri: serverBanner }}
+          style={{ width: "100%", height: 85 }}
+          resizeMode={"contain"}
+        />
+      )}
       <Text style={styles.title}>{title}</Text>
       <View style={styles.pseudoElement} />
       <Text style={styles.text}>{subtitle}</Text>

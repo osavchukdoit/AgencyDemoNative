@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { uiControlsFields } from "../../api/uiControlsFields";
 import { ControlWrapper } from "../../uiControl";
 import { useSavePostModel } from "../../api/useSavePostModel";
@@ -16,7 +16,6 @@ export const BlockDesc = (props) => {
     submitLabel = "Submit",
   } = props;
   const propFields = props.props.PropDesc;
-  const [isBlockValid, setBlockValid] = useState(false);
   const { setFieldTouched, errors } = useFormikContext();
 
   const fieldsRender = propFields.map((field) => {
@@ -35,17 +34,14 @@ export const BlockDesc = (props) => {
     personType
   );
 
-  const onSave = () => {
-    const validFields = propFields.map(({ propName }) => {
+  const onSave = async () => {
+    const validFields = await propFields.map(({ propName, displayable }) => {
       const fieldName = `${personType}.${propName}`;
-      setFieldTouched(fieldName, true);
+      displayable !== "false" && setFieldTouched(fieldName, true);
       return { fieldName, fieldError: Object.byString(errors, fieldName) };
     });
-    setBlockValid(validFields.every(({ fieldError }) => !fieldError));
 
-    if (!isBlockValid) {
-      showWarningMessage("Please fill all required fields");
-    } else {
+    if (validFields.every(({ fieldError }) => !fieldError)) {
       savePostModel().then((success) => {
         if (success) {
           for (const { propName } of propFields) {
@@ -54,6 +50,9 @@ export const BlockDesc = (props) => {
           }
         }
       });
+    } else {
+      showWarningMessage("Please fill all required fields");
+      console.info(validFields);
     }
   };
 

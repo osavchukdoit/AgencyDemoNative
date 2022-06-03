@@ -21,7 +21,10 @@ export const FamilyInfoOverviewNavigator = () => {
       <Stack.Screen
         name={"FamilyInfoOverviewScreen"}
         component={FamilyInfoOverviewScreen}
-        options={{ title: pageDesc.pageTitle, headerTitleAlign: "center" }}
+        options={{
+          title: pageDesc.pageTitle,
+          headerTitleAlign: "center",
+        }}
       />
       <Stack.Screen
         name={"BlockDescScreen"}
@@ -55,6 +58,7 @@ export const FamilyInfoOverviewScreen = ({ navigation }) => {
 
   const { pageDesc } = useSelector((state) => state);
   const pageDescriptor = pageDesc.pageDesc;
+  const { pageBannerImage } = pageDescriptor;
   const pageBlocks = pageDescriptor.blocks;
   const blockListDesc = pageDescriptor.blockLists.BlockListDesc;
 
@@ -72,7 +76,7 @@ export const FamilyInfoOverviewScreen = ({ navigation }) => {
   return (
     <>
       <ScrollView stickyHeaderIndices={[0]}>
-        <FamilyInfoTop />
+        <FamilyInfoTop bannerUri={pageBannerImage} />
         <View style={styles.wrapper}>
           {blockDescRender()}
           <DependantsInfoItem

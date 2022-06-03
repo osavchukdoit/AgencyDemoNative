@@ -21,7 +21,6 @@ export const MainDependantsInfo = ({ params }) => {
   const { submitLabel } = blockDescriptor;
   const dependentFields = blockDescriptor.props.PropDesc;
   const [depPropDesc, setDepPropDesc] = useState(null);
-  const [isBlockValid, setBlockValid] = useState(false);
   const { dependentIndex } = params;
   const personType = `employee.dependents[${dependentIndex}]`;
   const { setFieldTouched, errors } = useFormikContext();
@@ -73,24 +72,24 @@ export const MainDependantsInfo = ({ params }) => {
   );
 
   const onSave = () => {
-    const validFields = dependentFields.map(({ propName }) => {
+    const validFields = dependentFields.map(({ propName, displayable }) => {
       const fieldName = `${personType}.${propName}`;
-      setFieldTouched(fieldName, true);
+      displayable !== "false" && setFieldTouched(fieldName, true);
       return { fieldName, fieldError: Object.byString(errors, fieldName) };
     });
-    setBlockValid(validFields.every(({ fieldError }) => !fieldError));
 
-    if (!isBlockValid) {
-      showWarningMessage("Please fill all required fields");
-    } else {
-      savePostModel().then((success) => {
-        if (success) {
-          for (const { propName } of propFields) {
+    if (validFields.every(({ fieldError }) => !fieldError)) {
+      savePostModel().then((result) => {
+        if (result) {
+          for (const { propName } of dependentFields) {
             const fieldName = `${personType}.${propName}`;
             setFieldTouched(fieldName, false);
           }
         }
       });
+    } else {
+      showWarningMessage("Please fill all required fields");
+      console.info(validFields);
     }
   };
 

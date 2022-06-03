@@ -53,9 +53,13 @@ export const ControlCheckbox = (props) => {
 
   useEffect(() => {
     if (fieldValue === undefined && !isEmpty(options)) {
-      handleChangeFieldValue(
-        options.find(({ id }) => id === "false" || id === "No").id
-      );
+      propName === "sameAddressAsEmployee"
+        ? handleChangeFieldValue(
+            options.find(({ id }) => id === "true" || id === "Yes").id
+          )
+        : handleChangeFieldValue(
+            options.find(({ id }) => id === "false" || id === "No").id
+          );
     }
   }, [options]);
 

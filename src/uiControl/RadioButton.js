@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  FlatList,
-} from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { FONTS } from "../styles/fonts";
 import { THEME } from "../styles/theme";
 import { useSelector } from "react-redux";
@@ -75,7 +69,7 @@ export const RadioButton = (props) => {
     const { display, id, tooltip } = item;
 
     return (
-      <View style={styles.radioButtonWrapper}>
+      <View style={styles.radioButtonWrapper} key={id}>
         <TouchableOpacity
           style={styles.radioButtonAndLabelWrapper}
           onPress={() => handleChangeFieldValue(id)}
@@ -99,11 +93,7 @@ export const RadioButton = (props) => {
           {options?.map((radioOption) => genderRadioButton(radioOption))}
         </View>
       ) : (
-        <FlatList
-          data={options}
-          renderItem={radioButton}
-          keyExtractor={(item) => item.id}
-        />
+        <View>{options?.map((item) => radioButton({ item }))}</View>
       )}
       {errorMessage && touched && (
         <Text style={uiControlStyles.textError}>{errorMessage}</Text>

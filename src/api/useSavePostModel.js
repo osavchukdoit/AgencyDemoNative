@@ -30,7 +30,7 @@ export const useSavePostModel = (
   if (isEmpty(touchedPersonFields)) {
     return () => {
       console.warn("Touched fields object is empty");
-      showWarningMessage("Unable to submit");
+      showWarningMessage("Nothing to submit");
     };
   }
 
@@ -59,7 +59,7 @@ export const useSavePostModel = (
     const uploadOptions = { body: JSON.stringify(postModel) };
     const response = await authFetch(url, jwt, "POST", uploadOptions);
     const { ResponseMessage } = response;
-    console.error(ResponseMessage);
+    ResponseMessage && console.error(ResponseMessage);
     if (ResponseMessage) {
       const { propertyMsg } =
         ResponseMessage.Exception.validationMessages.validationMsg.objectMsg
