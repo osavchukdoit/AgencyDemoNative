@@ -18,13 +18,14 @@ export const ControlCheckbox = (props) => {
     personType = "employee",
     markup,
     mandatory,
+    ableToAutoSave,
+    onSave,
   } = props;
   const { jwt } = useSelector((state) => state.utils);
   const [options, setOptions] = useState([]);
   const [yesLabel, setYesLabel] = useState("");
   const fieldName = `${personType}.${propName}`;
-  const [{ value: fieldValue }, { error: errorMessage, touched }] =
-    useField(fieldName);
+  const [{ value: fieldValue }, { error, touched }] = useField(fieldName);
   const handleChangeFieldValue = useHandleChangeFieldValue(fieldName);
   const markupStyles = propMarkupStyles(markup);
   useSetMandatory({ personType, propName, mandatory });
@@ -49,6 +50,7 @@ export const ControlCheckbox = (props) => {
         options.find(({ id }) => id === "true" || id === "Yes").id
       );
     }
+    isEmpty(error) && ableToAutoSave && touched && onSave();
   };
 
   useEffect(() => {
@@ -82,8 +84,8 @@ export const ControlCheckbox = (props) => {
         </View>
         <Text style={[markupStyles && markupStyles]}>{yesLabel}</Text>
       </TouchableOpacity>
-      {errorMessage && touched && (
-        <Text style={uiControlStyles.textError}>{errorMessage}</Text>
+      {error && touched && (
+        <Text style={uiControlStyles.textError}>{error}</Text>
       )}
     </>
   );

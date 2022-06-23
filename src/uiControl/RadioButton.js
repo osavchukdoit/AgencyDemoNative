@@ -10,6 +10,7 @@ import { propMarkupStyles } from "./propMarkupStyles";
 import { useHandleChangeFieldValue } from "../form/useHandleChangeFieldValue";
 import { useSetMandatory } from "../form/useSetMandatory";
 import { uiControlStyles } from "./uiControlStyles";
+import { isEmpty } from "lodash";
 
 export const RadioButton = (props) => {
   const {
@@ -18,12 +19,13 @@ export const RadioButton = (props) => {
     personType = "employee",
     markup,
     mandatory,
+    ableToAutoSave,
+    onSave,
   } = props;
   const { jwt } = useSelector((state) => state.utils);
   const [options, setOptions] = useState();
   const fieldName = `${personType}.${propName}`;
-  const [{ value: fieldValue }, { error: errorMessage, touched }] =
-    useField(fieldName);
+  const [{ value: fieldValue }, { error, touched }] = useField(fieldName);
   const markupStyles = propMarkupStyles(markup);
   const handleChangeFieldValue = useHandleChangeFieldValue(fieldName);
   useSetMandatory({ personType, propName, mandatory });
@@ -33,6 +35,10 @@ export const RadioButton = (props) => {
       setOptions(validValues);
     });
   }, [propName]);
+
+  useEffect(() => {
+    isEmpty(error) && ableToAutoSave && touched && onSave();
+  }, [fieldValue]);
 
   const onOptionPressed = (id) => {
     handleChangeFieldValue(id);
@@ -95,8 +101,8 @@ export const RadioButton = (props) => {
       ) : (
         <View>{options?.map((item) => radioButton({ item }))}</View>
       )}
-      {errorMessage && touched && (
-        <Text style={uiControlStyles.textError}>{errorMessage}</Text>
+      {error && touched && (
+        <Text style={uiControlStyles.textError}>{error}</Text>
       )}
     </>
   );

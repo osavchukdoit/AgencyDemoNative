@@ -9,7 +9,11 @@ import {
 } from "../api/useFillDynamicValue";
 import { useField } from "formik";
 import { isEmpty } from "lodash";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addHiddenField,
+  removeHiddenField,
+} from "../redux/actions/actionCreator";
 
 export const ControlWrapper = (props) => {
   const {
@@ -23,6 +27,7 @@ export const ControlWrapper = (props) => {
     editable,
     depPropDesc = null,
   } = props;
+  const dispatch = useDispatch();
   const { domain } = useSelector((state) => state);
   const fillDynamicFieldValue = useFillDynamicValue();
   const fillDynamicDomainField = useFillDynamicContextField(domain);
@@ -32,7 +37,8 @@ export const ControlWrapper = (props) => {
     true
   );
   const fieldName = `${personType}.${propName}`;
-  const [{ value: fieldValue }, , { setValue }] = useField(fieldName);
+  const [{ value: fieldValue }, , { setValue, setTouched }] =
+    useField(fieldName);
   const [conditionalRender, setConditionalRender] = useState(true);
 
   if (displayable === "false") {
@@ -69,7 +75,17 @@ export const ControlWrapper = (props) => {
     }
   }, [depPropDesc, personFieldValue]);
 
-  if (!conditionalRender) return null;
+  useEffect(() => {
+    if (!conditionalRender) {
+      dispatch(addHiddenField(propName));
+    } else {
+      dispatch(removeHiddenField(propName));
+    }
+  }, [conditionalRender, propName]);
+
+  if (!conditionalRender) {
+    return null;
+  }
 
   return (
     <View style={styles.wrapper}>

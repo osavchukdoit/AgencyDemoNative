@@ -7,6 +7,7 @@ import { ControlTextInput } from "./ControlTextInput";
 import { propMarkupStyles } from "./propMarkupStyles";
 import { useHandleChangeFieldValue } from "../form/useHandleChangeFieldValue";
 import { useSetMandatory } from "../form/useSetMandatory";
+import { isEmpty } from "lodash";
 
 export const StaticText = (props) => {
   const {
@@ -15,12 +16,18 @@ export const StaticText = (props) => {
     personType = "employee",
     markup,
     mandatory,
+    ableToAutoSave,
+    onSave,
   } = props;
   const fieldName = `${personType}.${propName}`;
   const [{ value: fieldValue }, { error, touched }] = useField(fieldName);
   const markupStyles = propMarkupStyles(markup);
   const handleChangeFieldValue = useHandleChangeFieldValue(fieldName);
   useSetMandatory({ personType, propName, mandatory });
+
+  const onBlur = () => {
+    isEmpty(error) && ableToAutoSave && touched && onSave();
+  };
 
   return (
     <>
@@ -38,6 +45,7 @@ export const StaticText = (props) => {
           markupStyles && markupStyles,
         ]}
         errorMessage={touched ? error : null}
+        onBlur={onBlur}
       />
     </>
   );

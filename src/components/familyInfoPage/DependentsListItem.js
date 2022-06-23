@@ -17,13 +17,13 @@ export const DependentsListItem = (props) => {
   } = props;
 
   const onDeleteDependent = () => {
-    console.info(`Delete dependent #${dependentIndex}`);
+    console.info(`Delete dependent #${dependentIndex + 1}`);
   };
 
   return (
     <BasicSectorWrapper>
       <View style={mainStyles.subTitleContainer}>
-        <Text style={mainStyles.baseText}>Dependent #{dependentIndex}</Text>
+        <Text style={mainStyles.baseText}>Dependent #{dependentIndex + 1}</Text>
         <TouchableOpacity
           style={localStyles.trashButton}
           onPress={onDeleteDependent}

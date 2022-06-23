@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { uiControlsFields } from "../../api/uiControlsFields";
 import { ControlWrapper } from "../../uiControl";
 import { useSavePostModel } from "../../api/useSavePostModel";
@@ -14,19 +14,20 @@ export const BlockDesc = (props) => {
     personType = "employee",
     datamodelSavePOSTURL = "",
     submitLabel = "Submit",
+    autosaveProps = "",
   } = props;
   const propFields = props.props.PropDesc;
-  const { setFieldTouched, errors } = useFormikContext();
+  const { setFieldTouched, errors, values } = useFormikContext();
 
-  const fieldsRender = propFields.map((field) => {
-    const { propName } = field;
-    const resultField = uiControlsFields(field, personType);
-    return (
-      <ControlWrapper personType={personType} {...field} key={propName}>
-        {resultField}
-      </ControlWrapper>
-    );
-  });
+  const saveProps = autosaveProps.split("|");
+  const ableToAutoSave = useMemo(
+    () =>
+      saveProps.every((propName) => {
+        const propValue = values[personType][propName];
+        return propValue !== "" && propValue !== 0;
+      }),
+    [saveProps, values]
+  );
 
   const savePostModel = useSavePostModel(
     datamodelSavePOSTURL,
@@ -55,6 +56,21 @@ export const BlockDesc = (props) => {
       console.info(validFields);
     }
   };
+
+  const fieldsRender = propFields.map((field) => {
+    const { propName } = field;
+    const resultField = uiControlsFields(
+      field,
+      personType,
+      ableToAutoSave,
+      onSave
+    );
+    return (
+      <ControlWrapper personType={personType} {...field} key={propName}>
+        {resultField}
+      </ControlWrapper>
+    );
+  });
 
   return (
     <>

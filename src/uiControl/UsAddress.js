@@ -37,7 +37,15 @@ export const GooglePlacesInput = ({ editable }) => {
   );
 };
 export const UsAddress = (props) => {
-  const { editable, propName, markup, personType, mandatory } = props;
+  const {
+    editable,
+    propName,
+    markup,
+    personType,
+    mandatory,
+    ableToAutoSave,
+    onSave,
+  } = props;
   const markupStyles = propMarkupStyles(markup);
   useSetMandatory({ personType, propName, mandatory });
 

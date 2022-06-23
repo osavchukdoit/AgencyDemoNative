@@ -8,8 +8,8 @@ import {
   SET_ENROLL_WAIVE_VISIBLE,
   SET_USER_MODEL,
   SET_DOMAIN_MODEL,
-  ADD_FLASH_MESSAGE,
-  CLEAR_ALL_FLASH_MESSAGES,
+  ADD_HIDDEN_FIELDS,
+  REMOVE_HIDDEN_FIELDS,
 } from "../actionTypes";
 
 /**
@@ -92,22 +92,17 @@ export const setDomainModel = (payload) => ({
   payload,
 });
 
-/**
- * Adds flash message to the redux store.
- *
- * @param {object} payload message containing `message` and `type`
- * @returns {{payload, type: string}}
- */
-export const addFlashMessage = (payload) => ({
-  type: ADD_FLASH_MESSAGE,
-  payload,
-});
+//TODO: add docs
+export const addHiddenField = (payload) => {
+  return {
+    type: ADD_HIDDEN_FIELDS,
+    payload,
+  };
+};
 
-/**
- * Removes all flash messages from the redux store.
- *
- * @returns {{type: string}}
- */
-export const clearAllFlashMessages = () => ({
-  type: CLEAR_ALL_FLASH_MESSAGES,
-});
+export const removeHiddenField = (payload) => {
+  return {
+    type: REMOVE_HIDDEN_FIELDS,
+    payload,
+  };
+};

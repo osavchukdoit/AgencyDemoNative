@@ -8,6 +8,7 @@ import { Text } from "react-native";
 import { propMarkupStyles } from "./propMarkupStyles";
 import { useHandleChangeFieldValue } from "../form/useHandleChangeFieldValue";
 import { useSetMandatory } from "../form/useSetMandatory";
+import { isEmpty } from "lodash";
 
 export const UsPhone = (props) => {
   const {
@@ -17,14 +18,20 @@ export const UsPhone = (props) => {
     personType = "employee",
     markup,
     mandatory,
+    ableToAutoSave,
+    onSave,
   } = props;
   const fieldName = `${personType}.${propName}`;
-  const [{ value: fieldValue }, { error: errorMessage, touched }] =
-    useField(fieldName);
+  const [{ value: fieldValue }, { error, touched }] = useField(fieldName);
   const [isFocused, setIsFocused] = useState(false);
   const markupStyles = propMarkupStyles(markup);
   const handleChangeFieldValue = useHandleChangeFieldValue(fieldName);
   useSetMandatory({ personType, propName, mandatory });
+
+  const onBlur = () => {
+    setIsFocused(false);
+    isEmpty(error) && ableToAutoSave && touched && onSave();
+  };
 
   return (
     <>
@@ -45,7 +52,7 @@ export const UsPhone = (props) => {
           editable === "true" && uiControlStyles.textInputEditable,
           !isFocused && uiControlStyles.textInputBorderBlur,
           markupStyles && markupStyles,
-          errorMessage && touched && uiControlStyles.textInputError,
+          error && touched && uiControlStyles.textInputError,
         ]}
         placeholder={placeholder}
         keyboardType={"phone-pad"}
@@ -53,10 +60,10 @@ export const UsPhone = (props) => {
         autoCorrect={false}
         editable={editable === "true"}
         onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
+        onBlur={onBlur}
       />
-      {errorMessage && touched && (
-        <Text style={uiControlStyles.textError}>{errorMessage}</Text>
+      {error && touched && (
+        <Text style={uiControlStyles.textError}>{error}</Text>
       )}
     </>
   );

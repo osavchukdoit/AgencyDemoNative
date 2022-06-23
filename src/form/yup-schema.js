@@ -2,7 +2,7 @@ import * as Yup from "yup";
 import { ssnValidator } from "./ssnValidator";
 import { isEmpty } from "lodash";
 
-export const newYupSchema = (pageDesc = null) => {
+export const newYupSchema = (conditionalValidationFields = []) => {
   const requiredString = Yup.string().required("The field is required");
   const emailValidation = Yup.string()
     .email("Invalid email")
@@ -12,11 +12,15 @@ export const newYupSchema = (pageDesc = null) => {
     .min(14, "Invalid phone number")
     .required("The field is required");
 
-  const mandatoryRequired = (propName, requiredType = requiredString) =>
-    Yup.string().when(`is${propName}Mandatory`, {
+  const mandatoryRequired = (propName, requiredType = requiredString) => {
+    if (conditionalValidationFields?.includes(propName)) {
+      return Yup.string();
+    }
+    return Yup.string().when(`is${propName}Mandatory`, {
       is: "true",
       then: requiredType,
     });
+  };
 
   const dependentsValidation = Yup.array().of(
     Yup.object().shape({

@@ -11,6 +11,8 @@ import {
   SET_USER_ID,
   SHOW_MODAL,
   SET_ENROLL_WAIVE_VISIBLE,
+  ADD_HIDDEN_FIELDS,
+  REMOVE_HIDDEN_FIELDS,
 } from "../actionTypes";
 
 const initialState = {
@@ -33,6 +35,7 @@ const initialState = {
   logoImage: "",
   userId: "",
   isEnrollWaiveVisible: false,
+  hiddenDependentsFieldsByCondition: [],
 };
 
 export const utilityReducers = (state = initialState, { type, payload }) => {
@@ -99,6 +102,22 @@ export const utilityReducers = (state = initialState, { type, payload }) => {
       return {
         ...state,
         isEnrollWaiveVisible: payload,
+      };
+    case ADD_HIDDEN_FIELDS:
+      return {
+        ...state,
+        hiddenDependentsFieldsByCondition: [
+          ...state.hiddenDependentsFieldsByCondition,
+          payload,
+        ],
+      };
+    case REMOVE_HIDDEN_FIELDS:
+      return {
+        ...state,
+        hiddenDependentsFieldsByCondition:
+          state.hiddenDependentsFieldsByCondition.filter(
+            (fieldName) => fieldName !== payload
+          ),
       };
     default:
       return state;

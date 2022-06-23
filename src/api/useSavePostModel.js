@@ -12,6 +12,16 @@ import {
   showWarningMessage,
 } from "./showFlashMessage";
 
+/**
+ * Save domain user's model.
+ *
+ * @param {string} savePostUrl POST URL
+ * @param {string[]} profileFields array of property names to save
+ * @param {string} personType type of person
+ * @param {boolean} isDependent is the data to save related to the dependents
+ * @param {number} dependentIndex dependent's index
+ * @returns {(function(): void)|*|(function(): Promise<boolean|undefined>)}
+ */
 export const useSavePostModel = (
   savePostUrl,
   profileFields,
@@ -45,11 +55,22 @@ export const useSavePostModel = (
     showInfoMessage("Submitting");
     let postModel = { id };
     if (isDependent) {
-      const isNewDependent = !dependents[dependentIndex];
+      // const isNewDependent = !dependents[dependentIndex];
+      // if (isEmpty(dependents)) {
+      //   postModel.dependents = [touchedPostModel];
+      // } else if (isNewDependent) {
+      //   postModel.dependents[dependentIndex] = touchedPostModel;
+      // }
       if (isEmpty(dependents)) {
         postModel.dependents = [touchedPostModel];
-      } else if (isNewDependent) {
-        postModel.dependents[dependentIndex] = touchedPostModel;
+      } else {
+        // updating existing dependent
+        if (isEmpty(dependents[dependentIndex])) {
+          postModel.dependents = [...dependents, touchedPostModel];
+        } else {
+          postModel.dependents = dependents;
+          postModel.dependents[dependentIndex] = touchedPostModel;
+        }
       }
     } else {
       postModel = { ...postModel, ...touchedPostModel };

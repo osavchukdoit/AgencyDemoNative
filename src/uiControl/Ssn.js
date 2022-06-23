@@ -7,6 +7,7 @@ import { useField } from "formik";
 import { propMarkupStyles } from "./propMarkupStyles";
 import { useHandleChangeFieldValue } from "../form/useHandleChangeFieldValue";
 import { useSetMandatory } from "../form/useSetMandatory";
+import { isEmpty } from "lodash";
 
 export const Ssn = (props) => {
   const {
@@ -15,14 +16,20 @@ export const Ssn = (props) => {
     propName,
     markup,
     mandatory,
+    ableToAutoSave,
+    onSave,
   } = props;
   const [isFocused, setIsFocused] = useState(false);
   const fieldName = `${personType}.${propName}`;
-  const [{ value: fieldValue }, { error: errorMessage, touched }] =
-    useField(fieldName);
+  const [{ value: fieldValue }, { error, touched }] = useField(fieldName);
   const markupStyles = propMarkupStyles(markup);
   const handleChangeFieldValue = useHandleChangeFieldValue(fieldName);
   useSetMandatory({ personType, propName, mandatory });
+
+  const onBlur = () => {
+    setIsFocused(false);
+    isEmpty(error) && ableToAutoSave && touched && onSave();
+  };
 
   return (
     <>
@@ -41,20 +48,20 @@ export const Ssn = (props) => {
             uiControlStyles.textInputEditable,
             !isFocused && uiControlStyles.textInputBorderBlurTransparent,
             markupStyles && markupStyles,
-            errorMessage && touched && uiControlStyles.textInputError,
+            error && touched && uiControlStyles.textInputError,
           ]}
           keyboardType={"numeric"}
           placeholder={"XXX-XX-XXXX"}
           onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
+          onBlur={onBlur}
         />
       ) : (
         <TextInput editable={false} style={uiControlStyles.textInput}>
           {fieldValue}
         </TextInput>
       )}
-      {errorMessage && touched && (
-        <Text style={uiControlStyles.textError}>{errorMessage}</Text>
+      {error && touched && (
+        <Text style={uiControlStyles.textError}>{error}</Text>
       )}
     </>
   );

@@ -26,14 +26,15 @@ export const Picklist = (props) => {
     personType = "employee",
     markup,
     mandatory,
+    ableToAutoSave,
+    onSave,
   } = props;
   const { jwt } = useSelector((state) => state.utils);
   const [picklistOptions, setPicklistOptions] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
   const isIos = Platform.OS === CONSTANTS.OS.ios;
   const fieldName = `${personType}.${propName}`;
-  const [{ value: fieldValue }, { error: errorMessage, touched }] =
-    useField(fieldName);
+  const [{ value: fieldValue }, { error, touched }] = useField(fieldName);
   const [fieldLabel, setFieldLabel] = useState();
   const markupStyles = propMarkupStyles(markup);
   const handleChangeFieldValue = useHandleChangeFieldValue(fieldName);
@@ -80,6 +81,17 @@ export const Picklist = (props) => {
   const openPicklist = () => setIsVisible(true);
   const closePicklist = () => setIsVisible(false);
 
+  useEffect(() => {
+    isEmpty(error) && ableToAutoSave && touched && onSave();
+  }, [fieldValue]);
+
+  // const onValueChange = (itemValue) => {
+  //   handleChangeFieldValue(itemValue);
+  //   setTimeout(() => {
+  //     isEmpty(error) && ableToAutoSave && onSave();
+  //   });
+  // };
+
   return (
     <>
       {isIos && (
@@ -97,8 +109,8 @@ export const Picklist = (props) => {
           >
             {fieldLabel}
           </Text>
-          {errorMessage && touched && (
-            <Text style={uiControlStyles.textError}>{errorMessage}</Text>
+          {error && touched && (
+            <Text style={uiControlStyles.textError}>{error}</Text>
           )}
         </>
       )}
@@ -114,6 +126,7 @@ export const Picklist = (props) => {
           >
             <Picker
               selectedValue={fieldValue}
+              // onValueChange={onValueChange}
               onValueChange={(itemValue) => {
                 handleChangeFieldValue(itemValue);
               }}
@@ -130,8 +143,8 @@ export const Picklist = (props) => {
               ))}
             </Picker>
           </View>
-          {errorMessage && touched && (
-            <Text style={uiControlStyles.textError}>{errorMessage}</Text>
+          {error && touched && (
+            <Text style={uiControlStyles.textError}>{error}</Text>
           )}
         </>
       )}

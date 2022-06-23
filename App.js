@@ -12,15 +12,15 @@ import { useInitialFormikValues } from "./src/form/useInitialFormikValues";
 import { newYupSchema } from "./src/form/yup-schema";
 import FlashMessage from "react-native-flash-message";
 
-function UncoveredApp({ setPageDesc }) {
-  const { isLogged, loaderStatus } = useSelector((state) => state.utils);
+function UncoveredApp({ setConditionalValidationFields }) {
+  const { isLogged, loaderStatus, hiddenDependentsFieldsByCondition } =
+    useSelector((state) => state.utils);
   const { visible: isLoading } = loaderStatus;
   const dispatch = useDispatch();
-  const { pageDesc } = useSelector((state) => state);
 
   useEffect(() => {
-    setPageDesc(pageDesc);
-  }, [pageDesc]);
+    setConditionalValidationFields(hiddenDependentsFieldsByCondition);
+  }, [hiddenDependentsFieldsByCondition]);
 
   const handleLogin = ({ userName }) => dispatch(setLoggedIn(userName));
   const handleLogout = () => dispatch(setLoggedOut());
@@ -43,7 +43,8 @@ function UncoveredApp({ setPageDesc }) {
 export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
   const initialFormikValues = useInitialFormikValues();
-  const [pageDesc, setPageDesc] = useState(null);
+  const [conditionalValidationFields, setConditionalValidationFields] =
+    useState(null);
 
   async function loadFonts() {
     await Font.loadAsync({
@@ -60,7 +61,7 @@ export default function App() {
     loadFonts();
   }, []);
 
-  const validationSchema = newYupSchema(pageDesc);
+  const validationSchema = newYupSchema(conditionalValidationFields);
 
   if (fontsLoaded) {
     return (
@@ -72,7 +73,11 @@ export default function App() {
         >
           {(props) => {
             const { values, touched, errors, isValid } = props;
-            return <UncoveredApp setPageDesc={setPageDesc} />;
+            return (
+              <UncoveredApp
+                setConditionalValidationFields={setConditionalValidationFields}
+              />
+            );
           }}
         </Formik>
       </Provider>

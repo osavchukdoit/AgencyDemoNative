@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, StyleSheet } from "react-native";
 import CalendarIconSvg from "../assets/icons/familyInfoIcons/calendar.svg";
 import { AppDatePicker } from "../components/AppDatePicker";
@@ -11,6 +11,7 @@ import { useField } from "formik";
 import { propMarkupStyles } from "./propMarkupStyles";
 import { useHandleChangeFieldValue } from "../form/useHandleChangeFieldValue";
 import { useSetMandatory } from "../form/useSetMandatory";
+import { isEmpty } from "lodash";
 
 export const DateControl = (props) => {
   const {
@@ -19,10 +20,11 @@ export const DateControl = (props) => {
     personType = "employee",
     markup,
     mandatory,
+    ableToAutoSave,
+    onSave,
   } = props;
   const fieldName = `${personType}.${propName}`;
-  const [{ value: fieldValue }, { error: errorMessage, touched }] =
-    useField(fieldName);
+  const [{ value: fieldValue }, { error, touched }] = useField(fieldName);
   const [showDatePicker, setShowDatePicker] = useState(false);
   const markupStyles = propMarkupStyles(markup);
   const handleChangeFieldValue = useHandleChangeFieldValue(fieldName);
@@ -32,6 +34,10 @@ export const DateControl = (props) => {
     if (editable === "false") return;
     setShowDatePicker(true);
   };
+
+  useEffect(() => {
+    isEmpty(error) && ableToAutoSave && touched && onSave();
+  }, [fieldValue]);
 
   return (
     <>
@@ -44,14 +50,14 @@ export const DateControl = (props) => {
           styles.dateText,
           markupStyles && markupStyles,
           !showDatePicker && uiControlStyles.textInputBorderBlurTransparent,
-          errorMessage && touched && uiControlStyles.textInputError,
+          error && touched && uiControlStyles.textInputError,
         ]}
         onPress={handleDatePress}
       >
         {fieldValue}
       </Text>
-      {errorMessage && touched && (
-        <Text style={uiControlStyles.textError}>{errorMessage}</Text>
+      {error && touched && (
+        <Text style={uiControlStyles.textError}>{error}</Text>
       )}
       <AppDatePicker
         date={moment(fieldValue ? fieldValue : "01/01/2000", "L").toDate()}

@@ -6,6 +6,7 @@ import { propMarkupStyles } from "./propMarkupStyles";
 import { useHandleChangeFieldValue } from "../form/useHandleChangeFieldValue";
 import { useSetMandatory } from "../form/useSetMandatory";
 import { Text } from "react-native";
+import { isEmpty } from "lodash";
 
 export const Amount = (props) => {
   const {
@@ -14,14 +15,20 @@ export const Amount = (props) => {
     personType = "employee",
     markup,
     mandatory,
+    ableToAutoSave,
+    onSave,
   } = props;
   const fieldName = `${personType}.${propName}`;
   const [isFocused, setIsFocused] = useState(false);
-  const [{ value: fieldValue }, { error: errorMessage, touched }] =
-    useField(fieldName);
+  const [{ value: fieldValue }, { error, touched }] = useField(fieldName);
   const markupStyles = propMarkupStyles(markup);
   const handleChangeFieldValue = useHandleChangeFieldValue(fieldName);
   useSetMandatory({ personType, propName, mandatory });
+
+  const onBlur = () => {
+    setIsFocused(false);
+    isEmpty(error) && ableToAutoSave && touched && onSave();
+  };
 
   const moneyMaskOptions = {
     precision: 2,
@@ -51,15 +58,15 @@ export const Amount = (props) => {
           uiControlStyles.textInputEditable,
           !isFocused && uiControlStyles.textInputBorderBlurTransparent,
           markupStyles && markupStyles,
-          errorMessage && uiControlStyles.textInputError,
+          error && uiControlStyles.textInputError,
         ]}
         options={moneyMaskOptions}
         editable={editable === "true"}
         onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
+        onBlur={onBlur}
       />
-      {errorMessage && touched && (
-        <Text style={uiControlStyles.textError}>{errorMessage}</Text>
+      {error && touched && (
+        <Text style={uiControlStyles.textError}>{error}</Text>
       )}
     </>
   );

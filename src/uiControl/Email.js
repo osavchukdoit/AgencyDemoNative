@@ -6,6 +6,7 @@ import { useField } from "formik";
 import { propMarkupStyles } from "./propMarkupStyles";
 import { useHandleChangeFieldValue } from "../form/useHandleChangeFieldValue";
 import { useSetMandatory } from "../form/useSetMandatory";
+import { isEmpty } from "lodash";
 
 export const Email = (props) => {
   const {
@@ -14,13 +15,18 @@ export const Email = (props) => {
     propName,
     markup,
     mandatory,
+    ableToAutoSave,
+    onSave,
   } = props;
   const fieldName = `${personType}.${propName}`;
-  const [{ value: fieldValue }, { error: errorMessage, touched }] =
-    useField(fieldName);
+  const [{ value: fieldValue }, { error, touched }] = useField(fieldName);
   const markupStyles = propMarkupStyles(markup);
   const handleChangeFieldValue = useHandleChangeFieldValue(fieldName);
   useSetMandatory({ personType, propName, mandatory });
+
+  const onBlur = () => {
+    isEmpty(error) && ableToAutoSave && touched && onSave();
+  };
 
   return (
     <>
@@ -31,8 +37,9 @@ export const Email = (props) => {
         editable={editable}
         value={fieldValue}
         onChangeText={handleChangeFieldValue}
-        errorMessage={touched && errorMessage}
+        errorMessage={touched && error}
         additionalStyle={[markupStyles && markupStyles]}
+        onBlur={onBlur}
       />
     </>
   );

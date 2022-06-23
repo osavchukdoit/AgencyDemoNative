@@ -18,9 +18,16 @@ import {
  *
  * @param {object} field form field details containing `propName` and `uiControl`
  * @param {string} personType type of person
+ * @param {boolean} ableToAutoSave all the `autosaveProps` are filled
+ * @param {function} onSave saves model using `datamodelSavePOSTURL`
  * @returns {JSX.Element}
  */
-export const uiControlsFields = (field, personType = "employee") => {
+export const uiControlsFields = (
+  field,
+  personType = "employee",
+  ableToAutoSave = false,
+  onSave
+) => {
   const { propName, uiControl } = field;
   let resultComponent;
 
@@ -78,5 +85,9 @@ export const uiControlsFields = (field, personType = "employee") => {
     default:
       resultComponent = null;
   }
-  return resultComponent;
+
+  return React.cloneElement(resultComponent, {
+    ableToAutoSave: ableToAutoSave,
+    onSave: onSave,
+  });
 };
