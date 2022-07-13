@@ -20,14 +20,16 @@ export const BlockDesc = (props) => {
   const { setFieldTouched, errors, values } = useFormikContext();
 
   const saveProps = autosaveProps.split("|");
-  const ableToAutoSave = useMemo(
-    () =>
-      saveProps.every((propName) => {
-        const propValue = values[personType][propName];
-        return propValue !== "" && propValue !== 0;
-      }),
-    [saveProps, values]
-  );
+  const ableToAutoSave = useMemo(() => {
+    const propNames = propFields.map(({ propName }) => propName);
+    const existingSaveProps = saveProps.filter((saveProp) =>
+      propNames.includes(saveProp)
+    );
+    return existingSaveProps.every((propName) => {
+      const propValue = values[personType][propName];
+      return propValue !== "" && propValue !== 0;
+    });
+  }, [saveProps, values, propFields]);
 
   const savePostModel = useSavePostModel(
     datamodelSavePOSTURL,

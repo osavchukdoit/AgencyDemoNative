@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Provider, useDispatch, useSelector } from "react-redux";
-import store from "./src/redux/store";
+import store from "./src/store";
 import { AppStack } from "./src/navigation/AppStack";
 import { LoginScreen } from "./src/screens/LoginScreen";
 import { Loader } from "./src/components/utils/Loader";
-import { setLoggedIn, setLoggedOut } from "./src/redux/actions/actionCreator";
+import { setLoggedIn, setLoggedOut } from "./src/store/actions/actionCreator";
 import { StatusBar } from "react-native";
 import * as Font from "expo-font";
 import { Formik } from "formik";

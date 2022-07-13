@@ -7,7 +7,7 @@ import { BasicSectorWrapper } from "../utils/BasicSectorWrapper";
 import { ItemInnerProfile } from "../blockItemInner/ItemInnerProfile";
 import { ItemInnerEmployment } from "../blockItemInner/ItemInnerEmployment";
 import { useDispatch } from "react-redux";
-import { setLoader } from "../../redux/actions/actionCreator";
+import { setLoader } from "../../store/actions/actionCreator";
 
 export const PageBlockItem = ({ blockDesc, handleInfoDetails, personType }) => {
   const { blockTitle, blockIcon, blockName } = blockDesc;

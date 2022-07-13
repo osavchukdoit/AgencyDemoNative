@@ -26,7 +26,7 @@ export const uiControlsFields = (
   field,
   personType = "employee",
   ableToAutoSave = false,
-  onSave
+  onSave = () => {}
 ) => {
   const { propName, uiControl } = field;
   let resultComponent;

@@ -26,12 +26,14 @@ export const DependantsInfoItem = ({
   const dependentsFieldName = `${personType}.${blockListName}`;
   const [{ value: dependents }, { error: errorMessage }, { setDependents }] =
     useField(dependentsFieldName);
-  const { blockTitle, blockIcon } = block.BlockDesc;
+  const blockDesc = block.BlockDesc;
+  const { blockTitle, blockIcon } = blockDesc;
   const blockServerIcon = getServerIcon(blockIcon);
 
   const onAddDependent = () => {
     handleInfoDetails("DependantsInfoDetailsScreen", {
       dependentIndex: dependents.length,
+      blockDesc,
     });
   };
 
@@ -54,6 +56,7 @@ export const DependantsInfoItem = ({
                 {...dependentItem}
                 dependentIndex={index}
                 handleInfoDetails={handleInfoDetails}
+                blockDesc={blockDesc}
               />
             );
           })}

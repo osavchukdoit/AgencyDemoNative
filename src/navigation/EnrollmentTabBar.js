@@ -9,7 +9,7 @@ import { FONTS } from "../styles/fonts";
 import styles from "./EnrollmentTabBarStyles";
 import { useDispatch, useSelector } from "react-redux";
 import { EnrollWaiveTabBar } from "./EnrollWaiveTabBar";
-import { setEnrollWaiveVisible } from "../redux/actions/actionCreator";
+import { setEnrollWaiveVisible } from "../store/actions/actionCreator";
 
 export const EnrollmentTabBar = ({
   state,

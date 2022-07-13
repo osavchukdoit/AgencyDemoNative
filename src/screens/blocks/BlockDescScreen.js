@@ -13,7 +13,7 @@ import { BlockDesc } from "../../components/blocks/BlockDesc";
 import { getServerIcon } from "../../constants";
 import { useFormikContext } from "formik";
 import { isEmpty } from "lodash";
-import { setLoader } from "../../redux/actions/actionCreator";
+import { setLoader } from "../../store/actions/actionCreator";
 import { useDispatch } from "react-redux";
 
 export const BlockDescScreen = (props) => {

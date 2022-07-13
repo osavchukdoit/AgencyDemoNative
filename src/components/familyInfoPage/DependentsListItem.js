@@ -6,6 +6,7 @@ import PersonIconSvg from "../../assets/icons/familyInfoIcons/person.svg";
 import ArrowRightSvg from "../../assets/icons/familyInfoIcons/vectorRight.svg";
 import { BasicSectorWrapper } from "../utils/BasicSectorWrapper";
 import { THEME } from "../../styles/theme";
+import { useDeleteDependent } from "../../api/useDeleteDependent";
 
 export const DependentsListItem = (props) => {
   const {
@@ -14,16 +15,24 @@ export const DependentsListItem = (props) => {
     depFirstName,
     depLastName,
     relationType,
+    blockDesc,
+    id: dependentId = null,
   } = props;
 
+  const deleteDependent = useDeleteDependent();
+
   const onDeleteDependent = () => {
-    console.info(`Delete dependent #${dependentIndex + 1}`);
+    console.log("delete id=", dependentId);
+    // temporary inactive
+    // deleteDependent(dependentId);
   };
 
   return (
     <BasicSectorWrapper>
       <View style={mainStyles.subTitleContainer}>
-        <Text style={mainStyles.baseText}>Dependent #{dependentIndex + 1}</Text>
+        <Text style={mainStyles.baseText}>
+          Dependent #{dependentIndex + 1} {dependentId}
+        </Text>
         <TouchableOpacity
           style={localStyles.trashButton}
           onPress={onDeleteDependent}
@@ -49,6 +58,8 @@ export const DependentsListItem = (props) => {
           onPress={() => {
             handleInfoDetails("DependantsInfoDetailsScreen", {
               dependentIndex,
+              blockDesc,
+              dependentId,
             });
           }}
         >

@@ -12,7 +12,7 @@ import HospitalBedSvg from "../assets/icons/plans/hospital.svg";
 import { HomeAndPostTop } from "../components/utils/topComponents/HomeAndPostTop";
 import { useDispatch, useSelector } from "react-redux";
 import { getDomainModel } from "../api/domainModel";
-import { setDomainModel } from "../redux/actions/actionCreator";
+import { setDomainModel } from "../store/actions/actionCreator";
 import { useFillDynamicValue } from "../api/useFillDynamicValue";
 import { isEmpty } from "lodash";
 import { useFormikContext } from "formik";

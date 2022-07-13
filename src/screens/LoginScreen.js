@@ -14,7 +14,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { THEME } from "../styles/theme";
 import { CONSTANTS } from "../constants";
 import { useDispatch } from "react-redux";
-import { setLoader } from "../redux/actions/actionCreator";
+import { setLoader } from "../store/actions/actionCreator";
 import { useLoginUser } from "../api/useLoginUser";
 
 export const LoginScreen = ({ onLogin }) => {

@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addHiddenField,
   removeHiddenField,
-} from "../redux/actions/actionCreator";
+} from "../store/actions/actionCreator";
 
 export const ControlWrapper = (props) => {
   const {

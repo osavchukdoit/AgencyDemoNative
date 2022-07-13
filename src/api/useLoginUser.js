@@ -4,7 +4,7 @@ import {
   setPageDesc,
   setToken,
   setUserModel,
-} from "../redux/actions/actionCreator";
+} from "../store/actions/actionCreator";
 import { getPageDesc } from "./pageDesc";
 
 export const useLoginUser = () => {

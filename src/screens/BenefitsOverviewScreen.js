@@ -25,7 +25,7 @@ import VSTDSvg from "../assets/icons/plans/vstd.svg";
 import TLSvg from "../assets/icons/plans/term.svg";
 import WLSvg from "../assets/icons/plans/wl.svg";
 import { useDispatch } from "react-redux";
-import { setEnrollWaiveVisible } from "../redux/actions/actionCreator";
+import { setEnrollWaiveVisible } from "../store/actions/actionCreator";
 import { StdSelectPlanScreen } from "./StdSelectPlanScreen";
 import { CiSelectPlanScreen } from "./CiSelectPlanScreen";
 import { TermLifeEnrollScreen } from "./TermLifeEnrollScreen";

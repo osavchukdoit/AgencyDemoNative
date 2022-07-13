@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { FONTS } from "../styles/fonts";
 import { THEME } from "../styles/theme";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getValidValues } from "../api/validValues";
 import { useField } from "formik";
 import { AppTooltip } from "../components/utils/AppTooltip";
@@ -11,6 +11,7 @@ import { useHandleChangeFieldValue } from "../form/useHandleChangeFieldValue";
 import { useSetMandatory } from "../form/useSetMandatory";
 import { uiControlStyles } from "./uiControlStyles";
 import { isEmpty } from "lodash";
+import { setLoader } from "../store/actions/actionCreator";
 
 export const RadioButton = (props) => {
   const {
@@ -29,10 +30,13 @@ export const RadioButton = (props) => {
   const markupStyles = propMarkupStyles(markup);
   const handleChangeFieldValue = useHandleChangeFieldValue(fieldName);
   useSetMandatory({ personType, propName, mandatory });
+  const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(setLoader({ visible: true, text: "Obtaining options" }));
     getValidValues(jwt, propName).then((validValues) => {
       setOptions(validValues);
+      dispatch(setLoader({ visible: false, text: "" }));
     });
   }, [propName]);
 

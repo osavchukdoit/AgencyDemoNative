@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { THEME } from "../../styles/theme.js";
 import styles from "../personalInfoPage/stylesMainPersonalInfo.js";
@@ -13,7 +13,8 @@ import { useSavePostModel } from "../../api/useSavePostModel";
 import { useFormikContext } from "formik";
 import { showWarningMessage } from "../../api/showFlashMessage";
 
-export const MainDependantsInfo = ({ params }) => {
+export const MainDependantsInfo = (props) => {
+  const { params, autosaveProps = "" } = props;
   const { pageDesc } = useSelector((state) => state);
   const pageDescriptor = pageDesc.pageDesc;
   const dependentsBlockDesc = pageDescriptor.blockLists.BlockListDesc;
@@ -21,9 +22,29 @@ export const MainDependantsInfo = ({ params }) => {
   const { submitLabel } = blockDescriptor;
   const dependentFields = blockDescriptor.props.PropDesc;
   const [depPropDesc, setDepPropDesc] = useState(null);
-  const { dependentIndex } = params;
+  const { dependentIndex, dependentId } = params;
   const personType = `employee.dependents[${dependentIndex}]`;
-  const { setFieldTouched, errors } = useFormikContext();
+  const { values, setFieldTouched, errors } = useFormikContext();
+
+  const saveProps = autosaveProps.split("|");
+  const ableToAutoSave = useMemo(() => {
+    const propNames = dependentFields.map(({ propName }) => propName);
+    const existingSaveProps = saveProps.filter((saveProp) =>
+      propNames.includes(saveProp)
+    );
+    return existingSaveProps.every((propName) => {
+      const personValue = Object.byString(values, personType);
+      if (isEmpty(personValue)) {
+        return false;
+      }
+      const propValue = personValue[propName];
+      return propValue !== "" && propValue !== 0 && propValue !== undefined;
+    });
+  }, [saveProps, values, dependentFields]);
+
+  useEffect(() => {
+    console.log("ableToAutoSave=", ableToAutoSave);
+  }, [ableToAutoSave]);
 
   useEffect(() => {
     const depProps = [];
@@ -47,28 +68,13 @@ export const MainDependantsInfo = ({ params }) => {
     setDepPropDesc(displayProps);
   }, [dependentFields]);
 
-  const fieldsRender = dependentFields.map((field) => {
-    const { propName } = field;
-
-    const resultField = uiControlsFields(field, personType);
-    return (
-      <ControlWrapper
-        personType={personType}
-        {...field}
-        key={propName}
-        depPropDesc={depPropDesc}
-      >
-        {resultField}
-      </ControlWrapper>
-    );
-  });
-
   const savePostModel = useSavePostModel(
     blockDescriptor.datamodelSavePOSTURL,
     dependentFields,
     personType,
     true,
-    dependentIndex
+    dependentIndex,
+    dependentId
   );
 
   const onSave = () => {
@@ -93,6 +99,26 @@ export const MainDependantsInfo = ({ params }) => {
     }
   };
 
+  const fieldsRender = dependentFields.map((field) => {
+    const { propName } = field;
+    const resultField = uiControlsFields(
+      field,
+      personType,
+      ableToAutoSave,
+      onSave
+    );
+    return (
+      <ControlWrapper
+        personType={personType}
+        {...field}
+        key={propName}
+        depPropDesc={depPropDesc}
+      >
+        {resultField}
+      </ControlWrapper>
+    );
+  });
+
   return (
     <>
       <BasicSectorWrapper>
@@ -104,6 +130,7 @@ export const MainDependantsInfo = ({ params }) => {
             position: "relative",
           }}
         >
+          {/* TODO: add deletion*/}
           <TouchableOpacity style={localStyles.deleteButton}>
             <TrushSvg />
             <Text style={localStyles.deleteButtonText}>Delete</Text>
