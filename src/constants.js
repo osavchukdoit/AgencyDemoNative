@@ -25,6 +25,10 @@ export const domainModelUrl = (datamodelFindGETURL) =>
   `${SERVER_URL}/${datamodelFindGETURL}`;
 export const getSavePostUrl = (savePOSTURL) => `${SERVER_URL}/${savePOSTURL}`;
 export const getServerIcon = (iconPath) => `${SERVER_URL}/${iconPath}`;
+export const getBpPageBase = (bpName = "EmployeeEnroll2") =>
+  `${GATEWAY_SERVICES_URL}/metadataservice/find/content/BPPage/${bpName}?media=json&contextual`;
+export const getBPPageUrl = (domainId = 1121) =>
+  `${getBpPageBase()}DomainId=${domainId}`;
 
 // export const GOOGLE_API_KEY = "AIzaSyDFypetmaRCy6bzbsEz2__gLPSU3NmqZAM";
 export const GOOGLE_API_KEY =

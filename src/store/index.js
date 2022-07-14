@@ -5,6 +5,7 @@ import { pageDescReducer } from "./reducers/pageDesc";
 import { userReducer } from "./reducers/user";
 import { domainModelReducer } from "./reducers/domain";
 import { flashMessagesReducers } from "./reducers/flashMessages";
+import { bpReducer } from "./reducers/businessProcess";
 
 const rootReducer = combineReducers({
   utils: utilityReducers,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   user: userReducer,
   domain: domainModelReducer,
   flashMessages: flashMessagesReducers,
+  bp: bpReducer,
 });
 
 const store = createStore(rootReducer, composeWithDevTools());

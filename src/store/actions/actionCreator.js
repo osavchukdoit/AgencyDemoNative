@@ -10,6 +10,7 @@ import {
   SET_DOMAIN_MODEL,
   ADD_HIDDEN_FIELDS,
   REMOVE_HIDDEN_FIELDS,
+  SET_BP,
 } from "../actionTypes";
 
 /**
@@ -92,7 +93,7 @@ export const setDomainModel = (payload) => ({
   payload,
 });
 
-//TODO: add docs
+// TODO: add docs
 export const addHiddenField = (payload) => {
   return {
     type: ADD_HIDDEN_FIELDS,
@@ -106,3 +107,14 @@ export const removeHiddenField = (payload) => {
     payload,
   };
 };
+
+/**
+ * Stores Business Process data.
+ *
+ * @param {object} payload Business Process details
+ * @returns {{payload, type: string}}
+ */
+export const setBp = (payload) => ({
+  type: SET_BP,
+  payload,
+});
